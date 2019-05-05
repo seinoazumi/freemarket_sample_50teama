@@ -1,0 +1,29 @@
+html {
+  box-sizing: border-box;
+  *,*:before,*:after {
+    box-sizing: inherit;
+  }
+} //全ての要素にbox-sizing: border-box;を設定
+
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+} //clearfix
+
+a{
+  text-decoration: none;
+  &:link{
+    color: inherit;
+  }
+  &:hover{
+    color: inherit;
+  }
+  &:visited{
+    color: inherit;
+  }
+} //a タグの下線・デフォルトの色を消す
+
+li{
+  text-decoration: none;
+} //liタグの・を消す
