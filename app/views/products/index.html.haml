@@ -1,7 +1,7 @@
 .default-container
   %header.sp-header
     .sp-header__inner.visible-sp
-      .sp-header__inner__logo
+      %h1.sp-header__inner__logo
         = link_to 'メルカリトップページへのリンク', src: '#' do
           -# = image_tag src: '#', alt: 'mercari'  画像の置き場所が決まったらコメントアウト外す
 
@@ -20,7 +20,12 @@
           
           = link_to 'マイページへのリンク', src: '#', class: 'sp-header-user-icon sp-header-user-profile' do
             %figure
-              = image_tag crc: '#', alt: 'プロフィール写真'
+              -# = image_tag src: '#', alt: 'プロフィール写真', width: 32 画像の置き場所が決まったらコメントアウト外す
+      .sp-header__search-bar
+        =form_tag ('searchアクションへのパス', method: "get") do
+          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "sp-header__search-bar__search input-default" }
+        
+
 
   %header.pc-header
   %main
