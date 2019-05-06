@@ -18,14 +18,27 @@
 |building|string||
 |phone|integer||
 |birthday|integer||
+|money|integer|null: false, default :0|
+|point|integer|null: false, default :0|
+|card|integer||
 |seller_id|integer|null: false|
 |buyer_id|integer|null: false|
-|profile|integer|limit: 1000|
+|profile|text|limit: 1000|
 ### Association
 - has_many :trades
 - has_many :items, through: :trades
 - has_many :likes
 - has_many :items, through: :trades
+- belongs_to :card
+
+## cardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|reference|null: false, foreign_key: true|
+|customer_id|integer|null: false|
+|card_id|integer|null: false|
+### Assosiation
+- belongs_to :user
 
 ## itemsテーブル
 |Column|Type|Options|
