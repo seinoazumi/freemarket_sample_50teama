@@ -7,9 +7,10 @@
 |email|string|null: false, unique: true|
 |password|string|null: false|
 |encrypted_password|string|null: false|
-|email|string|null: false|
 |first_name|string|null: false|
 |last_name|string|null: false|
+|first_name_kana|string|null: false|
+|last_name_kana|string|null: false|
 |postal_code|integer|null: false|
 |perfecture|integer|null: false|
 |city|string|null: false|
@@ -41,7 +42,7 @@
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|produnts_id|integer|null :false|
+|products_id|reference|null :false|
 |image|string|null :false|
 ### Association
 - belongs_to :product
@@ -49,7 +50,7 @@
 ## tradesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|product_id|integer|null :false|
+|product_id|reference|null :false|
 |image|string|null :false|
 ### Association
 - belongs_to :user
@@ -58,35 +59,36 @@
 ## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null :false|
-|product_id|integer|null :false|
+|user_id|reference|null :false|
+|product_id|reference|null :false|
 ### Association
 - belongs_to :user
 - belongs_to :product
 
 
-## category_firstテーブル
+## category1テーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null :false|
 ### Association
-- has_many :category_third
+- has_many :category3
 
-## category_secondテーブル
+## category2テーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null :false|
-|parent_id|integer|null :false|
+|category1_id|reference|null :false|
 
 ### Association
-- has_many :category_third
+- has_many :category3
 
-## category_thirdテーブル
+## category3テーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null :false|
-|parent_id|integer|null :false|
+|category1_id|reference|null :false|
+|category2_id|reference||
 
 ### Association
-- belongs_to :category_first
-- belongs_to :category_third
+- belongs_to :category1
+- belongs_to :category2
