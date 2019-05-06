@@ -24,5 +24,11 @@
 /public/assets
 .byebug_history
 
+/test.coffee
+/test*.coffee
+/test.litcoffee
+/test*.litcoffee
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+config/secrets.yml
