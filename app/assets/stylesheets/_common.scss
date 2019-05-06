@@ -5,6 +5,16 @@ html {
   }
 } //全ての要素にbox-sizing: border-box;を設定
 
+body {
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  position: relative;
+  min-height: 100%;
+  background: $gray-lv1;
+  font-size: 14px;
+  color:$gray-lv4;
+  line-height: 1;
+} // メルカリ（本家）のbodyについていたcssを全て追記
+
 .clearfix::after{
   content: "";
   display: block;
