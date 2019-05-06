@@ -12,7 +12,7 @@
 |first_name_kana|string|null: false|
 |last_name_kana|string|null: false|
 |postal_code|integer|null: false|
-|perfecture|integer|null: false|
+|prefecture|integer|null: false|
 |city|string|null: false|
 |address|string|null: false|
 |building|string||
@@ -23,16 +23,16 @@
 |profile|integer|limit: 1000|
 ### Association
 - has_many :trades
-- has_many :products, through: :trades
+- has_many :items, through: :trades
 - has_many :likes
-- has_many :products, through: :trades
+- has_many :items, through: :trades
 
-## productsテーブル
+## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, limit: 40|
 |condition|integer|null: false|
-|delivery_fee|null: false|
+|delivery_fee|integer|null: false|
 |delivery_days|integer|null: false|
 |price|integer|null: false|
 ### Association
@@ -41,58 +41,63 @@
 - has_many :likes
 - has_many :users, through: :likes
 - has_many :images
-- belongs_to :category
-
-## imagesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|products_id|reference|null :false|
-|image|string|null :false|
-### Association
-- belongs_to :product
+- belongs_to :3rd_category
 
 ## tradesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|product_id|reference|null :false|
-|image|string|null :false|
+|seller_id|reference|null: false, foreign_key: true|
+|buyer_id|reference|null :false, foreign_key: true|
+|items_id|refetrence|null :false, foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :product
+- belongs_to :item
+
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_id|reference|null: false, foreign_key: true|
+|image|string|null :false|
+### Association
+- belongs_to :item
 
 ## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null :false|
-|product_id|reference|null :false|
+|user_id|reference|null: false, foreign_key: true|
+|item_id|reference|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :product
+- belongs_to :item
 
 
-## category1テーブル
+## 1st_categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null :false|
 ### Association
-- has_many :category3
+- has_many :2nd_categories
+- has_many :3rd_categories
 
-## category2テーブル
+## 2nd_categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null :false|
-|category1_id|reference|null :false|
+|1st_category_id|reference|null: false, foreign_key: true|
+
 
 ### Association
-- has_many :category3
+- belongs_to :1st_category
+- has_many :3rd_categories
 
-## category3テーブル
+
+## 3rd_categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null :false|
-|category1_id|reference|null :false|
-|category2_id|reference||
+|1st_category_id|reference|null: false, foreign_key: true|
+|2nd_category_id|reference|optional: true, foreign_key: true|
 
 ### Association
-- belongs_to :category1
-- belongs_to :category2
+- belongs_to :1st_category
+- belongs_to :2nd_category
