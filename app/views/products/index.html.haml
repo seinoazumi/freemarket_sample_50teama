@@ -22,10 +22,9 @@
             %figure
               -# = image_tag src: '#', alt: 'プロフィール写真', width: 32 画像の置き場所が決まったらコメントアウト外す
       .sp-header__search-bar
-        =form_tag ('searchアクションへのパス', method: "get") do
-          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "sp-header__search-bar__search input-default" }
-        
-
+        -# =form_tag ('searchアクションへのパス', method: "get") do  パスが決まったらコメントアウト外す
+        -#   = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "sp-header__search-bar__search input-default" }
+      
 
   %header.pc-header
   %main
