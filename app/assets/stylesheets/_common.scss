@@ -15,12 +15,6 @@ body {
   line-height: 1;
 } // メルカリ（本家）のbodyについていたcssを全て追記
 
-.clearfix::after{
-  content: "";
-  display: block;
-  clear: both;
-} //clearfix
-
 a{
   text-decoration: none;
   &:link{
