@@ -23,7 +23,9 @@
 |profile|integer|limit: 1000|
 ### Association
 - has_many :trades
+- has_many :products, through: :trades
 - has_many :likes
+- has_many :products, through: :trades
 
 ## productsテーブル
 |Column|Type|Options|
@@ -34,8 +36,10 @@
 |delivery_days|integer|null: false|
 |price|integer|null: false|
 ### Association
-- belongs_to :trades
+- has_many :trade
+- has_many :users, through: :trades
 - has_many :likes
+- has_many :users, through: :likes
 - has_many :images
 - belongs_to :category
 
