@@ -28,6 +28,7 @@
 /test*.coffee
 /test.litcoffee
 /test*.litcoffee
+*.coffee
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
