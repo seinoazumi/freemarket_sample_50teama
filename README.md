@@ -25,10 +25,8 @@
 |buyer_id|integer|null: false|
 |profile|text|limit: 1000|
 ### Association
-- has_many :trades
-- has_many :items, through: :trades
 - has_many :likes
-- has_many :items, through: :trades
+- has_many :items, through: :likes
 - belongs_to :card
 
 ## cardsテーブル
@@ -48,23 +46,14 @@
 |delivery_fee|integer|null: false|
 |delivery_days|integer|null: false|
 |price|integer|null: false|
+|seller_id|reference|null: false, foreign_key: true|
+|buyer_id|reference|foreign_key: true|
+
 ### Association
-- has_many :trade
-- has_many :users, through: :trades
 - has_many :likes
 - has_many :users, through: :likes
 - has_many :images
-- belongs_to :3rd_category
-
-## tradesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|seller_id|reference|null: false, foreign_key: true|
-|buyer_id|reference|null :false, foreign_key: true|
-|items_id|refetrence|null :false, foreign_key: true|
-### Association
-- belongs_to :user
-- belongs_to :item
+- has_many :categories
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -84,33 +73,12 @@
 - belongs_to :item
 
 
-## 1st_categoriesテーブル
+## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null :false|
-### Association
-- has_many :2nd_categories
-- has_many :3rd_categories
-
-## 2nd_categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null :false|
-|1st_category_id|reference|null: false, foreign_key: true|
-
+|ancestry|string||
 
 ### Association
-- belongs_to :1st_category
-- has_many :3rd_categories
-
-
-## 3rd_categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null :false|
-|1st_category_id|reference|null: false, foreign_key: true|
-|2nd_category_id|reference|optional: true, foreign_key: true|
-
-### Association
-- belongs_to :1st_category
-- belongs_to :2nd_category
+- has_many :items
+- has_ancestry
