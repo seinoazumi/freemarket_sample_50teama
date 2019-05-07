@@ -1,4 +1,4 @@
-.single-container {
+.single-wrapper {
   text-align: center;
   position: relative;
   padding-bottom: 220px;
@@ -53,7 +53,7 @@
 
 //メディアクエリ
 @media screen and (max-width: 768px) {
-  .single-container {
+  .single-wrapper {
     padding-bottom: 250px;
     .single-header {
       padding: 0;
