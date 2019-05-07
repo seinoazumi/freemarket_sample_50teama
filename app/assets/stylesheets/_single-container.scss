@@ -43,7 +43,9 @@
       }
     }
     &__small-text {
-      font-size:13px;
+      small {
+        font-size: 12px;
+      }
       margin-top: 7px;
     }
   }
