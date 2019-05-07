@@ -14,13 +14,22 @@
  *= require_self
  */
  
- @import 'all/reset.scss';
- @import 'all/colors.scss';
- @import 'all/variables.scss';
- @import 'all/common.scss';
- @import 'all/icons.scss';
+ //---------------------------all 全ページ共通のcss
+
+ @import 'all/reset.scss'; //リセットcss 原則変更しない
+ @import 'all/colors.scss'; //カラーパレット ここにない色は追記して下さい
+ @import 'all/variables.scss'; //変数 @mixinはここ
+ @import 'all/common.scss'; // 多くの要素に共通のcss, 汎用クラスのcss
+ @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Patua+One");
+ @import 'all/icons.scss'; //アイコン一覧
+ 
+//----------------------------shared 色々なページで使いまわせるもの
+
+@import 'single-wrapper.scss'; //商品取引ページなどの上下の部分 
+
+
+//-----------------------------items
+@import 'items/items.scss';
+
 
  
- @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Patua+One");
- @import 'items/items.scss';
-
