@@ -1,0 +1,98 @@
+.single-container {
+  text-align: center;
+  position: relative;
+  padding-bottom: 220px;
+  min-height: 100vh;
+  .single-header {
+    padding-top: 41px;
+    margin-right: 8px;
+    height: 128px;
+    &__logo:hover {
+      opacity: 0.7;
+    }
+  }
+  .single-footer {
+    height: 220px;
+    width: 456px;
+    padding: 40px 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin:auto;
+    &__menu {
+      display: flex;
+      font-size: 12px;
+      justify-content: center;
+      height: 12px;
+      &__privacy:hover, &__terms:hover, &__notation:hover {
+        text-decoration: underline;
+        opacity: 0.7;
+      }
+      &__terms {
+        margin-left: 16px;
+      }
+      &__notation {
+        margin-left: 16px;
+      }
+    }
+    &__logo {
+      margin-top: 40px;
+      img:hover {
+        opacity: 0.7;
+      }
+    }
+    &__small-text {
+      small {
+        font-size: 12px;
+      }
+      margin-top: 7px;
+    }
+  }
+}
+
+//メディアクエリ
+@media screen and (max-width: 768px) {
+  .single-container {
+    padding-bottom: 250px;
+    .single-header {
+      padding: 0;
+      margin: 0;
+      height: 56px;
+      &__logo {
+        padding: 12px 8px 12px 0;
+        display: block;
+        img {
+          height: 32.5px;
+        }
+      }
+    }
+    .single-footer {
+      width: 456px;
+      bottom: 30px;
+      &__menu {
+        display: inline;
+        font-size: 12px;
+        text-align: center;
+        height: 12px;
+        &__privacy:hover, &__terms:hover, &__notation:hover {
+          a {
+            display: block;
+          }
+        }
+        &__terms {
+          margin: 16px 0 0;
+        }
+        &__notation {
+          margin: 16px 0 0;
+        }
+      }
+      &__logo {
+        margin-top: 40px;
+      }
+      &__small-text {
+        margin-top: 7px;
+      }
+    }
+  }
+}
