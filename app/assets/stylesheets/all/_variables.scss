@@ -1,0 +1,16 @@
+@mixin clearfix {
+  &::after {
+  content: "";
+  display: block;
+  clear: both;
+  }
+} //clearfix
+
+
+
+
+
+
+// .full-width{
+  
+// } // footerの100%表示の時のcssがあるようです

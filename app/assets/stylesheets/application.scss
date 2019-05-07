@@ -14,9 +14,13 @@
  *= require_self
  */
  
- @import 'reset.scss';
+ @import 'all/reset.scss';
+ @import 'all/colors.scss';
+ @import 'all/variables.scss';
+ @import 'all/common.scss';
+ @import 'all/icons.scss';
+
+ 
  @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Patua+One");
- @import 'colors.scss';
- @import 'variables.scss';
- @import 'common.scss';
+ @import 'items/items.scss';
 

@@ -1,0 +1,24 @@
+@mixin font-awesome-base{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.icon-search::before {
+  @include font-awesome-base;
+  content: '\f002';
+  }
+
+.icon-list::before {
+  @include font-awesome-base;
+  content: '\f03a';
+}
+
+.icon-bell::before {
+  @include font-awesome-base;
+  content: '\f0f3';
+}
+
+.icon-tag::before {
+  @include font-awesome-base;
+  content: '\f02b';
+}
