@@ -83,15 +83,6 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  # server "db.example.com", user: "deploy", roles: %w{db}
-  server "18.182.90.204", user: "ec2-user", roles: %w{app db web}
-
-  set :rails_env, "production"
-  set :unicorn_rack_env, "production"
-
-  # role-based syntax
-  # ==================
-
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
