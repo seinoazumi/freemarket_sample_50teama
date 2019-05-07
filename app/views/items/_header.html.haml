@@ -1,0 +1,119 @@
+.default-container
+  %header.sp-header
+    .sp-header__inner.visible-sp
+      %h1.sp-header__inner__logo
+        = link_to 'メルカリトップページへのリンク', src: '#' do
+          -# = image_tag src: '#', alt: 'mercari'  画像の置き場所が決まったらコメントアウト外す
+
+      .sp-header__user-nav.clearfix
+        .sp-header__user-nav__icon
+          = link_to 'マイページお知らせへのリンク', src: '#', class: 'sp-header__user-icon' do
+            %figure
+              %i.icon-bell
+              -# iconはcssのbefore要素で入れる
+            %figcaption お知らせの数
+          
+          = link_to 'やることリストへのリンク', src: '#', class: 'sp-header__user-icon' do
+            %figure
+              %i.icon-check
+              -# iconはcssのbefore要素で入れる
+          
+          = link_to 'マイページへのリンク', src: '#', class: 'sp-header-user-icon sp-header-user-profile' do
+            %figure
+              -# = image_tag src: '#', alt: 'プロフィール写真', width: 32 画像の置き場所が決まったらコメントアウト外す
+      .sp-header__search-bar
+        -# =form_tag ('searchアクションへのパス', method: "get") do  パスが決まったらコメントアウト外す。アイコンはcssで入れる
+          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "sp-header__search-bar__search input-default icon-search" }
+      
+  %header.pc-header
+    .pc-header__inner.visible-pc
+      %h1.pc-header__inner__logo
+        = link_to 'メルカリトップページへのリンク', src: '#' do
+          -# = image_tag src: '#', alt: 'mercari', width: 134, height: 36  画像の置き場所が決まったらコメントアウト外す
+    
+    .pc-header__search-bar
+      -# =form_tag ('searchアクションへのパス', method: "get") do  パスが決まったらコメントアウト外す。アイコンをcssで入れる
+        = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "sp-header__search-bar__search input-default icon-search" }
+
+      .pc-header__nav__box.clearfix
+        .pc-header__nav__list-l
+          %ul.pc-header__nav
+            %li
+              %h2= link_to 'カテゴリー一覧へのリンク', src: '#', class: 'pc-header__nav__root list-parent fas fa-list'
+            %li
+              %h2= link_to 'ブランドから探すへのリンク', src: '#', class: 'pc-header__nav__root list-parent fas fa-tag'
+
+        .pc-header__nav__list-r
+          .pc-header__user-nav.clearfix
+
+            %ul.pc-header__user-nav__list
+              %li.pc-header__user-nav__link
+                = link_to 'マイページお知らせへのリンク', src: '#'
+              %i.icon-bell
+              %span お知らせ
+              %ul.pc-header__user-box.pc-header__notification-list
+                %li.pc-header__notification-list__link お知らせ１
+                %li.pc-header__notification-list__link お知らせ２
+                %li.pc-header__notification-list__link お知らせ３
+                %li.pc-header__notification-list__link お知らせ４
+              
+              %li.spc-header__user-nav__link
+                = link_to 'やることリストへのリンク', src: '#'
+              %i.icon-check
+              %span やることリスト
+              %ul.pc-header__user-box.pc-header__todo-list
+                %li.pc-header__todo-list__link やることリスト１
+                %li.pc-header__todo-list__link やることリスト２
+                %li.pc-header__todo-list__link やることリスト３
+              
+              %li.pc-header__user-nav__lnk.sp-header-user-profile
+                = link_to 'マイページへのリンク', src: '#'
+                -# %figure.pc-header-user-icon.pc-header-menu-link= image_tag src: '#', alt: 'プロフィール写真', width: 32
+              %span マイページ
+              .pc-header__user-box.pc-header__mypage-box
+                .pc-header__mypage-state.text-center
+                  %figure
+                    -# = image_tag src: '#', alt: 'プロフィール写真', width: 60
+                    %figcaption ユーザーネーム
+
+                  %ul.pc-header-mypage__review__list
+                    %li
+                      = link_to '出品数： **', src: '#' 
+                    %li
+                      = link_to '評価： **', src: '#'
+
+                  %ul.pc-header-mypage__money-piont
+                    %li
+                      = link_to '売上金', src: '#' do
+                        .l-lef
+                          %p 売上金
+                        .l-right 
+                          %p ¥ 0,000
+                          %i.icon-allow-right
+                    %li
+                      = link_to 'ポイント', src: '#' do
+                        .l-left
+                          %p ポイント
+                        .l-right 
+                          %p 0 P
+                          %i.icon-allow-right
+
+                  %ul.pc-header-mypage__list
+                    %li.pc-header-mypage__list__item
+                      = link_to 'いいね！一覧', src: '#' do
+                        %i.icon-allow-right
+                    %li.pc-header-mypage__list__item
+                      = link_to '出品した商品 - 出品中', src: '#' do
+                        %i.icon-allow-right
+                    %li.pc-header-mypage__list__item
+                      = link_to '出品した商品 - 取引中', src: '#' do
+                        %i.icon-allow-right
+                    %li.pc-header-mypage__list__item
+                      = link_to '出品した商品 - 売却済', src: '#' do
+                        %i.icon-allow-right
+                    %li.pc-header-mypage__list__item
+                      = link_to '購入した商品 - 取引中', src: '#' do
+                        %i.icon-allow-right
+                    %li.pc-header-mypage__list__item
+                      = link_to '購入した商品 - 過去の取引', src: '#' do
+                        %i.icon-allow-right
