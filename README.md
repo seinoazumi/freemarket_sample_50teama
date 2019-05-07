@@ -47,7 +47,7 @@
 |delivery_days|integer|null: false|
 |price|integer|null: false|
 |seller_id|reference|null: false, foreign_key: true|
-|buyer_id|reference|foreign_key: true|
+|buyer_id|integer||
 
 ### Association
 - has_many :likes
@@ -59,7 +59,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |item_id|reference|null: false, foreign_key: true|
-|image|string|null :false|
+|image|string|null: false|
 ### Association
 - belongs_to :item
 
@@ -68,6 +68,8 @@
 |------|----|-------|
 |user_id|reference|null: false, foreign_key: true|
 |item_id|reference|null: false, foreign_key: true|
+|buyer_id|integer||
+
 ### Association
 - belongs_to :user
 - belongs_to :item
