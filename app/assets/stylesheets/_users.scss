@@ -8,8 +8,8 @@
 }
 
 @mixin btn-mail {
-  background: #eee;
-  color: #000;
+  background: $gray-lv1plus;
+  color: $black;
   transition: 0.7s;
   &:hover {
     opacity: 0.7;
@@ -21,7 +21,7 @@
     i {
       display: block;
       font-size: 20px;
-      color: #ccc;
+      color: $gray-lv2;
     }
   }
   &__right {
@@ -36,7 +36,7 @@
 
 @mixin btn-facebook {
   background: #385185;
-  color: #fff;
+  color: $white;
   width: 100%;
   &__left {
     position: absolute;
@@ -61,7 +61,7 @@
 }
 
 @mixin btn-google {
-  border: 1px solid #979797;
+  border: 1px solid $gray-lv2plus;
   margin-top: 16px;
   line-height: 48px;
   width: 100%;
@@ -89,17 +89,17 @@
 .single-container {
   .sign-in {
     .panel {
-      background: #fff;
+      background: $white;
       max-width: 456px;
       margin: 0 auto;
       &__head {
         padding: 40px 64px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid $gray-lv1plus;
         &__registration-link-btn {
           background: $link-blue;
           margin-top: 8px;
           line-height: 42px;
-          color: #fff;
+          color: $white;
           a {
             display: block;
           }
@@ -134,7 +134,7 @@
             font-size: 14px;
             background: $base-red;
             border: 1px solid $base-red;
-            color: #fff;
+            color: $white;
             cursor: pointer;
           }
           &__forget-password {
