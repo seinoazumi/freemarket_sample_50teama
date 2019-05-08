@@ -20,7 +20,6 @@
 |birthday|integer|null: false|誕生日 ex)19000101|
 |money|integer|null: false, default :0|app内の金額|
 |point|integer|null: false, default :0|appのpoint|
-|card|reference|foreign_key: true|cardsの外部キー|
 |seller_id|integer|null: false|出品者としてのid|
 |buyer_id|integer|null: false|としてのid|
 |profile|text|limit: 1000|プロフィール情報|
@@ -46,7 +45,6 @@
 |delivery_fee|integer|null: false|送料込みor抜き(番号選択)|
 |delivery_days|integer|null: false|配送日数(番号選択)|
 |price|integer|null: false|価格|
-|seller_id|reference|null: false, foreign_key: true|出品者id|
 |buyer_id|integer||enptyなら売れていない、presentであれば売れたとする|
 
 ### Association
