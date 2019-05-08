@@ -22,7 +22,7 @@
   
 // } // footerの100%表示の時のcssがあるようです
 
-@mixin input-default() {
+@mixin input-default {
   height: 48px;
   padding: 10px 16px 8px;
   border-radius: 4px;
