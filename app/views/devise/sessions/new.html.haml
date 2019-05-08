@@ -12,16 +12,19 @@
             .sns-login__facebook
               .sns-login__facebook__left
                 %i{class:"fab fa-facebook-square"}
-              %a{href:"#", class:"sns-login__facebook__right"} Facebookでログイン
+              .sns-login__facebook__right
+                = link_to "Facebookでログイン", src:"#"
             .sns-login__google
               .sns-login__google__left
                 = image_tag 'G_logo.png', height:'20px'
-              %a{href:"#", class:"sns-login__google__right"} Googleでログイン
+              .sns-login__google__right
+                = link_to "Googleでログイン", src:"#"
           .login-form
             = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
               .field
                 = f.email_field :email, class:"login-form__email", placeholder:"メールアドレス"
                 = f.password_field :password, class:"login-form__password", placeholder:"パスワード"
                 = f.submit "ログイン", class:"login-form__submit"
-            %a{class:"login-form__forget-password", href:"#"} パスワードをお忘れの方
+            .login-form__forget-password
+              = link_to "パスワードをお忘れの方", src:"#"
   = render partial: "/shared/single-footer"
