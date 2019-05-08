@@ -27,6 +27,9 @@ set :repo_url, "git@github.com:Akinori0123/freemarket_sample_50teama.git"
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
+set :rbenv_type, :user
+set :rbenv_ruby, '2.3.1'
+
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :default_env, {
@@ -47,10 +50,6 @@ set :keep_releases, 5
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
-
-set :rbenv_type, :user
-set :rbenv_ruby, '2.3.1'
-
 set :ssh_options, auth_methods: ['publickey'],
                   keys: ['~/.ssh/Tech50mercariTeamA5th.pem']
 
