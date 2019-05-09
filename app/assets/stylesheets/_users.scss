@@ -16,10 +16,10 @@
   }
   &__left {
     position: absolute;
-    top: 30%;
     left: 17px;
-    i {
-      display: block;
+    .icon-envelope:before {
+      font-family: "Font Awesome 5 free";
+      content: '\f0e0';
       font-size: 20px;
       color: $gray-lv2;
     }
@@ -31,6 +31,9 @@
     left: 0;
     width: 100%;
     height: 100%;
+    a {
+      display:block;
+    }
   }
 }
 
@@ -87,6 +90,40 @@
 }
 
 .single-container {
+  .sign-up {
+    .panel {
+      background: $white;
+      width: 700px;
+      margin: 0 auto 41px;
+      &__head {
+        padding: 37px 16px 38px;
+        font-weight: 700;
+        font-size: 22px;
+        border-bottom: 1px solid $gray-lv1;
+      }
+      &__inner {
+        padding: 64px;
+        .mail-registration {
+          @include link-btn;
+          @include btn-mail;
+          width: 320px;
+        }
+        .facebook-registration {
+          @include link-btn;
+          @include btn-facebook;
+          width: 320px;
+          margin-top: 16px;
+        }
+        .google-registration {
+          @include link-btn;
+          @include btn-google;
+          width: 320px;
+          margin-top: 16px;
+        }
+      }
+    }
+  }
+
   .sign-in {
     .panel {
       background: $white;
@@ -153,6 +190,19 @@
   }
 
   @media screen and (max-width: 768px) {
+    .sign-up {
+      .panel {
+        width: 100%;
+        &__head {
+          padding: 29px 8px;
+          font-size: 18px;
+        }
+        &__inner {
+          padding: 40px;
+        }
+      }
+    }
+
     .sign-in {
       .panel {
         &__head {
