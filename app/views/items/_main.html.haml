@@ -4,16 +4,16 @@
     .owl__stage__outer
       .owl__stage#top-slider
         .owl__stage__item= image_tag "slider_01.png"
-        .owl__stage__item= image_tag "slider_02.png"
-        .owl__stage__item= image_tag "slider_03.png"
-        .owl__stage__item= image_tag "slider_04.png"
-      .owl__nav
-        .owl__nav__prev 前に戻る矢印
-        .owl__nav__next 次に進む矢印
-      .owl__dots
-        .owl__dots ドット１
-        .owl__dots ドット２
-        .owl__dots ドット３
+      -#   .owl__stage__item= image_tag "slider_02.png"
+      -#   .owl__stage__item= image_tag "slider_03.png"
+      -#   .owl__stage__item= image_tag "slider_04.png"
+      -# .owl__nav
+      -#   .owl__nav__prev 前に戻る矢印
+      -#   .owl__nav__next 次に進む矢印
+      -# .owl__dots
+      -#   .owl__dots ドット１
+      -#   .owl__dots ドット２
+      -#   .owl__dots ドット３
 
   = render 'pick-up-container'
   

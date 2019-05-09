@@ -1,0 +1,66 @@
+.footer{
+  background-color: $gray-lv4;
+  color: $gray-lv1;
+  padding: 0 20px 70px 20px;
+  font-size: 0.9em;
+  line-height: 2em;
+
+  &__contents__box{
+    width: 1020px;
+    margin: 0 auto; 
+    display: flex;
+  }
+  &__content{
+    padding:18px 10px 0 0;
+    min-width: 200px;
+    &__header{
+      font-size: 16px;
+      line-height: 1.4em;
+      color: $white;
+    }
+  }
+  .full-width{
+    flex-grow: 1;
+  }
+  &__bottom{
+    position: absolute;
+    left: 50%;
+    bottom:10px;
+    transform: translateX(-50%);
+  }
+}
+.footer_sell_btn{
+  width: 150px;
+  height: 150px;
+  padding: 30px;
+  border-radius: 50%;
+  background-color: $base-red;
+  font-size: 4em;
+  color:$white;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  text-align: center;
+  vertical-align: middle;
+
+  &__litter{
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 1068px) {
+  .footer{
+    &__contents__box{
+      width: 90%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &__content{
+      width: 50%;
+    }
+    .full-width{
+      width: 100%;
+    }
+  }
+}

@@ -1,16 +1,11 @@
+//----------------------------共通
 .wrapper{
   background-color: $white; 
 }
 
-.user-profile__avatar{
-  display: inline-block;
-  line-height: 40px;
-  // width: 32px;
-  // height: 32px;
-  // background-size:cover; 
-  // background-image:url("../../images/avatar.jpeg"); 
+.user-profile__avatar img{
   border-radius:50%;
-} //背景画像だとうまく画像が表示されないので、要検討
+}
 
 .header__search-bar {
   @include input-default;
@@ -38,9 +33,10 @@
 
 .header__nav{
   position: relative;
-  padding: 0 11px;
+  width: 100%;
   cursor: pointer;
   display: flex;
+  align-content: space-between;
 
   &::selection{
     background-color: #b3d4fc;
@@ -56,6 +52,7 @@
     line-height: 30px;
     text-align: center;
     min-width: 150px;
+    
 
     &::before{
       color: $base-red;
@@ -64,16 +61,16 @@
     }
 
     &:hover{
-      opacity: 0.8;
-      text-decoration:underline;
+      @include blue-link
     }
   }
 }
-
+//-----------------------------------------スマホのみ
 @media screen and (max-width: 768px) {
   .visible-pc{
     display: none;
   } // 768pxまではpc版のコンテンツが見えない
+  
   .sp-header{
     margin-bottom:100px;
     width: 100%;
@@ -91,6 +88,8 @@
         }
       &__user-nav{
           float: right;
+          display: flex;
+          justify-content: space-around;
 
         &__list{
           display: inline-block;
@@ -107,6 +106,7 @@
   } // .sp-header end
 } 
 
+//-------------------------------------------pcのみ
 
 @media screen and (min-width: 768px) {
   .visible-sp{
@@ -117,11 +117,13 @@
     width: 100%;
     height: 100px;
     background-color: $white;
-
+    &__inner{
+      width: 700px;
+      margin: 5px auto;
+    }
     &__top-content{
       width: 700px;
       padding: 8px;
-      margin: 5px auto;
       display: flex;
 
       &__logo{
@@ -145,7 +147,6 @@
 
     &__nav{
       width:700px;
-      margin: 0 auto;
       display: flex;
 
       &__list-l{
@@ -157,6 +158,7 @@
 
         .pc-header__user-nav{
           display: flex;
+          justify-content: space-between;
           padding: 0 11px;
           cursor: pointer;
 
@@ -172,6 +174,10 @@
               color: $gray-lv3;
               font-weight: bold;
               display: inline-block;
+              margin-right: 5px;
+            }
+            &:hover{
+              @include blue-link
             }
           }
         }
@@ -181,15 +187,30 @@
 } // visible-pcここまで
 
 @media screen and (min-width: 1068px){
-  .pc-header__top-content, .pc-header__nav-box{
+  .pc-header__inner{
     width: 1020px;
-    position: relative;
-    margin: inherit auto;
+    .pc-header__top-content, .pc-header__nav-box{
+      width: 1020px;
+      position: relative;
+      margin: inherit auto;
+    }
   }
-
   .pc-header__user-nav{
     float: right;
     position: absolute;
     right: 0;
+    &__list{
+      min-width: 100px;
+    }
+  }
+}
+//-----------------------------------ホバーすると見えるリスト
+.categoly__list__root, .bland__list__root{
+  display: none;
+}
+
+.categoly__list:hover, .bland__list:hover{
+  .categoly__list__root, .bland__list__root{
+  display: block;
   }
 }

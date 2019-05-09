@@ -4,11 +4,21 @@
   content: '\f0f3';
 }
 
+.icon-camera::before {
+  @include font-awesome-base;
+  content: '\f030';
+}
+
 .icon-check::before {
   @include font-awesome-base;
   content: '\f00c';
 }
 
+.icon-like::before {
+  @include font-awesome-base;
+  font-weight:400;
+  content: '\f004';
+}
 .icon-list::before {
   @include font-awesome-base;
   content: '\f03a';
