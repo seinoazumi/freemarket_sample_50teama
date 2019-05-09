@@ -16,10 +16,10 @@
   }
   &__left {
     position: absolute;
-    top: 30%;
     left: 17px;
-    i {
-      display: block;
+    .icon-envelope:before {
+      font-family: "Font Awesome 5 free";
+      content: '\f0e0';
       font-size: 20px;
       color: $gray-lv2;
     }
@@ -31,6 +31,9 @@
     left: 0;
     width: 100%;
     height: 100%;
+    a {
+      display:block;
+    }
   }
 }
 
