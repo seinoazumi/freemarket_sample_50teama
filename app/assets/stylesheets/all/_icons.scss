@@ -14,7 +14,7 @@
   content: '\f03a';
 }
 
-.icon-search::before {
+.icon-search::after {
   @include font-awesome-base;
   content: '\f002';
 }
