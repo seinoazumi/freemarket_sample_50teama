@@ -1,0 +1,40 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ 
+ *= require_self
+ */
+ 
+ //---------------------------all 全ページ共通のcss
+
+ @import 'all/reset.scss'; //リセットcss 原則変更しない
+ @import 'all/colors.scss'; //カラーパレット ここにない色は追記して下さい
+ @import 'all/variables.scss'; //変数 @mixinはここ
+ @import 'all/common.scss'; // 多くの要素に共通のcss, 汎用クラスのcss
+ @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Patua+One");
+ @import 'all/icons.scss'; //アイコン一覧
+
+ 
+//----------------------------shared 色々なページで使いまわせるもの
+
+@import 'single-wrapper.scss'; //商品取引ページなどの上下の部分 
+
+
+//-----------------------------items
+@import 'items/main-header.scss';
+@import 'items/top-slider.scss';
+@import 'items/main-container.scss';
+@import 'items/item-box.scss';
+@import 'items/main-aside.scss';
+@import 'items/main-footer.scss';
+
+ 
