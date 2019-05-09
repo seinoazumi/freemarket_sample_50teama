@@ -10,14 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- 
+
  *= require_self
  */
- 
+
  @import 'reset.scss';
  @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Patua+One");
  @import 'colors.scss';
  @import 'variables.scss';
  @import 'common.scss';
  @import 'single-wrapper.scss';
- 
+ @import 'items_new.scss';
