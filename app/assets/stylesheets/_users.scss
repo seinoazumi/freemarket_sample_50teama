@@ -40,10 +40,10 @@
   width: 100%;
   &__left {
     position: absolute;
-    top: 20%;
     left: 17px;
-    i {
-      display: block;
+    .icon-facebook-square:before {
+      font-family: "Font Awesome 5 Brands";
+      content: '\f082';
       font-size: 30px;
     }
   }
