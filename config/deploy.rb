@@ -22,7 +22,6 @@ set :repo_url, "git@github.com:Akinori0123/freemarket_sample_50teama.git"
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml"
-append :linked_files, 'config/database.yml', 'config/master.key'
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
@@ -54,30 +53,9 @@ set :ssh_options, auth_methods: ['publickey'],
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 
-set :linked_files, 'config/master.key'
-# set :linked_files, %w{ config/master.key }
-
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
   end
-
-  desc "credentials"
-  task :credentials do
-    credentials = YAML.load(`rails credentials:show`)
-    pp credentials
-  end
-
-  desc 'upload master.key'
-  task :upload do
-    on roles(:app) do |host|
-      if test "[ ! -d #{shared_path}/config ]"
-        execute "mkdir -p #{shared_path}/config"
-      end
-      upload!('config/master.key', "#{shared_path}/config/master.key")
-    end
-  end
-  before :starting, 'deploy:upload'
-  after :finishing, 'deploy:cleanup'
 end
