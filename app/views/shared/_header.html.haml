@@ -19,7 +19,7 @@
       
       .header__search-bar
         = form_tag '#', method: :get do
-          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "header__search-bar__search input-default"} 
+          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "header__search-bar__search"} 
           %i.icon-search
 
       %ul.header__nav
@@ -36,7 +36,7 @@
     
       .header__search-bar
         = form_tag '#', method: :get do
-          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "header__search-bar__search input-default"}
+          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "header__search-bar__search"}
           %i.icon-search
 
     .pc-header__nav__box
@@ -56,7 +56,6 @@
                 -# %li.bland__list__cell ブランド１
                 -# %li.bland__list__cell ブランド２
                 -# %li.bland__list__cell ブランド３
-
       .pc-header__nav__list-r
         %ul.pc-header__user-nav
           %li.pc-header__user-nav__list#notification-list__root.icon-bell= link_to 'お知らせ', src: '#'
@@ -73,8 +72,8 @@
           -#   %li.pc-header__todo-list__link やることリスト２
           -#   %li.pc-header__todo-list__link やることリスト３
           
-          %li.pc-header__user-nav__list.user-profile__avatar
-            = link_to 'マイページへのリンク', src: '#' do
+          %li.pc-header__user-nav__list
+            = link_to 'マイページへのリンク', src: '#', class: 'user-profile__avatar' do
               = image_tag 'avatar.jpeg', alt: 'プロフィール写真', width: 32
               %span{style: "display:inline-block; height: 40px;"} マイページ
           .pc-header__user-box.pc-header__mypage-box
@@ -82,13 +81,11 @@
             -#   %figure
             -#     -# = image_tag src: '#', alt: 'プロフィール写真', width: 60
             -#     %figcaption ユーザーネーム
-
             -#   %ul.pc-header-mypage__review__list
             -#     %li
             -#       = link_to '出品数： **', src: '#' 
             -#     %li
             -#       = link_to '評価： **', src: '#'
-
             -#   %ul.pc-header-mypage__money-piont
             -#     %li
             -#       = link_to '売上金', src: '#' do
@@ -104,7 +101,6 @@
             -#         .l-right 
             -#           %p 0 P
             -#           %i.icon-allow-right
-
               -# %ul.pc-header-mypage__list
               -#   %li.pc-header-mypage__list__item
               -#     = link_to 'いいね！一覧', src: '#' do

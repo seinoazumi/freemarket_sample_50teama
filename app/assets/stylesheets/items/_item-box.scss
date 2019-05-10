@@ -1,10 +1,10 @@
 @media screen and (max-width: 768px) {
-  .visible-pc, .visible-tablet{
+  .visible-full-width, .visible-tablet{
     display: none;
   } // 768pxまではpc版,タブレット版のコンテンツが見えない
 }
  @media screen and (max-width: 1068px) {
-  .visible-pc{
+  .visible-full-width{
     display: none;
   } // 1068pxまではpc版のコンテンツが見えない
  }
