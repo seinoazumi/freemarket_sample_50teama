@@ -1,0 +1,61 @@
+// @media screen and (max-width: 768px) {
+//   .visible-pc, .visible-tablet{
+//     display: none;
+//   } // 768pxまではpc版,タブレット版のコンテンツが見えない
+// }
+//  @media screen and (max-width: 1068px) {
+//   .visible-pc{
+//     display: none;
+//   } // 768pxまではpc版のコンテンツが見えない
+//  }
+ 
+
+.item-box__container{
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 30px; 
+  .item-box{
+    width: 213px;
+    background-color: $white;
+    display: inline-block;
+    margin:20px 20px 0 0;
+    img{
+      width: 213px;
+      height: 213px;
+    }
+    &__info{
+      height: 100px;
+      padding: 16px;
+      &__name{
+      overflow: hidden;
+      position: relative;
+      font-size: 16px;
+      height:2em;
+      line-height: 1.5em;
+      word-break: break-word;
+      white-space: normal;
+      }
+    }
+    &__bottom{
+      display: flex;
+      flex-wrap:wrap;
+      font-size: 1.2em;
+
+      &__price{
+        flex-grow: 2;
+      }
+      &__like{
+        &::before{
+          margin-right: 5px;
+          color: $gray-lv2;
+          flex-grow: 1;
+        }
+      }
+      &__tax{
+        width: 100%;
+        font-size:0.5em;
+      }
+      
+    }
+  }
+}
