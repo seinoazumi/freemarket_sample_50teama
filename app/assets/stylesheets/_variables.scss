@@ -22,7 +22,6 @@
 
 // } // footerの100%表示の時のcssがあるようです
 
-
 @mixin input-default {
   height: 48px;
   padding: 10px 16px 8px;
@@ -38,4 +37,4 @@
     border: 1px solid $link-blue;
     outline: none;
   }
-}
+} 
