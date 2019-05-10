@@ -1,119 +1,126 @@
-.default-container
-  %header.sp-header
-    .sp-header__inner.visible-sp
-      %h1.sp-header__inner__logo
+.wrapper
+  %header.sp-header.visible-sp
+    .sp-header__content
+      %h1.sp-header__content__logo
         = link_to 'メルカリトップページへのリンク', src: '#' do
-          = image_tag "mercari_logo_horizontal.png", alt: 'mercari', size:"134x36"
+          = image_tag "logo.svg", alt: 'mercari', size:"134x36"
 
       .sp-header__user-nav.clearfix
-        .sp-header__user-nav__icon
-          = link_to 'マイページお知らせへのリンク', src: '#', class: 'sp-header__user-icon' do
-            %figure
-              %i.icon-bell
-              -# iconはcssのbefore要素で入れる
-            %figcaption お知らせの数
+        %ul.sp-header__user-nav
+          %li.sp-header__user-nav__list.icon-bell
+            = link_to '', src: '#', class: 'sp-header__user-icon'
           
-          = link_to 'やることリストへのリンク', src: '#', class: 'sp-header__user-icon' do
-            %figure
-              %i.icon-check
-              -# iconはcssのbefore要素で入れる
+          %li.sp-header__user-nav__list.icon-check
+            = link_to '', src: '#', class: 'sp-header__user-icon'
           
-          = link_to 'マイページへのリンク', src: '#', class: 'sp-header-user-icon sp-header-user-profile' do
-            %figure
-              -# = image_tag 'ファイル名', alt: 'プロフィール写真', width: 32 画像の置き場所が決まったらコメントアウト外す
-      .sp-header__search-bar
-        -# =form_tag ('searchアクションへのパス', method: "get") do  パスが決まったらコメントアウト外す。アイコンはcssで入れる
-          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "sp-header__search-bar__search input-default icon-search" }
+          %li.sp-header__user-nav__list
+            = link_to 'マイページへのリンク', src: '#', class: 'sp-header-user-icon user-profile__avatar' do
+              = image_tag 'avatar.jpeg', alt: 'プロフィール写真', width: 32
       
-  %header.pc-header
-    .pc-header__inner.visible-pc
-      %h1.pc-header__inner__logo
+      .header__search-bar
+        = form_tag '#', method: :get do
+          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "header__search-bar__search input-default"} 
+          %i.icon-search
+
+      %ul.header__nav
+        %li.header__nav__list.icon-list= link_to 'カテゴリー一覧', src: '#'
+         
+        %li.header__nav__list.icon-tag= link_to 'ブランドから探す', src: '#'
+          
+%header.pc-header.visible-pc.clearfix
+  .pc-header__inner
+    .pc-header__top-content.clearfix
+      %h1.pc-header__top-content__logo
         = link_to 'メルカリトップページへのリンク', src: '#' do
-          -# = image_tag src: '#', alt: 'mercari', width: 134, height: 36  画像の置き場所が決まったらコメントアウト外す
+          = image_tag "logo.svg", alt: 'mercari', width: 134, height: 36
     
-    .pc-header__search-bar
-      -# =form_tag ('searchアクションへのパス', method: "get") do  パスが決まったらコメントアウト外す。アイコンをcssで入れる
-        = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "sp-header__search-bar__search input-default icon-search" }
+      .header__search-bar
+        = form_tag '#', method: :get do
+          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "header__search-bar__search input-default"}
+          %i.icon-search
 
-      .pc-header__nav__box.clearfix
-        .pc-header__nav__list-l
-          %ul.pc-header__nav
-            %li
-              %h2= link_to 'カテゴリー一覧へのリンク', src: '#', class: 'pc-header__nav__root list-parent fas fa-list'
-            %li
-              %h2= link_to 'ブランドから探すへのリンク', src: '#', class: 'pc-header__nav__root list-parent fas fa-tag'
+    .pc-header__nav__box.clearfix
+      .pc-header__nav__list-l
+        %ul.header__nav
+          = link_to 'カテゴリー一覧へのリンク' do
+            %li.header__nav__list.categoly__list.icon-list カテゴリーから探す
+            -# gem の実装方法が決まったらコメントアウトを外す
+              -# %ul.categoly__list__root
+                -# %li.categoly__list__cell カテゴリー1
+                -# %li.categoly__list__cell カテゴリー2
+                -# %li.categoly__list__cell カテゴリー3
+          = link_to 'ブランドから探すへのリンク' do
+            %li.header__nav__list.categoly__list.icon-tag ブランドから探す
+            -# gem の実装方法が決まったらコメントアウトを外す
+              -# %ul.bland__list__root
+                -# %li.bland__list__cell ブランド１
+                -# %li.bland__list__cell ブランド２
+                -# %li.bland__list__cell ブランド３
 
-        .pc-header__nav__list-r
-          .pc-header__user-nav.clearfix
+      .pc-header__nav__list-r
+        %ul.pc-header__user-nav
+          %li.pc-header__user-nav__list#notification-list__root.icon-bell= link_to 'お知らせ', src: '#'
+          -# jsではなくcssで入れたほうが望ましいとの結論が出たらコメントアウトを外す
+          -# %ul.pc-header__user-box.pc-header__notification-list
+          -#   %li.pc-header__notification-list__link お知らせ１
+          -#   %li.pc-header__notification-list__link お知らせ２
+          -#   %li.pc-header__notification-list__link お知らせ３
+          -#   %li.pc-header__notification-list__link お知らせ４
+          
+          %li.pc-header__user-nav__list.icon-check.todo-list= link_to 'やることリスト', src: '#'
+          -# %ul.pc-header__user-box.pc-header__todo-list
+          -#   %li.pc-header__todo-list__link やることリスト１
+          -#   %li.pc-header__todo-list__link やることリスト２
+          -#   %li.pc-header__todo-list__link やることリスト３
+          
+          %li.pc-header__user-nav__list.user-profile__avatar
+            = link_to 'マイページへのリンク', src: '#' do
+              = image_tag 'avatar.jpeg', alt: 'プロフィール写真', width: 32
+              %span{style: "display:inline-block; height: 40px;"} マイページ
+          .pc-header__user-box.pc-header__mypage-box
+            -# .pc-header__mypage-state.text-center
+            -#   %figure
+            -#     -# = image_tag src: '#', alt: 'プロフィール写真', width: 60
+            -#     %figcaption ユーザーネーム
 
-            %ul.pc-header__user-nav__list
-              %li.pc-header__user-nav__link
-                = link_to 'マイページお知らせへのリンク', src: '#'
-              %i.icon-bell
-              %span お知らせ
-              %ul.pc-header__user-box.pc-header__notification-list
-                %li.pc-header__notification-list__link お知らせ１
-                %li.pc-header__notification-list__link お知らせ２
-                %li.pc-header__notification-list__link お知らせ３
-                %li.pc-header__notification-list__link お知らせ４
-              
-              %li.spc-header__user-nav__link
-                = link_to 'やることリストへのリンク', src: '#'
-              %i.icon-check
-              %span やることリスト
-              %ul.pc-header__user-box.pc-header__todo-list
-                %li.pc-header__todo-list__link やることリスト１
-                %li.pc-header__todo-list__link やることリスト２
-                %li.pc-header__todo-list__link やることリスト３
-              
-              %li.pc-header__user-nav__lnk.sp-header-user-profile
-                = link_to 'マイページへのリンク', src: '#'
-                -# %figure.pc-header-user-icon.pc-header-menu-link= image_tag src: '#', alt: 'プロフィール写真', width: 32
-              %span マイページ
-              .pc-header__user-box.pc-header__mypage-box
-                .pc-header__mypage-state.text-center
-                  %figure
-                    -# = image_tag src: '#', alt: 'プロフィール写真', width: 60
-                    %figcaption ユーザーネーム
+            -#   %ul.pc-header-mypage__review__list
+            -#     %li
+            -#       = link_to '出品数： **', src: '#' 
+            -#     %li
+            -#       = link_to '評価： **', src: '#'
 
-                  %ul.pc-header-mypage__review__list
-                    %li
-                      = link_to '出品数： **', src: '#' 
-                    %li
-                      = link_to '評価： **', src: '#'
+            -#   %ul.pc-header-mypage__money-piont
+            -#     %li
+            -#       = link_to '売上金', src: '#' do
+            -#         .l-lef
+            -#           %p 売上金
+            -#         .l-right 
+            -#           %p ¥ 0,000
+            -#           %i.icon-allow-right
+            -#     %li
+            -#       = link_to 'ポイント', src: '#' do
+            -#         .l-left
+            -#           %p ポイント
+            -#         .l-right 
+            -#           %p 0 P
+            -#           %i.icon-allow-right
 
-                  %ul.pc-header-mypage__money-piont
-                    %li
-                      = link_to '売上金', src: '#' do
-                        .l-lef
-                          %p 売上金
-                        .l-right 
-                          %p ¥ 0,000
-                          %i.icon-allow-right
-                    %li
-                      = link_to 'ポイント', src: '#' do
-                        .l-left
-                          %p ポイント
-                        .l-right 
-                          %p 0 P
-                          %i.icon-allow-right
-
-                  %ul.pc-header-mypage__list
-                    %li.pc-header-mypage__list__item
-                      = link_to 'いいね！一覧', src: '#' do
-                        %i.icon-allow-right
-                    %li.pc-header-mypage__list__item
-                      = link_to '出品した商品 - 出品中', src: '#' do
-                        %i.icon-allow-right
-                    %li.pc-header-mypage__list__item
-                      = link_to '出品した商品 - 取引中', src: '#' do
-                        %i.icon-allow-right
-                    %li.pc-header-mypage__list__item
-                      = link_to '出品した商品 - 売却済', src: '#' do
-                        %i.icon-allow-right
-                    %li.pc-header-mypage__list__item
-                      = link_to '購入した商品 - 取引中', src: '#' do
-                        %i.icon-allow-right
-                    %li.pc-header-mypage__list__item
-                      = link_to '購入した商品 - 過去の取引', src: '#' do
-                        %i.icon-allow-right
+              -# %ul.pc-header-mypage__list
+              -#   %li.pc-header-mypage__list__item
+              -#     = link_to 'いいね！一覧', src: '#' do
+              -#       %i.icon-allow-right
+              -#   %li.pc-header-mypage__list__item
+              -#     = link_to '出品した商品 - 出品中', src: '#' do
+              -#       %i.icon-allow-right
+              -#   %li.pc-header-mypage__list__item
+              -#     = link_to '出品した商品 - 取引中', src: '#' do
+              -#       %i.icon-allow-right
+              -#   %li.pc-header-mypage__list__item
+              -#     = link_to '出品した商品 - 売却済', src: '#' do
+              -#       %i.icon-allow-right
+              -#   %li.pc-header-mypage__list__item
+              -#     = link_to '購入した商品 - 取引中', src: '#' do
+              -#       %i.icon-allow-right
+              -#   %li.pc-header-mypage__list__item
+              -#     = link_to '購入した商品 - 過去の取引', src: '#' do
+              -#       %i.icon-allow-right

@@ -1,50 +1,45 @@
-.items-box.clearfix
-  %section.items-box__container
+.item-box__container.clearfix
+  %section.item-box
     = link_to '各アイテムへのリンク', src: '#' do
-      %figure.items-box__photo
-        -# = image_tag ("#"), alt: #{'出品タイトル'}, class: #{'ブランド名'}
-      .items-box__info
-        %h3.items-box__name アイテム名１
-        .items-box__bottom
-          %p.items-box__bottom__price ¥0,000
-          %p.items-box__bottom__likes.icon-like 1
-          %p.items-box__bottom__tax (税込)
+      = image_tag ("https://placehold.jp/b3b3b3/ffffff/200x200.png?text=item1"), class: '.item-box__photo'
+      -# = image_tag ("#"), alt: #{'出品タイトル'}, class: #{'ブランド名'} バックエンドができればこちらに差し替え
+    .item-box__info
+      %h3.item-box__info__name アイテム名１
+      .item-box__bottom
+        %p.item-box__bottom__price ¥0,000
+        %p.item-box__bottom__like.icon-like 1
+        %p.item-box__bottom__tax (税込)
 
-.items-box.clearfix
-  %section.items-box__container
+  %section.item-box
     = link_to '各アイテムへのリンク', src: '#' do
-      %figure.items-box__photo
-        -# = image_tag ("#"), alt: #{'出品タイトル'}, class: #{'ブランド名'}
-      .items-box__info
-        %h3.items-box__name アイテム名2
-        .items-box__bottom
-          %p.items-box__bottom__price ¥0,000
-          %p.items-box__bottom__likes.icon-like 1
-          %p.items-box__bottom__tax (税込)
+      = image_tag ("https://placehold.jp/b3b3b3/ffffff/200x200.png?text=item2")
+      -# = image_tag ("#"), alt: #{'出品タイトル'}, class: #{'ブランド名'} バックエンドができればこちらに差し替え
+    .item-box__info
+      %h3.item-box__info__name アイテム名2
+      .item-box__bottom
+        %p.item-box__bottom__price ¥0,000
+        %p.item-box__bottom__like.icon-like 1
+        %p.item-box__bottom__tax (税込)
 
-.items-box.clearfix
-  %section.items-box__container
+  %section.item-box.visible-tablet
     = link_to '各アイテムへのリンク', src: '#' do
-      %figure.items-box__photo
-        -# = image_tag ("#"), alt: #{'出品タイトル'}, class: #{'ブランド名'}
-      .items-box__info
-        %h3.items-box__name アイテム名3
-        .items-box__bottom
-          %p.items-box__bottom__price ¥0,000
-          %p.items-box__bottom__likes.icon-like 1
-          %p.items-box__bottom__tax (税込)
+      = image_tag ("https://placehold.jp/b3b3b3/ffffff/200x200.png?text=item3")
+      -# = image_tag ("#"), alt: #{'出品タイトル'}, class: #{'ブランド名'} バックエンドができればこちらに差し替え
+    .item-box__info
+      %h3.item-box__info__name アイテム名3
+      .item-box__bottom
+        %p.item-box__bottom__price ¥0,000
+        %p.item-box__bottom__like.icon-like 1
+        %p.item-box__bottom__tax (税込)
 
-.items-box.clearfix
-  %section.items-box__container
+  %section.item-box.visible-pc
     = link_to '各アイテムへのリンク', src: '#' do
-      %figure.items-box__photo
-        -# = image_tag ("#"), alt: #{'出品タイトル'}, class: #{'ブランド名'}, size:"134x36"
-      .items-box__info
-        %h3.items-box__name アイテム名4
-        .items-box__bottom
-          %p.items-box__bottom__price ¥0,000
-          %p.items-box__bottom__likes.icon-like 1
-          %p.items-box__bottom__tax (税込)
-
-        .items-box__view-all
-          =link_to '全ての商品を見る', src:'#'
+      = image_tag ("https://placehold.jp/b3b3b3/ffffff/200x200.png?text=item4")
+      -# = image_tag ("#"), alt: #{'出品タイトル'}, class: #{'ブランド名'} バックエンドができればこちらに差し替え
+    .item-box__info
+      %h3.item-box__info__name アイテム名4
+      .item-box__bottom
+        %p.item-box__bottom__price ¥0,000
+        %p.item-box__bottom__like.icon-like 1
+        %p.item-box__bottom__tax (税込)
+        

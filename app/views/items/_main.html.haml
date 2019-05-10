@@ -1,18 +1,15 @@
 %main
   -# owl carouselという名前のカルーセルがあるらしい。レスポンシブに良いそうなので、あとで調べて導入
-  %section.owl-carousel
-    .owl__stage__outer
-      .owl__stage
-        .owl__stage__item カルーセルの中身1
-        .owl__stage__item カルーセルの中身2
-        .owl__stage__item カルーセルの中身3
-      .owl__nav
-        .owl__nav__prev 前に戻る矢印
-        .owl__nav__next 次に進む矢印
-      .owl__dots
-        .owl__dots ドット１
-        .owl__dots ドット２
-        .owl__dots ドット３
-
+  %section.slider
+  .slider__stage
+    .slide01.slide= image_tag "slider_01.png"
+    -#     .slide02.slide slide2
+    -#     .slide03.slide slide3
+    -#     .slide04.slide slide4
+    -#     .slide05.slide slide5
+    -# %button.slider-prev 前へ
+    -# %button.slider-next 次へ
+    -# %script{:src => "https://code.jquery.com/jquery-3.1.1.min.js"}
+    -# %script{:src => "slider.js"}
   = render 'pick-up-container'
   
