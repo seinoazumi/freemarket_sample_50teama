@@ -43,6 +43,7 @@ $(document).ready(function() {
 
   $('#notification-list__root').on("mouseover", function(){
     $(this).append(notificationList);
+    $('pc-header__user-box').css("opacity",1)
     $(this).off('mouseover');
 
       $('#notification-list').on("mouseout", function(){

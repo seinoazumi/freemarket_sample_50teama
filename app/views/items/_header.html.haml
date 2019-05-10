@@ -42,22 +42,25 @@
     .pc-header__nav__box.clearfix
       .pc-header__nav__list-l
         %ul.header__nav
-          = link_to 'カテゴリー一覧', src: '#' do
-            %li.header__nav__list.categoly__list.icon-list
-              %ul.categoly__list__root
-                %li.categoly__list__cell カテゴリー1
-                %li.categoly__list__cell カテゴリー2
-                %li.categoly__list__cell カテゴリー3
-          = link_to 'ブランドから探す', src: '#' do
-            %li.header__nav__list.categoly__list.icon-tag
-              %ul.bland__list__root
-                %li.bland__list__cell ブランド１
-                %li.bland__list__cell ブランド２
-                %li.bland__list__cell ブランド３
+          = link_to 'カテゴリー一覧へのリンク' do
+            %li.header__nav__list.categoly__list.icon-list カテゴリーから探す
+            -# gem の実装方法が決まったらコメントアウトを外す
+              -# %ul.categoly__list__root
+                -# %li.categoly__list__cell カテゴリー1
+                -# %li.categoly__list__cell カテゴリー2
+                -# %li.categoly__list__cell カテゴリー3
+          = link_to 'ブランドから探すへのリンク' do
+            %li.header__nav__list.categoly__list.icon-tag ブランドから探す
+            -# gem の実装方法が決まったらコメントアウトを外す
+              -# %ul.bland__list__root
+                -# %li.bland__list__cell ブランド１
+                -# %li.bland__list__cell ブランド２
+                -# %li.bland__list__cell ブランド３
 
       .pc-header__nav__list-r
         %ul.pc-header__user-nav
-          %li.pc-header__user-nav__list.icon-bell= link_to 'お知らせ', src: '#'
+          %li.pc-header__user-nav__list#notification-list__root.icon-bell= link_to 'お知らせ', src: '#'
+          -# jsではなくcssで入れたほうが望ましいとの結論が出たらコメントアウトを外す
           -# %ul.pc-header__user-box.pc-header__notification-list
           -#   %li.pc-header__notification-list__link お知らせ１
           -#   %li.pc-header__notification-list__link お知らせ２
