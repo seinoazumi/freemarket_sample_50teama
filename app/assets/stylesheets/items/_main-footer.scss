@@ -1,22 +1,25 @@
 .footer{
+  @include clearfix;
   background-color: $gray-lv4;
   color: $gray-lv1;
   padding: 0 20px 70px 20px;
   font-size: 0.9em;
   line-height: 2em;
 
-  &__contents__box{
+  .contents-box{
     width: 1020px;
     margin: 0 auto; 
     display: flex;
-  }
-  &__content{
-    padding:18px 10px 0 0;
-    min-width: 200px;
-    &__header{
-      font-size: 16px;
-      line-height: 1.4em;
-      color: $white;
+  
+    &__content{
+      padding:18px 10px 0 0;
+      min-width: 200px;
+
+      &__header{
+        font-size: 16px;
+        line-height: 1.4em;
+        color: $white;
+      }
     }
   }
   .full-width{
@@ -51,13 +54,14 @@
 
 @media screen and (max-width: 1068px) {
   .footer{
-    &__contents__box{
+    .contents-box{
       width: 90%;
       display: flex;
       flex-wrap: wrap;
-    }
-    &__content{
-      width: 50%;
+
+      &__content{
+        width: 50%;
+      }
     }
     .full-width{
       width: 100%;

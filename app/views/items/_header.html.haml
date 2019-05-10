@@ -5,7 +5,7 @@
         = link_to 'メルカリトップページへのリンク', src: '#' do
           = image_tag "logo.svg", alt: 'mercari', size:"134x36"
 
-      .sp-header__user-nav.clearfix
+      .sp-header__user-nav
         %ul.sp-header__user-nav
           %li.sp-header__user-nav__list.icon-bell
             = link_to '', src: '#', class: 'sp-header__user-icon'
@@ -27,9 +27,9 @@
          
         %li.header__nav__list.icon-tag= link_to 'ブランドから探す', src: '#'
           
-%header.pc-header.visible-pc.clearfix
+%header.pc-header.visible-pc
   .pc-header__inner
-    .pc-header__top-content.clearfix
+    .pc-header__top-content
       %h1.pc-header__top-content__logo
         = link_to 'メルカリトップページへのリンク', src: '#' do
           = image_tag "logo.svg", alt: 'mercari', width: 134, height: 36
@@ -39,7 +39,7 @@
           = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "header__search-bar__search input-default"}
           %i.icon-search
 
-    .pc-header__nav__box.clearfix
+    .pc-header__nav__box
       .pc-header__nav__list-l
         %ul.header__nav
           = link_to 'カテゴリー一覧へのリンク' do

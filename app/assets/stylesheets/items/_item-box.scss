@@ -1,16 +1,17 @@
-// @media screen and (max-width: 768px) {
-//   .visible-pc, .visible-tablet{
-//     display: none;
-//   } // 768pxまではpc版,タブレット版のコンテンツが見えない
-// }
-//  @media screen and (max-width: 1068px) {
-//   .visible-pc{
-//     display: none;
-//   } // 768pxまではpc版のコンテンツが見えない
-//  }
+@media screen and (max-width: 768px) {
+  .visible-pc, .visible-tablet{
+    display: none;
+  } // 768pxまではpc版,タブレット版のコンテンツが見えない
+}
+ @media screen and (max-width: 1068px) {
+  .visible-pc{
+    display: none;
+  } // 1068pxまではpc版のコンテンツが見えない
+ }
  
 
 .item-box__container{
+  @include clearfix;
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 30px; 
