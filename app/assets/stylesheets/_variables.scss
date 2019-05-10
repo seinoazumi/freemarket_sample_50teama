@@ -23,15 +23,6 @@
 // } // footerの100%表示の時のcssがあるようです
 
 
-//
-@mixin clearfix {
-  &::after {
-  content: "";
-  display: block;
-  clear: both;
-  }
-} //clearfix
-
 @mixin input-default {
   height: 48px;
   padding: 10px 16px 8px;
@@ -47,9 +38,4 @@
     border: 1px solid $link-blue;
     outline: none;
   }
-}
-
-@mixin font-awesome-base{
-  font-family: "Font Awesome 5 Free";
-  font-weight:900;
 }
