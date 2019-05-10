@@ -204,13 +204,3 @@
     }
   }
 }
-//-----------------------------------ホバーすると見えるリスト
-.categoly__list__root, .bland__list__root{
-  display: none;
-}
-
-.categoly__list:hover, .bland__list:hover{
-  .categoly__list__root, .bland__list__root{
-  display: block;
-  }
-}
