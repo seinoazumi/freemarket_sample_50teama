@@ -1,4 +1,51 @@
-= render partial: "/shared/header"
-  %ul.breadcrumb
-    %li =link_to '#'
+= render "/shared/header"
+-# = render '/shared/breadcrumb'
 
+%nav.breadcrumb-container
+  %ul{class: "breadcrumb",itemscope: 'itemscope', itemtype: "http://data-vocabulary.org/Breadcrumb"}
+    %li.breadcrumb__list.icon-arrow-r= link_to 'メルカリ', href:"#", itemprop: "url", itemprop: "title"
+    %li.breadcrumb__list.icon-arrow-r= link_to 'カテゴリー１', href:"#", itemprop: "url", itemprop: "title"
+    %li.breadcrumb__list.current-page= link_to '子カテゴリー', href:"#", itemprop: "url", itemprop: "title"
+    -# gemの内容によっては.breadcrumb__list--currentのクラスは不要
+    -# 一番子孫の要素には.icon-arrow-rを入れない
+%main
+.logout-btn__container
+  %button.logout-btn=link_to 'ログアウト', "#"
+
+-# mixinを入れたらclearfix削除
+.l-lists__conteiner.clearfix
+
+  .l-list
+    %ul.l-list__mypage-nav
+      %li.l-list__mypage-nav__list.icon-arrow-r=link_to 'マイページ','#'
+      %li.l-list__mypage-nav__list.icon-arrow-r.notification-num=link_to 'お知らせ','#'
+      %li.l-list__mypage-nav__list.icon-arrow-r=link_to 'やることリスト','#'
+      %li.l-list__mypage-nav__list.icon-arrow-r=link_to 'いいね！一覧','#'
+      %li.l-list__mypage-nav__list.icon-arrow-r=link_to '出品する','#'
+      %li.l-list__mypage-nav__list.icon-arrow-r=link_to '出品した商品 - 出品中','#'
+      %li.l-list__mypage-nav__list.icon-arrow-r=link_to '出品した商品 - 取引中','#'
+      %li.l-list__mypage-nav__list.icon-arrow-r=link_to '出品した商品 - 売却済み','#'
+      %li.l-list__mypage-nav__list.icon-arrow-r=link_to '購入した商品 - 取引中','#'
+      %li.l-list__mypage-nav__list.icon-arrow-r=link_to '購入した商品 - 過去の取引','#'
+      %li.l-list__mypage-nav__list.icon-arrow-r=link_to 'ニュース一覧','#'
+      %li.l-list__mypage-nav__list.icon-arrow-r=link_to '評価一覧','#'
+      %li.l-list__mypage-nav__list.icon-arrow-r=link_to 'ガイド','#'
+      %li.l-list__mypage-nav__list.icon-arrow-r=link_to 'お問い合わせ','#'
+
+    %h3.l-list__head メルペイ
+    %ul.l-list__mypage-nav
+      %li.l-list__mypage-nav__list.icon-arrow-right 売上・振込申請
+      %li.l-list__mypage-nav__list.icon-arrow-right ポイント
+
+    %h3.l-list__head 設定
+    %ul.l-list__mypage-nav
+      %li.l-list__mypage-nav__list.icon-arrow-right プロフィール
+      %li.l-list__mypage-nav__list.icon-arrow-right 発送元・お届け先住所変更
+      %li.l-list__mypage-nav__list.icon-arrow-right 支払い方法
+      %li.l-list__mypage-nav__list.icon-arrow-right メール/パスワード
+      %li.l-list__mypage-nav__list.icon-arrow-right 本人情報
+      %li.l-list__mypage-nav__list.icon-arrow-right 電話番号の確認
+      %li.l-list__mypage-nav__list--logout.icon-arrow-right 電話番号の確認
+
+= render 'shared/aside'
+= render 'shared/footer'

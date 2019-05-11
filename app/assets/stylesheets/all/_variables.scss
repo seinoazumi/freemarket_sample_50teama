@@ -32,3 +32,23 @@
   opacity: 0.8;
   color: $link-blue;
 } //ホバーすると青くなるリンクのホバー時のアクション &:hover{}内で使ってください
+
+@mixin red-btn{
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  background: $base-red;
+  border: 1px solid $base-red;
+  color: $white;
+  cursor: pointer;
+} // ログイン・ログアウト・購入するなどの赤いボタン
+
+@mixin selection{
+  background-color: $link-blue-light;
+  color: $white;
+  text-shadow: none;
+} // 何かを選択している時の表示
+// &::selection{
+//   この中で使ってください。
+// }
