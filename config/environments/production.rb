@@ -23,14 +23,7 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
-
-  
-  # TODO: デプロイ時にjsコンパイル起因とみられるrake aborted! Uglifier::Error: Unexpected character '`' が発生
-  # 以下の本番環境コンフィグを調整中
-  # config.assets.js_compressor = :uglifier
   config.assets.js_compressor = Uglifier.new(harmony: true)
-  # config.assets.js_compressor = Uglifier.new(harmony: false)
-  
 
   # config.assets.css_compressor = :sass
 
