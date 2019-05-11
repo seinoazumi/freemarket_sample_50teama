@@ -22,6 +22,7 @@ set :repo_url, "git@github.com:Akinori0123/freemarket_sample_50teama.git"
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml"
+append :linked_files, 'config/master.key'
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
@@ -37,6 +38,8 @@ set :default_env, {
   path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
   AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
   AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
+  # BASIC_AUTH_USER: Rails.application.credentials.basic_auth[:user],
+  # BASIC_AUTH_PASSWORD: Rails.application.credentials.basic_auth[:password]
 }
 
 # Default value for local_user is ENV['USER']
