@@ -1,0 +1,4 @@
+-# credentials.yml.encから正常に変数を呼び出せているかを確認するためのダミーview
+
+%p= Rails.application.credentials.basic_auth[:user]
+%p= Rails.application.credentials.basic_auth[:password]
