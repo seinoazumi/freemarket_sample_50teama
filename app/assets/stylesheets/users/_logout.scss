@@ -1,19 +1,19 @@
 .logout-btn__container{
   width: 85%;
-  margin: 25px auto 0;
+  margin: 40px auto 0;
   background: $white;
   padding: 50px 70px;
   .logout-btn{
     @include red-btn;
     margin: 0 auto;
-    width: 320px;
+    max-width: 320px;
   }
 }
 
 .mypage-nav{
   @include clearfix;
   width: 85%;
-  margin: 25px auto 80px; //メディアクエリで要検討
+  margin: 40px auto 80px; //メディアクエリで要検討
 
   &__list{
     position: relative;
@@ -28,19 +28,25 @@
       opacity: 0.8;
       .icon-arrow-r::after{
         color: $gray-lv4;
+        transform: scale(1.3, 1.3) translateX(3px);
+        transition-duration:0.2s;
       }
     }
 
     &__inner__num{
+      display: inline-block;
       background-color: $base-red;
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
+      line-height:2;
+      padding-left:4px;
       border-radius:50%;
       color: $white;
       font-size: 0.6em;
+      font-weight:900;
       position: absolute;
       right:20px;
-      top:50%;
+      top:20%;
     }
     .icon-arrow-r{
       display: block;
@@ -62,3 +68,32 @@
     font-weight: 900;
   }
 }
+
+
+@media screen and (min-width: 1068px){
+  .two-column-in-full-width{
+    display: flex;
+    width: 1020px;
+    margin: 0 auto;
+    flex-direction:row-reverse;
+    justify-content: space-between;
+
+    .logout-btn__container{
+      width: 700px;
+      max-height:154px;
+    }
+    .mypage-nav{
+      width: 280px;
+      margin-right: 25px
+    }
+  }
+}//幅1068px以上のページに適応されるscss
+
+@media screen and (max-width: 768px) {
+  .logout-btn__container{
+    width: 100%;
+  }
+  .mypage-nav{
+    width: 100%;
+  }
+}//幅768px以下のページに適応されるscss

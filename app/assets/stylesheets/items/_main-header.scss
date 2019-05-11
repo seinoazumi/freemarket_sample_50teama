@@ -1,6 +1,6 @@
 //----------------------------共通
 .wrapper{
-  background-color: $white; 
+  background-color: $white;
 }
 
 .user-profile__avatar img{
@@ -21,7 +21,7 @@
     height: 100%;
     padding-left: 10px;
     background-color:$gray-lv1;
-    border: none; 
+    border: none;
     position: absolute;
   }
   .icon-search{
@@ -52,7 +52,7 @@
     line-height: 30px;
     text-align: center;
     min-width: 150px;
-    
+
 
     &::before{
       color: $base-red;
@@ -70,7 +70,7 @@
   .visible-pc{
     display: none;
   } // 768pxまではpc版のコンテンツが見えない
-  
+
   .sp-header{
     width: 100%;
     position: relative;
@@ -104,7 +104,7 @@
       width: 100%;
     }
   } // .sp-header end
-} 
+}
 
 //-------------------------------------------pcのみ
 
@@ -150,7 +150,7 @@
     .pc-header__nav__box{
       @include clearfix;
     }
-    
+
     &__nav{
       width:700px;
       display: flex;
