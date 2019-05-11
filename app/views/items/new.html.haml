@@ -139,6 +139,8 @@
                 %span.input-part__require 必須
               .relative
                 .icon--select
+                  -# form_for使用時、下記に変更
+                  -# = f.collection_select :prefecture_id, Prefecture.all, :id, :name
                   %select.input-part__select
                     %option{value: ""} ---
                     %option{value: "1"} 北海道
