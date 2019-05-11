@@ -1,0 +1,222 @@
+@mixin link-btn {
+  display: flex;
+  height: 50px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 50px;
+  position: relative;
+}
+
+@mixin btn-mail {
+  background: $gray-lv1plus;
+  color: $black;
+  transition: 0.7s;
+  &:hover {
+    opacity: 0.7;
+  }
+  &__left {
+    position: absolute;
+    left: 17px;
+    .icon-envelope:before {
+      font-family: "Font Awesome 5 free";
+      content: '\f0e0';
+      font-size: 20px;
+      color: $gray-lv2;
+    }
+  }
+  &__right {
+    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    a {
+      display:block;
+    }
+  }
+}
+
+@mixin btn-facebook {
+  background: #385185;
+  color: $white;
+  width: 100%;
+  &__left {
+    position: absolute;
+    left: 17px;
+    .icon-facebook-square:before {
+      font-family: "Font Awesome 5 Brands";
+      content: '\f082';
+      font-size: 30px;
+    }
+  }
+  &__right {
+    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    a {
+      display: block;
+    }
+  }
+}
+
+@mixin btn-google {
+  border: 1px solid $gray-lv2plus;
+  margin-top: 16px;
+  line-height: 48px;
+  width: 100%;
+  &__left {
+    position: absolute;
+    top: 28%;
+    left: 16px;
+    img {
+      display: block;
+    }
+  }
+  &__right {
+    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    a {
+      display: block;
+    }
+  }
+}
+
+.single-container {
+  .sign-up {
+    .panel {
+      background: $white;
+      width: 700px;
+      margin: 0 auto 41px;
+      &__head {
+        padding: 37px 16px 38px;
+        font-weight: 700;
+        font-size: 22px;
+        border-bottom: 1px solid $gray-lv1;
+      }
+      &__inner {
+        padding: 64px;
+        .mail-registration {
+          @include link-btn;
+          @include btn-mail;
+          width: 320px;
+        }
+        .facebook-registration {
+          @include link-btn;
+          @include btn-facebook;
+          width: 320px;
+          margin-top: 16px;
+        }
+        .google-registration {
+          @include link-btn;
+          @include btn-google;
+          width: 320px;
+          margin-top: 16px;
+        }
+      }
+    }
+  }
+
+  .sign-in {
+    .panel {
+      background: $white;
+      max-width: 456px;
+      margin: 0 auto;
+      &__head {
+        padding: 40px 64px;
+        border-bottom: 1px solid $gray-lv1plus;
+        &__registration-link-btn {
+          background: $link-blue;
+          margin-top: 8px;
+          line-height: 42px;
+          color: $white;
+          a {
+            display: block;
+          }
+        }
+      }
+      &__inner {
+        .sns-login {
+          padding: 32px 64px;
+          &__facebook {
+            @include link-btn;
+            @include btn-facebook;
+          }
+          &__google {
+            @include link-btn;
+            @include btn-google;
+          }
+        }
+        .login-form {
+          padding: 24px 64px 32px;
+          &__email {
+            @include input-default;
+          }
+          &__password {
+            @include input-default;
+            margin-top: 24px;
+          }
+          &__submit {
+            margin-top: 24px;
+            display: block;
+            width: 100%;
+            line-height: 48px;
+            font-size: 14px;
+            background: $base-red;
+            border: 1px solid $base-red;
+            color: $white;
+            cursor: pointer;
+          }
+          &__forget-password {
+            display: block;
+            margin-top: 40px;
+            text-align: left;
+            color: $link-blue;
+            &:hover {
+              text-decoration: underline $link-blue;
+              opacity: 0.7;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .sign-up {
+      .panel {
+        width: 100%;
+        &__head {
+          padding: 29px 8px;
+          font-size: 18px;
+        }
+        &__inner {
+          padding: 40px;
+        }
+      }
+    }
+
+    .sign-in {
+      .panel {
+        &__head {
+          padding: 24px 32px;
+        }
+        &__inner {
+          .sns-login {
+            padding: 24px 32px;
+          }
+          .login-form {
+            padding: 24px 32px;
+          }
+        }
+      }
+    }
+  }
+}
