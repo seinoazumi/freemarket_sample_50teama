@@ -38,3 +38,57 @@
     outline: none;
   }
 } 
+
+// selectボタンのデフォルト
+@mixin select-default{
+  position: relative;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid $gray-lv2;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 8px;
+  cursor: pointer;
+  -webkit-appearance: none;/* ベンダープレフィックス(Google Chrome、Safari用) */
+  -moz-appearance: none;	/* ベンダープレフィックス(Firefox用) */
+  appearance: none;
+  .icon-select::before {
+    @include font-awesome-base;
+    content: '\f078';
+    position: absolute;
+    top: 23px;
+    right: 20px;
+    font-size: 18px;
+    color: $gray-lv3;
+  }
+}
+
+// textareaのデフォルト
+@mixin textarea-default{ 
+  width:100%;
+  display: block;
+  margin-top: 8px;
+  height: 48px;
+  padding: 10px;
+  border: 1px solid $gray-lv2;
+  background: $white;
+  line-height: 1.5;
+  font-size: 16px;
+  min-height: 104px;
+  height: 144px;
+}
+
+// 青いはてなマーク
+@mixin form-question{ 
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: $link-blue;
+  color: $white;
+  line-height: 14px;
+  font-size: 12px;
+  text-align: center;
+}

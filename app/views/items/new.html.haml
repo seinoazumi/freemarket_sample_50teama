@@ -2,55 +2,98 @@
   = render partial: "/shared/single-header"
   .single-container
     .item-wrapper
-      .new-item-title
+      .title
         %h2 商品の情報を入力
-      %form.sell-form
-        %section.input-part.sell-form__image
-          %h3.sell-form__image--title 出品画像
-          %span.form-require 必須
-          %p 最大10枚までアップロードできます
-          .sell-form__image--dropbox.clearfix
-            .media-min__append--icon
-              %pre.media-min__hidden ドラッグアンドドロップ
-              %pre.media-min__hidden またはクリックしてファイルをアップロード
-        %section.input-part.sell-form__content
-          %label.sell-form__content--name 商品名
-          %span.form-require 必須
-          %input.input-default.clearfix{placeholder: "商品名（必須 40文字まで)", value: ""}
-          .form-groups
-            %label.sell-form__content--description 商品の説明
-            %span.form-require 必須
-            %textarea.textarea-default.clearfix{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"}
-        %section.input-part.sell-form__detail
-          .left-section
-            %h3.sell-sub-head 商品の詳細
-          .right-section
-            %label.sell-form__deteail--category カテゴリー
-            %span.form-require 必須
-            .select-wrap.clearfix
-              .icon-select
-                %select.select-default
-                  %option{value: ""} ---
-                  %option{value: "1"} レディース
-                  %option{value: "2"} メンズ
-                  %option{value: "3"} ベビー・キッズ
-                  %option{value: "4"} インテリア・住まい・小物
-                  %option{value: "5"} 本・音楽・ゲーム
-                  %option{value: "1328"} おもちゃ・ホビー・グッズ
-                  %option{value: "6"} コスメ・香水・美容
-                  %option{value: "7"} 家電・スマホ・カメラ
-                  %option{value: "8"} スポーツ・レジャー
-                  %option{value: "9"} ハンドメイド
-                  %option{value: "1027"} チケット
-                  %option{value: "1318"} 自動車・オートバイ
-                  %option{value: "10"} その他
-            .form-groups
-              %label
-                商品の状態
-              %span.form-require 必須
-              .select-wrap
-                .icon-select
-                  %select.select-default
+      %form.item-new
+        %section.form-section.media-min
+          .input-part
+            %h3.input-part__title 出品画像
+            %span.input-part__require 必須
+            %p.input-part__details 最大10枚までアップロードできます
+            .input-part__dropbox
+              .media-min__append--icon
+                %pre.media-min__hidden ドラッグアンドドロップ
+                %pre.media-min__hidden またはクリックしてファイルをアップロード
+        %section.form-section
+          .input-part
+            %label.input-part__title 商品名
+            %span.input-part__require 必須
+            %input.input-part__input{placeholder: "商品名（必須 40文字まで)", value: ""}
+          .input-part
+            .space
+            %label.input-part__title 商品の説明
+            %span.input-part__require 必須
+            %textarea.input-part__textarea.textarea-default{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"}
+        %section.form-section
+          .flex-container
+            .flex-container__left
+              %h3.sell-sub-head 商品の詳細
+            .flex-container__right
+              .input-part
+                %label.input-part__title カテゴリー
+                %span.input-part__require 必須
+              .relative
+                .icon--select
+                  %select.input-part__select
+                    -# バックエンド作業時にcategoryテーブルから引っ張ってくる。
+                    %option{value: ""} ---
+                    %option{value: "1"} レディース
+                    %option{value: "2"} メンズ
+                    %option{value: "3"} ベビー・キッズ
+                    %option{value: "4"} インテリア・住まい・小物
+                    %option{value: "5"} 本・音楽・ゲーム
+                    %option{value: "1328"} おもちゃ・ホビー・グッズ
+                    %option{value: "6"} コスメ・香水・美容
+                    %option{value: "7"} 家電・スマホ・カメラ
+                    %option{value: "8"} スポーツ・レジャー
+                    %option{value: "9"} ハンドメイド
+                    %option{value: "1027"} チケット
+                    %option{value: "1318"} 自動車・オートバイ
+                    %option{value: "10"} その他
+              .relative.hidden
+                .icon--select
+                  %select.input-part__select
+                    -# バックエンド作業時にcategoryテーブルから引っ張ってくる。
+                    %option{value: ""} ---
+                    %option{value: "1"} レディース
+                    %option{value: "2"} メンズ
+              .relative.hidden
+                .icon--select
+                  %select.input-part__select
+                    -# バックエンド作業時にcategoryテーブルから引っ張ってくる。
+                    %option{value: ""} ---
+                    %option{value: "1"} レディース
+                    %option{value: "2"} メンズ
+              .space.hidden
+              .input-part
+                %label.input-part__title サイズ
+                %span.input-part__require 必須
+              .relative
+                .icon--select
+                  %select.input-part__select
+                    %option{:value => ""} ---
+                    %option{:value => "153"} XXS以下
+                    %option{:value => "154"} XS(SS)
+                    %option{:value => "2"} S
+                    %option{:value => "3"} M
+                    %option{:value => "4"} L
+                    %option{:value => "5"} XL(LL)
+                    %option{:value => "155"} 2XL(3L)
+                    %option{:value => "156"} 3XL(4L)
+                    %option{:value => "157"} 4XL(5L)以上
+                    %option{:value => "7"} FREE SIZE
+              .space.hidden
+              .input-part
+                %label.input-part__title ブランド
+                %span.input-part__option 任意
+                %input.input-part__input{placeholder: "例）シャネル", value: ""}
+              .space
+              .input-part
+                %label.input-part__title 商品の状態
+                %span.input-part__require 必須
+              .relative
+                .icon--select
+                  %select.input-part__select
                     %option{value: ""} ---
                     %option{value: "1"} 新品、未使用
                     %option{value: "2"} 未使用に近い
@@ -58,25 +101,45 @@
                     %option{value: "4"} やや傷や汚れあり
                     %option{value: "5"} 傷や汚れあり
                     %option{value: "6"} 全体的に状態が悪い
-        %section.input-part.sell-form__delivery.clearfix
-          .left-section
-            %h3.sell-sub-head 配送について
-            =link_to "?", "#", class:"form-question"
-          .right-section
-            %label.sell-form__content--delivery-burden.clearfix 配送料の負担
-            %span.form-require 必須
-            .select-wrap
-              .icon-select
-                %select.select-default
-                  %option{value: ""} ---
-                  %option{value: "2"} 送料込み(出品者負担)
-                  %option{value: "1"} 着払い(購入者負担)
-            .form-groups
-              %label.sell-form__content--delivery-burden 発送元の地域
-              %span.form-require 必須
-              .select-wrap
-                .icon-select
-                  %select.select-default.clearfix
+        %section.form-section
+          .flex-container.media-min--clear
+            .flex-container__left
+              %h3.sell-sub-head 配送について
+              =link_to "?", "#", class:"form-question"
+            .flex-container__right
+              .input-part
+                %label.input-part__title 配送料の負担
+                %span.input-part__require 必須
+              .relative
+                .icon--select
+                  %select.input-part__select
+                    %option{value: ""} ---
+                    %option{value: "2"} 送料込み(出品者負担)
+                    %option{value: "1"} 着払い(購入者負担)
+              .space.hidden
+              .input-part
+                %label.input-part__title 発送の方法
+                %span.input-part__require 必須
+              .relative
+                .icon--select
+                  %select.input-part__select
+                    %option{:value => ""} ---
+                    %option{:value => "5"} 未定
+                    %option{:value => "14"} らくらくメルカリ便
+                    %option{:value => "6"} ゆうメール
+                    %option{:value => "8"} レターパック
+                    %option{:value => "9"} 普通郵便(定形、定形外)
+                    %option{:value => "10"} クロネコヤマト
+                    %option{:value => "11"} ゆうパック
+                    %option{:value => "13"} クリックポスト
+                    %option{:value => "7"} ゆうパケット
+              .space
+              .input-part
+                %label.input-part__title 発送元の地域
+                %span.input-part__require 必須
+              .relative
+                .icon--select
+                  %select.input-part__select
                     %option{value: ""} ---
                     %option{value: "1"} 北海道
                     %option{value: "2"} 青森県
@@ -126,57 +189,57 @@
                     %option{value: "46"} 鹿児島県
                     %option{value: "47"} 沖縄県
                     %option{value: "99"} 未定
-            .form-groups
-              %label.sell-form__content--delivery-burden 発送までの日数
-              %span.form-require 必須
-              .select-wrap.clearfix
-                .icon-select
-                  %select.select-default
+              .space
+              .input-part
+                %label.input-part__title 発送までの日数
+                %span.input-part__require 必須
+              .relative
+                .icon--select
+                  %select.input-part__select
                     %option{value: ""} ---
                     %option{value: "1"} 1~2日で発送
                     %option{value: "2"} 2~3日で発送
                     %option{value: "3"} 4~7日で発送
-        %section.input-part.sell-form__price
-          .left-section
-            %h3.sell-sub-head 販売価格(300〜9,999,999)
-            =link_to "?", "#", class:"form-question"
-          .right-section
-            %ul.sell-price
-              %li.sell-form__price--bace
-                .li-left
-                  %label 価格
-                  %span.form-require 必須
-                .li-right
-                  %p.yen ¥
-                  %input.input-default{placeholder: "例）300", value: ""}
-              %li.sell-form__price--fee.clearfix.border-top
-                .li-left
-                  %p 販売手数料 (10%)
-                .li-right
-                  %p.output-fee -
-              %li.sell-form__price--total.clearfix.border-top
-                .li-left
-                  %p.total.bold 販売利益
-                .li-right
-                  %p.output-price.bold -
+        %section.form-section
+          .flex-container
+            .flex-container__left
+              %h3.sell-sub-head 販売価格(300〜9,999,999)
+              =link_to "?", "#", class:"form-question"
+            .flex-container__right
+
+              .input-part
+                %ul.input-part__price
+                  %li.input-part__price--bace.flex-container
+                    .input-part__price--bace--left
+                      %label.input-part__title 価格
+                      %span.input-part__require 必須
+                    .input-part__price--bace--right
+                      %p.yen ¥
+                      %input.input-part__input{placeholder: "例）300", value: ""}
+
+                  %li.input-part__price--fee.border-top.flex-container
+                    .input-part__price--fee--left 販売手数料 (10%)
+                    .input-part__price--fee--right.input-part__price--fee--output -
+                  %li.input-part__price--total.border-top.flex-container
+                    .input-part__price--total--left 販売利益
+                    .input-part__price--fee--right.input-part__price--total--output -
           .modal{role: "dialog", tabindex: "-1"}
             .modal-inner
-        %section.input-part.sell-form__fix.mediakueeeeeeeeeeeri.clearfix
-          .sell-btn-box.sell-attention
-            %p
-              =link_to "禁止されている出品", "#", class:""
-              =link_to "行為", "#"
-              を必ずご確認ください。
-            %p
-              またブランド品でシリアルナンバー等がある場合はご記載ください。
-              =link_to "偽ブランドの販売", "#"
-              は犯罪であり処罰される可能性があります。
-            %p
-              また、出品をもちまして
-              =link_to "加盟店規約","#"
-              に同意したことになります。
-            %button.btn-default.btn-red{type: "submit"}
-              出品する
-            %a.btn-default.btn-gray もどる
+        %section.form-section
+          %p.notes
+            =link_to "禁止されている出品", "#", class:"notes__link"
+            =link_to "行為", "#"
+            を必ずご確認ください。
+          %p.notes
+            またブランド品でシリアルナンバー等がある場合はご記載ください。
+            =link_to "偽ブランドの販売", "#", class:"notes__link"
+            は犯罪であり処罰される可能性があります。
+          %p.notes
+            また、出品をもちまして
+            =link_to "加盟店規約","#", class:"notes__link"
+            に同意したことになります。
+          %button.btn-default.btn-red{type: "submit"}
+            出品する
+          %a.btn-default.btn-gray もどる
         .overlay
   = render partial: "/shared/single-footer"
