@@ -70,6 +70,9 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem 'devise'
 gem 'ancestry'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
 gem 'active_hash'
 
 group :production do
