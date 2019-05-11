@@ -1,5 +1,7 @@
 require 'digest/md5'
 class ApplicationController < ActionController::Base
+  # basic認証機能、カリキュラムコピペ、変数のみcredentialsから取り出すものに変更
+  
   # before_action :basic_auth
   # protect_from_forgery with: :exception
 
