@@ -29,6 +29,7 @@ Rails.application.configure do
   # 以下の本番環境コンフィグを調整中
   # config.assets.js_compressor = :uglifier
   # config.assets.js_compressor = Uglifier.new(harmony: true)
+  config.assets.js_compressor = Uglifier.new(harmony: false)
   
 
   # config.assets.css_compressor = :sass
