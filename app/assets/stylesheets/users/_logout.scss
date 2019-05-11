@@ -43,5 +43,25 @@
 }
 
 .l-list{
-  
+  margin-top: 40px;
+  &__mypage-nav__list{
+    position: relative;
+    display: block;
+    min-height: 48px;
+    padding: 16px;
+    background: $white;
+    font-size: 14px;
+    color: $gray-lv4;
+
+    .icon-arrow-r{
+      display: block;
+      width: 100%;
+
+      &::after{
+      position: absolute;
+      right: -20px;
+      
+      }
+    }
+  }
 }

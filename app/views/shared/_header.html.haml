@@ -59,12 +59,34 @@
       .pc-header__nav__list-r
         %ul.pc-header__user-nav
           %li.pc-header__user-nav__list#notification-list__root.icon-bell= link_to 'お知らせ', src: '#'
-          -# jsではなくcssで入れたほうが望ましいとの結論が出たらコメントアウトを外す
-          -# %ul.pc-header__user-box.pc-header__notification-list
-          -#   %li.pc-header__notification-list__link お知らせ１
-          -#   %li.pc-header__notification-list__link お知らせ２
-          -#   %li.pc-header__notification-list__link お知らせ３
-          -#   %li.pc-header__notification-list__link お知らせ４
+          %ul#notification-list.pc-header__user-box
+            %li.pc-header__notification-list__link
+              .merucari-avatar
+              %figure
+                %img{:alt => "icon", :src => "/assets/mercari_profile.png"}/
+              .notification-box.icon-arrow-r
+                %p.notification-box__message お知らせ１
+                %p.notification-box__date-passed.icon-clock 1日前
+            %li.pc-header__notification-list__link
+              .merucari-avatar
+              %figure
+                %img{:alt => "icon", :src => "/assets/mercari_profile.png"}/
+              .notification-box.icon-arrow-r
+                %p.notification-box__message お知らせ１
+                %p.notification-box__date-passed.icon-clock 1日前
+            %li.pc-header__notification-list__link
+              %figure
+                %img{:alt => "icon", :src => "/assets/mercari_profile.png"}/
+              .notification-box.icon-arrow-r
+                %p.notification-box__message お知らせ１
+                %p.notification-box__date-passed.icon-clock 1日前
+            %li.pc-header__notification-list__link
+              %figure
+                %img{:alt => "icon", :src => "/assets/mercari_profile.png"}/
+              .notification-box.icon-arrow-r
+                %p.notification-box__message お知らせ１
+                %p.notification-box__date-passed.icon-clock 1日前
+
           
           %li.pc-header__user-nav__list.icon-check.todo-list= link_to 'やることリスト', src: '#'
           -# %ul.pc-header__user-box.pc-header__todo-list

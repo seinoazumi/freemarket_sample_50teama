@@ -1,7 +1,6 @@
 .icon-arrow-r::after {
   @include font-awesome-base;
   content: '\f054';
-  color: $gray-lv2;
 }
 
 .icon-bell::before {
