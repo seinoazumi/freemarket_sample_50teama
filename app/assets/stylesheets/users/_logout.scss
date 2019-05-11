@@ -1,50 +1,21 @@
-.breadcrumb-container{
-  position: relative;
-  border-top: 1px solid $gray-lv2;
-  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
-  background: $white;
-  width:100%;
-
-  .breadcrumb{
-    display: flex;
-    margin-left: 5px;
-    &__list{
-      display: inline-block;
-      padding: 10px;
-      font-size: 14px;
-      line-height: 1.5;
-      text-align: center;
-      &::after{
-        margin-left: 5px; 
-      }
-      &:last-child{
-        font-weight: 900;
-      }
-      &:hover{
-        text-decoration: underline;
-        opacity: .7;
-      }
-      &::selection{
-        @include selection
-      }
-    }
-  }
-}
-
 .logout-btn__container{
-  width: 100%;
+  width: 85%;
+  margin: 25px auto 0;
   background: $white;
-  margin-top: 25px;
   padding: 50px 70px;
   .logout-btn{
     @include red-btn;
+    margin: 0 auto;
     width: 320px;
   }
 }
 
-.l-list{
-  margin-top: 40px;
-  &__mypage-nav__list{
+.mypage-nav{
+  @include clearfix;
+  width: 85%;
+  margin: 25px auto 80px; //メディアクエリで要検討
+
+  &__list{
     position: relative;
     display: block;
     min-height: 48px;
@@ -52,16 +23,42 @@
     background: $white;
     font-size: 14px;
     color: $gray-lv4;
+    border-bottom: solid 1px $gray-lv1;
+    &:hover{
+      opacity: 0.8;
+      .icon-arrow-r::after{
+        color: $gray-lv4;
+      }
+    }
 
+    &__inner__num{
+      background-color: $base-red;
+      width: 30px;
+      height: 30px;
+      border-radius:50%;
+      color: $white;
+      font-size: 0.6em;
+      position: absolute;
+      right:20px;
+      top:50%;
+    }
     .icon-arrow-r{
       display: block;
       width: 100%;
-
+      color:$gray-lv2;
       &::after{
       position: absolute;
-      right: -20px;
-      
+      right:20px;
       }
     }
+  }
+  &__head{
+    font-size: 1.2em;
+    margin: 30px 0 5px 0;
+    font-weight: 900;
+  }
+  .mypage-nav__current-page{
+    background-color: $gray-lv1plus;
+    font-weight: 900;
   }
 }

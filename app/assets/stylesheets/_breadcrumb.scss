@@ -15,7 +15,8 @@
       line-height: 1.5;
       text-align: center;
       &::after{
-        margin-left: 5px; 
+        margin-left: 5px;
+        color: $gray-lv2;
       }
       &:last-child{
         font-weight: 900;
