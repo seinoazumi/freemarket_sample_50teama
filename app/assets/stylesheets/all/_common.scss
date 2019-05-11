@@ -31,3 +31,21 @@ a{
 li{
   text-decoration: none;
 } //liタグの・を消す
+
+
+* {
+  font-size: inherit;
+  line-height: inherit;
+} //親要素の指定を引き継ぐ
+
+.text-center{
+  text-align: center;
+}  //文章を中央に寄せる items/headerで使用
+
+// .input-default{
+//   //inputboxデフォルトのcss
+// } 
+
+.list-parent{
+  //listの一番上の階層に使われているcss
+} 

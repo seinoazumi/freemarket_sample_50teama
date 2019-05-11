@@ -6,22 +6,6 @@
   }
 } //clearfix
 
-// .input-default{
-//   //inputboxデフォルトのcss
-// }
-
-// .list-parent{
-//   //listの一番上の階層に使われているcss
-// }
-
-.text-center{
-  text-align: center;
-}
-
-// .full-width{
-
-// } // footerの100%表示の時のcssがあるようです
-
 @mixin input-default {
   height: 48px;
   padding: 10px 16px 8px;
@@ -92,3 +76,14 @@
   font-size: 12px;
   text-align: center;
 }
+ //入力フォームのデフォルトのcss
+
+@mixin font-awesome-base{
+  font-family: "Font Awesome 5 Free";
+  font-weight:900;
+} //fontawesomeを使用するときのcss
+
+@mixin blue-link{
+  opacity: 0.8;
+  color: $link-blue;
+} //ホバーすると青くなるリンクのホバー時のアクション &:hover{}内で使ってください
