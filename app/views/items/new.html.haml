@@ -2,8 +2,7 @@
   = render partial: "/shared/single-header"
   .single-container
     .item-wrapper
-      .title
-        %h2 商品の情報を入力
+      %h2.title 商品の情報を入力
       %form.item-new
         %section.form-section.media-min
           .input-part
@@ -33,7 +32,7 @@
                 %label.input-part__title カテゴリー
                 %span.input-part__require 必須
               .relative
-                .icon--select
+                .icon-select
                   %select.input-part__select
                     -# バックエンド作業時にcategoryテーブルから引っ張ってくる。
                     %option{value: ""} ---
@@ -51,14 +50,14 @@
                     %option{value: "1318"} 自動車・オートバイ
                     %option{value: "10"} その他
               .relative.hidden
-                .icon--select
+                .icon-select
                   %select.input-part__select
                     -# バックエンド作業時にcategoryテーブルから引っ張ってくる。
                     %option{value: ""} ---
                     %option{value: "1"} レディース
                     %option{value: "2"} メンズ
               .relative.hidden
-                .icon--select
+                .icon-select
                   %select.input-part__select
                     -# バックエンド作業時にcategoryテーブルから引っ張ってくる。
                     %option{value: ""} ---
@@ -69,7 +68,7 @@
                 %label.input-part__title サイズ
                 %span.input-part__require 必須
               .relative
-                .icon--select
+                .icon-select
                   %select.input-part__select
                     %option{:value => ""} ---
                     %option{:value => "153"} XXS以下
@@ -92,7 +91,7 @@
                 %label.input-part__title 商品の状態
                 %span.input-part__require 必須
               .relative
-                .icon--select
+                .icon-select
                   %select.input-part__select
                     %option{value: ""} ---
                     %option{value: "1"} 新品、未使用
@@ -111,7 +110,7 @@
                 %label.input-part__title 配送料の負担
                 %span.input-part__require 必須
               .relative
-                .icon--select
+                .icon-select
                   %select.input-part__select
                     %option{value: ""} ---
                     %option{value: "2"} 送料込み(出品者負担)
@@ -121,7 +120,7 @@
                 %label.input-part__title 発送の方法
                 %span.input-part__require 必須
               .relative
-                .icon--select
+                .icon-select
                   %select.input-part__select
                     %option{:value => ""} ---
                     %option{:value => "5"} 未定
@@ -138,7 +137,7 @@
                 %label.input-part__title 発送元の地域
                 %span.input-part__require 必須
               .relative
-                .icon--select
+                .icon-select
                   -# form_for使用時、下記に変更
                   -# = f.collection_select :prefecture_id, Prefecture.all, :id, :name
                   %select.input-part__select
@@ -196,7 +195,7 @@
                 %label.input-part__title 発送までの日数
                 %span.input-part__require 必須
               .relative
-                .icon--select
+                .icon-select
                   %select.input-part__select
                     %option{value: ""} ---
                     %option{value: "1"} 1~2日で発送
@@ -208,7 +207,6 @@
               %h3.sell-sub-head 販売価格(300〜9,999,999)
               =link_to "?", "#", class:"form-question"
             .flex-container__right
-
               .input-part
                 %ul.input-part__price
                   %li.input-part__price--bace.flex-container
@@ -218,7 +216,6 @@
                     .input-part__price--bace--right
                       %p.yen ¥
                       %input.input-part__input{placeholder: "例）300", value: ""}
-
                   %li.input-part__price--fee.border-top.flex-container
                     .input-part__price--fee--left 販売手数料 (10%)
                     .input-part__price--fee--right.input-part__price--fee--output -
@@ -240,8 +237,8 @@
             また、出品をもちまして
             =link_to "加盟店規約","#", class:"notes__link"
             に同意したことになります。
-          %button.btn-default.btn-red{type: "submit"}
+          %button.submit-btn--red{type: "submit"}
             出品する
-          %a.btn-default.btn-gray もどる
+          %a.submit-btn--red もどる
         .overlay
   = render partial: "/shared/single-footer"

@@ -6,6 +6,7 @@
   }
 } //clearfix
 
+// 1行フォームのテンプレート
 @mixin input-default {
   height: 48px;
   padding: 10px 16px 8px;
@@ -23,8 +24,10 @@
   }
 } 
 
-// selectボタンのデフォルト
+// selectボタンのテンプレート
 @mixin select-default{
+  -webkit-appearance: none;/* ベンダープレフィックス(Google Chrome、Safari用) */
+  -moz-appearance: none;	/* ベンダープレフィックス(Firefox用) */
   position: relative;
   height: 48px;
   padding: 0 16px;
@@ -35,8 +38,6 @@
   line-height: 1.5;
   margin-top: 8px;
   cursor: pointer;
-  -webkit-appearance: none;/* ベンダープレフィックス(Google Chrome、Safari用) */
-  -moz-appearance: none;	/* ベンダープレフィックス(Firefox用) */
   appearance: none;
   .icon-select::before {
     @include font-awesome-base;
@@ -49,7 +50,7 @@
   }
 }
 
-// textareaのデフォルト
+// textareaのテンプレート
 @mixin textarea-default{ 
   width:100%;
   display: block;
@@ -76,14 +77,37 @@
   font-size: 12px;
   text-align: center;
 }
- //入力フォームのデフォルトのcss
 
+ //fontawesomeを使用するときのcss
 @mixin font-awesome-base{
   font-family: "Font Awesome 5 Free";
   font-weight:900;
-} //fontawesomeを使用するときのcss
+}
 
+ //ホバーすると青くなるリンクのホバー時のアクション &:hover{}内で使ってください
 @mixin blue-link{
   opacity: 0.8;
   color: $link-blue;
-} //ホバーすると青くなるリンクのホバー時のアクション &:hover{}内で使ってください
+}
+
+// ボタンのテンプレート。
+@mixin btn-default{
+  display: block;
+  width: 100%;
+  color: $white;
+  text-align: center;
+  line-height: 48px;
+  font-size: 14px;
+}
+
+// 赤色ボタンならこちらbtn-default+btn-red。組み合わせてください。
+@mixin btn-red{
+  background-color: $base-red;
+  border: 1px solid $base-red;
+}
+
+// グレーのボタン
+@mixin btn-gray{
+  background-color: $gray-lv2plus;
+  border: 1px solid $gray-lv2plus;
+}

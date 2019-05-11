@@ -42,3 +42,8 @@
   @include font-awesome-base;
   content: '\f02b';
 }
+
+.icon-select::before {
+  @include font-awesome-base;
+  content: '\f078';
+  }

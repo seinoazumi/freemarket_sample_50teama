@@ -1,15 +1,9 @@
-@mixin font-awesome-base{
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-}
 .space{
   height:40px;
 }
 .relative{
   position: relative;
-  .icon--select::before {
-    @include font-awesome-base;
-    content: '\f078';
+  .icon-select::before {
     position: absolute;
     top:32px;
     right:22px;
@@ -18,9 +12,7 @@
   }
 }
 .hidden{
-  .icon--select::before {
-    @include font-awesome-base;
-    content: '\f078';
+  .icon-select::before {
     position: absolute;
     top:23px;
     right:22px;
@@ -33,13 +25,11 @@
   margin: 0 auto;
   width: 700px;
   .title {
-    h2 {
-      display: block;
-      font-size: 22px;
-      padding: 37px 16px;
-      font-weight: bold;
-      border-bottom: 1px solid $gray-lv1;
-    }
+    display: block;
+    font-size: 22px;
+    padding: 37px 16px;
+    font-weight: bold;
+    border-bottom: 1px solid $gray-lv1;
   }
 // form
   .item-new {
@@ -111,7 +101,7 @@
             line-height: 48px;
             height: 72px;
             padding-bottom: 24px;
-            label{
+            .input-part__title{
               font-size: 14px;
             }
             &--right{
@@ -121,7 +111,7 @@
                 float: left;
                 padding-left:20px;
               }
-              input{
+              .input-part__input{
                 width:160px;
                 float: right;
               }
@@ -177,27 +167,17 @@
         color: $link-blue;
       }
     }
-    .btn-default{
-      display: block;
-      width: 100%;
-      color: $white;
-      text-align: center;
+    .submit-btn--red{
+      @include btn-default;
+      @include btn-red;
       margin: 40px 0 0;
-      line-height: 48px;
-      font-size: 14px;
     }
-    .btn-red{
-      background-color: $base-red;
-      border: 1px solid $base-red;
-    }
-    .btn-gray{
-      background-color: $gray-lv2plus;
-      border: 1px solid $gray-lv2plus;
+
+    .submit-btn--gray{
+      @include btn-default;
+      @include btn-gray;
       width: 45%;
       margin: 24px auto 0;
-    }
-    .hidden{
-
     }
   }
 }
@@ -206,10 +186,8 @@
   .item-wrapper{
     width:100%;
     .title {
-      h2{
-        padding:24px 8px;
-        font-size: 18px;
-      }
+      padding:24px 8px;
+      font-size: 18px;
     }
     .media-min{
       padding: 40px 12.5px!important;
@@ -234,7 +212,7 @@
     .flex-container{
       display: inherit!important;
       .flex-container__left{
-        h3{
+        .sell-sub-head{
           float: none!important;
         }
         .form-question{
@@ -244,14 +222,14 @@
       .flex-container__right{
         width:100%!important;
         margin-top:40px;
-        li{
+        .input-part__price--bace,.input-part__price--fee,.input-part__price--total{
           display: flex;
           justify-content: space-between;
         }
-        label,span,p{
+        .input-part__title,.yen{
           font-size:14px;
         }
-        span{
+        .input-part__require{
           font-size:12px;
         }
       }
@@ -266,14 +244,14 @@
         .yen{
           text-align: right!important;
         }
-        input{
+        .input-part__input{
           width:80%!important;
           float: right;
           text-align: right;
         }
       }
     }
-    ul{
+    .input-part__price {
       .border-top{
         margin-bottom: 10px;
       }
