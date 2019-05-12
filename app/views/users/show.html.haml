@@ -130,6 +130,23 @@
         %ul#mypage-tab__transaction-old.mypage-item__list.tab-pane
           %li.mypage-item__not-found.bold 過去に取引した商品がありません
 
+  %aside.modal{"data-close" => "modal", "data-modal" => "banner"}
+  -# モーダル表示
+    -# .modal__inner.modal__banner
+    -#   .modal__banner__eye-catch
+    -#     %img{:alt => "", :src => "//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?376951604"}/
+    -#     %img{:alt => "", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?376951604"}/
+    -#   .modal__banner__body
+    -#     %h2 今すぐ無料ダウンロード！
+    -#     %p.bold 全ての機能を使えるスマホアプリはこちら！
+    -#     .modal__banner__app.clearfix
+    -#       %a.pull-left{:href => "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8", :target => "_blank"}
+    -#         %img{:alt => "", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?376951604"}/
+    -#       %a.pull-left{:href => "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", :target => "_blank"}
+    -#         %img{:alt => "", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?376951604"}/
+    -#     %a.modal__banner__app-open{"data-action" => "app/launch", "data-play-id" => "com.kouzoh.mercari", "data-toggle" => "open-app", "data-url-scheme" => "mercari://", :href => ""}
+    -#       アプリで開く
+    -#   %i.icon-close{"data-close" => "modal"}
 
   .l-side
 -# サイドバー、せいのさんテンプレート製作中

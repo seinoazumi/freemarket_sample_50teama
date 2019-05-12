@@ -224,9 +224,6 @@
 
 // show マイページで作成
 // minimum時、基本サイズ（@media表記なしのものを拾う）
-.bold {
-  font-weight: 600;
-}
 
 ul, ol {
   list-style: none;
@@ -237,14 +234,34 @@ a {
   text-decoration: none;
 }
 
+nav {
+  display: block;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+img {
+  vertical-align: middle;
+}
+
+[data-toggle='open-app'] {
+  display: none;
+}
+
+.bold {
+  font-weight: 600;
+}
+
 .l-container {
   display: flex;
   flex-direction: column;  
   margin: 24px auto 0;
   padding: 0 0 40px;
   .l-content {
-    width: 100%;
-    .mypage__user-icon {
+    float: right;
+    .mypage-user-icon {
       position: relative;
       height: 155px;
       padding: 20px;
@@ -267,54 +284,213 @@ a {
           height: 60px;
           margin: 0 auto;
           border-radius: 50%;
+          img {
+            vertical-align: middle;
+          }
+          .mypage-user-icon h2 {
+            margin: 8px 0 0;
+            font-size: 14px;
+          }
         }
-        .mypage-number {
+        .mypage__number {
           margin: 8px 0 0;
           font-size: 0;
-          .mypage-number div {
+          .mypage__number div {
             display: inline-block;
             font-size: 14px;
-            .mypage-number span {
-              margin: 0 0 0 8px;
-              font-size: 16px;
-            }
           }
-        }
-      }
-      .mypage-tab-container-notification-todo {
-        margin: 0;
-        background: #fff;
-        .mypage-tabs, .listing-tabs, .review-history-tabs {
-          border: 0;
-          background: #eee;
-          font-size: 0;
-          h3 {
-            font-size: 22px;
+          .mypage__number div+div {
+            margin: 0 0 0 16px;
           }
-          .mypage-tabs li.active, .listing-tabs li.active, .review-history-tabs li.active {
-            background: #fff;
-            .mypage-tabs li.active a, .listing-tabs li.active a, .review-history-tabs li.active a {
-              border-top: 2px solid #ea352d;
-            }
-          }
-          .mypage-tabs li {
-            width: 50%;
-          }
-          .mypage-tabs li, .listing-tabs li, .review-history-tabs li {
-            display: inline-block;
-            text-align: center;
-            vertical-align: top;
-          }
-          .mypage-tabs a, .listing-tabs a, .review-history-tabs a {
-            position: relative;
-            display: block;
-            color: #333;
+          .mypage__number span {
+            margin: 0 0 0 8px;
             font-size: 16px;
-            line-height: 72px;
+            .bold {
+              font-weight: 600;
+            }
           }
         }
       }
     }
+    // TODO: mypage-tab以下の二箇所を切り出してまとめる
+    .mypage-tab__container-notification-todo {
+      margin: 0;
+      background: #fff;
+      .mypage-tabs, .listing-tabs, .review-history-tabs {
+        border: 0;
+        background: #eee;
+        font-size: 0;
+        .mypage-tabs li {
+          width: 50%;
+        }
+        .mypage-tabs li.active, .listing-tabs li.active, .review-history-tabs li.active {
+          background: #fff;
+          .mypage-tabs li.active a, .listing-tabs li.active a, .review-history-tabs li.active a {
+            border-top: 2px solid #ea352d;
+          }
+        }
+        .mypage-tabs a, .listing-tabs a, .review-history-tabs a {
+          position: relative;
+          display: block;
+          color: #333;
+          font-size: 16px;
+          line-height: 72px;
+        }
+        .mypage-tabs li, .listing-tabs li, .review-history-tabs li {
+          display: inline-block;
+          text-align: center;
+          vertical-align: top;
+        }
+        .mypage-tabs li, .listing-tabs li, .review-history-tabs li {
+          display: inline-block;
+          text-align: center;
+          vertical-align: top;
+        }
+      }
+      // ペイン表示部、以下の階層のいずこかでせいのさんパーツ流用予定
+    }
+    // モーダル表示部分、ひとまずこの先のネストは置いておく
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 3000;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      -webkit-transition: all ease-out .3s;
+      transition: all ease-out .3s;
+      opacity: 0;
+      -webkit-transform: translate(0, -10px);
+      transform: translate(0, -10px);
+      .modal__inner {
+        position: relative;
+        overflow: hidden;
+        width: 95%;
+        max-width: 375px;
+        margin: 8px auto;
+        background: #fff;
+      }
+      .modal__banner {
+        text-align: center;
+        .modal__banner__body {
+          padding: 16px 2.5%;
+          .modal__banner h2 {
+            font-size: 22px;
+            line-height: 1;
+            color: #ea352d;
+          }
+          .modal__banner p {
+            margin: 16px 0 0;
+            font-size: 13px;
+          }
+          .modal__banner__app {
+            margin: 16px 0 0;
+            font-size: 0;
+            text-align: center;
+            .modal__banner__app a {
+              display: inline-block;
+              margin: 0 0 0 8px;
+            }
+            .modal__banner__app a:first-child {
+              margin: 0;
+            }
+          }
+          .modal__banner__app-open {
+            display: block;
+            width: 100%;
+            margin: 32px 0 0;
+            background: #ea352d;
+            font-size: 16px;
+            color: #fff;
+            line-height: 50px;
+          }
+        }
+        .modal__banner__eye-catch {
+          overflow: hidden;
+          position: relative;
+          background: url(/jp/assets/img/common/common/bg-modal__app-banner.jpg?65428115);
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          .modal img {
+            width: 100%;
+          }
+          .modal__banner__eye-catch img:last-child {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 63px;
+            height: 17px;
+          }
+        }
+      }
+    }
+    // TODO: mypage-tab以下の二箇所を切り出してまとめる
+    .mypage-tab__container {
+      margin: 40px 0 0;
+      background: #fff;
+      .mypage-tab__head {
+        padding: 0 4%;
+        background: #fafafa;
+        font-size: 16px;
+        line-height: 72px;
+      }
+      .mypage-tabs, .listing-tabs, .review-history-tabs {
+        border: 0;
+        background: #eee;
+        font-size: 0;
+        .mypage-tabs li {
+          width: 50%;
+        }
+        .mypage-tabs li, .listing-tabs li, .review-history-tabs li {
+          display: inline-block;
+          text-align: center;
+          vertical-align: top;
+        }
+        li.active, .listing-tabs li.active, .review-history-tabs li.active {
+          background: #fff;
+        }
+        .tab-content .tab-pane.active {
+          display: block;
+        }
+        .tab-content .tab-pane {
+          display: none;
+        }
+        .mypage-item__list li.mypage-item__not-found {
+          border: 0;
+        }
+        .mypage-item__list li:first-child {
+          border-bottom: 1px solid #eee;
+        }
+        .mypage-item__list li:last-child {
+          border: 0;
+        }
+        .mypage-item__list li {
+          position: relative;
+          border-bottom: 1px solid #eee;
+        }
+        .mypage-item__not-found {
+          padding: 160px 0 60px;
+          background: url(/jp/assets/img/common/common/logo-gray-icon.svg?65428115);
+          background-repeat: no-repeat;
+          background-position: center 40px;
+          background-size: 78px 85px;
+          text-align: center;
+          font-size: 16px;
+          color: #ccc;
+          .bold {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+  .l-side {
+    margin: 40px auto 0;
   }
 }
 
@@ -330,8 +506,36 @@ a {
       .mypage__user-icon {
         height: 200px;
       }
+      .modal__inner {
+        max-width: none;
+        width: 600px;
+        margin: 20px auto;
+        .modal__banner h2 {
+          font-size: 34px;
+        }
+        .modal__banner p {
+          font-size: 18px;
+        }
+        .modal__banner__eye-catch {
+          height: 310px;
+          .modal__banner__eye-catch img:first-child {
+            width: auto;
+            height: 100%;
+          }
+          .modal__banner__eye-catch img:last-child {
+            top: 16px;
+            left: 16px;
+            width: 110px;
+            height: 29px;
+          }
+        }
+      }
+      .mypage-tab__head {
+        padding: 0 16px;
+      }
     }
     .l-side {
+      width: 700px;
     }
   }
 }
@@ -348,6 +552,8 @@ a {
     }
     .l-side {
       float: left;
+      width: 280px;
+      margin: 0 40px 0 0;
     }
   }
 }
