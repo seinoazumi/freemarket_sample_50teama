@@ -4,7 +4,8 @@
   background: $white;
   padding: 50px 70px;
   .logout-btn{
-    @include red-btn;
+    @include btn-default;
+    @include btn-red;
     margin: 0 auto;
     max-width: 320px;
   }
@@ -36,17 +37,17 @@
     &__inner__num{
       display: inline-block;
       background-color: $base-red;
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       line-height:2;
-      padding-left:4px;
+      padding-left:5px;
       border-radius:50%;
       color: $white;
       font-size: 0.6em;
       font-weight:900;
       position: absolute;
-      right:20px;
-      top:20%;
+      right:30px;
+      top:22%;
     }
     .icon-arrow-r{
       display: block;

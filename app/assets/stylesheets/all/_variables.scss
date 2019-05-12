@@ -22,7 +22,11 @@
     border: 1px solid $link-blue;
     outline: none;
   }
+<<<<<<< Updated upstream
 } 
+=======
+}
+>>>>>>> Stashed changes
 
 // selectボタンのテンプレート
 @mixin select-default{
@@ -51,7 +55,11 @@
 }
 
 // textareaのテンプレート
+<<<<<<< Updated upstream
 @mixin textarea-default{ 
+=======
+@mixin textarea-default{
+>>>>>>> Stashed changes
   width:100%;
   display: block;
   margin-top: 8px;
@@ -66,7 +74,11 @@
 }
 
 // 青いはてなマーク
+<<<<<<< Updated upstream
 @mixin form-question{ 
+=======
+@mixin form-question{
+>>>>>>> Stashed changes
   display: inline-block;
   width: 14px;
   height: 14px;
@@ -91,6 +103,7 @@
 } 
 
 
+<<<<<<< Updated upstream
 // ボタンのテンプレート。
 @mixin btn-default{
   display: block;
@@ -114,3 +127,38 @@
   border: 1px solid $gray-lv2plus;
 }
 
+=======
+
+@mixin selection{
+  background-color: $link-blue-light;
+  color: $white;
+  text-shadow: none;
+} // 何かを選択している時の表示
+// &::selection{
+//   この中で使ってください。
+// }
+
+
+// ボタンのテンプレート。
+@mixin btn-default{
+  display: block;
+  width: 100%;
+  color: $white;
+  text-align: center;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+// 赤色ボタンならこちらbtn-default+btn-red。組み合わせてください。
+@mixin btn-red{
+  background-color: $base-red;
+  border: 1px solid $base-red;
+}
+
+// グレーのボタン
+@mixin btn-gray{
+  background-color: $gray-lv2plus;
+  border: 1px solid $gray-lv2plus;
+}
+>>>>>>> Stashed changes

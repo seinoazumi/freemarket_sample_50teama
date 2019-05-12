@@ -23,7 +23,7 @@
  @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Patua+One");
  @import 'all/icons.scss'; //アイコン一覧
 
- 
+
 //-----------------------------items
 @import 'items/main-header.scss';
 @import 'items/drop-down-list.scss';
@@ -36,13 +36,17 @@
 
 //----------------------------shared 色々なページで使いまわせるもの
 
-@import 'single-wrapper.scss'; //商品取引ページなどの上下の部分 
+@import 'single-wrapper.scss'; //商品取引ページなどの上下の部分
 @import 'breadcrumb.scss'; //パンくずリスト
 
 
 //-------------------------------users
+<<<<<<< Updated upstream
 
 @import 'items/new.scss';
 
+=======
+@import 'items/new.scss';
+>>>>>>> Stashed changes
 @import 'users.scss';
 @import 'users/logout.scss';
