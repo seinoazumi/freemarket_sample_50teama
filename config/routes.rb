@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   }
 
   root 'items#index'
+  get 'logout' => 'users#logout'
+
 
   resources :users, only: [:show, :new]
   resources :items, only: [:index, :show, :new, :create] do

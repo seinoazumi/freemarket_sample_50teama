@@ -9,31 +9,31 @@
         %ul.sp-header__user-nav
           %li.sp-header__user-nav__list.icon-bell
             = link_to '', src: '#', class: 'sp-header__user-icon'
-          
+
           %li.sp-header__user-nav__list.icon-check
             = link_to '', src: '#', class: 'sp-header__user-icon'
-          
+
           %li.sp-header__user-nav__list
             = link_to 'マイページへのリンク', src: '#', class: 'sp-header-user-icon user-profile__avatar' do
               = image_tag 'avatar.jpg', alt: 'プロフィール写真', width: 32
-      
+
       .header__search-bar
         = form_tag '#', method: :get do
-          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "header__search-bar__search"} 
+          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "header__search-bar__search"}
           %i.icon-search
 
       %ul.header__nav
         %li.header__nav__list.icon-list= link_to 'カテゴリー一覧', src: '#'
-         
+
         %li.header__nav__list.icon-tag= link_to 'ブランドから探す', src: '#'
-          
+
 %header.pc-header.visible-pc
   .pc-header__inner
     .pc-header__top-content
       %h1.pc-header__top-content__logo
         = link_to 'メルカリトップページへのリンク', src: '#' do
           = image_tag "logo.svg", alt: 'mercari', width: 134, height: 36
-    
+
       .header__search-bar
         = form_tag '#', method: :get do
           = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "header__search-bar__search"}
@@ -59,19 +59,41 @@
       .pc-header__nav__list-r
         %ul.pc-header__user-nav
           %li.pc-header__user-nav__list#notification-list__root.icon-bell= link_to 'お知らせ', src: '#'
-          -# jsではなくcssで入れたほうが望ましいとの結論が出たらコメントアウトを外す
-          -# %ul.pc-header__user-box.pc-header__notification-list
-          -#   %li.pc-header__notification-list__link お知らせ１
-          -#   %li.pc-header__notification-list__link お知らせ２
-          -#   %li.pc-header__notification-list__link お知らせ３
-          -#   %li.pc-header__notification-list__link お知らせ４
-          
+          %ul#notification-list.pc-header__user-box
+            %li.pc-header__notification-list__link
+              .merucari-avatar
+              %figure
+                =image_tag 'mercari_profile.png', alt: "icon"
+              .notification-box.icon-arrow-r
+                %p.notification-box__message お知らせ１
+                %p.notification-box__date-passed.icon-clock 1日前
+            %li.pc-header__notification-list__link
+              .merucari-avatar
+              %figure
+                =image_tag 'mercari_profile.png', alt: "icon"
+              .notification-box.icon-arrow-r
+                %p.notification-box__message お知らせ１
+                %p.notification-box__date-passed.icon-clock 1日前
+            %li.pc-header__notification-list__link
+              %figure
+                =image_tag 'mercari_profile.png', alt: "icon"
+              .notification-box.icon-arrow-r
+                %p.notification-box__message お知らせ１
+                %p.notification-box__date-passed.icon-clock 1日前
+            %li.pc-header__notification-list__link
+              %figure
+                =image_tag 'mercari_profile.png', alt: "icon"
+              .notification-box.icon-arrow-r
+                %p.notification-box__message お知らせ１
+                %p.notification-box__date-passed.icon-clock 1日前
+
+
           %li.pc-header__user-nav__list.icon-check.todo-list= link_to 'やることリスト', src: '#'
           -# %ul.pc-header__user-box.pc-header__todo-list
           -#   %li.pc-header__todo-list__link やることリスト１
           -#   %li.pc-header__todo-list__link やることリスト２
           -#   %li.pc-header__todo-list__link やることリスト３
-          
+
           %li.pc-header__user-nav__list
             = link_to 'マイページへのリンク', src: '#', class: 'user-profile__avatar' do
               = image_tag 'avatar.jpg', alt: 'プロフィール写真', width: 32
@@ -83,7 +105,7 @@
             -#     %figcaption ユーザーネーム
             -#   %ul.pc-header-mypage__review__list
             -#     %li
-            -#       = link_to '出品数： **', src: '#' 
+            -#       = link_to '出品数： **', src: '#'
             -#     %li
             -#       = link_to '評価： **', src: '#'
             -#   %ul.pc-header-mypage__money-piont
@@ -91,14 +113,14 @@
             -#       = link_to '売上金', src: '#' do
             -#         .l-lef
             -#           %p 売上金
-            -#         .l-right 
+            -#         .l-right
             -#           %p ¥ 0,000
             -#           %i.icon-allow-right
             -#     %li
             -#       = link_to 'ポイント', src: '#' do
             -#         .l-left
             -#           %p ポイント
-            -#         .l-right 
+            -#         .l-right
             -#           %p 0 P
             -#           %i.icon-allow-right
               -# %ul.pc-header-mypage__list
