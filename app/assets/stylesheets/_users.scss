@@ -221,21 +221,56 @@
   }
 }
 
-// show マイページで作成
-main.l-container {
-  display: flex;
-  flex-direction: row;  // 最大時はrow, 他はcolumn
-  margin: 24px auto 0;
-  padding: 0 0 40px;
-  .l-content {
-    float: right;
-    width: 700px; // 最大時以外で適用　@media screen and (min-width: 768px)
-  }
 
-  .l-side {
-    float: left;
-    width: 280px;
-    width: 700px; // 最大時以外で適用　@media screen and (min-width: 768px)
-    margin: 0 40px 0 0;
+// show マイページで作成
+
+@media screen and (min-width: 768px) { 
+  main.l-container {
+    display: flex;
+    flex-direction: column;  // 最大時はrow, 他はcolumn
+    margin: 24px auto 0;
+    padding: 0 0 40px;
+    .l-content {
+      float: none;
+      width: 700px; // 最大時以外で適用　@media screen and (min-width: 768px)
+      .mypage__user-icon {
+        height: 200px;
+      }
+    }
+
+    .l-side {
+      float: none;
+      width: 700px; // 最大時以外で適用　@media screen and (min-width: 768px)
+      margin: 40px auto 0;
+    }
+  }
+ 
+} 
+
+@media screen and (min-width: 1068px) { 
+  main.l-container {
+    display: flex;
+    flex-direction: column;  // 最大時はrow, 他はcolumn
+    margin: 24px auto 0;
+    padding: 0 0 40px;
+    .l-content {
+      float: right;
+      .mypage__user-icon {
+        position: relative;
+        height: 155px;
+        padding: 20px;
+        background: url(/jp/assets/img/mypage/user-bg.jpg?65428115);
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+      }
+    }
+
+    .l-side {
+      float: left;
+      width: 280px;
+      margin: 40px auto 0;
+    }
   }
 }
+
