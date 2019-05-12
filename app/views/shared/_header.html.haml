@@ -59,8 +59,8 @@
       .pc-header__nav__list-r
         %ul.pc-header__user-nav
           %li.pc-header__user-nav__list#notification-list__root.icon-bell= link_to 'お知らせ', src: '#'
-          %ul#notification-list.pc-header__user-box
-            %li.pc-header__notification-list__link
+          %ul#notification-list.user-box
+            %li.user-box__notification-list__link
               .merucari-avatar
               %figure
                 =image_tag 'mercari_profile.png', alt: "icon"
@@ -89,10 +89,9 @@
 
 
           %li.pc-header__user-nav__list.icon-check.todo-list= link_to 'やることリスト', src: '#'
-          -# %ul.pc-header__user-box.pc-header__todo-list
-          -#   %li.pc-header__todo-list__link やることリスト１
-          -#   %li.pc-header__todo-list__link やることリスト２
-          -#   %li.pc-header__todo-list__link やることリスト３
+          .pc-header__user-box#todo-list.todo-list__inner
+            = image_tag "logo-gray.svg", alt: "メルカリのグレーのロゴ"
+            %p.todo-list__message 現在、やることリストはありません
 
           %li.pc-header__user-nav__list
             = link_to 'マイページへのリンク', src: '#', class: 'user-profile__avatar' do
