@@ -10,10 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- 
+
  *= require_self
  */
- 
+
  //---------------------------all 全ページ共通のcss
 
  @import 'all/reset.scss'; //リセットcss 原則変更しない
@@ -22,11 +22,6 @@
  @import 'all/common.scss'; // 多くの要素に共通のcss, 汎用クラスのcss
  @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Patua+One");
  @import 'all/icons.scss'; //アイコン一覧
-
- 
-//----------------------------shared 色々なページで使いまわせるもの
-
-@import 'single-wrapper.scss'; //商品取引ページなどの上下の部分 
 
 
 //-----------------------------items
@@ -37,4 +32,17 @@
 @import 'items/item-box.scss';
 @import 'items/main-aside.scss';
 @import 'items/main-footer.scss';
+
+
+//----------------------------shared 色々なページで使いまわせるもの
+
+@import 'single-wrapper.scss'; //商品取引ページなどの上下の部分
+@import 'breadcrumb.scss'; //パンくずリスト
+
+
+//-------------------------------users
+
+
+@import 'items/new.scss';
 @import 'users.scss';
+@import 'users/logout.scss';

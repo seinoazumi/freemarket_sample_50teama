@@ -1,0 +1,266 @@
+.space{
+  margin-top:40px;
+}
+.relative{
+  position: relative;
+  .icon-select::before {
+    position: absolute;
+    top:32px;
+    right:22px;
+    font-size: 18px;
+    color: $gray-lv2plus;
+  }
+}
+.hidden{
+  .icon-select::before {
+    position: absolute;
+    top:23px;
+    right:22px;
+    font-size: 18px;
+    color: $gray-lv2plus;
+  }
+}
+.item-wrapper {
+  background-color: $white;
+  margin: 0 auto;
+  width: 700px;
+  .title {
+    display: block;
+    font-size: 22px;
+    padding: 37px 16px;
+    font-weight: bold;
+    border-bottom: 1px solid $gray-lv1;
+  }
+// form
+  .item-new {
+    text-align: left;
+    .form-section{
+      padding: 40px;
+      border-bottom: 1px solid $gray-lv1;
+      }
+      .input-part{
+        &__title{
+          display: block;
+          float: left;
+          font-size: 16px;
+          font-weight: bolder;
+          margin-bottom: 8px;
+        }
+        &__details{
+          clear: both;
+          margin-bottom: 10px;
+        }
+        &__require{
+          background: $base-red;
+          margin-left: 10px;
+          padding: 2px 4px;
+          font-size: 12px;
+          vertical-align: top;
+          color: $white;
+          font-weight: bold;
+          border-radius: 2px;
+        }
+        &__option{
+          background: $gray-lv2plus;
+          margin-left: 10px;
+          padding: 2px 4px;
+          font-size: 12px;
+          vertical-align: top;
+          color: $white;
+          font-weight: bold;
+          border-radius: 2px;
+
+        }
+        &__details{
+          overflow:hidden;
+        }
+        &__dropbox{
+          background: $gray-lv1;
+          border: 1px dashed $gray-lv2;
+          min-height: 162px;
+          line-height: 1.5;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        &__input{
+          @include input-default;
+        }
+        &__textarea{
+          @include textarea-default;
+        }
+        &__select{
+          @include select-default;
+          width:100%;
+          clear: both;
+          position: relative;
+        }
+        &__price{
+          &--bace{
+            line-height: 48px;
+            height: 72px;
+            padding-bottom: 24px;
+            .input-part__title{
+              font-size: 14px;
+            }
+            &--right{
+              width:50%;
+              .yen{
+                display: block;
+                float: left;
+                padding-left:20px;
+              }
+              .input-part__input{
+                width:160px;
+                float: right;
+              }
+            }
+          }
+          &--fee{
+            padding: 24px 0;
+            font-size: 14px;
+            border-top: 1px solid $gray-lv2;
+            &--right{
+              width:160px;
+            }
+            &--output{
+              text-align: right;
+            }
+          }
+          &--total{
+            font-size: 16px;
+            font-weight: bold;
+            padding: 24px 0;
+            border-top: 1px solid $gray-lv2;
+            &--right{
+              width: 160px;
+            }
+            &--output{
+              text-align: right;
+              font-size: 28px;
+            }
+          }
+        }
+      }
+    .flex-container{
+      display: flex;
+      justify-content: space-between;
+      &__left{
+        .sell-sub-head{
+          color: $gray-lv3;
+          font-weight: bold;
+          font-size: 14px;
+          float: left;
+        }
+        .form-question{
+          @include form-question;
+        }
+      }
+      &__right{
+        width: 400px;
+      }
+    }
+    .notes{
+      line-height: 1.5;
+      &__link{
+        color: $link-blue;
+      }
+    }
+    .submit-btn--red{
+      @include btn-default;
+      @include btn-red;
+      margin: 40px 0 0;
+    }
+
+    .submit-btn--gray{
+      @include btn-default;
+      @include btn-gray;
+      width: 45%;
+      margin: 24px auto 0;
+    }
+  }
+}
+//メディアクエリ
+@media screen and (max-width: 768px) {
+  .item-wrapper{
+    width:100%;
+    .title {
+      padding:24px 8px;
+      font-size: 18px;
+    }
+    .media-min{
+      padding: 40px 12.5px!important;
+      //textをfontawesomeに変更
+      &__hidden{
+        display: none;
+      }
+      &__append{
+        .sell-form__image--dropbox{
+          position: relative;
+        }
+        &--icon::before{
+          @include font-awesome-base;
+          content: '\f030';
+          font-size: 16px;
+        }
+      }
+      &--clear{
+        display: inline!important;
+      }
+    }
+    .flex-container{
+      display: inherit!important;
+      .flex-container__left{
+        .sell-sub-head{
+          float: none!important;
+        }
+        .form-question{
+          clear: both!important;
+        }
+      }
+      .flex-container__right{
+        width:100%!important;
+        margin-top:40px;
+        .input-part__price--bace,.input-part__price--fee,.input-part__price--total{
+          display: flex;
+          justify-content: space-between;
+        }
+        .input-part__title,.yen{
+          font-size:14px;
+        }
+        .input-part__require{
+          font-size:12px;
+        }
+      }
+    }
+    .input-part__price--bace{
+      &--left{
+        float: left!important;
+      }
+      &--right{
+        float: right!important;
+        width: 50%!important;
+        .yen{
+          text-align: right!important;
+        }
+        .input-part__input{
+          width:80%!important;
+          float: right;
+          text-align: right;
+        }
+      }
+    }
+    .input-part__price {
+      .border-top{
+        margin-bottom: 10px;
+      }
+      .input-part__price--fee--left,.input-part__price--total--left{
+        float: left;
+      }
+      .input-part__price--fee--right,.input-part__price--fee--right{
+        float: right;
+      }
+    }
+  }
+}
