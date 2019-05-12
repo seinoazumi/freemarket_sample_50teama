@@ -87,8 +87,10 @@
 %main.l-container.clearfix
   .l-content
     %section.mypage-user-icon
-      %a{:href => "#"}
+      = link_to "", {controller: "users", action: "edit"} do
         %figure
+          -# TODO: ユーザーそれぞれの画像パスへ変更
+          = image_tag "avatar.jpg", size: "60x60"
           %img{:alt => "", :height => "60", :src => "#", :width => "60"}/
         %h2.bold 検証
         .mypage-number
@@ -103,12 +105,14 @@
         -# .activeをjsでつけけることで表示を変える
         %li.active
           %h3
-            %a{"data-toggle" => "tab", :href => "#mypage-tab__notification"}
-              お知らせ
+            -# TODO: ページ内リンクを生成したいがうまくいかず、遷移を伴ってしまう。
+            -# オリジナルではページ内リンクが設定されているものの、実際にはページ内の移動さえ起こらない、原理不明
+            -# data-toggleが不明、モーダル表示のソースが存在するが、いつ出現するか謎。
+            = link_to "お知らせ", user_path(anchor: "mypage-tab__notification"), data: {toggle: "tab"}
         %li
           %h3
-            %a{"data-toggle" => "tab", :href => "#mypage-tab__todo"}
-              やることリスト
+            -# TODO: なぜかactiveでないこちらは遷移が発生しない、この動きをactiveにも実現したい。
+            = link_to "やることリスト", user_path(anchor: "mypage-tab__todo"), data: {toggle: "tab"}
       .tab-content
         -# .activeをjsでつけけることで表示を変える
         %ul#mypage-tab__notification.mypage-item-list.tab-pane.active
@@ -121,20 +125,21 @@
         -# .activeをjsでつけけることで表示を変える
         %li.active
           %h3
-            %a{"data-toggle" => "tab", :href => "#mypage-tab__transaction-now"}
-              取引中
+            -# TODO: notificaation-todoと同様
+            = link_to "取引中", user_path(anchor: "mypage-tab__transaction-now"), data: {toggle: "tab"} 
         %li
           %h3
-            %a{"data-toggle" => "tab", :href => "#mypage-tab__transaction-old"}
-              過去の取引
+            -# TODO: notificaation-todoと同様
+            = link_to "過去の取引", user_path(anchor: "mypage-tab__transaction-old"), data: {toggle: "tab"} 
       .tab-content
+        -# .activeをjsでつけけることで表示を変える
         %ul#mypage-tab__transaction-now.mypage-item-list.tab-pane.active
           %li.mypage-item-not-found.bold 取引中の商品がありません
         %ul#mypage-tab__transaction-old.mypage-item-list.tab-pane
           %li.mypage-item-not-found.bold 過去に取引した商品がありません
 
   %aside.modal{"data-close" => "modal", "data-modal" => "banner"}
-  -# モーダル表示
+  -# モーダル表示、どのタイミングで表示されるのか謎
     -# .modal__inner.modal__banner
     -#   .modal__banner__eye-catch
     -#     %img{:alt => "", :src => "//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?376951604"}/

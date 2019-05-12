@@ -230,8 +230,13 @@ ul, ol {
 }
 
 a {
-  color: #0099e8;
+  color: $link-blue;
   text-decoration: none;
+}
+
+a, area, button, input, label, select, textarea, [tabindex] {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
 }
 
 nav {
@@ -253,6 +258,16 @@ h3 {
   font-size: 22px;
 }
 
+h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
 img {
   vertical-align: middle;
 }
@@ -269,11 +284,11 @@ img {
   position: relative;
   height: 155px;
   padding: 20px;
-  background: image-url("user-bg.jpg");
+  background: image-url("user_bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
-  >a {
+  & > a {
     display: block;
     position: absolute;
     top: 50%;
@@ -281,7 +296,10 @@ img {
     right: 0;
     -webkit-transform: translate(0, -50%);
     transform: translate(0, -50%);
-    color: #333;
+    color: $gray-lv4;
+    &:hover {
+      opacity: 0.8;
+    }
   }
   figure {
     overflow: hidden;
@@ -296,6 +314,11 @@ img {
   h2 {
     margin: 8px 0 0;
     font-size: 14px;
+    // TODO: この方法では<h2>ユーザーネームのテキスト上だけで下線がつく。
+    // オリジナルではこの<a>エリアに乗った時に下線がつく
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 .mypage-number {
@@ -304,9 +327,9 @@ img {
   div {
     display: inline-block;
     font-size: 14px;
-  }
-  div+div {
-    margin: 0 0 0 16px;
+    & + div {
+      margin: 0 0 0 16px;
+    }
   }
   span {
     margin: 0 0 0 8px;
@@ -325,19 +348,19 @@ img {
 }
 .mypage-tab-container {
   margin: 40px 0 0;
-  background: #fff;
+  background: $white;
 }
 
 .mypage-tab-container-notification-todo {
   margin: 0;
-  background: #fff;
+  background: $white;
 }
 
 .mypage-tabs {
   display: flex;
   flex-direction: row;
   border: 0;
-  background: #eee;
+  background: $gray-lv1plus;
   font-size: 0;
   li {
     width: 50%;
@@ -346,15 +369,20 @@ img {
     vertical-align: top;
   }
   li.active {
-    background: #fff;
+    background: $white;
     a {
-      border-top: 2px solid #ea352d;
+      border-top: 2px solid $base-red;
+      // TODO: 背景色は変えずに赤ボーダーと文字色を薄くする、li左右共に jsのほうが簡単そう？？
+      // このクラス構成のままだとliホバー時にactiveの白背景も薄くなる
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
   a {
     position: relative;
     display: block;
-    color: #333;
+    color: $gray-lv4;
     font-size: 16px;
     line-height: 72px;
   }
@@ -374,9 +402,9 @@ img {
 .mypage-item-list {
   li {
     position: relative;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid $gray-lv1plus;
     &:first-child {
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid $gray-lv1plus;
     }
     &:last-child {
       border: 0;
@@ -389,8 +417,8 @@ img {
     display: block;
     height: 56px;
     margin: 0 auto;
-    background: #eee;
-    color: #333;
+    background: $gray-lv1plus;
+    color: $gray-lv4;
     line-height: 56px;
     text-align: center;
   }
@@ -405,7 +433,7 @@ img {
   background-size: 78px 85px;
   text-align: center;
   font-size: 16px;
-  color: #ccc;
+  color: $gray-lv2;
   .bold {
     font-weight: 600;
   }
@@ -434,7 +462,7 @@ img {
     width: 95%;
     max-width: 375px;
     margin: 8px auto;
-    background: #fff;
+    background: $white;
   }
   img {
     width: 100%;
@@ -444,7 +472,7 @@ img {
     h2 {
       font-size: 22px;
       line-height: 1;
-      color: #ea352d;
+      color: $base-red;
     }
     p {
       margin: 16px 0 0;
@@ -469,9 +497,9 @@ img {
       display: block;
       width: 100%;
       margin: 32px 0 0;
-      background: #ea352d;
+      background: $base-red;
       font-size: 16px;
-      color: #fff;
+      color: $white;
       line-height: 50px;
     }
     &__eye-catch {
@@ -573,4 +601,3 @@ img {
     }
   }
 }
-
