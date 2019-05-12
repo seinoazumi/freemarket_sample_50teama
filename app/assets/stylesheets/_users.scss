@@ -223,53 +223,131 @@
 
 
 // show マイページで作成
+// minimum時、基本サイズ（@media表記なしのものを拾う）
+.bold {
+  font-weight: 600;
+}
 
+ul, ol {
+  list-style: none;
+}
+
+a {
+  color: #0099e8;
+  text-decoration: none;
+}
+
+.l-container {
+  display: flex;
+  flex-direction: column;  
+  margin: 24px auto 0;
+  padding: 0 0 40px;
+  .l-content {
+    width: 100%;
+    .mypage__user-icon {
+      position: relative;
+      height: 155px;
+      padding: 20px;
+      background: url(/jp/assets/img/mypage/user-bg.jpg?65428115);
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      .mypage-user-icon>a {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        color: #333;
+        .mypage-user-icon figure {
+          overflow: hidden;
+          width: 60px;
+          height: 60px;
+          margin: 0 auto;
+          border-radius: 50%;
+        }
+        .mypage-number {
+          margin: 8px 0 0;
+          font-size: 0;
+          .mypage-number div {
+            display: inline-block;
+            font-size: 14px;
+            .mypage-number span {
+              margin: 0 0 0 8px;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+      .mypage-tab-container-notification-todo {
+        margin: 0;
+        background: #fff;
+        .mypage-tabs, .listing-tabs, .review-history-tabs {
+          border: 0;
+          background: #eee;
+          font-size: 0;
+          h3 {
+            font-size: 22px;
+          }
+          .mypage-tabs li.active, .listing-tabs li.active, .review-history-tabs li.active {
+            background: #fff;
+            .mypage-tabs li.active a, .listing-tabs li.active a, .review-history-tabs li.active a {
+              border-top: 2px solid #ea352d;
+            }
+          }
+          .mypage-tabs li {
+            width: 50%;
+          }
+          .mypage-tabs li, .listing-tabs li, .review-history-tabs li {
+            display: inline-block;
+            text-align: center;
+            vertical-align: top;
+          }
+          .mypage-tabs a, .listing-tabs a, .review-history-tabs a {
+            position: relative;
+            display: block;
+            color: #333;
+            font-size: 16px;
+            line-height: 72px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// @media 768のものを拾う
 @media screen and (min-width: 768px) { 
-  main.l-container {
+  .l-container {
     display: flex;
-    flex-direction: column;  // 最大時はrow, 他はcolumn
-    margin: 24px auto 0;
-    padding: 0 0 40px;
+    flex-direction: column;
+    width: 700px;
     .l-content {
       float: none;
-      width: 700px; // 最大時以外で適用　@media screen and (min-width: 768px)
+      width: 700px;
       .mypage__user-icon {
         height: 200px;
       }
     }
-
     .l-side {
-      float: none;
-      width: 700px; // 最大時以外で適用　@media screen and (min-width: 768px)
-      margin: 40px auto 0;
     }
   }
+}
  
-} 
-
+// @media 1068のものを拾う
 @media screen and (min-width: 1068px) { 
-  main.l-container {
+  .l-container {
     display: flex;
-    flex-direction: column;  // 最大時はrow, 他はcolumn
-    margin: 24px auto 0;
-    padding: 0 0 40px;
+    flex-direction: row;
+    margin: 40px auto 0;
+    width: 1020px;
     .l-content {
       float: right;
-      .mypage__user-icon {
-        position: relative;
-        height: 155px;
-        padding: 20px;
-        background: url(/jp/assets/img/mypage/user-bg.jpg?65428115);
-        background-repeat: no-repeat;
-        background-size: cover;
-        text-align: center;
-      }
     }
-
     .l-side {
       float: left;
-      width: 280px;
-      margin: 40px auto 0;
     }
   }
 }
