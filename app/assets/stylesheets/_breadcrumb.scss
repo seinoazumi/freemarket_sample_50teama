@@ -1,0 +1,50 @@
+.breadcrumb-container{
+  position: relative;
+  border-top: 1px solid $gray-lv2;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  background: $white;
+  width:100%;
+
+  .breadcrumb{
+    display: flex;
+    padding-left: 10px;
+    &__list{
+      display: inline-block;
+      padding: 10px;
+      font-size: 14px;
+      line-height: 1.5;
+      text-align: center;
+      &::after{
+        margin-left: 5px;
+        color: $gray-lv2;
+      }
+      &:last-child{
+        font-weight: 900;
+      }
+      &:hover{
+        text-decoration: underline;
+        opacity: .7;
+        &::after{
+          text-decoration: none; //chromeの仕様だとこれが効かないらしいが、他のブラウザでは聞く様なので、そのままにしています
+        }
+      }
+      &::selection{
+        @include selection
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px){
+  .breadcrumb{
+    width: 700px;
+    margin: 0 auto;
+  }
+}//タブレットサイズ以上の時の表示
+
+@media screen and (min-width: 1068px){
+  .breadcrumb{
+    width: 1020px;
+    margin: 0 auto;
+  }
+}//タブレットサイズ以上の時の表示

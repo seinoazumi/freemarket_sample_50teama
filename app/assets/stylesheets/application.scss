@@ -23,11 +23,6 @@
  @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Patua+One");
  @import 'all/icons.scss'; //アイコン一覧
 
- 
-//----------------------------shared 色々なページで使いまわせるもの
-
-@import 'single-wrapper.scss'; //商品取引ページなどの上下の部分 
-
 
 //-----------------------------items
 @import 'items/main-header.scss';
@@ -37,5 +32,17 @@
 @import 'items/item-box.scss';
 @import 'items/main-aside.scss';
 @import 'items/main-footer.scss';
+
+
+//----------------------------shared 色々なページで使いまわせるもの
+
+@import 'single-wrapper.scss'; //商品取引ページなどの上下の部分
+@import 'breadcrumb.scss'; //パンくずリスト
+
+
+//-------------------------------users
+
+
 @import 'items/new.scss';
 @import 'users.scss';
+@import 'users/logout.scss';
