@@ -7,7 +7,7 @@
 
   .breadcrumb{
     display: flex;
-    margin-left: 5px;
+    padding-left: 10px;
     &__list{
       display: inline-block;
       padding: 10px;
@@ -24,6 +24,9 @@
       &:hover{
         text-decoration: underline;
         opacity: .7;
+        &::after{
+          text-decoration: none; //chromeの仕様だとこれが効かないらしいが、他のブラウザでは聞く様なので、そのままにしています
+        }
       }
       &::selection{
         @include selection
@@ -31,3 +34,17 @@
     }
   }
 }
+
+@media screen and (min-width: 768px){
+  .breadcrumb{
+    width: 700px;
+    margin: 0 auto;
+  }
+}//タブレットサイズ以上の時の表示
+
+@media screen and (min-width: 1068px){
+  .breadcrumb{
+    width: 1020px;
+    margin: 0 auto;
+  }
+}//タブレットサイズ以上の時の表示
