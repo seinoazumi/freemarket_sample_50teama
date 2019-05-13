@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    :registrations => 'users/registrations'
+  }
 
   root 'items#index'
   get 'logout' => 'users#logout'
 
 
-  resources :users, only: [:show, :edit]
+  resources :users, only: [:show, :edit, :new]
   resources :items, only: [:index, :show, :new, :create] do
     resources :categories, only: [:search]
   end
