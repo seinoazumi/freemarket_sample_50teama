@@ -26,6 +26,7 @@
 
 // selectボタンのテンプレート
 @mixin select-default{
+  appearance: none;
   -webkit-appearance: none;/* ベンダープレフィックス(Google Chrome、Safari用) */
   -moz-appearance: none;	/* ベンダープレフィックス(Firefox用) */
   position: relative;
@@ -38,7 +39,6 @@
   line-height: 1.5;
   margin-top: 8px;
   cursor: pointer;
-  appearance: none;
   .icon-select::before {
     @include font-awesome-base;
     content: '\f078';

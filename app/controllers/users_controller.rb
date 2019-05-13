@@ -4,10 +4,13 @@ class UsersController < ApplicationController
 
   end
 
+
+  def new
+
+  end
+
   def logout
   end
 
-  def edit
-  end
 
 end

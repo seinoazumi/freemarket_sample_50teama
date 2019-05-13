@@ -1,0 +1,23 @@
+.single-wrapper
+  = render partial: "/shared/single-header"
+  .single-container
+    .sign-up
+      .panel
+        .panel__head 新規会員登録
+        .panel__inner
+          .mail-registration
+            .mail-registration__left
+              .icon-envelope
+            .mail-registration__right
+              = link_to "メールアドレスで登録", src:"#"
+          .facebook-registration
+            .facebook-registration__left
+              .icon-facebook-square
+            .mail-registration__right
+              = link_to "Facebookで登録", src:"#"
+          .google-registration
+            .google-registration__left
+              = image_tag 'G_logo.png', height:'20px'
+            .google-registration__right
+              = link_to "Googleで登録", src:"#"
+  = render partial: "/shared/single-footer"
