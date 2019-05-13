@@ -1,5 +1,9 @@
 .edit-page{
   padding-bottom:20px !important;
+  margin-top: -20px;
+  .single-header__logo{
+    display: none;
+  }
   .panel{
     height:620px;
     padding-bottom:30px;

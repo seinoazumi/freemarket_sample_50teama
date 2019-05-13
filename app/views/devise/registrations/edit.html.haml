@@ -1,3 +1,6 @@
+=render 'shared/header'
+= render 'shared/breadcrumb'
+
 .single-wrapper.edit-page
   = render partial: "/shared/single-header"
   .single-container
@@ -14,4 +17,9 @@
                 %p= f.text_area :profile, class: "user-info__plofiele"
                 %p= f.submit "変更する", class: "user-info__edit-btn"
 
-= render 'shared/mypage-nav.html.haml'
+.footer_sell_btn
+  = link_to '', href:'#' do
+    %p.footer_sell_btn__litter 出品
+    %p.icon-camera
+
+= render 'shared/mypage-nav'
