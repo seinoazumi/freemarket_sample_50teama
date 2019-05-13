@@ -2,85 +2,86 @@
 = render 'shared/breadcrumb'
 
 
-%main.single-wrapper.item-detail-page
-  .single-container
-    .panel
-      %h2.panel__head 商品詳細情報
-      .panel__inner
-      .panel__inner__item-photo
-        .panel__inner__item-price
-        .panel__inner__sales-message
-        .panel__inner__buy-btn
-        .seller-info
-          %table.item-detail-table
-            %tbody
-              %tr
-                %th 出品者
-                %td
-                  %a{:href => "https://www.mercari.com/jp/u/261300952/"} なっちゃん
-                  %div
-                    .item-user-ratings
-                      %i.icon-good
-                      %span 106
-                    .item-user-ratings
-                      %i.icon-normal
-                      %span 2
-                    .item-user-ratings
-                      %i.icon-bad
-                      %span 0
-              %tr
-                %th カテゴリー
-                %td
-                  %a{:href => "https://www.mercari.com/jp/category/1/"}
-                    %div レディース
-                  %a{:href => "https://www.mercari.com/jp/category/21/"}
-                    .item-detail-table-sub-category
-                      %i.icon-arrow-right
-                      アクセサリー
-                  %a{:href => "https://www.mercari.com/jp/category/226/"}
-                    .item-detail-table-sub-sub-category
-                      %i.icon-arrow-right
-                      ネックレス
-              %tr
-                %th ブランド
-                %td
-              %tr
-                %th 商品の状態
-                %td 目立った傷や汚れなし
-              %tr
-                %th 配送料の負担
-                %td 送料込み(出品者負担)
-              %tr
-                %th 配送の方法
-                %td 普通郵便(定形、定形外)
-              %tr
-                %th 配送元地域
-                %td
-                  %a{:href => "https://www.mercari.com/jp/area/28/"} 兵庫県
-              %tr
-                %th 発送日の目安
-                %td 4~7日で発送
-      .panel__inner__item-price
-      .panel__inner__sales-message
-      .panel__inner__buy-btn
+%main.single-container.item-detail-page
+  .panel
+    %h2.panel__head 商品詳細情報
+    .item-info
+      .item-info__photo
+      .item-info__price
+        %p
+          ¥ 1,000
+          %span.item-info__price__tax (税込)
+          %span.item-info__price__sipping 送料込み
+      .sales-message 売上金●●円をお持ちです
+      .buy-btn 購入画面に進む
+
+    %table.detail-info
+      %tbody
+        %tr
+          %th 出品者
+          %td.detail-info__nickname
+            =link_to '出品者名','#'
+            .detail-info__ratings
+              %i.icon-good
+              %span 106
+            .detail-info__ratings
+              %i.icon-normal
+              %span 2
+            .detail-info__ratings
+              %i.icon-bad
+              %span 0
+        %tr
+          %th カテゴリー
+          %td.detail-info__category
+            %p=link_to 'カテゴリー１', '#'
+            %p=link_to 'カテゴリー２', '#'
+            %p=link_to 'カテゴリー３', '#'
+
+        %tr
+          %th ブランド
+          %td.detail-info__brand
+            %p=link_to 'ブランド名', '#'
+        %tr
+          %th 商品の状態
+          %td 目立った傷や汚れなし
+        %tr
+          %th 配送料の負担
+          %td 送料込み(出品者負担)
+        %tr
+          %th 配送の方法
+          %td 普通郵便(定形、定形外)
+        %tr
+          %th 配送元地域
+          %td
+            %p=link_to '県名', '#'
+        %tr
+          %th 発送日の目安
+          %td 4~7日で発送
+      .item-info__price
+        %p
+          ¥ 1,000
+          %span.item-info__price__tax (税込)
+          %span.item-info__price__sipping 送料込み
+      .sales-message 売上金●●円をお持ちです
+      .buy-btn 購入画面に進む
+
       -# 上にも同じタグがあります
+
       .panel__inner__message
-      .icon-like
-        %p いいね！
-      .icon-report
-        %p 不適切な商品の報告
+      %p.icon-like いいね！
+      %p.icon-report 不適切な商品の報告
       %p.icon-bag.panel__inner__safe
 
-    .previous-item
-    .next-item
+  .previous-item
+  .next-item
 
     -# ここにソーシャルボタンがあるけど、高橋さん持っているかも？
-  %section.pick-up-container
-    %h2.pick-up-container__header 「出品者の名前」さんのその他の出品
-    = render 'shared/items-box'
+%section.pick-up-container
+  %h2.pick-up-container__header 「出品者の名前」さんのその他の出品
+  = render 'shared/items-box'
 
-  %section.pick-up-container
-    %h2.pick-up-container__header 「カテゴリー名」のその他の商品
-    = render 'shared/items-box'
+%section.pick-up-container
+  %h2.pick-up-container__header 「カテゴリー名」のその他の商品
+  = render 'shared/items-box'
 
 = render 'shared/footer'
