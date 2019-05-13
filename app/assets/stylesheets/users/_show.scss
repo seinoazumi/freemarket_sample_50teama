@@ -1,0 +1,374 @@
+ul, ol {
+  list-style: none;
+}
+
+a {
+  color: $link-blue;
+  text-decoration: none;
+}
+
+a, area, button, input, label, select, textarea, [tabindex] {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+nav {
+  display: block;
+}
+
+h2 {
+  display: block;
+  font-size: 1.5em;
+  // オリジナルで打ち消されずに存在するが、適用するとレイアウトが崩れる。
+  // margin-block-start: 0.83em;
+  // margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+img {
+  vertical-align: middle;
+}
+
+[data-toggle='open-app'] {
+  display: none;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.mypage-user-icon {
+  position: relative;
+  height: 155px;
+  padding: 20px;
+  background: image-url("user_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  & > a {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    color: $gray-lv4;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  figure {
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 50%;
+    img {
+      vertical-align: middle;
+    }
+  }
+  h2 {
+    margin: 8px 0 0;
+    font-size: 14px;
+    // TODO: この方法では<h2>ユーザーネームのテキスト上だけで下線がつく。
+    // オリジナルではこの<a>エリアに乗った時に下線がつく
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.mypage-number {
+  margin: 8px 0 0;
+  font-size: 0;
+  div {
+    display: inline-block;
+    font-size: 14px;
+    & + div {
+      margin: 0 0 0 16px;
+    }
+  }
+  span {
+    margin: 0 0 0 8px;
+    font-size: 16px;
+    .bold {
+      font-weight: 600;
+    }
+  }
+}
+
+.mypage-tab-head {
+  padding: 0 4%;
+  background: #fafafa;
+  font-size: 16px;
+  line-height: 72px;
+}
+.transaction-now-old {
+  margin: 40px 0 0;
+  background: $white;
+}
+
+.notification-todo {
+  margin: 0;
+  background: $white;
+}
+
+.mypage-tabs {
+  display: flex;
+  flex-direction: row;
+  border: 0;
+  background: $gray-lv1plus;
+  font-size: 0;
+  li.active {
+    background: $white;
+    a {
+      border-top: 2px solid $base-red;
+    }
+  }
+  li {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    h3:hover {
+      opacity: 0.7;
+    }
+  }
+  a {
+    position: relative;
+    display: block;
+    color: $gray-lv4;
+    font-size: 16px;
+    line-height: 72px;
+  }
+}
+
+// ペイン表示部
+.tab-content {
+  .tab-pane.active {
+    display: block;
+  }
+  .tab-pane {
+    display: none;
+  }
+}
+
+// リストがある場合
+.mypage-item-list {
+  li {
+    position: relative;
+    border-bottom: 1px solid $gray-lv1plus;
+    &:first-child {
+      border-bottom: 1px solid $gray-lv1plus;
+    }
+    &:last-child {
+      border: 0;
+    }
+  }
+}
+.mypage-go-list {
+  padding: 16px;
+  a {
+    display: block;
+    height: 56px;
+    margin: 0 auto;
+    background: $gray-lv1plus;
+    color: $gray-lv4;
+    line-height: 56px;
+    text-align: center;
+  }
+}
+// リストが存在しない場合
+.mypage-item-not-found {
+  border: 0;
+  padding: 160px 0 60px;
+  background: image-url("logo-gray-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center 40px;
+  background-size: 78px 85px;
+  text-align: center;
+  font-size: 16px;
+  color: $gray-lv2;
+  .bold {
+    font-weight: 600;
+  }
+}
+
+// モーダル表示部分、ひとまずこの先のネストは置いておく
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3000;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  opacity: 0;
+  -webkit-transform: translate(0, -10px);
+  transform: translate(0, -10px);
+  &__inner {
+    position: relative;
+    overflow: hidden;
+    width: 95%;
+    max-width: 375px;
+    margin: 8px auto;
+    background: $white;
+  }
+  img {
+    width: 100%;
+  }
+  &__banner {
+    text-align: center;
+    h2 {
+      font-size: 22px;
+      line-height: 1;
+      color: $base-red;
+    }
+    p {
+      margin: 16px 0 0;
+      font-size: 13px;
+    }
+    &__body {
+      padding: 16px 2.5%;
+    }
+    &__app {
+      margin: 16px 0 0;
+      font-size: 0;
+      text-align: center;
+      a {
+        display: inline-block;
+        margin: 0 0 0 8px;
+        &:first-child {
+          margin: 0;
+        }
+      }
+    }
+    &__app-open {
+      display: block;
+      width: 100%;
+      margin: 32px 0 0;
+      background: $base-red;
+      font-size: 16px;
+      color: $white;
+      line-height: 50px;
+    }
+    &__eye-catch {
+      overflow: hidden;
+      position: relative;
+      background: image-url("bg-modal-app-banner.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      img:last-child {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        width: 63px;
+        height: 17px;
+      }
+    }
+  }
+}
+
+.l-container {
+  display: flex;
+  flex-direction: column;
+  margin: 24px auto 0;
+  padding: 0 0 40px;
+  .l-content {
+    float: right;
+  }
+  .l-side {
+    margin: 40px auto 0;
+    float: left;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mypage-user-icon {
+    height: 200px;
+  }
+  .mypage-tab-head {
+    padding: 0 16px;
+  }
+  .modal {
+    &__inner {
+      max-width: none;
+      width: 600px;
+      margin: 20px auto;
+    }
+    &__banner {
+      h2 {
+        font-size: 34px;
+      }
+      p {
+        font-size: 18px;
+      }
+      &__eye-catch {
+        height: 310px;
+        img:first-child {
+          width: auto;
+          height: 100%;
+        }
+        img:last-child {
+          top: 16px;
+          left: 16px;
+          width: 110px;
+          height: 29px;
+        }
+      }
+    }
+  }
+
+  .l-container {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    .l-content {
+      float: none;
+      width: 700px;
+    }
+    .mypage-nav {
+      float: none;
+      width: 700px;
+    }
+  }
+}
+
+@media screen and (min-width: 1068px) {
+  .l-container {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 40px auto 0;
+    width: 1020px;
+    .l-content {
+      float: right;
+    }
+    .mypage-nav {
+      float: left;
+      width: 280px;
+      margin: 0 40px 0 0;
+    }
+  }
+}
