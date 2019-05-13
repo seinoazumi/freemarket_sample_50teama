@@ -1,0 +1,16 @@
+.user-info{
+  &__bg-image{
+    width:700px;
+    height: 157px;
+    background-color: aqua;
+  }
+  &__avatar{
+    border-radius: 50%;
+  }
+  &__plofiele{
+    @include input-default;
+  }
+  &__edit-btn{
+
+  }
+}
