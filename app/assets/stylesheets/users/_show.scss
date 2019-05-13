@@ -159,57 +159,6 @@ img {
   }
 }
 
-// ペイン表示部
-.tab-content {
-  .tab-pane.active {
-    display: block;
-  }
-  .tab-pane {
-    display: none;
-  }
-}
-
-// リストがある場合
-.mypage-item-list {
-  li {
-    position: relative;
-    border-bottom: 1px solid $gray-lv1plus;
-    &:first-child {
-      border-bottom: 1px solid $gray-lv1plus;
-    }
-    &:last-child {
-      border: 0;
-    }
-  }
-}
-.mypage-go-list {
-  padding: 16px;
-  a {
-    display: block;
-    height: 56px;
-    margin: 0 auto;
-    background: $gray-lv1plus;
-    color: $gray-lv4;
-    line-height: 56px;
-    text-align: center;
-  }
-}
-// リストが存在しない場合
-.mypage-item-not-found {
-  border: 0;
-  padding: 160px 0 60px;
-  background: image-url("logo-gray-icon.svg");
-  background-repeat: no-repeat;
-  background-position: center 40px;
-  background-size: 78px 85px;
-  text-align: center;
-  font-size: 16px;
-  color: $gray-lv2;
-  .bold {
-    font-weight: 600;
-  }
-}
-
 // モーダル表示部分、ひとまずこの先のネストは置いておく
 .modal {
   display: none;

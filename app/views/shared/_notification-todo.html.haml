@@ -46,6 +46,10 @@
               %span 11 時間前
           %i.icon-arrow-r
 
+      %li.mypage-go-list
+        -# TODO: viewに適したパスに直す
+        = link_to "一覧を見る", {controller: "users", action: "edit"}
+
       -# %li.pc-header__notification-list__link.icon-arrow-r
       -#   %figure
       -#     = image_tag "mercari_profile.png", size: "48x48"
