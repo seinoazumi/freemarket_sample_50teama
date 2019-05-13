@@ -2,8 +2,12 @@ require 'digest/md5'
 
 class ApplicationController < ActionController::Base
 
-    before_action :authenticate
+    before_action :authenticate, if: :production?
     before_action :configure_permitted_parameters, if: :devise_controller?
+
+    def production?
+      Rails.env.production?
+    end
 
     username = Rails.application.credentials.basic_auth[:user]
     password = Rails.application.credentials.basic_auth[:password]
