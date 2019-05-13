@@ -1,14 +1,17 @@
-.single-wrapper
+.single-wrapper.edit-page
   = render partial: "/shared/single-header"
   .single-container
     .sign-up
       .panel
         .panel__head プロフィール
-        .panel__inner
+        .panel__inner__prof-page
           .user-info
-            .user-info__bg-image
-              %figure.user-info__avatar=image_tag "avatar.jpg", alt: "ユーザーアイコン", size: "60x60"
+            .user-info__box
               =form_for [@user] do |f|
-                %p.user-info__plofiele= f.text_area :profile
-                %p.user-info__plofiele= f.text_area :profile
-                %p.user-info__edit-btn= f.submit "変更する"
+                .upper-info
+                  %figure=image_tag "avatar.jpg", alt: "ユーザーアイコン", size: "60x60", class: ".upper-info__avatar"
+                  %p= f.text_field :name, class: "upper-info__nickname"
+                %p= f.text_area :profile, class: "user-info__plofiele"
+                %p= f.submit "変更する", class: "user-info__edit-btn"
+
+= render 'shared/mypage-nav.html.haml'
