@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'logout' => 'users#logout'
 
 
-  resources :users, only: [:show, :edit, :new]
+  resources :users, only: [:show, :new]
   resources :items, only: [:index, :show, :new, :create] do
     resources :categories, only: [:search]
   end

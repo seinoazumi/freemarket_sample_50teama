@@ -4,7 +4,8 @@
 %main.l-container.clearfix
   .l-content
     %section.mypage-user-icon
-      = link_to "", {controller: "users", action: "edit"} do
+      -# TODO: ユーザープロフ編集ページへ、適した内容に修正
+      = link_to "", {controller: "users", action: "show"} do
         %figure
           -# TODO: ユーザーそれぞれの画像パスへ変更
           = image_tag "avatar.jpg", size: "60x60"
@@ -17,10 +18,12 @@
           %div
             出品数
             %span.bold 0
+
     = render "shared/notification-todo"
 
     %aside.modal{"data-close" => "modal", "data-modal" => "banner"}
-    -# モーダル表示、どのタイミングで表示されるのか謎
+    -# モーダル表示、どのタイミングで表示されるのか謎、一応ソースだけ残しておく
+
     -#   .modal__inner.modal__banner
     -#     .modal__banner__eye-catch
     -#       %img{:alt => "", :src => "//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?376951604"}/

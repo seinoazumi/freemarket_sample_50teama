@@ -22,7 +22,7 @@
 
       -# TODO: 最低要件はダミー表示コピーで実現する
       -# - else
-      -# - hoges.foreach do |hoge|
+      -# - hoges.foreach do |hoge|、あるいは render partial: hoges, locals {hoge: hoge}
 
       %li
         %a.mypage-item-link{:href => "#"}
@@ -48,15 +48,7 @@
 
       %li.mypage-go-list
         -# TODO: viewに適したパスに直す
-        = link_to "一覧を見る", {controller: "users", action: "edit"}
-
-      -# %li.pc-header__notification-list__link.icon-arrow-r
-      -#   %figure
-      -#     = image_tag "mercari_profile.png", size: "48x48"
-      -#   .notification-box
-      -#     %p.notification-box__message お知らせ１
-      -#     %p.notification-box__date-passed.icon-clock 1日前
-
+        = link_to "一覧を見る", {controller: "users", action: "show"}
 
     %ul#mypage-tab__todo.mypage-item-list.tab-pane
       %li.mypage-item-not-found.bold 現在、やることリストはありません
