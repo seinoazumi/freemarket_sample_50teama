@@ -9,6 +9,7 @@
   top: 44px;
   z-index: 1;
   width: 320px;
+  min-height: 200px;
   background: $white;
   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
   font-size: 14px;
@@ -55,15 +56,20 @@
         }
       }
     } //notificaiton-box end
-    // .todo-list__inner{
-    //   height: 300px;
-    //   padding: 160px 0 60px;
-    //   background: url("assets/logo-gray.svg");
-    //   background-repeat: no-repeat;
-    //   background-position: center 40px;
-    //   background-size: 78px 85px;
-    //   text-align: center;
-    //   font-size: 16px;
-    //   color: #ccc;
-    // } マージされたリストを使う
   } // pc-header__user-box end
+
+#todo-list{
+  display: none;
+  &__inner{
+    height: 300px;
+    padding: 160px 0 60px;
+    background: url("../../assets/logo-gray.svg");
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center 40px;
+    background-size: 100px 100px;
+    text-align: center;
+    font-size: 16px;
+    color:$gray-lv2;
+  }
+}
