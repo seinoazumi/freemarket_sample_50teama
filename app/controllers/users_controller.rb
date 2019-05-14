@@ -14,13 +14,15 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(current_user.id)
-    render "users/mypage/#{params[:name]}"
   end
 
   def update
     @user = User.find(current_user.id)
-    @user.update(user_params)
-    redirect_to(root_path)
+    if @user.update(user_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   private

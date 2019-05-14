@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   get 'edit' => 'users#edit'
   # ルーティングは追って検討する
 
-  get 'users/mypage/:name', controller: 'users', action: 'edit'
-
   resources :users, only: [:show, :new, :edit, :update]
   resources :items, only: [:index, :show, :new, :create] do
     resources :categories, only: [:search]
