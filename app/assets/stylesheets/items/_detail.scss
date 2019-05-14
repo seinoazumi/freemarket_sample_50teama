@@ -5,14 +5,12 @@
     width: 100%;
 
     .panel{
-
       &__head{
         @include single-container-header;
         padding: 16px;
         text-align: center;
       }
       .item-info {
-
         clear:both;
         &__photo{
           display: block;
