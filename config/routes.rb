@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :new, :create] do
     resources :categories, only: [:search]
   end
-  resources :cards, only: [:new]
+  resources :cards, only: [:new, :show]
 end
