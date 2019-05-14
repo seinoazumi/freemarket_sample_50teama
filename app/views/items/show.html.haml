@@ -1,0 +1,123 @@
+.single-wrapper
+  =render partial: "/shared/header"
+  .single-container
+    .show-wrapper
+      %h1.item-name かっぱえびせん
+      .show-wrapper__main-content
+        .flexbox
+          .image
+            .image__preview
+              = image_tag "https://placehold.jp/300x300.png", alt: "item", class:"image__preview--resize"
+            .image__owldots.owldots
+              .image__owldots__owldot
+                = image_tag "https://placehold.jp/300x300.png", alt:"items", class:"image__owldots__owldot--resize"
+              .image__owldots__owldot
+                = image_tag "https://placehold.jp/300x300.png", alt:"items", class:"image__owldots__owldot--resize"
+              .image__owldots__owldot
+                = image_tag "https://placehold.jp/300x300.png", alt:"items", class:"image__owldots__owldot--resize"
+              .image__owldots__owldot
+                = image_tag "https://placehold.jp/300x300.png", alt:"items", class:"image__owldots__owldot--resize"
+              .image__owldots__owldot
+                = image_tag "https://placehold.jp/300x300.png", alt:"items", class:"image__owldots__owldot--resize"
+              .image__owldots__owldot
+                = image_tag "https://placehold.jp/300x300.png", alt:"items", class:"image__owldots__owldot--resize"
+          .detail
+            %table.detail__table{:border => "1"}
+              %tr.detail__table__tr
+                %th.detail__table__tr__th 出品者
+                %td.detail__table__tr__td
+                  =link_to "item.seller_id", "#", class:"link"
+                  .detail__table__tr__td--evalution
+                    .icon-good
+                      100
+                    .icon-normal
+                      10
+                    .icon-bad
+                      10
+              %tr.detail__table__tr
+                %th.detail__table__tr__th カテゴリー
+                %td.detail__table__tr__td.category.link
+                  =link_to "自動車・オートバイ", "#"
+                  .icon-right
+                    =link_to "自動車タイヤ/ホイール", "#"
+                  .icon-right
+                    =link_to "ホイール", "#"
+              %tr.detail__table__tr
+                %th.detail__table__tr__th ブランド
+                %td.detail__table__tr__td
+                  =link_to "スズキ", "#", class:"link"
+              %tr.detail__table__tr
+                %th.detail__table__tr__th 商品のサイズ
+                %td.detail__table__tr__td
+                  12インチ
+              %tr.detail__table__tr
+                %th.detail__table__tr__th 商品の状態
+                %td.detail__table__tr__td
+                  やや傷や汚れあり
+              %tr.detail__table__tr
+                %th.detail__table__tr__th 配送料の負担
+                %td.detail__table__tr__td
+                  送料込み(出品者負担)
+              %tr.detail__table__tr
+                %th.detail__table__tr__th 配送の方法
+                %td.detail__table__tr__td
+                  未定
+              %tr.detail__table__tr
+                %th.detail__table__tr__th 配送元地域
+                %td.detail__table__tr__td
+                  =link_to "沖縄県", "#", class:"link"
+              %tr.detail__table__tr
+                %th.detail__table__tr__th 発送日の目安
+                %td.detail__table__tr__td
+                  4~7日で発送
+
+        .price-box
+          .price-box__price ¥ 5000
+          .price-box__tax (税込み)
+          .price-box__fee 送料込み
+        %button.submit-btn--red{type: "submit"} 購入画面に進む
+        .description
+          説明文 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          aaaaaaaaaaaaaaaaaaaaaaaa
+          aaaaaaaaaaaaaaaaaaaaaaaaaa!!
+        .item-btn-box
+          .item-btn-box__left
+            .likes
+              .icon.icon-like
+              .icon-arrow
+              %span.span いいね!
+              .js__fade-in-down 100
+            .report
+              .icon.icon-flag
+              %span.span 不適切な商品の報告
+          .item-btn-box__right
+            =link_to "#", class:"item-btn-box__right" do
+              .icon.icon-lock
+                %span.span あんしん・あんぜんへの取り組み
+    %ul.show-wrapper__nav-link-prev-next
+      %li.show-wrapper__nav-link-prev-next--prev
+        .icon-left
+        =link_to "temaenoshouhiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiinああああああああああああああああああああああああああああああああああああ", "#"
+      %li.show-wrapper__nav-link-prev-next--next
+        =link_to "次へあああああああああああああああああああああああああああああああああああああああああああああああああああああ", "#"
+        .icon-right
+    .show-wrapper__sns-wrapper
+      .show-wrapper__sns-wrapper__icon.icon-facebook
+      .show-wrapper__sns-wrapper__icon.icon-twitter
+      .show-wrapper__sns-wrapper__icon.icon-line
+      .show-wrapper__sns-wrapper__icon.icon-pinterest
+    .show-wrapper__items
+      .items-box-container.items-box-overflow.items-in-user-profile.items-box__user
+        =link_to "#" do
+          %h2.items-box__user__head（出品者）さんのその他の出品
+        .items-box__user__contents
+          = render 'items-box'
+          -# find_by or where で6個だけ表示
+      .items-box-container.items-box-overflow.items-box__brand
+        =link_to "#" do
+          %h2.items-box__brand__head（ブランド名）の（3rdカテゴリー）その他の商品
+        .item-box-content.items-box__brand__contents
+          = render 'items-box'
+          -# find_by or where で6個だけ表示
+    = render 'shared/aside'
+    = render 'shared/footer'

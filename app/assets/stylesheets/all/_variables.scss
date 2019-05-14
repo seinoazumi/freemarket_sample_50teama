@@ -22,7 +22,7 @@
     border: 1px solid $link-blue;
     outline: none;
   }
-} 
+}
 
 // selectボタンのテンプレート
 @mixin select-default{
@@ -51,7 +51,7 @@
 }
 
 // textareaのテンプレート
-@mixin textarea-default{ 
+@mixin textarea-default{
   width:100%;
   display: block;
   margin-top: 8px;
@@ -66,7 +66,7 @@
 }
 
 // 青いはてなマーク
-@mixin form-question{ 
+@mixin form-question{
   display: inline-block;
   width: 14px;
   height: 14px;
@@ -98,6 +98,7 @@
   text-align: center;
   line-height: 48px;
   font-size: 14px;
+  cursor: pointer;
 }
 
 // 赤色ボタンならこちらbtn-default+btn-red。組み合わせてください。

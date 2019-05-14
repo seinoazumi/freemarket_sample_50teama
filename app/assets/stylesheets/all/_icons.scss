@@ -47,3 +47,74 @@
   @include font-awesome-base;
   content: '\f078';
   }
+
+.icon-flag::before {
+  @include font-awesome-base;
+  content: '\f024';
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.icon-lock::before { //南京錠マーク
+  @include font-awesome-base;
+  content: '\f023';
+  font-size: 12px;
+}
+
+.icon-left::before { //左矢印 (不等号)
+  @include font-awesome-base;
+  content: '\f053';
+}
+
+.icon-right::before { //右矢印 (不等号)
+  @include font-awesome-base;
+  content: '\f054';
+}
+
+.icon-facebook::before {
+  @include font-awesome-base;
+  font-family: "Font Awesome 5 Brands";
+  content: '\f082';
+  color: $facebook;
+}
+
+.icon-twitter::before{
+  @include font-awesome-base;
+  font-family: "Font Awesome 5 Brands";
+  content: '\f081';
+  font-weight: 400;
+  color: $twitter;
+}
+
+.icon-line::before{
+  @include font-awesome-base;
+  font-family: "Font Awesome 5 Brands";
+  content: '\f3c0';
+  font-weight: 400;
+  color: $line;
+}
+.icon-pinterest::before{
+  @include font-awesome-base;
+  font-family: "Font Awesome 5 Brands";
+  content: '\f0d3';
+  color: $pinterest;
+}
+
+// 評価の表情
+.icon-good::before{
+  @include font-awesome-base;
+  content: '\f599';
+  color: $good;
+}
+
+.icon-normal::before{
+  @include font-awesome-base;
+  content: '\f11a';
+  color: $normal;
+
+}
+.icon-bad::before{
+  @include font-awesome-base;
+  content: '\f119';
+  color: $bad;
+}

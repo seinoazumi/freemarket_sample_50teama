@@ -1,0 +1,249 @@
+.show-wrapper {
+  background-color: $white;
+  margin: 40px auto;
+  padding: 24px 40px 40px;
+  width: 700px;
+  .link{
+    color: $link-blue;
+  }
+  .item-name {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  &__main-content {
+    margin-top:16px;
+    .flexbox{
+      display: flex;
+      justify-content: space-between;
+      .image {
+        font-size:0;
+        &__preview {
+          &--resize{
+            height: 300px;
+            width:300px;
+          }
+        }
+        &__owldots{
+          display: flex;
+          flex-wrap: wrap;
+          width:300px;
+          &__owldot{
+            &--resize{
+              height: 60px;
+              width: 60px;
+            }
+          }
+        }
+      }
+      .detail{
+        &__table{
+          width: 300px;
+          height:420px;
+          text-align: left;
+          font-weight: 400;
+          background: #fafafa;
+          padding:8px;
+          border: 1px solid #f5f5f5;
+          &__tr{
+            &__th{
+              width: 40%;
+              margin: 1px;
+              padding: 8px;
+            }
+            &__td{
+              background-color: $white;
+              margin:1px;
+              padding:8px;
+              &--evalution{
+                display: flex;
+                justify-content: flex-start;
+                .icon-good{
+                  margin-top:8px;
+                }
+                .icon-normal,.icon-bad{
+                  margin:8px 0 0  16px;
+                }
+              }
+            }
+
+          }
+        }
+      }
+    }
+  }
+
+//   %h1.title たいとる
+//   .main-content
+//     .image
+//       しゃしん
+//       .image__preview
+//       .image__owldots
+//         .image-content__owldots__owldot
+//     .detail
+//       .item-detail__table 説明（てーぶる）
+
+
+  .price-box{
+    margin: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-weight: 600;
+    &__price{
+      font-size: 50px;
+      margin-right:16px;
+    }
+    &__tax{
+      font-size: 10px;
+
+    }
+    &__fee{
+      font-size: 16px;
+
+    }
+  }
+  .submit-btn--red{
+    @include btn-default;
+    @include btn-red;
+    margin: 16px 0 0;
+    font-size: 24px;
+    height: 60px;
+    line-height: 60px;
+    font-weight: bold;
+  }
+  .description{
+    font-size: 18px;
+    padding-top:32px;
+  }
+  .item-btn-box{
+    margin-top:16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .span{
+      margin: 1px 0 0 8px;
+    }
+    &__left{
+      display: flex;
+      .likes{
+        display: flex;
+        padding:8px 16px;
+        border-radius: 40px;
+        background-color: $gray-lv1;
+      }
+      .report{
+        display: flex;
+        margin-left: 16px;
+        padding:8px 16px;
+        border-radius: 40px;
+        background-color: $gray-lv1;
+
+      }
+    }
+    &__right{
+      color: $link-blue;
+    }
+  }
+  &__nav-link-prev-next{
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+    margin: 24px auto 0;
+    color: $link-blue;
+
+    &--prev{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 45%;
+      padding-left: 14px;
+    }
+    &--next{
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 45%;
+      padding-right: 14px;
+    }
+  }
+  &__sns-wrapper{
+    background-color: $white;
+    margin: 40px auto;
+    padding: 24px 40px;
+    width: 700px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 44px;
+    &__icon{
+      margin: 0 5px;
+    }
+  }
+  &__items{
+    margin: 40px auto;
+    width: 700px;
+    .items-box__user,.items-box__brand{
+      &__head{
+        font-size: 22px;
+        color: $link-blue;
+        font-weight: bold;
+        text-align: left;
+      }
+      &__contents{
+        &__container{
+          display: flex;
+          justify-content:space-between;
+        }
+      }
+    }
+  }
+}
+//メディアクエリ
+@media screen and (max-width: 768px) {
+  .show-wrapper{
+    width:100%;
+    margin-top: 40px;
+    padding: 24px 16px 55px;
+    &__main-content {
+      .flexbox{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .image{
+          margin: 0 auto;
+          &__preview--resize{
+            height: 360px;
+            width: 360px;
+          }
+          &__owldots{
+            width: 360px;
+            &__owldot--resize{
+              height: 72px;
+              width: 72px;
+            }
+          }
+        }
+        .detail{
+          margin: 0 auto;
+          &__table{
+            width:360px;
+            height:50px;
+          }
+        }
+      }
+      .price-box{
+        &__price{
+          font-size: 32px;
+          margin: 16px 0 0;
+        }
+        &__tax, &__fee{
+          font-weight: normal;
+        }
+      }
+      .submit-btn--red{
+        font-size: 18px;
+        font-weight:16px;
+      }
+    }
+  }
+}
