@@ -50,7 +50,27 @@
           }
           td{
             border:$table-border;
-            padding: 5px;
+            padding: 10px;
+            .detail_link{
+              color:$link-blue;
+            }
+            .detail-info__ratings{
+              display: flex;
+              font-style: normal;
+              * {
+                margin:5px;
+              }
+              .icon-good{
+                color: $good;
+                margin-left: 0px;
+              }
+              .icon-normal{
+                color: $normal;
+              }
+              .icon-bad{
+                color: $bad;
+              }
+            }
           }
         }
       }
@@ -77,13 +97,14 @@
 
   .like-report{
     display: flex;
+    flex-wrap: wrap;
     margin-top: 16px;
     &__btn{
       appearance: none;
       border: none;
       outline: none;
       display: inline-block;
-      height: 20px;;
+      max-height: 35px;
       line-height: 1.4em;
       padding: 7px;
       background-color: $gray-lv1;
@@ -105,6 +126,33 @@
       }
     }
   }
+  .other-item{
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    color: $link-blue;
+    &__previous{
+      width: 50%;
+    }
+    &__next{
+      width: 50%;
+      text-align: right;
+    }
+  }
+
+  .sns-wrapper{
+    background-color: $white;
+    margin: 40px auto;
+    padding: 24px 40px;
+    width: 700px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 44px;
+    &__icon{
+      margin: 0 5px;
+    }
+  }
 }//item-detail-page end
 
 @media screen and (min-width: 1068px) {
@@ -122,12 +170,16 @@
       float: left;
     }
     .item-info__price{
+      padding-top: 30px;
       clear: both;
     }
-
     .detail-info{
       float: right;
       width: 320px !important;
     }
+  }
+
+  .other-item{
+    width: 700px !important;
   }
   }//幅768px以上のページに適応されるscss

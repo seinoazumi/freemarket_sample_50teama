@@ -20,28 +20,26 @@
         %tbody
           %tr
             %th 出品者
-            %td.detail-info__nickname
+            %td.detail-info__nickname.detail_link
               =link_to '出品者名','#'
               .detail-info__ratings
-                %i.icon-good
+                %p.icon-good
                 %span 106
-              .detail-info__ratings
-                %i.icon-normal
+                %p.icon-normal
                 %span 2
-              .detail-info__ratings
-                %i.icon-bad
+                %p.icon-bad
                 %span 0
           %tr
             %th カテゴリー
             %td.detail-info__category
-              %p=link_to 'カテゴリー１', '#'
-              %p=link_to 'カテゴリー２', '#'
-              %p=link_to 'カテゴリー３', '#'
+              %p.detail_link=link_to 'カテゴリー１', '#'
+              %p.icon-arrow-right.detail_link=link_to 'カテゴリー２', '#'
+              %p.icon-arrow-right.detail_link=link_to 'カテゴリー３', '#'
 
           %tr
             %th ブランド
             %td.detail-info__brand
-              %p=link_to 'ブランド名', '#'
+              %p.detail_link=link_to 'ブランド名', '#'
           %tr
             %th 商品の状態
             %td 目立った傷や汚れなし
@@ -54,7 +52,7 @@
           %tr
             %th 配送元地域
             %td
-              %p=link_to '県名', '#'
+              %p.detail_link=link_to '県名', '#'
           %tr
             %th 発送日の目安
             %td 4~7日で発送
@@ -79,10 +77,16 @@
           %p.icon-report 不適切な商品の報告
         %p.icon-lock.trial-to-safe=link_to 'あんしん・あんぜんへの取り組み', '#'
 
-    .previous-item
-    .next-item
+  %ul.other-item
+    %li.other-item__previous.icon-arrow-l 前の商品
+    %li.other-item__next.icon-arrow-r 次の商品
 
-      -# ここにソーシャルボタンがあるけど、高橋さん持っているかも？
+  .sns-wrapper
+    .sns-wrapper__icon.icon-facebook
+    .sns-wrapper__icon.icon-twitter
+    .sns-wrapper__icon.icon-line
+    .sns-wrapper__icon.icon-pinterest
+
   %section.pick-up-container
     %h2.pick-up-container__header 「出品者の名前」さんのその他の出品
     = render 'shared/items-box'
