@@ -13,4 +13,7 @@ class UsersController < ApplicationController
   end
   
 
+  def edit
+    render "users/mypage/#{params[:name]}"
+  end
 end
