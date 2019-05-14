@@ -122,3 +122,124 @@
 // &::selection{
 //   この中で使ってください。
 // }
+
+// 以下user関連のページで用いるmixin
+@mixin link-btn {
+  display: flex;
+  height: 50px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 50px;
+  position: relative;
+}
+
+@mixin btn-mail {
+  background: $gray-lv1plus;
+  color: $black;
+  transition: 0.7s;
+  &:hover {
+    opacity: 0.7;
+  }
+  &__left {
+    position: absolute;
+    left: 17px;
+    .icon-envelope:before {
+      font-family: "Font Awesome 5 free";
+      content: '\f0e0';
+      font-size: 20px;
+      color: $gray-lv2;
+    }
+  }
+  &__right {
+    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    a {
+      display:block;
+    }
+  }
+}
+
+@mixin btn-facebook {
+  background: #385185;
+  color: $white;
+  width: 100%;
+  &__left {
+    position: absolute;
+    left: 17px;
+    .icon-facebook-square:before {
+      font-family: "Font Awesome 5 Brands";
+      content: '\f082';
+      font-size: 30px;
+    }
+  }
+  &__right {
+    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    a {
+      display: block;
+    }
+  }
+}
+
+@mixin btn-google {
+  border: 1px solid $gray-lv2plus;
+  margin-top: 16px;
+  line-height: 48px;
+  width: 100%;
+  &__left {
+    position: absolute;
+    top: 28%;
+    left: 16px;
+    img {
+      display: block;
+    }
+  }
+  &__right {
+    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    a {
+      display: block;
+    }
+  }
+}
+
+@mixin select-box {
+  margin-top: 8px;
+  position: relative;
+  select {
+    @include input-default;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+  }
+  span {
+    margin: 0 8px;
+  }
+  .icon-chevron-bottom {
+    position: absolute;
+    right: 15px;
+    top: 35%;
+    z-index: 2;
+    &:after {
+      font-family: "Font Awesome 5 Free";
+      content: '\f078';
+      font-weight: 900;
+      color: $gray-lv3;
+      font-size: 18px;
+    }
+  }
+}
+// user関連のページで用いるmixinここまで
