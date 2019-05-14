@@ -1,18 +1,19 @@
 .item-detail-page{
   .panel{
     @include single-container-base;
+    padding: 40px 64px;
     &__head{
       @include single-container-header;
       text-align: center;
     }
     .item-info {
-      padding: 0 64px;
       &__photo{
         width: 270px;
         height: 360px;
         background:url("https://placehold.jp/cccccc/ffffff/150x150.png?text=item-photo");
       }
       &__price{
+        margin-top: 24px;
         font-size: 50px;
         font-weight:900;
         text-align: center;
@@ -25,52 +26,69 @@
           font-weight:normal;
         }
       }//&__price end
-      .sales-message{
-        position: relative;
-        display: inline-block;
-        margin: 1.5em auto;
-        padding: 10px;
-        min-width: 120px;
-        max-width: 100%;
-        color: $white;
-        font-size: 14px;
-        background: $blue-green;
-        border-radius:3px;
-        &::before {
-          content: "";
-          position: absolute;
-          top: 100%;
-          left: 50%;
-          margin-left: -15px;
-          border: 15px solid transparent;
-          border-top: 15px solid $blue-green;
-        }
-      }
-      .buy-btn{
-        @include btn-default;
-        @include btn-red;
-        font-size: 1.2em;
-      }
     }//.item-info end
 
-    .detail-info{
-      border:$table-border; //colors.scssに仮置きで設定中
-      min-width: 360px;
-      margin: 0 auto;
-      th{
-        border:$table-border;
-        background-color:$gray-lv1;
-        height: 40px;
+      .detail-info{
+        border:$table-border; //colors.scssに仮置きで設定中
+        min-width: 360px;
+        margin: 0 auto;
+
+        .sales-message{
+          @include green-balloon;
+        }
+        th{
+          border:$table-border;
+          background-color:$gray-lv1;
+          height: 40px;
+        }
+        td{
+          border:$table-border;
+          padding: 5px;
+        }
       }
-      td{
-        border:$table-border;
-        padding: 5px;
+    }
+    .pick-up-container{
+      &__header{
+        @include blue-header;
+      }
+    }
+    .item-info__description{
+      margin-top: 30px;
+
+    }
+    .buy-btn{
+      @include btn-default;
+      @include btn-red;
+      font-size: 1.2em;
+    }
+    .sales-message{
+      @include green-balloon;
+    }
+
+  .like-report{
+    display: flex;
+    margin-top: 16px;
+    &__btn{
+      appearance: none;
+      border: none;
+      outline: none;
+      display: inline-block;
+      line-height: 1.4em;
+      padding: 7px;
+      background-color: $gray-lv1;
+      border-radius: 50px;
+      margin-right: 20px;
+    }
+    .icon-like:before{
+      color: $gray-lv2;
+      margin-right: 5px;
+    }
+    .trial-to-safe{
+      color: $link-blue;
+      line-height: 2.5em;
+      &:hover{
+        @include blue-link;
       }
     }
   }
-}
-.pick-up-container{
-  &__header{
-    @include pickup-header;
-  }// 効いていないかも
-}
+}//item-detail-page end

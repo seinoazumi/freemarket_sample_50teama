@@ -27,9 +27,15 @@
   font-weight:400;
   content: '\f004';
 }
+
 .icon-list::before {
   @include font-awesome-base;
   content: '\f03a';
+}
+
+.icon-lock::before {
+  @include font-awesome-base;
+  content: '\f023';
 }
 
 .icon-search::after {
@@ -37,12 +43,12 @@
   content: '\f002';
 }
 
+.icon-select::before {
+  @include font-awesome-base;
+  content: '\f078';
+}
+
 .icon-tag::before {
   @include font-awesome-base;
   content: '\f02b';
 }
-
-.icon-select::before {
-  @include font-awesome-base;
-  content: '\f078';
-  }
