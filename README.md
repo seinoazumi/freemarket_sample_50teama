@@ -16,17 +16,29 @@
 |city|string|null: false|市区町村|
 |address|string|null: false|番地|
 |building|string||建物名|
-|phone|integer|null: false|電話番号|
-|birthday|integer|null: false|誕生日 ex)19000101|
+|phone|string|null: false|電話番号|
+|birthday|date|null: false|誕生日|
 |money|integer|null: false, default :0|app内の金額|
 |point|integer|null: false, default :0|appのpoint|
 |seller_id|integer|null: false|出品者としてのid|
-|buyer_id|integer|null: false|としてのid|
+|buyer_id|integer|null: false|購入者としてのid|
 |profile|text|limit: 1000|プロフィール情報|
 ### Association
 - has_many :likes
-- has_many :items, through: :likes
+- has_many :user_items
+- has_many :items, through: :user_items
 - belongs_to :card
+
+## user_itemsテーブル (中間テーブル)
+
+|Column|Type|Options|補足|
+|------|----|-------|----|
+|user_id|reference|null: false, foreign_key: true|外部キー|
+|item_id|reference|null: false, foreign_key: true|外部キー|
+
+### Association
+- belongs_to :user
+- belongs_to :item
 
 ## cardsテーブル
 |Column|Type|Options|補足|
@@ -49,7 +61,8 @@
 
 ### Association
 - has_many :likes
-- has_many :users, through: :likes
+- has_many :user_items
+- has_many :users, through: :user_items
 - has_many :images
 - has_many :categories
 
@@ -61,18 +74,16 @@
 ### Association
 - belongs_to :item
 
-## likesテーブル (中間テーブル)
+## likesテーブル
 
 |Column|Type|Options|補足|
 |------|----|-------|----|
-|user_id|reference|null: false, foreign_key: true|外部キー|
-|item_id|reference|null: false, foreign_key: true|外部キー|
-|buyer_id|integer||presentであればイイネとする|
+|item_id|integer|||
+|buyer_id|integer|||
 
 ### Association
 - belongs_to :user
 - belongs_to :item
-
 
 ## categoriesテーブル (gem ancestryを使用)
 |Column|Type|Options|補足|

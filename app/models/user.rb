@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :likes
-  has_many :items, through: :likes
+  has_many :user_items
+  has_many :items, through: :user_items
   belongs_to :card, optional: true
 
   enum prefecture: {
