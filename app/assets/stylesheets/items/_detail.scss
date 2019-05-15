@@ -73,11 +73,6 @@
         }
       }
     }
-    .pick-up-container{
-      &__header{
-        @include blue-header;
-      }
-    }
     .item-info__description{
       margin-top: 30px;
 
@@ -151,29 +146,38 @@
       margin: 0 5px;
     }
   }
+  .pick-up-container{
+    &__header{
+      @include blue-header;
+    }
+  }
 }//item-detail-page end
 
 @media screen and (min-width: 768px) {
+.item-detail-page{
   .single-container{
     max-width: 700px;
-    padding: 24px 40px 40px 40px !important;
+    padding: 24px 40px 40px 40px;
     .visible-sp-only{
       display: none;
     }
-    .item-info__photo{
-      float: left;
-    }
-    .item-info__price{
-      padding-top: 30px;
-      clear: both;
+    .item-info{
+      &__photo{
+        float: left;
+      }
+      &__price{
+        padding-top: 30px;
+        clear: both;
+      }
     }
     .detail-info{
       float: right;
-      width: 320px !important;
+      width: 320px;
     }
   }
 
   .other-item{
-    width: 700px !important;
+    width: 700px;
   }
-  }//幅768px以上のページに適応されるscss
+}
+}//幅768px以上のページに適応されるscss
