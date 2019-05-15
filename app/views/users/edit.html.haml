@@ -7,9 +7,9 @@
       .panel
         .panel__head 本人情報の登録
         .panel__inner
-          = form_with model: @user do |f|
-            - if @user.errors.any?
-              - @user.errors.full_messages.each do |message|
+          = form_with model: current_user do |f|
+            - if current_user.errors.any?
+              - current_user.errors.full_messages.each do |message|
                 = message
             .content
               .form-group
