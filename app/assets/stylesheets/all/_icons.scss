@@ -13,6 +13,11 @@
   content: '\f030';
 }
 
+.icon-card::before {
+  @include font-awesome-base;
+  content: '\f09d';
+}
+
 .icon-check::before {
   @include font-awesome-base;
   content: '\f00c';

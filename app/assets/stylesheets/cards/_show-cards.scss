@@ -45,6 +45,15 @@
         &__link:hover{
           @include blue-link;
         }
+        &__add-btn{
+          @include btn-default;
+          @include btn-red;
+          min-width: 300px;
+        }
+        .icon-card::before{
+          font-weight:400;
+          padding-right: 5px;
+        }
       }
     }
   } // .single-wrapper end
