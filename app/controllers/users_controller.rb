@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: :edit
 
   def show  # ユーザー個人ページ、自分の出品した商品を出品ステータス別に得る
 
@@ -26,6 +27,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(current_user.id)
+  end
 
   def user_params
     params.require(:user).permit(:postal_code,:prefecture,:city,:address,:building,:phone)
