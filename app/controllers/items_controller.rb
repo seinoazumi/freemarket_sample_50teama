@@ -24,8 +24,9 @@ class ItemsController < ApplicationController
 
   private
 
-  # def params_permit
-  #   params.require(:items).permit(:name, :dondition, :delivery_fee, :delivery_days, :price, :seller_id).merge(images: [])
+  def params_permit
+    params.require(:items).permit(:name, :dondition, :delivery_fee, :delivery_days, :price, :seller_id).merge(images: [])
+  end
 
   # def set_current_user
   #   @user = User.find(params[current_user.id])
