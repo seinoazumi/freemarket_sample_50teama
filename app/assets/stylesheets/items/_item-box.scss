@@ -1,28 +1,15 @@
-@media screen and (max-width: 768px) {
-  .visible-full-width, .visible-tablet{
-    display: none;
-  } // 768pxまではpc版,タブレット版のコンテンツが見えない
-}
- @media screen and (max-width: 1068px) {
-  .visible-full-width{
-    display: none;
-  } // 1068pxまではpc版のコンテンツが見えない
- }
- 
-
 .item-box__container{
   @include clearfix;
   display: flex;
   flex-wrap: wrap;
-  padding-bottom: 30px; 
+  padding-bottom: 30px;
   .item-box{
     width: 213px;
     background-color: $white;
     display: inline-block;
     margin:20px 20px 0 0;
     img{
-      width: 213px;
-      height: 213px;
+      width: 100%;
     }
     &__info{
       height: 100px;
@@ -56,7 +43,24 @@
         width: 100%;
         font-size:0.5em;
       }
-      
+
     }
   }
 }
+//----------------------------------------------メディアクエリ
+@media screen and (max-width: 768px) {
+  .visible-full-width, .visible-tablet{
+    display: none;
+  } // 768pxまではpc版,タブレット版のコンテンツが見えない
+  .item-box{
+    width: 50%;
+  }
+}
+ @media screen and (max-width: 1068px) {
+  .visible-full-width{
+    display: none;
+  } // 1068pxまではpc版のコンテンツが見えない
+  .item-box{
+    width: 50%;
+  }
+ }

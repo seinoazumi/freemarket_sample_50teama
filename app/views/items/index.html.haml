@@ -1,32 +1,32 @@
-= render 'shared/header'
+.wrapper
+  = render 'shared/header'
 
-%main
-  -# owl carouselという名前のカルーセルがあるらしい。レスポンシブに良いそうなので、あとで調べて導入
-  %section.slider
-  .slider__stage
-    .slide01.slide= image_tag "slider_01.png"
-    -#     .slide02.slide slide2
-    -#     .slide03.slide slide3
-    -#     .slide04.slide slide4
-    -#     .slide05.slide slide5
-    -# %button.slider-prev 前へ
-    -# %button.slider-next 次へ
-    -# %script{:src => "https://code.jquery.com/jquery-3.1.1.min.js"}
-    -# %script{:src => "slider.js"}
+  %main
+    -# owl carouselという名前のカルーセルがあるらしい。レスポンシブに良いそうなので、あとで調べて導入
+    %section.slider
+    .slider__stage
+      .slide01.slide= image_tag "slider_01.png"
+      -#     .slide02.slide slide2
+      -#     .slide03.slide slide3
+      -#     .slide04.slide slide4
+      -#     .slide05.slide slide5
+      -# %button.slider-prev 前へ
+      -# %button.slider-next 次へ
+      -# %script{:src => "https://code.jquery.com/jquery-3.1.1.min.js"}
+      -# %script{:src => "slider.js"}
 
 
-%section.pick-up-container
-  %h2.pick-up-container__header ピックアップカテゴリー
+  %section.pick-up-container
+    %h2.pick-up-container__header ピックアップカテゴリー
 
-  %section.item-boxes
-    %h3.item-boxes__header.text-center
-      = link_to 'レディース新着アイテム', src: '#'
+    %section.item-boxes
+      %h3.item-boxes__header.text-center
+        = link_to 'レディース新着アイテム', src: '#'
 
-    = render 'items-box'
-    
-    .item-boxes__view-all
-      =link_to '全ての商品を見る', src:'#'
-      
-= render 'shared/aside'
-= render 'shared/footer'
-   
+      = render 'shared/items-box'
+
+      .item-boxes__view-all
+        =link_to '全ての商品を見る', src:'#'
+
+  = render 'shared/aside'
+  = render 'shared/footer'
