@@ -1,4 +1,4 @@
--# XXX: 当初設計では運営からのお知らせデータが存在しない、ダミー作成 ⇨余裕できたらデータテーブルごと追加で実装
+-# NOTE: 当初設計では運営からのお知らせデータが存在しない、ダミー作成 ⇨余裕できたらデータテーブルごと追加で実装
 
 %section.mypage-tab-container.notification-todo
   %ul.mypage-tabs
@@ -7,12 +7,11 @@
       %h3
         -# TODO: 後回し、ページ内リンクを生成したいがうまくいかず、遷移を伴ってしまう。
         -# オリジナルではページ内リンクが設定されているものの、実際にはページ内の移動さえ起こらない、原理不明
-        -# data-toggleが不明、モーダル表示のソースが存在するが、いつ出現するか謎。
-        = link_to "お知らせ", user_path(anchor: "mypage-tab__notification"), data: {toggle: "tab"}
+        = link_to "お知らせ", user_path(anchor: "mypage-tab__notification")
     %li
       %h3
         -# TODO: 後回し、なぜかactiveでないこちらは遷移が発生しない、この動きをactiveにも実現したい。
-        = link_to "やることリスト", user_path(anchor: "mypage-tab__todo"), data: {toggle: "tab"}
+        = link_to "やることリスト", user_path(anchor: "mypage-tab__todo")
   .tab-content
     -# TODO:.activeをjsでつけ変えることで表示を変える
     %ul#mypage-tab__notification.mypage-item-list.tab-pane.active
