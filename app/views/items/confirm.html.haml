@@ -1,4 +1,4 @@
-.buy-confirm-page
+.single-wrapper.buy-confirm-page
   = render 'shared/single-header'
   %main.single-container
     .sign-up
@@ -8,12 +8,13 @@
         %section.buy-content
           .item-info
             %h3.item-info__image
-              =image_tag ("http://placehold.jp/320x200.png"), alt: '商品画像'
+              =image_tag ("http://placehold.jp/320x148.png"), alt: '商品画像'
             %p.item-info__name 商品名がここに入ります
             = form_with model: @item do |f|
               %p.item-info__price
-              ¥ 3,500
-              %span.item-info__price__shipping 送料込み
+                ¥ 3,500
+                %span.item-info__price__shipping
+                  送料込み
 
               -# ポイントがある場合とない場合で表示が切り替わります。余裕があれば追加
               %ul.buy-accordion.not-have
@@ -27,40 +28,33 @@
                   .buy-price__inner__cell
                     %span{data: {price: "¥¥¥"}} ¥ 3,500
 
-                  %button.buy-confirm-btn= f.submit "購入する"
+                %p= f.submit "購入する", class: "buy-confirm-btn"
 
+        %hr{color: "#efefef"}
+        %section.buy-content
+          .user-info
+            %h3.user-info__header 配送先
+            %adress.user-info__text
+              %p
+                〒111-111
+                %br
+                東京都 大田区
+                %br
+                ＊＊＊１−１−１
+                %br
+                ＊＊マンション１０１
+                %br
+                =current_user.name
 
-%section.buy-content.user-info
-  .user-info
-    %h3.user-info__header 配送先
-      %adress.user-info__text
-        %p 〒111-111
-        %br
-        東京都 大田区＊＊
-        ＊＊＊１−１−１
-        ＊＊マンション１０１
-        %br
-        current_user.name
+              %p.link-to-change.icon-arrow-r 変更する
+          -# 支払い情報がnillだとグレーのボタンとなり購入できないが、とりあえず無視する
 
-      %p.link-to-change.icon-arrow-right 変更する
-</section>
+          %hr{color: "#efefef"}
+          .card-info
+            %h3.card-info__header 支払い方法
+            %p.card-info__num ************5238
+            %p.card-info__date 01 / 21
 
-  <section class="buy-content buy-user-info" data-buy="pay-method">
-    <div class="buy-content-inner">
-      <h3>支払い方法</h3>
-      <p class="buy-user-info-text">
-        ************5238
-        <br>
-        04 / 21
-                </p><figure>
-                    <img src="//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2419426648" width="49" height="15" alt="visa">
-        </figure>
-      <p></p>
-                        <a href="https://www.mercari.com/jp/transaction/select_card/m11676733213/?_s=U2FsdGVkX18COAUXk0_PTc9SyNp2xNAUHrYsu2prKJG_QmdcOj5zbDNDiQ3WqTCVUz5ePMH4FES0ahsPmeyync2nVsWelZhM5FKS0hxzDkxEuzrbS1eHXJvlr1Ax0Vti" class="buy-user-info-fix">
-            <span>変更する</span><i class="icon-arrow-right"></i>
-          </a>
-                  </div>
-  </section>
-  </section>
-      </main>
+            %p.link-to-change.icon-arrow-r 変更する
+
   = render 'shared/single-footer'
