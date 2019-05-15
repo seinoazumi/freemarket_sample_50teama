@@ -8,18 +8,18 @@
         %section.buy-content
           .item-info
             %h3.item-info__image
-              =image_tag src:'http://placehold.jp/320x200.png', alt: '商品画像'
+              =image_tag ("http://placehold.jp/320x200.png"), alt: '商品画像'
             %p.item-info__name 商品名がここに入ります
-            = form_with model: @user,@item do |f|
+            = form_with model: @item do |f|
               %p.item-info__price
               ¥ 3,500
               %span.item-info__price__shipping 送料込み
 
-                -# ポイントがある場合とない場合で表示が切り替わります。余裕があれば追加
+              -# ポイントがある場合とない場合で表示が切り替わります。余裕があれば追加
               %ul.buy-accordion.not-have
-               %li.buy-accordion__inner
-                .buy-accordion__accordion__toggle
-                  %p ポイントはありません
+                %li.buy-accordion__inner
+                  .buy-accordion__accordion__toggle
+                    %p ポイントはありません
 
               %ul.buy-price
                 %li.buy-price__inner
@@ -27,88 +27,40 @@
                   .buy-price__inner__cell
                     %span{data: {price: "¥¥¥"}} ¥ 3,500
 
-                  =hidden_field_tag :seller_id, @user.seller_id
-                  =hidden_field_tag
-                  =hidden_field_tag
-                  =hidden_field_tag
-                  =hidden_field_tag
-                  =hidden_field_tag
-                  =hidden_field_tag
-                  =hidden_field_tag
-
--#                           <input type="hidden" name="payment_fee" value="0">
--#                           <input type="hidden" name="payment_amount" value="3500">
--#                           <input type="hidden" name="price" value="3500">
--#                                                                                           <input type="hidden" name="category_id" value="129">
--#                           <input type="hidden" name="item_condition" value="3">
--#                           <input type="hidden" name="size" value="3">
--#                           <input type="hidden" name="shipping_payer" value="2">
--#                           <input type="hidden" name="shipping_method" value="5">
--#                           <input type="hidden" name="shipping_duration" value="3">
--#                           <input type="hidden" name="shipping_class" value="0">
--#                           <input type="hidden" name="zip_code1" value="213">
--#                           <input type="hidden" name="zip_code2" value="0033">
--#                           <input type="hidden" name="paid_method" value="card">
--#                           <input type="hidden" name="checksum" value="9771f02a3953df95e7d961551edb81d1">
--#                                                                                           <input type="hidden" name="payment_card_sequence_no" value="8ppPVihh94WCAiv1EjJQt2cc">
--#                           <input type="hidden" name="payment_use_last_card_base64" value="eWVz">
--#                           <input type="hidden" name="item_name_base64" value="4pqr77iO44OL44Ol44O844Oo44O844Kr44O8IOOAkOa0l+OBiOOCi+OAkeS4g+WIhuiiliDjg6zjg7zjgrkg57eo44G/IOODreODs+OCsCDjgqvjg7zjg4fjgqPjgqzjg7Mg5LuV5LqL">
--#                           <input type="hidden" name="description_base64" value="44CQ44K144Kk44OI44KI44KK44CRCuOBqeOCk+OBquOCouOCpOODhuODoOOBqOOCguWQiOOCj+OBm+OChOOBmeOBhOODmeODvOOCt+ODg+OCr+OBquODh+OCtuOCpOODs+OBp+OBmeOAguOBmeOBo+OBjeOCiuOBqOmWi+OBhOOBn+ODjeODg+OCr+ODqeOCpOODs+OBp+mhlOWbnuOCiuOCkuOBmeOBo+OBjeOCiuOBqOiPr+WlouOBquWNsOixoeOBq+KXjuOCt+OCouODvOaEn+OBjOOBguOCi+OBn+OCgeimi+OBn+ebruOBq+OCgua2vOOBl+OBkuOBp+OAgeOBleOCieOCiuOBqOOBl+OBn+edgOeUqOaEn+OBquOBruOBp+iSuOOBl+aakeOBhOaihembqOOBruaZguacn++9nuebm+Wkj+OBvuOBp+mVt+OBhOacn+mWk+OBiuS9v+OBhOOBhOOBn+OBoOOBkeOBvuOBmeOAggrjgrPjg4Pjg4jjg7Mg44Ki44K744OG44O844OIIOOBriDjgZXjgonjgaPjgajjgZfjgZ/jgr/jg4Pjg4HjgajlhKrjgZfjgYTlhYnmsqLmhJ/jgpLmjIHjgZ/jgZvjgZ/ntKDmnZDjgpLkvb/nlKjjgZfjgabjgYTjgb7jgZnjgILjgrfjg6/jgavjgarjgorjgaXjgonjgY/jgIHjgZToh6rlroXjgafjga7jgrHjgqLjgoLjgZfjgoTjgZnjgYTntKDmnZDjgarjga7jgafjgIHjgYrku5XkuovjgafjgoIg44K/44Km44Oz44Gn44KC5bmF5bqD44GE44K344O844Oz44Gn44GK5L2/44GE44GE44Gf44Gg44GR44G+44GZCgrjgrXjgqTjgrrooajoqJhNCuW5s+e9ruOBjeaOoeWvuArjgo/jgY3kuIvouqvluYU0MgrogqnjgYvjgonoo77jgb7jgafjga7nnYDkuIg3MgoK57Sg5p2QCuOCs+ODg+ODiOODszUwCuOCouOCu+ODhuODvOODiDUwCgrkuK3lj6Tlk4HjgavjgZTnkIbop6PjgYTjgZ/jgaDjgZHjgovmlrnjgYrpoZjjgYToh7TjgZfjgb7jgZnjgIIKICPku5XkuosgI+OCquODleOCo+OCuSAj6YCa5YukICPjgqrjg5XjgqPjgrnjgqvjgrjjg6XjgqLjg6sgI+Wkp+S6uiAj5LqL5YuZ5pyNICMzMOS7oyAjNDDku6MgI+S6i+WLmeacjSAj5LqL5YuZ">
--#                           <input type="hidden" name="brand_name_base64" value="ODg0">
--#                           <input type="hidden" name="shipping_from_area_base64" value="MTU=">
--#                           <input type="hidden" name="family_name_base64" value="5riF6YeO">
--#                           <input type="hidden" name="first_name_base64" value="44GC44Ga44G/">
--#                           <input type="hidden" name="family_name_kana_base64" value="44K744Kk44OO">
--#                           <input type="hidden" name="first_name_kana_base64" value="44Ki44K644Of">
--#                           <input type="hidden" name="prefecture_base64" value="56We5aWI5bed55yM">
--#                           <input type="hidden" name="city_base64" value="5bed5bSO5biC6auY5rSl5Yy6">
--#                           <input type="hidden" name="address1_base64" value="5LiL5L2c5bu2Ni02LTIx">
--#                           <input type="hidden" name="address2_base64" value="44Ki44ON44OD44Kv44K5SzIwNg==">
--#                           <input type="hidden" name="telephone_base64" value="MDkwNjcxMTY4MzM=">
--#                           <input type="hidden" name="__csrf_value" value="13bcef959f9f11f1fc414bf5d89ec71be086f569afc171af59a563bf19c5ca961ff10e1e104c5b9fc2d224f4ef88499e6ce6dd49f486d8940ac91b97c19bdf89d">
--#                         <input type="hidden" name="_s" value="U2FsdGVkX18COAUXk0_PTc9SyNp2xNAUHrYsu2prKJG_QmdcOj5zbDNDiQ3WqTCVUz5ePMH4FES0ahsPmeyync2nVsWelZhM5FKS0hxzDkxEuzrbS1eHXJvlr1Ax0Vti">
--#                         <button type="submit" class="btn-default btn-red bold">購入する</button>
-
--#       </form>
--#       </div>
--# </section>
+                  %button.buy-confirm-btn= f.submit "購入する"
 
 
--# <section class="buy-content buy-user-info">
--#   <div class="buy-content-inner">
--#     <h3>配送先 </h3>
--#     <address class="buy-user-info-text">
--#       〒213-0033
--#       <br>
--#       神奈川県 川崎市高津区
--#       下作延6-6-21
--#       アネックスK206
--#       <br>
--#       清野 あずみ
--#     </address>
--#     <p class="buy-user-info-text">
+%section.buy-content.user-info
+  .user-info
+    %h3.user-info__header 配送先
+      %adress.user-info__text
+        %p 〒111-111
+        %br
+        東京都 大田区＊＊
+        ＊＊＊１−１−１
+        ＊＊マンション１０１
+        %br
+        current_user.name
 
--#     </p>
--#           <a href="https://www.mercari.com/jp/transaction/address/m11676733213/?_s=U2FsdGVkX18COAUXk0_PTc9SyNp2xNAUHrYsu2prKJG_QmdcOj5zbDNDiQ3WqTCVUz5ePMH4FES0ahsPmeyync2nVsWelZhM5FKS0hxzDkxEuzrbS1eHXJvlr1Ax0Vti" class="buy-user-info-fix"><span>変更する</span><i class="icon-arrow-right"></i></a>
--#       </div>
--# </section>
+      %p.link-to-change.icon-arrow-right 変更する
+</section>
 
--#   <section class="buy-content buy-user-info" data-buy="pay-method">
--#     <div class="buy-content-inner">
--#       <h3>支払い方法</h3>
--#       <p class="buy-user-info-text">
--#         ************5238
--#         <br>
--#         04 / 21
--#                 </p><figure>
--#                     <img src="//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2419426648" width="49" height="15" alt="visa">
--#         </figure>
--#       <p></p>
--#                         <a href="https://www.mercari.com/jp/transaction/select_card/m11676733213/?_s=U2FsdGVkX18COAUXk0_PTc9SyNp2xNAUHrYsu2prKJG_QmdcOj5zbDNDiQ3WqTCVUz5ePMH4FES0ahsPmeyync2nVsWelZhM5FKS0hxzDkxEuzrbS1eHXJvlr1Ax0Vti" class="buy-user-info-fix">
--#             <span>変更する</span><i class="icon-arrow-right"></i>
--#           </a>
--#                   </div>
--#   </section>
--#   </section>
--#       </main>
+  <section class="buy-content buy-user-info" data-buy="pay-method">
+    <div class="buy-content-inner">
+      <h3>支払い方法</h3>
+      <p class="buy-user-info-text">
+        ************5238
+        <br>
+        04 / 21
+                </p><figure>
+                    <img src="//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2419426648" width="49" height="15" alt="visa">
+        </figure>
+      <p></p>
+                        <a href="https://www.mercari.com/jp/transaction/select_card/m11676733213/?_s=U2FsdGVkX18COAUXk0_PTc9SyNp2xNAUHrYsu2prKJG_QmdcOj5zbDNDiQ3WqTCVUz5ePMH4FES0ahsPmeyync2nVsWelZhM5FKS0hxzDkxEuzrbS1eHXJvlr1Ax0Vti" class="buy-user-info-fix">
+            <span>変更する</span><i class="icon-arrow-right"></i>
+          </a>
+                  </div>
+  </section>
+  </section>
+      </main>
   = render 'shared/single-footer'
