@@ -9,10 +9,12 @@
             %h3.input-part__title 出品画像
             %span.input-part__require 必須
             %p.input-part__details 最大10枚までアップロードできます
-            .input-part__dropbox
-              .media-min__append--icon
-                %pre.media-min__hidden ドラッグアンドドロップ
-                %pre.media-min__hidden またはクリックしてファイルをアップロード
+            -# ファイルアップロードcarrierwave複数
+            = form.file_field :images, multiple: true do
+              .input-part__dropbox
+                .media-min__append--icon
+                  %pre.media-min__hidden ドラッグアンドドロップ
+                  %pre.media-min__hidden またはクリックしてファイルをアップロード
         %section.form-section
           .input-part
             %label.input-part__title 商品名
