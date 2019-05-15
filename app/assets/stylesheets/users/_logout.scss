@@ -14,7 +14,8 @@
 .mypage-nav{
   @include clearfix;
   width: 85%;
-  margin: 40px auto 80px; //メディアクエリで要検討
+  margin: 40px auto 0px;
+  padding-bottom: 80px;
 
   &__list{
     position: relative;
