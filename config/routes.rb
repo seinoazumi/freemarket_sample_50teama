@@ -5,12 +5,14 @@ Rails.application.routes.draw do
 
   root 'items#index'
   get 'logout' => 'users#logout'
-  get 'edit' => 'users#edit'
   # ルーティングは追って検討する
 
   resources :users, only: [:show, :new, :edit, :update] do
     collection do
       get 'signup/:url',action: 'new'
+    end
+    collection do
+      get 'mypage/:url',action: 'edit'
     end
   end
   resources :items, only: [:index, :show, :new, :create] do
