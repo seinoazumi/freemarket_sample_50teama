@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   get 'confirm' => 'items#confirm'
   # ルーティングは追って検討する
 
-  resources :users, only: [:show, :new]
+  resources :users, only: [:show, :new, :edit, :update] do
+    collection do
+      get 'signup/:url',action: 'new'
+    end
+  end
   resources :items, only: [:index, :show, :new, :create] do
     resources :categories, only: [:search]
   end
