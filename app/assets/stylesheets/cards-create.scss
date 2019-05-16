@@ -71,41 +71,7 @@
                 }
               }
             }
-            &__birthday-select-wrap {
-              display: flex;
-              &__left {
-                @include select-box;
-                width: 200px;
-                select {
-                  width: 140px;
-                  margin-top: 10px;
-                }
-              }
-              &__right {
-                margin-top: 14px;
-                .chevron-box {
-                  height: 58px;
-                  width: 10px;
-                  position: relative;
-                  .icon-chevron-bottom {
-                    position: absolute;
-                    right: 80px;
-                    top: 35%;
-                    z-index: 2;
-                    &:after {
-                      font-family: "Font Awesome 5 Free";
-                      content: '\f078';
-                      font-weight: 900;
-                      color: $gray-lv3;
-                      font-size: 18px;
-                    }
-                  }
-                }
-              }
-            }
-            &__prefecture-select-wrap {
-              @include select-box;
-            }
+
             &__expiration-wrap {
               @include select-box;
               select {
