@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(params_permit)
+    @item = Item.new&.(params_permit)
     if @item.save
       redirect_to group_messages_path(@group)
       # モーダル表示させる
@@ -26,6 +26,7 @@ class ItemsController < ApplicationController
 
   def params_permit
     params.require(:items).permit(:name, :dondition, :delivery_fee, :delivery_days, :price, :seller_id).merge(images: [])
+    # params.require(:items).permit(:name, :dondition, :delivery_fee, :delivery_days, :price, :seller_id).merge(images: [])
   end
 
   # def set_current_user
