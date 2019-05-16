@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show, :new]
   resources :items, only: [:index, :show, :new, :create] do
     resources :categories, only: [:search]
   end
