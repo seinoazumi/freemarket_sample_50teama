@@ -32,6 +32,7 @@
 @import 'items/item-box.scss';
 @import 'items/main-aside.scss';
 @import 'items/main-footer.scss';
+@import 'items/buy-confirm.scss'; //商品購入確認ページ
 @import 'items/detail.scss'; //商品詳細情報ページ
 
 
@@ -48,3 +49,6 @@
 @import 'users/logout.scss';
 @import 'users/show.scss';
 @import 'users/edit-profiele.scss';
+
+//--------------------------------cards
+@import 'cards/show-cards.scss';
