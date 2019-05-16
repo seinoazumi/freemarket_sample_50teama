@@ -1,14 +1,8 @@
-.logout-btn__container{
-  width: 85%;
-  margin: 40px auto 0;
-  background: $white;
-  padding: 50px 70px;
-  .logout-btn{
-    @include btn-default;
-    @include btn-red;
-    margin: 0 auto;
-    max-width: 320px;
-  }
+.logout-btn{
+  @include btn-default;
+  @include btn-red;
+  margin: 0 auto;
+  max-width: 320px;
 }
 
 .mypage-nav{
