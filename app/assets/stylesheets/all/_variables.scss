@@ -243,10 +243,3 @@
   }
 }
 // user関連のページで用いるmixinここまで
-
-//１カラムのページのコンテナ
-@mixin single-container-base {
-  background: $white;
-  width: 700px;
-  margin: 0 auto 41px;
- }
