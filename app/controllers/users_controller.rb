@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :return_logged_in_user, only: :new
+  before_action :authenticate_user!, only: :edit
 
   def show  # ユーザー個人ページ、自分の出品した商品を出品ステータス別に得る
 
@@ -61,6 +62,19 @@ class UsersController < ApplicationController
   end
 
   def logout
+  end
+
+  def edit
+    render "users/mypage/#{params[:url]}"
+  end
+
+  def update
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   private

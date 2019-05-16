@@ -32,7 +32,6 @@
       }
     }
   }
-
   .sign-in {
     .panel {
       background: $white;
@@ -98,7 +97,7 @@
     }
   }
 
-  .registration, .identification {
+  .registration,.identification{
     .panel {
       background: $white;
       width: 700px;
@@ -271,6 +270,34 @@
       }
     }
   }
+  .identification {
+    text-align: center;
+    margin: 40px 0;
+    .panel {
+      &__head {
+        padding: 8px 24px;
+      }
+      &__inner {
+        .content {
+          max-width: initial;
+          margin: 0;
+          .form-group {
+            &__info-link {
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1068px) {
+    .identification {
+      .panel {
+        width: 85%;
+      }
+    }
+  }
 
   .identification {
     text-align: center;
@@ -312,7 +339,6 @@
         }
       }
     }
-
     .sign-in {
       .panel {
         &__head {
