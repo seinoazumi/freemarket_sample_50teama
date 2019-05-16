@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   }
 
   root 'items#index'
-  get 'logout' => 'users#logout'
   # ルーティングは追って検討する
 
   resources :users, only: [:show, :new, :edit, :update] do
