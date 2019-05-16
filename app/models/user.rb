@@ -1,8 +1,28 @@
 class User < ApplicationRecord
+  require 'valid_columns'
+
   has_many :likes
   has_many :user_items
   has_many :items, through: :user_items
   belongs_to :card, optional: true
+
+  with_options presence: true do
+    validates :name
+    validates :address
+    validates :first_name
+    validates :last_name
+    validates :first_name_kana
+    validates :last_name_kana
+    validates :postal_code
+    validates :prefecture
+    validates :city
+    validates :address
+    validates :birthday
+  end
+
+  validates :name,            length: { maximum: 20 }
+  validates :first_name_kana, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
+  validates :last_name_kana,  format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
 
   enum prefecture: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
