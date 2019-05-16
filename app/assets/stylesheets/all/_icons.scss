@@ -62,6 +62,9 @@
 .icon-lock::before {
   @include font-awesome-base;
   content: '\f023';
+.icon-tag::before {
+  @include font-awesome-base;
+  content: '\f02b';
 }
 
 .icon-tag::before {
@@ -164,4 +167,8 @@
   font-family: "Font Awesome 5 Brands";
   content: "\f082";
   font-size: 30px;
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
