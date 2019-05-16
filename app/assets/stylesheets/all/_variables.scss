@@ -186,6 +186,7 @@
 
 
 
+<<<<<<< HEAD
 // ピックアップされているカテゴリーの青いヘッダー
 @mixin blue-header {
   font-size: 1.6em;
@@ -239,6 +240,10 @@
 
  // 以下user関連のページで用いるmixin
  @mixin link-btn {
+=======
+// 以下user関連のページで用いるmixin
+@mixin link-btn {
+>>>>>>> parent of eeccad2... Resolve conflict
   display: flex;
   height: 50px;
   margin: 0 auto;

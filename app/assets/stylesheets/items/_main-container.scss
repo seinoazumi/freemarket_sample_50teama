@@ -20,15 +20,15 @@
   flex-wrap: wrap;
   margin: 0 auto;
     &__header{
-      text-align: center;
-      font-size: 2em;
-      font-weight: bold;
-      margin-bottom: 1em;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 1em;
   }
 }
 
 .item-boxes{
-
+  
   &__header{
     font-size: 1.6em;
     color: $link-blue;
@@ -46,7 +46,7 @@
       color: $link-blue;
       bottom:10px;
       float: right;
-
+      
       &:hover {
         opacity: 0.8;
         color: $link-blue;
