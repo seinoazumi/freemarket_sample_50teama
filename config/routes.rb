@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get 'signup/:url',action: 'new'
     end
   end
-  resources :items, only: [:index, :show, :new, :create] do
+  resources :items, only: [:index, :show, :new] do
     resources :categories, only: [:search]
   end
   resources :cards, only: [:new, :create, :show]
