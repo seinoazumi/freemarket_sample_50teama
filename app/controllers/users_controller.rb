@@ -65,7 +65,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    render "users/mypage/#{params[:url]}"
   end
 
   def update
