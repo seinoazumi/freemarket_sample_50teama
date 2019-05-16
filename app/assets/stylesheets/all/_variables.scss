@@ -250,3 +250,9 @@
   width: 700px;
   margin: 0 auto 41px;
  }
+
+@mixin single-container-header{
+  padding: 37px 16px 38px;
+  font-weight: 700;
+  font-size: 22px;
+}
