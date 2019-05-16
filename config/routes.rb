@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'edit' => 'users#edit'
   # ルーティングは追って検討する
 
-  resources :users, only: [:show, :new] do
+  resources :users, only: [:show, :new, :edit, :update] do
     collection do
       get 'signup/:url',action: 'new'
     end
