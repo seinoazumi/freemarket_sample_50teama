@@ -9,4 +9,10 @@ class ItemsController < ApplicationController
 
   def create
   end
+
+  def confirm
+  end
+
+  def show
+  end
 end
