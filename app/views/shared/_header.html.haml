@@ -1,30 +1,31 @@
-%header.sp-header.visible-sp
-  .sp-header__content
-    %h1.sp-header__content__logo
-      = link_to 'メルカリトップページへのリンク', src: '#' do
-        = image_tag "logo.svg", alt: 'mercari', size:"134x36"
+.wrapper
+  %header.sp-header.visible-sp
+    .sp-header__content
+      %h1.sp-header__content__logo
+        = link_to 'メルカリトップページへのリンク', src: '#' do
+          = image_tag "logo.svg", alt: 'mercari', size:"134x36"
 
-    .sp-header__user-nav
-      %ul.sp-header__user-nav
-        %li.sp-header__user-nav__list.icon-bell
-          = link_to '', src: '#', class: 'sp-header__user-icon'
+      .sp-header__user-nav
+        %ul.sp-header__user-nav
+          %li.sp-header__user-nav__list.icon-bell
+            = link_to '', src: '#', class: 'sp-header__user-icon'
 
-        %li.sp-header__user-nav__list.icon-check
-          = link_to '', src: '#', class: 'sp-header__user-icon'
+          %li.sp-header__user-nav__list.icon-check
+            = link_to '', src: '#', class: 'sp-header__user-icon'
 
-        %li.sp-header__user-nav__list
-          = link_to 'マイページへのリンク', src: '#', class: 'sp-header-user-icon user-profile__avatar' do
-            = image_tag 'avatar.jpg', alt: 'プロフィール写真', width: 32
+          %li.sp-header__user-nav__list
+            = link_to 'マイページへのリンク', src: '#', class: 'sp-header-user-icon user-profile__avatar' do
+              = image_tag 'avatar.jpg', alt: 'プロフィール写真', width: 32
 
-    .header__search-bar
-      = form_tag '#', method: :get do
-        = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "header__search-bar__search"}
-        %i.icon-search
+      .header__search-bar
+        = form_tag '#', method: :get do
+          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "header__search-bar__search"}
+          %i.icon-search
 
-    %ul.header__nav
-      %li.header__nav__list.icon-list= link_to 'カテゴリー一覧', src: '#'
+      %ul.header__nav
+        %li.header__nav__list.icon-list= link_to 'カテゴリー一覧', src: '#'
 
-      %li.header__nav__list.icon-tag= link_to 'ブランドから探す', src: '#'
+        %li.header__nav__list.icon-tag= link_to 'ブランドから探す', src: '#'
 
 %header.pc-header.visible-pc
   .pc-header__inner

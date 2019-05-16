@@ -1,22 +1,6 @@
-.icon-arrow-l::before {
-  @include font-awesome-base;
-  content: '\f053';
-}
-
-
-.icon-arrow-right::before {
-  @include font-awesome-base;
-  content: '\f054';
-}
-
 .icon-arrow-r::after {
   @include font-awesome-base;
   content: '\f054';
-}
-
-.icon-bad::before {
-  @include font-awesome-base;
-  content: '\f119';
 }
 
 .icon-bell::before {
@@ -34,11 +18,6 @@
   content: '\f00c';
 }
 
-.icon-good::before {
-  @include font-awesome-base;
-  content: '\f118';
-}
-
 .icon-clock::before {
   @include font-awesome-base;
   content: '\f017';
@@ -48,20 +27,9 @@
   font-weight:400;
   content: '\f004';
 }
-
 .icon-list::before {
   @include font-awesome-base;
   content: '\f03a';
-}
-
-.icon-lock::before {
-  @include font-awesome-base;
-  content: '\f023';
-}
-
-.icon-normal::before {
-  @include font-awesome-base;
-  content: '\f11a';
 }
 
 .icon-search::after {
@@ -69,41 +37,12 @@
   content: '\f002';
 }
 
-.icon-select::before {
-  @include font-awesome-base;
-  content: '\f078';
-}
-
 .icon-tag::before {
   @include font-awesome-base;
   content: '\f02b';
 }
 
-.icon-facebook::before {
+.icon-select::before {
   @include font-awesome-base;
-  font-family: "Font Awesome 5 Brands";
-  content: '\f082';
-  color: $facebook;
-}
-
-.icon-twitter::before{
-  @include font-awesome-base;
-  font-family: "Font Awesome 5 Brands";
-  content: '\f081';
-  font-weight: 400;
-  color: $twitter;
-}
-
-.icon-line::before{
-  @include font-awesome-base;
-  font-family: "Font Awesome 5 Brands";
-  content: '\f3c0';
-  font-weight: 400;
-  color: $line;
-}
-.icon-pinterest::before{
-  @include font-awesome-base;
-  font-family: "Font Awesome 5 Brands";
-  content: '\f0d3';
-  color: $pinterest;
-}
+  content: '\f078';
+  }

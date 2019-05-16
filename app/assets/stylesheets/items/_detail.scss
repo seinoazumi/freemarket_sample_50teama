@@ -1,6 +1,7 @@
 .item-detail-page{
   .single-container{
     @include single-container-base;
+    margin: 0 auto;
     padding: 24px 16px;
     width: 100%;
 

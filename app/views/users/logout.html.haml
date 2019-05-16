@@ -1,8 +1,8 @@
 = render "/shared/header"
 = render '/shared/breadcrumb'
 
-%main.two-column-in-full-width
-  .logout-btn__container
+%main.two-column-container
+  .two-column-container__r
     %button.logout-btn= link_to "ログアウト", destroy_user_session_path, method: :delete
 
   = render '/shared/mypage-nav'
