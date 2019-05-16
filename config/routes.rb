@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   root 'items#index'
   get 'logout' => 'users#logout'
   get 'edit' => 'users#edit'
-  get 'confirm' => 'items#confirm'
   # ルーティングは追って検討する
 
   resources :users, only: [:show, :new, :edit, :update] do
@@ -17,5 +16,5 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :new, :create] do
     resources :categories, only: [:search]
   end
-  resources :cards, only: [:new, :show]
+  resources :cards, only: [:new]
 end
