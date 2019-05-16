@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'edit' => 'users#edit'
   # ルーティングは追って検討する
 
+  get 'users/signup/:url', controller: 'users', action: 'new'
+
   resources :users, only: [:show, :new]
   resources :items, only: [:index, :show, :new, :create] do
     resources :categories, only: [:search]
