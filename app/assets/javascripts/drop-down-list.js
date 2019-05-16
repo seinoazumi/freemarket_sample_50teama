@@ -50,4 +50,6 @@ $(document).ready(function() {
         $(this).empty();
       }); //mouseout時のアクション end
     }); //mouseover時のアクション end
-});
+}); 
+
+

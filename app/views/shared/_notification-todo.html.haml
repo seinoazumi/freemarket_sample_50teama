@@ -1,5 +1,4 @@
 -# NOTE: 当初設計では運営からのお知らせデータが存在しない、ダミー作成 ⇨余裕できたらデータテーブルごと追加で実装
-
 %section.mypage-tab-container.notification-todo
   %ul.mypage-tabs
     -# TODO: .activeをjsでつけ変えることで表示を変える
@@ -18,11 +17,9 @@
 
       -# TODO: - if hoges.length == 0
       -# %li.mypage-item-not-found.bold お知らせの商品がありません
-
       -# TODO: 最低要件はダミー表示コピーで実現する
       -# - else
       -# - hoges.foreach do |hoge|、あるいは render partial: hoges, locals {hoge: hoge}
-
       %li
         -# オリジナルは「ニュース一覧」へリンクする。作成優先度最低レベル。
         = link_to "#", class: "mypage-item-link" do
