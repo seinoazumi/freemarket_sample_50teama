@@ -1,24 +1,24 @@
 .single-wrapper
-  %header{class:"single-header-flex"}
+  %header.single-header-flex
     .single-header-flex__left
       =link_to root_path do
         = image_tag 'logo.svg', height:'49px'
-    %nav{class:"single-header-flex__right"}
-      %ol{class:"progress-bar"}
-        %li{class:"progress-bar__progress--through"}
-          %p{class:"progress-bar__progress__text"} 会員情報
+    %nav.single-header-flex__right
+      %ol.progress-bar
+        %li.progress-bar__progress--through
+          %p.progress-bar__progress__text 会員情報
           .progress-bar__progress__status
-        %li{class:"progress-bar__progress--through"}
-          %p{class:"progress-bar__progress__text"} 電話番号認証
+        %li.progress-bar__progress--through
+          %p.progress-bar__progress__text 電話番号認証
           .progress-bar__progress__status
-        %li{class:"progress-bar__progress--through"}
-          %p{class:"progress-bar__progress__text"} お届け先住所入力
+        %li.progress-bar__progress--through
+          %p.progress-bar__progress__text お届け先住所入力
           .progress-bar__progress__status
-        %li{class:"progress-bar__progress--active"}
-          %p{class:"progress-bar__progress__text"} 支払い方法
+        %li.progress-bar__progress--active
+          %p.progress-bar__progress__text 支払い方法
           .progress-bar__progress__status
-        %li{class:"progress-bar__progress"}
-          %p{class:"progress-bar__progress__text"} 完了
+        %li.progress-bar__progress
+          %p.progress-bar__progress__text 完了
           .progress-bar__progress__status
   .single-container
     .registration
@@ -29,7 +29,7 @@
             .content
               .form-group
                 = f.label "カード番号", class:"form-group__label"
-                %span{class:"form-group__require"} 必須
+                %span.form-group__require 必須
                 = f.text_field :number, class:"form-group__input", placeholder: "半角数字のみ", maxlength: "16"
                 .form-group__card-logos
                   = image_tag 'visa_logo.png', height:'20px'
@@ -37,7 +37,7 @@
                   = image_tag 'saison_logo.png', height:'20px'
               .form-group
                 = f.label "有効期限", class:"form-group__label"
-                %span{class:"form-group__require"} 必須
+                %span.form-group__require 必須
                 .form-group__expiration-wrap
                   = f.select :exp_month, [["--",""],["1","01"],["2","02"],["3","03"],["4","04"],["5","05"],["6","06"],["7","07"],["8","08"],["9","09"],["10","10"],["11","11"],["12","12"]]
                   .icon-chevron-bottom
@@ -48,7 +48,7 @@
                   .icon-chevron-bottom
               .form-group
                 = f.label "セキュリティコード", class:"form-group__label"
-                %span{class:"form-group__require"} 必須
+                %span.form-group__require 必須
                 = f.text_field :cvc, class:"form-group__input", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4"
                 .form-group__card-info
                   .icon-question-circle
