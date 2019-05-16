@@ -80,7 +80,7 @@
 
  //fontawesomeを使用するときのcss
  @mixin font-awesome-base{
-  font-family: “Font Awesome 5 Free”;
+  font-family: "Font Awesome 5 Free";
   font-weight:900;
  }
 
@@ -268,12 +268,6 @@
   &__left {
     position: absolute;
     left: 17px;
-    .icon-envelope:before {
-      font-family: “Font Awesome 5 free”;
- content: ‘\f0e0’;
-      font-size: 20px;
-      color: $gray-lv2;
-    }
   }
   &__right {
     flex-grow: 1;
@@ -295,11 +289,6 @@
   &__left {
     position: absolute;
     left: 17px;
-    .icon-facebook-square:before {
-      font-family: “Font Awesome 5 Brands”;
-      content: ‘\f082’;
-      font-size: 30px;
-    }
   }
   &__right {
     flex-grow: 1;
