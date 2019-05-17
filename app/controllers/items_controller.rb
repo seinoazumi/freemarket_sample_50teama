@@ -16,4 +16,5 @@ class ItemsController < ApplicationController
   def show
     render "items/trade/#{params[:url]}"
   end
+
 end
