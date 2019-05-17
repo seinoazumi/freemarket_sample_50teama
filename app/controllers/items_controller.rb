@@ -10,8 +10,6 @@ class ItemsController < ApplicationController
   def create
   end
 
-  def confirm
-  end
 
   def show
     render "items/trade/#{params[:url]}"
