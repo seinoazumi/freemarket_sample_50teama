@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    :registrations => 'users/registrations'
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'
   }
 
   root 'items#index'
@@ -12,11 +13,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :edit, :update] do
     collection do
       get 'signup/:url',action: 'new'
+      get 'mypage/:url',action: 'edit'
     end
   end
 
   resources :items, only: [:index, :show, :new, :create] do
     resources :categories, only: [:search]
   end
-  resources :cards, only: [:new]
+  resources :cards, only: [:new, :show]
 end
