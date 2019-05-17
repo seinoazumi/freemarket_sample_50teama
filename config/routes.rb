@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get 'mypage/:url',action: 'edit'
     end
   end
-  resources :items, only: [:index, :show, :new, , :create] do
+  resources :items, only: [:index, :show, :new, :create] do
     resources :categories, only: [:search]
   end
   resources :cards, only: [:new, :show]
