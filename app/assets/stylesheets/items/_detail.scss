@@ -155,6 +155,7 @@
 }//item-detail-page end
 
 @media screen and (min-width: 768px) {
+.item-detail-page{
   .single-container{
     .visible-sp-only{
       display: none;
@@ -174,5 +175,6 @@
 
   .other-item{
     width: 700px !important;
+    }
   }
-  }//幅768px以上のページに適応されるscss
+}//幅768px以上のページに適応されるscss
