@@ -67,6 +67,8 @@
 .icon-lock::before {
   @include font-awesome-base;
   content: '\f023';
+}
+
 .icon-tag::before {
   @include font-awesome-base;
   content: '\f02b';
@@ -94,7 +96,6 @@
 }
 
 .icon-select::before {
-
   @include font-awesome-base;
   content: '\f078';
 }
