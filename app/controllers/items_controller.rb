@@ -12,7 +12,8 @@ class ItemsController < ApplicationController
 
 
   def show
-    render item_path(params[:url])
+    @items = Item.all.order(id: "DESC").limit(4)
+    render "/items/trade/#{params[:url]}"
   end
 
 end
