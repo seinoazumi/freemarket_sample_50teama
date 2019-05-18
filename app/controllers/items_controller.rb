@@ -10,4 +10,9 @@ class ItemsController < ApplicationController
   def create
   end
 
+
+  def show
+    render item_path(params[:url])
+  end
+
 end

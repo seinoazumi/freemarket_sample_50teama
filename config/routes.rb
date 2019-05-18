@@ -5,10 +5,14 @@ Rails.application.routes.draw do
   }
 
   root 'items#index'
-  get 'logout' => 'users#logout'
   get 'edit' => 'users#edit'
-  get 'confirm' => 'items#confirm'
   # ルーティングは追って検討する
+
+  resources :items, only: [:show] do
+    collection do
+      get 'trade/:url', action:'show'
+    end
+  end
 
   resources :users, only: [:show, :new, :edit, :update] do
     collection do
@@ -16,6 +20,7 @@ Rails.application.routes.draw do
       get 'mypage/:url',action: 'edit'
     end
   end
+
   resources :items, only: [:index, :show, :new, :create] do
     resources :categories, only: [:search]
   end
