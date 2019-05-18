@@ -118,7 +118,8 @@
       &__inner {
         padding: 64px;
         .content {
-          margin: 0;
+          max-width: 320px;
+          margin: 0 auto;
           .form-group {
             margin-top: 40px;
             text-align:left;
@@ -300,33 +301,6 @@
     .identification {
       .panel {
         width: 700px;
-      }
-    }
-  }
-
-  .identification {
-    text-align: center;
-    margin: 40px 0;
-    .panel {
-      &__head {
-        padding: 8px 24px;
-      }
-      &__inner {
-        .content {
-          .form-group {
-            &__info-link {
-              margin-top: 10px;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  @media screen and (max-width: 1068px) {
-    .identification {
-      .panel {
-        width: 85%;
       }
     }
   }
