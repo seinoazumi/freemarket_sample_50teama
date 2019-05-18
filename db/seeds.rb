@@ -7,8 +7,29 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 1.upto(11) do |num|
-  User.create(name: "user#{num}", email: "user#{num}@gmail.com", password: "11111111", first_name: "寧夢#{num}", last_name: "遊座#{num}", first_name_kana: "ネイム", last_name_kana: "ユウザ", postal_code: 1000000 + num, prefecture: rand(1..47), city:"保外市#{num}",building: "富嶽ビル#{num}", address:"#{num}", phone: 9000000000 + num + num * 10000, birthday: '2000-01-01', money: 50000 + num * 1000, point: 3000 + num * 100, seller_id: num, buyer_id: num, profile: "user#{num}です、よろしく！")
+  User.create(
+    name: "user#{num}",
+    email: "user#{num}@gmail.com",
+    password: "11111111",
+    first_name: "寧夢#{num}",
+    last_name: "遊座#{num}",
+    first_name_kana: "ネイム",
+    last_name_kana: "ユウザ",
+    postal_code: 1000000 + num,
+    prefecture: rand(1..47),
+    city:"保外市#{num}",
+    building: "富嶽ビル#{num}",
+    address:"#{num}",
+    phone: 9000000000 + num + num * 10000,
+    birthday: '2000-01-01',
+    money: 50000 + num * 1000,
+    point: 3000 + num * 100,
+    seller_id: num,
+    buyer_id: num,
+    profile: "user#{num}です、よろしく！"
+    )
   # TODO: エラーは出ないが作成できない 現状テーブルに外部キー設定なし影響？？ パンケーキ手焼きは可能
+  # 同一ユーザーによるダブりデータができない方法をとる（ダブるとどうなるか不明）
   if num % 2 == 0
     Like.create(buyer_id: num, item_id: (num + 11) % 60)
     Like.create(buyer_id: num, item_id: (num + 21) % 60)
@@ -40,7 +61,13 @@
 end
 
 1.upto(33) do |num|
-  Item.create(name: "お買い得セット#{num}", condition: rand(1..6), delivery_fee: rand(1..2), delivery_days: rand(1..3), price: num * 1000)
+  Item.create(
+    name: "お買い得セット#{num}",
+    condition: rand(1..6),
+    delivery_fee: rand(1..2),
+    delivery_days: rand(1..3),
+    price: num * 1000
+    )
 end
 
 1.upto(33) do |num|
