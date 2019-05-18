@@ -10,31 +10,31 @@
   User.create(name: "user#{num}", email: "user#{num}@gmail.com", password: "11111111", first_name: "寧夢#{num}", last_name: "遊座#{num}", first_name_kana: "ネイム", last_name_kana: "ユウザ", postal_code: 1000000 + num, prefecture: rand(1..47), city:"保外市#{num}",building: "富嶽ビル#{num}", address:"#{num}", phone: 9000000000 + num + num * 10000, birthday: '2000-01-01', money: 50000 + num * 1000, point: 3000 + num * 100, seller_id: num, buyer_id: num, profile: "user#{num}です、よろしく！")
   # TODO: エラーは出ないが作成できない 現状テーブルに外部キー設定なし影響？？ パンケーキ手焼きは可能
   if num % 2 == 0
-    Like.create(buyer_id: num + 1, item_id: (num + 11) % 60)
-    Like.create(buyer_id: num + 1, item_id: (num + 21) % 60)
-    Like.create(buyer_id: num + 1, item_id: (num + 31) % 60)
-    Like.create(buyer_id: num + 1, item_id: (num + 41) % 60)
-    Like.create(buyer_id: num + 1, item_id: (num + 51) % 60)
+    Like.create(buyer_id: num, item_id: (num + 11) % 60)
+    Like.create(buyer_id: num, item_id: (num + 21) % 60)
+    Like.create(buyer_id: num, item_id: (num + 31) % 60)
+    Like.create(buyer_id: num, item_id: (num + 41) % 60)
+    Like.create(buyer_id: num, item_id: (num + 51) % 60)
     if num % 3 == 1
-      Like.create(buyer_id: num + 1, item_id: (num + 15) % 60)
-      Like.create(buyer_id: num + 1, item_id: (num + 35) % 60)
+      Like.create(buyer_id: num, item_id: (num + 15) % 60)
+      Like.create(buyer_id: num, item_id: (num + 35) % 60)
     elsif num % 3 == 2
-      Like.create(buyer_id: num + 1, item_id: (num + 45) % 60)
+      Like.create(buyer_id: num, item_id: (num + 45) % 60)
     else
-      Like.create(buyer_id: num + 1, item_id: (num + 5) % 60)
-      Like.create(buyer_id: num + 1, item_id: (num + 25) % 60)
-      Like.create(buyer_id: num + 1, item_id: (num + 55) % 60)
+      Like.create(buyer_id: num, item_id: (num + 5) % 60)
+      Like.create(buyer_id: num, item_id: (num + 25) % 60)
+      Like.create(buyer_id: num, item_id: (num + 55) % 60)
     end
   else
-    Like.create(buyer_id: num + 1, item_id: (num * num + 10) % 60)
-    Like.create(buyer_id: num + 1, item_id: (num * num + 30) % 60)
-    Like.create(buyer_id: num + 1, item_id: (num * num + 50) % 60)
+    Like.create(buyer_id: num, item_id: (num * num + 10) % 60)
+    Like.create(buyer_id: num, item_id: (num * num + 30) % 60)
+    Like.create(buyer_id: num, item_id: (num * num + 50) % 60)
     if num % 5 == 0
-      Like.create(buyer_id: num + 1, item_id: (num * num + 20) % 60)
-      Like.create(buyer_id: num + 1, item_id: (num * num + 40) % 60)
+      Like.create(buyer_id: num, item_id: (num * num + 20) % 60)
+      Like.create(buyer_id: num, item_id: (num * num + 40) % 60)
     end
     if num % 7 == 0
-      Like.create(buyer_id: num + 1, item_id: (num * num + 0) % 60)
+      Like.create(buyer_id: num, item_id: (num * num + 0) % 60)
     end
   end
 end
