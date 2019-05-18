@@ -8,11 +8,6 @@ Rails.application.routes.draw do
   get 'edit' => 'users#edit'
   # ルーティングは追って検討する
 
-  resources :items, only: [:show] do
-    collection do
-      get 'trade/:url', action:'show'
-    end
-  end
 
   resources :users, only: [:show, :new, :edit, :update] do
     collection do
@@ -22,6 +17,10 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:index, :show, :new, :create] do
+    collection do
+      get 'trade/:url', action:'show'
+    end
+
     resources :categories, only: [:search]
   end
   resources :cards, only: [:new, :show]

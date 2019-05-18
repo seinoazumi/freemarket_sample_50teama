@@ -8,7 +8,7 @@
           .item-info
             %h3.item-info__image
               =image_tag ("http://placehold.jp/320x148.png"), alt: '商品画像'
-            %p.item-info__name=items.name
+            %p.item-info__name ここに商品名が入ります
             = form_with model: @item do |f|
               %p.item-info__price
                 ¥ 3,500
