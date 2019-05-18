@@ -87,10 +87,10 @@
                 %p.notification-box__date-passed.icon-clock 1日前
 
 
-          %li.pc-header__user-nav__list.icon-check= link_to 'やることリスト', src: '#'
-          .pc-header__user-box.user-box#todo-list
-            .todo-list__inner
-              %p.todo-list__message 現在、やることリストはありません
+          %li.pc-header__user-nav__list#todo-list__root.icon-check= link_to 'やることリスト', src: '#'
+          .pc-header__user-box.user-box#todo-list.todo-list
+            .todo-list__icon__not-found
+            %p.todo-list__message 現在、やることリストはありません
 
           %li.pc-header__user-nav__list
             = link_to 'マイページへのリンク', src: '#', class: 'user-profile__avatar' do
