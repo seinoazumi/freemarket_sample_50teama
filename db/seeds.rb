@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-20.times do |num|
-  # user.id = num + 1 numは0スタート、id=0は存在しない
-  User.create(name: "user#{num + 1}", email: "user#{num + 1}@gmail.com", password: "11111111", first_name: "寧夢#{num + 1}", last_name: "遊座#{num + 1}", first_name_kana: "ネイム", last_name_kana: "ユウザ", postal_code: 1000000 + num, prefecture: num % 47 + 1, city:"保外市#{num + 1}",building: "富嶽ビル#{num + 1}", address:"#{num + 1}", phone: 9000010001 + num + num * 10000, birthday: '2000-01-01', money: 50000 + (num + 1) * 1000, point: 3000 + (num + 1) * 100, seller_id: num + 1, buyer_id: num + 1, profile: "user#{num + 1}です、よろしく！")
+1.upto(11) do |num|
+  User.create(name: "user#{num}", email: "user#{num}@gmail.com", password: "11111111", first_name: "寧夢#{num}", last_name: "遊座#{num}", first_name_kana: "ネイム", last_name_kana: "ユウザ", postal_code: 1000000 + num, prefecture: rand(1..47), city:"保外市#{num}",building: "富嶽ビル#{num}", address:"#{num}", phone: 9000000000 + num + num * 10000, birthday: '2000-01-01', money: 50000 + num * 1000, point: 3000 + num * 100, seller_id: num, buyer_id: num, profile: "user#{num}です、よろしく！")
+  # TODO: エラーは出ないが作成できない 現状テーブルに外部キー設定なし影響？？ パンケーキ手焼きは可能
   if num % 2 == 0
     Like.create(buyer_id: num + 1, item_id: (num + 11) % 60)
     Like.create(buyer_id: num + 1, item_id: (num + 21) % 60)
@@ -39,12 +39,19 @@
   end
 end
 
-60.times do |num|
-  Item.create(name: "お買い得セット#{num + 1}", condition: num % 6 + 1, delivery_fee: 1000 + (num + 1) * 10, delivery_days: num % 3 + 1, price: (num + 1) * 1000)
+1.upto(33) do |num|
+  Item.create(name: "お買い得セット#{num}", condition: rand(1..6), delivery_fee: rand(1..2), delivery_days: rand(1..3), price: num * 1000)
 end
 
-60.times do |num|
-  UserItem.create(user_id: (num + 1), item_id: num * 3 + 1)
-  UserItem.create(user_id: (num + 1), item_id: num * 3 + 2)
-  UserItem.create(user_id: (num + 1), item_id: num * 3 + 3)
+1.upto(33) do |num|
+  UserItem.create(user_id: num, item_id: num * 3 - 2)
+  UserItem.create(user_id: num, item_id: num * 3 - 1)
+  UserItem.create(user_id: num, item_id: num * 3 - 0)
+end
+
+1.upto(33) do |num|
+  1.upto(10) do |n|
+    image_path = "#{Rails.root}/app/uploaders/dummy_images/m#{num}_#{n}.jpg"
+    Image.create(item_id: num,image: open(image_path)) if File.exist?(image_path)
+  end
 end
