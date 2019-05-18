@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       render "users/signup/#{params[:url]}"
     when "address" then
       @user = User.new(user_params)
-      if @user.valid_columns?(:name,:email,:password,:password_confirmation,:last_name,:first_name,:last_name_kana,:first_name_kana,:birthday)
+      if @user.valid_columns?(:name,:email,:password,:password_confirmation,:last_name,:first_name,:last_name_kana,:first_name_kana,:birthday) && verify_recaptcha
         session[:name] = params[:user][:name]
         session[:email] = params[:user][:email]
         session[:password] = params[:user][:password]
@@ -84,7 +84,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name,:email, :password, :password_confirmation, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday,:postal_code,:prefecture,:city,:address,:building,:phone)
+    params.require(:user).permit(:name,:email, :password, :password_confirmation, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday,:postal_code,:prefecture,:city,:address,:building,:phone,:profile)
   end
 
   def edit

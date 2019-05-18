@@ -93,6 +93,9 @@
             }
           }
         }
+        .g-recaptcha {
+          margin-top: 20px;
+        }
       }
     }
   }
@@ -252,6 +255,9 @@
                 font-weight: 900;
               }
             }
+            .g-recaptcha {
+              margin-top: 20px;
+            }
           }
           .form-info-text {
             margin: 8px 0 0;
@@ -297,7 +303,7 @@
   @media screen and (max-width: 1068px) {
     .identification {
       .panel {
-        width: 85%;
+        width: 700px;
       }
     }
   }

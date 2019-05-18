@@ -157,8 +157,6 @@
 @media screen and (min-width: 768px) {
 .item-detail-page{
   .single-container{
-    max-width: 700px;
-    padding: 24px 40px 40px 40px;
     .visible-sp-only{
       display: none;
     }
@@ -177,7 +175,7 @@
     }
   }
   .other-item{
-    width: 700px;
+    width: 700px !important;
+    }
   }
-}
 }//幅768px以上のページに適応されるscss

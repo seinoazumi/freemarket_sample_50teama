@@ -39,12 +39,9 @@
               @include btn-red;
               min-width: 300px;
             }
-            .icon-card::before{
-              font-weight:400;
-              padding-right: 5px;
-            }
           }
         }
+
       .bottom-info{
         width: 100%;
         height: 70px;
@@ -53,6 +50,11 @@
         color: $link-blue;
         &__link:hover{
           @include blue-link;
+        }
+
+        .icon-card::before{
+          font-weight:400;
+          padding-right: 5px;
         }
       }
     }

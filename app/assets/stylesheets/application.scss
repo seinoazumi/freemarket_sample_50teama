@@ -32,7 +32,9 @@
 @import 'items/item-box.scss';
 @import 'items/main-aside.scss';
 @import 'items/main-footer.scss';
+@import 'items/buy-confirm.scss'; //商品購入確認ページ
 @import 'items/detail.scss'; //商品詳細情報ページ
+@import 'items/new.scss';
 
 
 //----------------------------shared 色々なページで使いまわせるもの
@@ -41,6 +43,7 @@
 @import 'breadcrumb.scss'; //パンくずリスト
 @import 'two-column-page.scss'; //左カラムにナビを含む２カラムのページ
 @import 'shared/mypage-tab-container.scss';
+@import 'shared/mypage-nav.scss';
 
 //-------------------------------users
 
@@ -48,7 +51,7 @@
 @import 'users/logout.scss';
 // @import 'users/show.scss';
 @import 'users/edit-profiele.scss';
+@import 'cards-create.scss';
 
 //--------------------------------cards
-
 @import 'cards/show-cards.scss';
