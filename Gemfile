@@ -77,6 +77,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'active_hash'
+gem 'payjp'
 
 group :production do
   gem 'unicorn', '5.4.1'
