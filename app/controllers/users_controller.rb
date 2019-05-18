@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :return_logged_in_user, only: :new
   before_action :authenticate_user!, only: :edit
+  require "payjp"
 
   def show  # ユーザー個人ページ、自分の出品した商品を出品ステータス別に得る
 
@@ -45,9 +46,13 @@ class UsersController < ApplicationController
         render "/users/signup/address"
       end
     when "complete"
-      @user = User.new(name: session[:name],email: session[:email],password: session[:password],password_confirmation: session[:password_confirmation],last_name: session[:last_name],first_name: session[:first_name],last_name_kana: session[:last_name_kana],first_name_kana: session[:first_name_kana],"birthday(1i)": session[:"birthday(1i)"],"birthday(2i)": session[:"birthday(2i)"],"birthday(3i)": session[:"birthday(3i)"],postal_code: session[:postal_code],prefecture: session[:prefecture],city: session[:city],address: session[:address],building: session[:building],phone: session[:phone])
+      Payjp.api_key = 'sk_test_b486b3703ec1656553c4921a'
+      customer = Payjp::Customer.create(card: params[:payjp_token])
+
+      @user = User.new(name: session[:name],email: session[:email],password: session[:password],password_confirmation: session[:password_confirmation],last_name: session[:last_name],first_name: session[:first_name],last_name_kana: session[:last_name_kana],first_name_kana: session[:first_name_kana],"birthday(1i)": session[:"birthday(1i)"],"birthday(2i)": session[:"birthday(2i)"],"birthday(3i)": session[:"birthday(3i)"],postal_code: session[:postal_code],prefecture: session[:prefecture],city: session[:city],address: session[:address],building: session[:building],phone: session[:phone],payjp_id: customer.id)
       @user[:seller_id] = 1
       @user[:buyer_id] = 1
+
       if @user.save
         @user[:seller_id] = @user.id
         @user[:buyer_id] = @user.id
@@ -60,6 +65,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
 
   def logout
   end
