@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_10_183829) do
+ActiveRecord::Schema.define(version: 2019_05_18_033611) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
@@ -55,13 +55,19 @@ ActiveRecord::Schema.define(version: 2019_05_10_183829) do
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "item_id", null: false
     t.integer "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_likes_on_item_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.integer "item_id"
+  end
+
+  create_table "user_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_user_items_on_item_id"
+    t.index ["user_id"], name: "index_user_items_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,19 +88,22 @@ ActiveRecord::Schema.define(version: 2019_05_10_183829) do
     t.string "city", null: false
     t.string "address", null: false
     t.string "building"
-    t.integer "phone", null: false
-    t.integer "birthday", null: false
+    t.string "phone", null: false
+    t.date "birthday", null: false
     t.integer "money", default: 0, null: false
     t.integer "point", default: 0, null: false
     t.integer "seller_id", null: false
     t.integer "buyer_id", null: false
     t.text "profile"
+    t.string "provider"
+    t.string "uid"
+    t.string "payjp_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "cards", "users"
   add_foreign_key "images", "items"
-  add_foreign_key "likes", "items"
-  add_foreign_key "likes", "users"
+  add_foreign_key "user_items", "items"
+  add_foreign_key "user_items", "users"
 end

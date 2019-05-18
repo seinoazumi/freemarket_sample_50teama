@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   def index # トップページ、アイテムをカテゴリー別に最新投稿順番に
+    @items = Item.all.order(id: "DESC").limit(4)
   end
 
   def new
@@ -8,4 +9,11 @@ class ItemsController < ApplicationController
 
   def create
   end
+
+
+  def show
+    @items = Item.all.order(id: "DESC").limit(4)
+    render "/items/trade/#{params[:url]}"
+  end
+
 end
