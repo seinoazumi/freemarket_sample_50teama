@@ -1,16 +1,14 @@
 .single-wrapper.buy-confirm-page
   = render 'shared/single-header'
   %main.single-container
-
     .panel
       %section.panel__head 購入を確定しますか？
       .panel__inner
-
         %section.buy-content
           .item-info
             %h3.item-info__image
               =image_tag ("http://placehold.jp/320x148.png"), alt: '商品画像'
-            %p.item-info__name 商品名がここに入ります
+            %p.item-info__name=items.name
             = form_with model: @item do |f|
               %p.item-info__price
                 ¥ 3,500
