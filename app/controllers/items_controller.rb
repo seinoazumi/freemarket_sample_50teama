@@ -12,10 +12,7 @@ class ItemsController < ApplicationController
 
 
   def show
-    @items = Item.find(params[:id])
-    binding.pry
-    render layout: "items/trade/confirm/:id"
-    # render "items/trade/#{params[:url]}"
+    render item_path(params[:url])
   end
 
 end

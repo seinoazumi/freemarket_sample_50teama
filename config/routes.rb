@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:show] do
     collection do
-      get 'trade/confirm/:id', action:'show'
+      get 'trade/:url', action:'show'
     end
   end
 
