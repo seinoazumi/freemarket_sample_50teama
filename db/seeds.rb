@@ -13,3 +13,9 @@ end
 60.times do |num|
   Item.create(name: "お買い得セット#{num + 1}", condition: 0, delivery_fee: 1000, delivery_days: 0, price: (num + 1) * 1000)
 end
+
+60.times do |num|
+  UserItem.create(user_id: (num + 1), item_id: num * 3 + 1)
+  UserItem.create(user_id: (num + 1), item_id: num * 3 + 2)
+  UserItem.create(user_id: (num + 1), item_id: num * 3 + 3)
+end
