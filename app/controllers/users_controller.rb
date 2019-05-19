@@ -49,16 +49,16 @@ class UsersController < ApplicationController
       @user = User.new(name: session[:name],email: session[:email],password: session[:password],password_confirmation: session[:password_confirmation],last_name: session[:last_name],first_name: session[:first_name],last_name_kana: session[:last_name_kana],first_name_kana: session[:first_name_kana],"birthday(1i)": session[:"birthday(1i)"],"birthday(2i)": session[:"birthday(2i)"],"birthday(3i)": session[:"birthday(3i)"],postal_code: session[:postal_code],prefecture: session[:prefecture],city: session[:city],address: session[:address],building: session[:building],phone: session[:phone])
       @user[:seller_id] = 1
       @user[:buyer_id] = 1
+      if session["devise.facebook_data"]
+        @user[:provider] = session["devise.facebook_data"]["provider"]
+        @user[:uid] = session["devise.facebook_data"]["uid"]
+      elsif session["devise.google_data"]
+        @user[:provider] = session["devise.google_data"]["provider"]
+        @user[:uid] = session["devise.google_data"]["uid"]
+      end
       if @user.save
         @user[:seller_id] = @user.id
         @user[:buyer_id] = @user.id
-        if session["devise.facebook_data"]
-          @user[:provider] = session["devise.facebook_data"]["provider"]
-          @user[:uid] = session["devise.facebook_data"]["uid"]
-        elsif session["devise.google_data"]
-          @user[:provider] = session["devise.google_data"]["provider"]
-          @user[:uid] = session["devise.google_data"]["uid"]
-        end
         @user.save
         reset_session
         sign_in @user
@@ -67,7 +67,9 @@ class UsersController < ApplicationController
         render "users/signup/card"
       end
     else
+      @error_message = session[:error_message] if session[:error_message]
       reset_session
+      session[:state] = "registration"
     end
   end
 
