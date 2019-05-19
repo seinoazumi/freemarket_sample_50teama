@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     when "registration" then
       @email = session["devise.facebook_data"]["info"]["email"] if session["devise.facebook_data"]
       @email = session["devise.google_data"]["extra"]["id_info"]["email"] if session["devise.google_data"]
+      @password = SecureRandom.urlsafe_base64  if session["devise.facebook_data"] || session["devise.google_data"]
       @user = User.new
       render "users/signup/#{params[:url]}"
     when "address" then
