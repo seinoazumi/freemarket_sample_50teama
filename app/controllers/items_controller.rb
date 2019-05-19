@@ -9,8 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(params_permit)
-    render action: :new
+    @item = Item.new.(params_permit)
     if @item.save
       redirect_to group_messages_path(@group)
       # モーダル表示させる
