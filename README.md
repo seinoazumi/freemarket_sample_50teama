@@ -23,6 +23,10 @@
 |seller_id|integer|null: false|出品者としてのid|
 |buyer_id|integer|null: false|購入者としてのid|
 |profile|text|limit: 1000|プロフィール情報|
+|provider|string||SNS認証の種類|
+|uid|string||SNS認証のid|
+|payjp_id|string||PAYJP顧客ID|
+
 ### Association
 - has_many :likes
 - has_many :user_items
@@ -58,6 +62,8 @@
 |delivery_days|integer|null: false|配送日数(番号選択)|
 |price|integer|null: false|価格|
 |buyer_id|integer||enptyなら売れていない、presentであれば売れたとする|
+|detail|text||商品説明文|
+|ship_from|integer|null: false|発送元地域|
 
 ### Association
 - has_many :likes
