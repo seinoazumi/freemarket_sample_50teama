@@ -23,13 +23,17 @@
           %i.icon-search
 
       %ul.header__nav
-        %li.header__nav__list.icon-list= link_to 'カテゴリー一覧', src: '#'
+        %li.header__nav__list.icon-list
+          = link_to 'カテゴリー一覧', src: '#'
 
-        %li.header__nav__list.icon-tag= link_to 'ブランドから探す', src: '#'
+        %li.header__nav__list.icon-tag
+          = link_to 'ブランドから探す', src: '#'
     - else
       %ul.header__user-btn
-        %li.header__user-btn__sign-in=link_to 'ログイン', new_user_session_path
-        %li.header__user-btn__resistrate=link_to '新規会員登録', new_user_path
+        %li.header__user-btn__sign-in
+          =link_to 'ログイン', new_user_session_path
+        %li.header__user-btn__resistrate
+          =link_to '新規会員登録', new_user_path
 
 %header.pc-header.visible-pc
   .pc-header__inner
@@ -150,5 +154,7 @@
                       %p 購入した商品 - 過去の取引
         - else
           %ul.header__user-btn
-            %li.header__user-btn__sign-in=link_to 'ログイン', new_user_session_path
-            %li.header__user-btn__resistrate=link_to '新規会員登録', new_user_path
+            %li.header__user-btn__sign-in
+              =link_to 'ログイン', new_user_session_path
+            %li.header__user-btn__resistrate
+              =link_to '新規会員登録', new_user_path
