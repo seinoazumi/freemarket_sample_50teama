@@ -5,8 +5,8 @@
       .panel
         .panel__head 新規会員登録
         .panel__inner
-          .error_message
-            = @error_message
+          - if @error_message
+            .error_message= @error_message
           .mail-registration
             .mail-registration__left
               .icon-envelope

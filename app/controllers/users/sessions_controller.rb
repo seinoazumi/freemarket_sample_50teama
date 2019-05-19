@@ -5,7 +5,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-    @error_message = session[:error_message] if session[:error_message]
+    @error_message = session[:error_message]
     reset_session
     session[:state] = "session"
     super
@@ -14,7 +14,7 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     if verify_recaptcha
-     super
+      super
     else
       redirect_to new_user_session_path
     end

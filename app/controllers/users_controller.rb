@@ -67,7 +67,7 @@ class UsersController < ApplicationController
         render "users/signup/card"
       end
     else
-      @error_message = session[:error_message] if session[:error_message]
+      @error_message = session[:error_message]
       reset_session
       session[:state] = "registration"
     end
