@@ -100,6 +100,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erb2haml (0.1.5)
       html2haml
     erubi (1.8.0)
@@ -337,6 +339,7 @@ DEPENDENCIES
   carrierwave
   chromedriver-helper
   devise
+  enum_help
   erb2haml
   fog-aws
   haml-rails
