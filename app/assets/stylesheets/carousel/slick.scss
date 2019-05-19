@@ -29,6 +29,9 @@
         cursor: pointer;
         cursor: hand;
     }
+    &__image{ //担当者による追記
+        width: 100vw;
+    }
 }
 .slick-slider .slick-track,
 .slick-slider .slick-list {

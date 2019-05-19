@@ -2,14 +2,11 @@
   = render 'shared/header'
 
   %main
-    %section.slider
-      .slider__stage
-        -# %figure.slide01= image_tag "slider_01.png"
-        .slide01.slide slide1
-        .slide02.slide slide2
-        .slide03.slide slide3
-        .slide04.slide slide4
-
+    %section.slick
+      %figure.slick-list=image_tag "slider_01.png", alt: "スライダーの画像", class: "slick-list__image"
+      %figure.slick-list=image_tag "slider_02.png", alt: "スライダーの画像", class: "slick-list__image"
+      %figure.slick-list=image_tag "slider_03.png", alt: "スライダーの画像", class: "slick-list__image"
+      %figure.slick-list=image_tag "slider_04.png", alt: "スライダーの画像", class: "slick-list__image"
   %section.pick-up-container
     %h2.pick-up-container__header ピックアップカテゴリー
 
