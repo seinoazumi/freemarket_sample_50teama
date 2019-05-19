@@ -1,55 +1,53 @@
-$(document).ready(function() {
-  var notificationList = `<ul class="pc-header__user-box" id="notification-list">
-  <li class="pc-header__notification-list__link icon-arrow-r">
-    <figure>
-      <img src="/assets/mercari_profile.png" alt="icon">
-    </figure>
-    <div class="notification-box">
-      <p class="notification-box__message">お知らせ１</p>
-      <p class="notification-box__date-passed icon-clock">1日前</p>
-    </div>
-  </li>
-
-  <li class="pc-header__notification-list__link icon-arrow-r">
-    <figure>
-      <img src="/assets/mercari_profile.png" alt="icon">
-    </figure>
-    <div class="notification-box">
-      <p class="notification-box__message">お知らせ１</p>
-      <p class="notification-box__date-passed icon-clock">1日前</p>
-    </div>
-  </li>
-
-  <li class="pc-header__notification-list__link icon-arrow-r">
-    <figure>
-      <img src="/assets/mercari_profile.png" alt="icon">
-    </figure>
-    <div class="notification-box">
-      <p class="notification-box__message">お知らせ１</p>
-      <p class="notification-box__date-passed icon-clock">1日前</p>
-    </div>
-  </li>
-
-  <li class="pc-header__notification-list__link icon-arrow-r">
-    <figure>
-      <img src="/assets/mercari_profile.png" alt="icon">
-    </figure>
-    <div class="notification-box">
-      <p class="notification-box__message">お知らせ１</p>
-      <p class="notification-box__date-passed icon-clock">1日前</p>
-    </div>
-  </li>
-</ul>`
+$(document).on('turbolinks:load', function() {
 
   $('#notification-list__root').on("mouseover", function(){
-    $(this).append(notificationList);
-    $('pc-header__user-box').css("opacity",1)
-    $(this).off('mouseover');
+    $('#notification-list').css('display','block');
+      $('#todo-list').css('display','none');
+      $('#mypage-box').css('display','none');
+    }); // end #notification-list の dysplayがblockの時の処理
+  }); //「お知らせ」ボタンに触るとリストが表示される
 
-      $('#notification-list').on("mouseout", function(){
-        $(this).empty();
-      }); //mouseout時のアクション end
-    }); //mouseover時のアクション end
-}); 
+  $(document).on('turbolinks:load', function() {
+    $('#notification-list').on("mouseover", function(){
+      $(this).css('display','block');
+      }); //表示されたリストを触り続けている間はリストが表示され続ける
 
+    $('#notification-list').delay(500).on("mouseout", function(){
+      $(this).css('display','none');
+  }); //リストからマウスを離すと、0.5秒後にリストは見えなくなる
 
+//---------------------------------------------やることリストのJS
+  $('#todo-list__root').on("mouseover", function(){
+    $('#todo-list').css('display','block');
+      $('#notification-list').css('display','none');
+      $('#mypage-box').css('display','none');
+    }); // end #todo-list の dysplayがblockの時の処理
+  }); // end mouse over 時の処理
+
+  $(document).on('turbolinks:load', function() {
+    $('#todo-list').on("mouseover", function(){
+      $(this).css('display','block');
+      });
+
+    $('#todo-list').delay(500).on("mouseout", function(){
+      $(this).css('display','none');
+  });
+
+//---------------------------------------------マイページBOXのJS
+  $('#mypage-box__root').on("mouseover", function(){
+    $('#mypage-box').css('display','block');
+      $('#notification-list').css('display','none');
+      $('#todo-list').css('display','none');
+    }); // end #todo-list の dysplayがblockの時の処理
+  }); // end mouse over 時の処理
+
+  $(document).on('turbolinks:load', function() {
+    $('#mypage-box').on("mouseover", function(){
+      $(this).css('display','block');
+      });
+
+    $('#mypage-box').delay(500).on("mouseout", function(){
+      $(this).css('display','none');
+  });
+
+});
