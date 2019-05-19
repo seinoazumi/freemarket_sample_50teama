@@ -98,9 +98,10 @@
               %span{style: "display:inline-block; height: 40px;"} マイページ
           #mypage-box
             .mypage-box
-              .mypage-box__upper-info
+              .mypage-box__bg-image
                 %figure
                   = image_tag 'avatar.jpg', alt: 'プロフィール写真', width: 60
+              .mypage-box__upper-info
                 %p.user-name= current_user.name
 
                 %ul.review-list
@@ -122,22 +123,22 @@
                         %li ポイント
                         %li.icon-arrow-r 0 P
 
-                %ul.mypage-list
-                  %li.mypage-list__item.icon-arrow-r
-                    = link_to '#' do
-                      %p いいね！一覧
-                  %li.mypage-list__item.icon-arrow-r
-                    = link_to '#' do
-                      %p 出品した商品 - 出品中
-                  %li.mypage-list__item.icon-arrow-r
-                    = link_to '#' do
-                      %p 出品した商品 - 取引中
-                  %li.mypage-list__item.icon-arrow-r
-                    = link_to '#' do
-                      %p 出品した商品 - 売却済
-                  %li.mypage-list__item.icon-arrow-r
-                    = link_to '#' do
-                      %p 購入した商品 - 取引中
-                  %li.mypage-list__item.icon-arrow-r
-                    = link_to '#' do
-                      %p 購入した商品 - 過去の取引
+              %ul.mypage-list
+                %li.mypage-list__item.icon-arrow-r
+                  = link_to '#' do
+                    %p いいね！一覧
+                %li.mypage-list__item.icon-arrow-r
+                  = link_to '#' do
+                    %p 出品した商品 - 出品中
+                %li.mypage-list__item.icon-arrow-r
+                  = link_to '#' do
+                    %p 出品した商品 - 取引中
+                %li.mypage-list__item.icon-arrow-r
+                  = link_to '#' do
+                    %p 出品した商品 - 売却済
+                %li.mypage-list__item.icon-arrow-r
+                  = link_to '#' do
+                    %p 購入した商品 - 取引中
+                %li.mypage-list__item.icon-arrow-r
+                  = link_to '#' do
+                    %p 購入した商品 - 過去の取引
