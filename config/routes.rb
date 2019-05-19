@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :edit, :update] do
     collection do
       get 'signup/:url',action: 'new'
-      get 'mypage/:url',action: 'edit'
     end
   end
   resources :items, only: [:index, :show, :new, :create] do

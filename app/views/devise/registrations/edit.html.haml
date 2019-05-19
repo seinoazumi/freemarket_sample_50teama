@@ -10,7 +10,7 @@
           .panel__inner__prof-page
             .user-info
               .user-info__box
-                =form_with model: current_user do |f|
+                =form_for [@user] do |f|
                   .upper-info
                     %figure=image_tag "avatar.jpg", alt: "ユーザーアイコン", size: "60x60", class: ".upper-info__avatar"
                     %p= f.text_field :name, class: "upper-info__nickname"

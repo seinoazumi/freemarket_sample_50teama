@@ -57,7 +57,7 @@
   %ul
     %li.mypage-nav__list
       .mypage-nav__list__inner.icon-arrow-r
-      = link_to "プロフィール", {controller:"users",action:"edit",url:"profile"}
+      =link_to 'プロフィール','#'
     %li.mypage-nav__list
       .mypage-nav__list__inner.icon-arrow-r
       =link_to '発送元・お届け先住所変更','#'
@@ -69,10 +69,10 @@
       =link_to 'メール/パスワード','#'
     %li.mypage-nav__list
       .mypage-nav__list__inner.icon-arrow-r
-      = link_to "本人情報", {controller:"users",action:"edit",url:"identification"}
+      =link_to '本人情報','#'
     %li.mypage-nav__list
       .mypage-nav__list__inner.icon-arrow-r
       =link_to '電話番号の確認','#'
     %li.mypage-nav__list.mypage-nav__current-page
       .mypage-nav__list__inner.icon-arrow-r
-      = link_to "ログアウト", {controller:"users",action:"edit",url:"logout"}
+      =link_to 'ログアウト','#'
