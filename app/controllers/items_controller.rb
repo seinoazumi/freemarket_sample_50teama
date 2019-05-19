@@ -10,10 +10,10 @@ class ItemsController < ApplicationController
   def create
   end
 
-
   def show
-    @items = Item.all.order(id: "DESC").limit(4)
-    render "/items/trade/#{params[:url]}"
+    @item = Item.find(params[:id])
+    @items = Item.all.order(id: "DESC").limit(4) # 詳細ページの下部に4つ表示させるためのインスタンス
+
   end
 
 end

@@ -17,9 +17,10 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:index, :show, :new, :create] do
-    collection do
-      get 'trade/:url', action:'show'
-    end
+    post 'items/confirm(/:id)', to: 'blogs#confirm', as: 'confirm_blog'
+    # collection do
+    #   get 'trade/:url', action:'show'
+    # end
 
     resources :categories, only: [:search]
   end

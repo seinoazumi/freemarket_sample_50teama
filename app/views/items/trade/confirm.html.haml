@@ -11,9 +11,12 @@
             %p.item-info__name ここに商品名が入ります
             = form_with model: @item do |f|
               %p.item-info__price
-                ¥ 3,500
+                =@item.price
                 %span.item-info__price__shipping
-                  送料込み
+                  - if @item.delivery_fee == 1
+                    %span 送料込み(出品者負担)
+                  - else
+                    %span 着払い(購入者負担)
 
               -# ポイントがある場合とない場合で表示が切り替わります。余裕があれば追加
               %ul.buy-accordion.not-have
