@@ -11,5 +11,5 @@
 end
 
 60.times do |num|
-  Item.create(name: "お買い得セット#{num + 1}", condition: 0, delivery_fee: 1000, delivery_days: 0, price: (num + 1) * 1000)
+  Item.create(name: "お買い得セット#{num + 1}", condition: 0, delivery_fee: 1, delivery_days: 0, price: (num + 1) * 1000)
 end
