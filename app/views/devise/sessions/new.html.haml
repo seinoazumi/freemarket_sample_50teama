@@ -8,17 +8,20 @@
           .panel__head__registration-link-btn
             = link_to "新規会員登録" , new_user_path
         .panel__inner
+          - if @error_message
+            .error_message
+              = @error_message
           .sns-login
             .sns-login__facebook
               .sns-login__facebook__left
                 .icon-facebook-square
               .sns-login__facebook__right
-                = link_to "Facebookでログイン", src:"#"
+                = link_to "Facebookでログイン", user_facebook_omniauth_authorize_path
             .sns-login__google
               .sns-login__google__left
                 = image_tag 'G_logo.png', height:'20px'
               .sns-login__google__right
-                = link_to "Googleでログイン", src:"#"
+                = link_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path
           .login-form
             = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
               .field
