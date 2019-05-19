@@ -38,7 +38,8 @@
                 = f.label "都道府県", class:"form-group__label"
                 %span.form-group__require 必須
                 .form-group__prefecture-select-wrap
-                  = f.select :prefecture, User.prefectures.keys, {include_blank: true}
+                  = f.select :prefecture, User.prefectures_i18n.keys.map {|k| [User.prefectures_i18n[k], k]}, {include_blank: true}
+                  -# = f.select :prefecture, User.prefectures_i18n.keys.map {|k| [I18n.t("enums.user.prefecture.#{k}"), k]}, {include_blank: true}
                   .icon-chevron-bottom
               .form-group
                 = f.label "市区町村", class:"form-group__label"
