@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   require 'valid_columns'
+  devise :omniauthable
 
   has_many :likes
   has_many :user_items
