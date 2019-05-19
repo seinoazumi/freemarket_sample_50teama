@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def new
     case params[:url]
     when "registration" then
-      reset_session
+      @email = session["devise.facebook_data"]["info"]["email"] if session["devise.facebook_data"]
+      @email = session["devise.google_data"]["extra"]["id_info"]["email"] if session["devise.google_data"]
       @user = User.new
       render "users/signup/#{params[:url]}"
     when "address" then
@@ -51,6 +52,13 @@ class UsersController < ApplicationController
       if @user.save
         @user[:seller_id] = @user.id
         @user[:buyer_id] = @user.id
+        if session["devise.facebook_data"]
+          @user[:provider] = session["devise.facebook_data"]["provider"]
+          @user[:uid] = session["devise.facebook_data"]["uid"]
+        elsif session["devise.google_data"]
+          @user[:provider] = session["devise.google_data"]["provider"]
+          @user[:uid] = session["devise.google_data"]["uid"]
+        end
         @user.save
         reset_session
         sign_in @user
@@ -58,6 +66,8 @@ class UsersController < ApplicationController
       else
         render "users/signup/card"
       end
+    else
+      reset_session
     end
   end
 

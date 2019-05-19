@@ -14,10 +14,10 @@
             .facebook-registration__left
               .icon-facebook-square
             .mail-registration__right
-              = link_to "Facebookで登録", src:"#"
+              = link_to "Facebookで登録", user_facebook_omniauth_authorize_path
           .google-registration
             .google-registration__left
               = image_tag 'G_logo.png', height:'20px'
             .google-registration__right
-              = link_to "Googleで登録", src:"#"
+              = link_to "Googleで登録", user_google_oauth2_omniauth_authorize_path
   = render partial: "/shared/single-footer"
