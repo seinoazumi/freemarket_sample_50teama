@@ -11,9 +11,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @items = Item.all.order(id: 'DESC').limit(4)
     @item = Item.find(params[:id])
-    @items = Item.all.order(id: "DESC").limit(4) # 詳細ページの下部に4つ表示させるためのインスタンス
-
+    render "/items/#{params[:url]}" if params[:url]
   end
 
 end
