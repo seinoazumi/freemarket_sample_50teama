@@ -26,7 +26,6 @@
 
 //-----------------------------items
 @import 'items/main-header.scss';
-@import 'items/drop-down-list.scss';
 @import 'items/top-slider.scss';
 @import 'items/main-container.scss';
 @import 'items/item-box.scss';
@@ -39,11 +38,12 @@
 
 //----------------------------shared 色々なページで使いまわせるもの
 
-@import 'single-wrapper.scss'; //商品取引ページなどの上下の部分
-@import 'breadcrumb.scss'; //パンくずリスト
-@import 'two-column-page.scss'; //左カラムにナビを含む２カラムのページ
+@import 'shared/single-wrapper.scss'; //商品取引ページなどの上下の部分
+@import 'shared/breadcrumb.scss'; //パンくずリスト
+@import 'shared/two-column-page.scss'; //左カラムにナビを含む２カラムのページ
 @import 'shared/mypage-tab-container.scss';
 @import 'shared/mypage-nav.scss';
+@import 'shared/drop-down-list.scss';
 
 //-------------------------------users
 
@@ -51,7 +51,12 @@
 @import 'users/logout.scss';
 @import 'users/show.scss';
 @import 'users/edit-profiele.scss';
-@import 'cards-create.scss';
 
 //--------------------------------cards
 @import 'cards/show-cards.scss';
+@import 'cards-create.scss';
+
+//--------------------------------carousel
+
+@import 'carousel/slick.scss';
+@import 'carousel/slick-theme.scss';

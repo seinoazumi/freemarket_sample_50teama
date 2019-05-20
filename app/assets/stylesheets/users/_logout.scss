@@ -3,6 +3,9 @@
   @include btn-red;
   margin: 0 auto;
   max-width: 320px;
+  a {
+    display: block;
+  }
 }
 
 @media screen and (min-width: 1068px){

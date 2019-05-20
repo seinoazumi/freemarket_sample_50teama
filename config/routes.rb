@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     :registrations => 'users/registrations',
-    :sessions => 'users/sessions'
+    :sessions => 'users/sessions',
+    :omniauth_callbacks => 'users/omniauth_callbacks'
   }
 
   root 'items#index'
@@ -17,10 +18,9 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:index, :show, :new, :create] do
-    post 'items/confirm(/:id)', to: 'blogs#confirm', as: 'confirm_blog'
-    # collection do
-    #   get 'trade/:url', action:'show'
-    # end
+    collection do
+      get ':id/:url', action:'show'
+    end
 
     resources :categories, only: [:search]
   end
