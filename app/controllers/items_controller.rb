@@ -22,11 +22,11 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @items = Item.all.order(id: "DESC").limit(4)
-    # require 'payjp'
-    # Payjp.api_key = Rails.application.credentials.payjp[:secret_access_key]
-    # customer = Payjp::Customer.retrieve(current_user.payjp_id)
-    # @card_id = customer.default_card
-    # @card = customer.cards.retrieve(@card_id)
+    require 'payjp'
+    Payjp.api_key = Rails.application.credentials.payjp[:secret_access_key]
+    customer = Payjp::Customer.retrieve(current_user.payjp_id)
+    @card_id = customer.default_card
+    @card = customer.cards.retrieve(@card_id)
     render "/items/#{params[:url]}" if params[:url]
   end
 
