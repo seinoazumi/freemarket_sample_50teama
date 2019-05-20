@@ -101,7 +101,7 @@
           %li.delete-choice__cancel
             %p#close-modal キャンセル
           %li.delete-choice__delete
-            =link_to "削除する", "#", id: "close-modal"
+            =link_to "削除する", item_path(@item.id), method: :delete, id: "close-modal"
 
   %ul.other-item
     %li.other-item__previous.icon-arrow-l 前の商品
