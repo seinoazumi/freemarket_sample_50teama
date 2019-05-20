@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     :omniauth_callbacks => 'users/omniauth_callbacks'
   }
 
+
   root 'items#index'
   get 'edit' => 'users#edit'
   # ルーティングは追って検討する
