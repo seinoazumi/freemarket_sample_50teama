@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     :omniauth_callbacks => 'users/omniauth_callbacks'
   }
 
-
   root 'items#index'
   get 'edit' => 'users#edit'
   # ルーティングは追って検討する
@@ -20,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show, :new, :create] do
     collection do
-      get 'trade/:url', action:'show'
+      get ':id/:url', action:'show'
     end
 
     resources :categories, only: [:search]
