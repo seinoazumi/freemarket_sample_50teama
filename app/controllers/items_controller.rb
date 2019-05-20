@@ -13,6 +13,9 @@ class ItemsController < ApplicationController
   def edit
   end
 
+  def destroy
+  end
+
   def show
     @item = Item.find(params[:id])
     @items = Item.all.order(id: "DESC").limit(4)
