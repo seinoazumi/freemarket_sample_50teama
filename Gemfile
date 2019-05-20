@@ -77,7 +77,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'active_hash'
-gem 'payjp'
 
 group :production do
   gem 'unicorn', '5.4.1'
@@ -85,3 +84,7 @@ end
 
 gem "jquery-rails"
 gem 'recaptcha', require: "recaptcha/rails"
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'payjp','0.0.5'
