@@ -1,11 +1,12 @@
 $(document).on('turebolinks:load', $(function(){
-  $("#modal-open").on('mouseover', function(){
+  $("#modal-open").on('click', function(){
 
-    $(".modal-ovelay").fadeIn("slow");
+    $(".modal-overlay").fadeIn("slow");
       $("#close-modal").click(function(){
-          $(".modal-ovelay").fadeOut("fast",function(){
+          $(".modal-overlay").fadeOut("fast",function(){
         }); //[キャンセル]ボタンをクリックしたらモーダルを閉じる
       }); //end モーダルウィンドウが開いている時の操作
+    return false;
     });
   })
 );
