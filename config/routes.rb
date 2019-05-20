@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show, :new, :create] do
     collection do
-      get 'trade/:url', action:'show'
+      get ':id/:url', action:'show'
     end
 
     resources :categories, only: [:search]
