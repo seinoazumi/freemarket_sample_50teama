@@ -63,6 +63,8 @@
             %span.item-info__price__tax (税込)
             %span.item-info__price__sipping 送料込み
 
+    -# = if current_user.id == item(:id).users.seller_id
+      item userが多対多で実装できるのか？あとで相談
         .sales-message 売上金●●円をお持ちです
         .buy-btn 購入画面に進む
 
@@ -79,10 +81,10 @@
 
   .myItem-container
     .myItem-container__inner
-      %button.edit-item__btn=link_to "商品の編集", '#'
+      %button.edit-item__btn=link_to "商品の編集", edit_item_path
       %p or
       %button.suspend-item__btn=link_to "出品を一時停止する", '#'
-      %button.delete-item__btn=link_to "この商品を削除する", '#'
+      %button.delete-item__btn#modal-open=link_to "この商品を削除する", '#'
 
 
   %ul.other-item
