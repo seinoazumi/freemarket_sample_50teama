@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     tottori: 31, shimane: 32, okayama: 33, hiroshima: 34, yamaguchi: 35,
     tokushima: 36, kagawa: 37, ehime: 38, kochi: 39,
     fukuoka: 40, saga: 41, nagasaki: 42, kumamoto: 43, oita: 44, miyazaki: 45, kagoshima: 46, okinawa: 47,
-    undicided: 99
+    undicided: 48
   }, _prefix: true
 
   enum condition: {
@@ -22,11 +22,11 @@ class Item < ApplicationRecord
   }
 
   enum delivery_fee: {
-    exhibitr_barden: 2, buyer_barden: 1
+    exhibitr_barden: 1, buyer_barden: 2
   }
 
   enum ship_by: {
-    undicided: 5, mercari: 14, u_mail: 6, letter_pack: 8, usealy: 9, yamato: 10, u_pack: 11, click_post: 13, u_packet: 7
+    undicided: 1, mercari: 2, u_mail: 3, letter_pack: 4, usealy: 5, yamato: 6, u_pack: 7, click_post: 8, u_packet: 9
   }, _prefix: true
 
   enum delivery_days: {
