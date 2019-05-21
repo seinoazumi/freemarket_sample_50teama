@@ -10,7 +10,6 @@ $(document).on('turbolinks:load', function(){
       exp_month: parseInt($("#payment-card-exp-month").val()),
       exp_year: parseInt($("#payment-card-exp-year").val())
     };
-    console.log(card);
     Payjp.createToken(card, function(s, response) {
       if (response.error) {
         form.find('.payment-errors').text(response.error.message);
