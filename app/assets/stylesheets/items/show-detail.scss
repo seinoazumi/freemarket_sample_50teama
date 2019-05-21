@@ -151,6 +151,29 @@
       @include blue-header;
     }
   }
+
+  .myItem-container{
+    @include single-container-base;
+    padding: 15px;
+    text-align: center;
+    font-size:1.2em;
+
+    .edit-item__btn, .suspend-item__btn, .delete-item__btn{
+      @include btn-reset;
+      @include btn-default;
+      margin: 10px 0;
+
+      a {
+        display: block;
+      }
+    }
+    .edit-item__btn{
+      @include btn-red;
+    }
+    .suspend-item__btn, .delete-item__btn{
+      @include btn-gray;
+    }
+  }
 }//item-detail-page end
 
 @media screen and (min-width: 768px) {
