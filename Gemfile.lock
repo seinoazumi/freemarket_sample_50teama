@@ -220,7 +220,7 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
     orm_adapter (0.5.0)
-    payjp (0.0.5)
+    payjp (0.0.6)
       rest-client (~> 2.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -393,7 +393,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
-  payjp (= 0.0.5)
+  payjp
   pry-byebug
   pry-doc
   pry-rails

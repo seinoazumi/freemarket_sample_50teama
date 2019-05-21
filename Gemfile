@@ -91,4 +91,4 @@ gem 'recaptcha', require: "recaptcha/rails"
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
-gem 'payjp','0.0.5'
+gem 'payjp'
