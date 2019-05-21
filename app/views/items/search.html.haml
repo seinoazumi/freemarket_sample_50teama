@@ -3,33 +3,35 @@
   = render 'shared/breadcrumb'
 
   .search-container
-    -# 左側の検索バーのあるカラム
     .search-content-l
-      -# こちらはカテゴリー検索を実装される方が適宜変更ください
+      -# フォームの中身はカテゴリー検索を実装される方が適宜変更ください
       =form_with url:'#' do |f|
-        = f.select :sort_order, [["並び替え",""],["価格の安い順","01"],["価格の高い順","02"],["出品の古い順","03"],["出品の新しい順","04"],["いいね！の多い順","05"]]
+        = f.select :sort_order, [["並び替え",""],["価格の安い順","01"],["価格の高い順","02"],["出品の古い順","03"],["出品の新しい順","04"],["いいね！の多い順","05"]], {}, class: "select-box"
         .search-option
-          %h3.search-options__header 詳細検索
+          %h3.search-option__header 詳細検索
           .options
             %h4.options__header.icon-plus キーワードを追加する
-            = f.text_field :keyword, class:"form-group__input", placeholder: "今の検索キーワード"
+            = f.text_field :keyword, class:"text-field", placeholder: "今の検索キーワード"
 
             %h4.options__header.icon-list カテゴリーを選択する
-            = f.select :categories, [["すべて",""],["カテゴリー１","01"],["カテゴリー２","02"],["カテゴリー３","03"],["カテゴリー４","04"],["カテゴリー５","05"]]
+            = f.select :categories, [["すべて",""],["カテゴリー１","01"],["カテゴリー２","02"],["カテゴリー３","03"],["カテゴリー４","04"],["カテゴリー５","05"]], {}, class: "select-box"
+            .icon-chevron-down
 
             %h4.options__header.icon-tag ブランド名から探す
-            = f.text_field :keyword, class:"form-group__input", placeholder: "例）シャネル"
+            = f.text_field :keyword, class:"text-field", placeholder: "例）シャネル"
 
-            %h4.options__header.icon-size サイズを指定する
-            = f.select :categories, [["すべて",""],["オプション１","01"],["オプション２","02"],["オプション３","03"],["オプション４","04"],["オプション５","05"]]
+            %h4.options__header.icon-ruler サイズを指定する
+            = f.select :categories, [["すべて",""],["オプション１","01"],["オプション２","02"],["オプション３","03"],["オプション４","04"],["オプション５","05"]], {}, class: "select-box"
+            .icon-chevron-down
 
             %h4.options__header.icon-coins 価格
-            = f.select :categories, [["すべて",""],["オプション１","01"],["オプション２","02"],["オプション３","03"],["オプション４","04"],["オプション５","05"]]
+            = f.select :categories, [["すべて",""],["オプション１","01"],["オプション２","02"],["オプション３","03"],["オプション４","04"],["オプション５","05"]], {}, class: "select-box"
+            .icon-chevron-down
 
             .options__price
-              = f.text_field :keyword, class:"form-group__input", placeholder: "¥ Min"
+              = f.text_field :keyword, class:"text-field", placeholder: "¥ Min"
               %span ~
-              = f.text_field :keyword, class:"form-group__input", placeholder: "¥ Max"
+              = f.text_field :keyword, class:"text-field", placeholder: "¥ Max"
 
             %h4.options__header.icon-star 商品の状態
             - %w(すべて 状態１ 状態２).each do |condition|
