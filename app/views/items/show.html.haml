@@ -86,11 +86,34 @@
       .like-report
         %button.like-report__btn
           %p.icon-like いいね！ 10
-
         %button.like-report__btn
           %p.icon-report 不適切な商品の報告
         %p.icon-lock.trial-to-safe=link_to 'あんしん・あんぜんへの取り組み', '#'
 
+  - if current_user.id == @item.users[0].id
+    .myItem-container
+      .myItem-container__inner
+        %button.edit-item__btn=link_to "商品の編集", edit_item_path
+        %p or
+        %button.suspend-item__btn=link_to "出品を一時停止する", '#'
+        %button.delete-item__btn#modal-open=link_to "この商品を削除する", '#'
+
+    .modal-overlay
+      #modal-window.modal
+        .modal__inner--top
+          .alert
+            %h3.alert__header 確認
+            %p.alert__message
+              削除すると二度と復活できません
+              %br 削除する代わりに停止することもできます
+
+            %p.alert__message 本当に削除しますか？
+        .modal__inner--bottom
+          %ul.delete-choice
+            %li.delete-choice__cancel
+              %p#close-modal キャンセル
+            %li.delete-choice__delete
+              =link_to "削除する", item_path(@item.id), method: :delete, id: "close-modal"
   %ul.other-item
     %li.other-item__previous.icon-arrow-l 前の商品
     %li.other-item__next.icon-arrow-r 次の商品
@@ -108,5 +131,6 @@
 
   %section.pick-up-container
     %h2.pick-up-container__header シャネル のその他の商品
+
     = render 'shared/items-box'
 = render 'shared/footer'
