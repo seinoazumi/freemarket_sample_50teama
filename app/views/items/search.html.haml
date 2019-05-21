@@ -12,11 +12,53 @@
           %h3.search-options__header 詳細検索
           .options
             %h4.options__header.icon-plus キーワードを追加する
+            = f.text_field :keyword, class:"form-group__input", placeholder: "今の検索キーワード"
 
+            %h4.options__header.icon-list カテゴリーを選択する
+            = f.select :categories, [["すべて",""],["カテゴリー１","01"],["カテゴリー２","02"],["カテゴリー３","03"],["カテゴリー４","04"],["カテゴリー５","05"]]
+
+            %h4.options__header.icon-tag ブランド名から探す
+            = f.text_field :keyword, class:"form-group__input", placeholder: "例）シャネル"
+
+            %h4.options__header.icon-size サイズを指定する
+            = f.select :categories, [["すべて",""],["オプション１","01"],["オプション２","02"],["オプション３","03"],["オプション４","04"],["オプション５","05"]]
+
+            %h4.options__header.icon-coins 価格
+            = f.select :categories, [["すべて",""],["オプション１","01"],["オプション２","02"],["オプション３","03"],["オプション４","04"],["オプション５","05"]]
+
+            .options__price
+              = f.text_field :keyword, class:"form-group__input", placeholder: "¥ Min"
+              %span ~
+              = f.text_field :keyword, class:"form-group__input", placeholder: "¥ Max"
+
+            %h4.options__header.icon-star 商品の状態
+            - %w(すべて 状態１ 状態２).each do |condition|
+              %label
+                = check_box_tag 'items[condition][]', condition
+                = condition
+
+            %h4.options__header.icon-truck 配送料の負担
+            - %w(すべて 着払い(購入者負担) 送料込み（出品者負担）).each do |ship_from|
+              %label
+                = check_box_tag 'items[ship_from][]', ship_from
+                = ship_from
+
+            %h4.options__header.icon-cart 販売状況
+            - %w(すべて 販売中 売り切れ).each do |buyer_id|
+              %label
+                = check_box_tag 'items[buyer_id][]', buyer_id
+                = buyer_id
+
+            .btn-box
+              %button= f.button "クリア", type: :reset, class: "btn-box__clear"
+              %button= f.submit "完了", class: "btn-box__search"
 
     -# 右側のアイテムボックス一覧
     .search-content-r
-
+      .result
+        %h2.result__header 検索結果１〜〇〇件
+        .item-box__container
+          = render 'shared/items-box'
 
   =render 'shared/aside'
   =render 'shared/footer'

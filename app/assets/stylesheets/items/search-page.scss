@@ -9,13 +9,13 @@
 
     .search-content-r{
       width: 700px;
-      height: 500px;
       background: $white;
     } // end .search-content-r
     .search-content-l{
       width: 280px;
-      height: 500px;
-      background-color: red;
+      .options{
+        background-color: $white;
+      } //end options
     }
   } // end .search-container
 } // end .search-page
