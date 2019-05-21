@@ -40,7 +40,6 @@ class ItemsController < ApplicationController
         currency: 'jpy',
       )
     rescue => e #エラーハンドリング
-      arert
       redirect_to root_path
     end
       @item.update(buyer_id: current_user.id)
