@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_15_112929) do
+ActiveRecord::Schema.define(version: 2019_05_19_043956) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
@@ -52,6 +52,9 @@ ActiveRecord::Schema.define(version: 2019_05_15_112929) do
     t.integer "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "detail"
+    t.integer "ship_from", null: false
+    t.integer "ship_by", null: false
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -95,6 +98,9 @@ ActiveRecord::Schema.define(version: 2019_05_15_112929) do
     t.integer "seller_id", null: false
     t.integer "buyer_id", null: false
     t.text "profile"
+    t.string "provider"
+    t.string "uid"
+    t.string "payjp_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

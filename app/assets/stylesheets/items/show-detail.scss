@@ -1,9 +1,8 @@
 .item-detail-page{
   .single-container{
     @include single-container-base;
-    margin: 0 auto;
+    margin: 40px auto;
     padding: 24px 16px;
-    width: 100%;
 
     .panel{
       &__head{
@@ -72,11 +71,6 @@
             }
           }
         }
-      }
-    }
-    .pick-up-container{
-      &__header{
-        @include blue-header;
       }
     }
     .item-info__description{
@@ -152,27 +146,58 @@
       margin: 0 5px;
     }
   }
+  .pick-up-container{
+    &__header{
+      @include blue-header;
+    }
+  }
+
+  .myItem-container{
+    @include single-container-base;
+    padding: 15px;
+    text-align: center;
+    font-size:1.2em;
+
+    .edit-item__btn, .suspend-item__btn, .delete-item__btn{
+      @include btn-reset;
+      @include btn-default;
+      margin: 10px 0;
+
+      a {
+        display: block;
+      }
+    }
+    .edit-item__btn{
+      @include btn-red;
+    }
+    .suspend-item__btn, .delete-item__btn{
+      @include btn-gray;
+    }
+  }
 }//item-detail-page end
 
 @media screen and (min-width: 768px) {
+.item-detail-page{
   .single-container{
     .visible-sp-only{
       display: none;
     }
-    .item-info__photo{
-      float: left;
-    }
-    .item-info__price{
-      padding-top: 30px;
-      clear: both;
+    .item-info{
+      &__photo{
+        float: left;
+      }
+      &__price{
+        padding-top: 30px;
+        clear: both;
+      }
     }
     .detail-info{
       float: right;
-      width: 320px !important;
+      width: 320px;
     }
   }
-
   .other-item{
     width: 700px !important;
+    }
   }
-  }//幅768px以上のページに適応されるscss
+}//幅768px以上のページに適応されるscss

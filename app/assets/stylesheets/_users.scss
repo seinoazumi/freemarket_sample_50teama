@@ -12,6 +12,11 @@
       }
       &__inner {
         padding: 64px;
+        .error_message {
+          color:$base-red;
+          transform:translateY(-25px);
+          font-weight: bold;
+        }
         .mail-registration {
           @include link-btn;
           @include btn-mail;
@@ -51,6 +56,11 @@
         }
       }
       &__inner {
+        .error_message {
+          color:$base-red;
+          transform:translateY(20px);
+          font-weight: bold;
+        }
         .sns-login {
           padding: 32px 64px;
           &__facebook {
@@ -92,6 +102,9 @@
               opacity: 0.7;
             }
           }
+        }
+        .g-recaptcha {
+          margin-top: 20px;
         }
       }
     }
@@ -248,6 +261,9 @@
                 content: '\f059';
                 font-weight: 900;
               }
+            }
+            .g-recaptcha {
+              margin-top: 20px;
             }
           }
           .form-info-text {

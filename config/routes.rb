@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    :registrations => 'users/registrations'
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions',
+    :omniauth_callbacks => 'users/omniauth_callbacks'
   }
 
   root 'items#index'
-  get 'logout' => 'users#logout'
   get 'edit' => 'users#edit'
-  get 'confirm' => 'items#confirm'
   # ルーティングは追って検討する
+
 
   resources :users, only: [:show, :new, :edit, :update] do
     collection do
@@ -15,7 +16,12 @@ Rails.application.routes.draw do
       get 'mypage/:url',action: 'edit'
     end
   end
-  resources :items, only: [:index, :show, :new, :create] do
+
+  resources :items, only: [:index, :show, :new, :create, :edit, :destroy] do
+    collection do
+      get ':id/:url', action:'show'
+    end
+
     resources :categories, only: [:search]
   end
   resources :cards, only: [:new, :show]

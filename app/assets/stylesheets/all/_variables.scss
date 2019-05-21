@@ -115,13 +115,25 @@
 
  //button タグのCSSをリセットするCss
  @mixin btn-reset{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+ }
+
+//button タグのCSSをリセットするCss
+@mixin btn-reset{
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 0;
   appearance: none;
- }
+}
 
 
  @mixin selection{
@@ -184,6 +196,58 @@
   }
  }//売上金●円をお持ちです。などの緑の吹き出し
 
+
+
+// ピックアップされているカテゴリーの青いヘッダー
+@mixin blue-header {
+  font-size: 1.6em;
+  color: $link-blue;
+  font-weight: bold;
+  margin-bottom:20px;
+
+    &:hover {
+      opacity: 0.8;
+      color: $link-blue;
+      text-decoration: underline solid;
+    }
+}
+
+//１カラムのページのコンテナ
+@mixin single-container-base {
+  background: $white;
+  width: 700px;
+  margin: 0 auto 41px;
+}
+
+@mixin single-container-header{
+  padding: 37px 16px 38px;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+@mixin green-balloon{
+  position: relative;
+  left:50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  margin: 1.5em auto;
+  padding: 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: $white;
+  font-size: 14px;
+  background: $blue-green;
+  border-radius:3px;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -15px;
+    border: 15px solid transparent;
+    border-top: 15px solid $blue-green;
+  }
+}//売上金●円をお持ちです。などの緑の吹き出し
 
 
  // 以下user関連のページで用いるmixin
@@ -286,12 +350,12 @@
     top: 35%;
     z-index: 2;
     &:after {
-      font-family: “Font Awesome 5 Free”;
-      content: ‘\f078’;
+      font-family: 'Font Awesome 5 Free';
+      content: '\f078';
       font-weight: 900;
       color: $gray-lv3;
       font-size: 18px;
     }
   }
- }
- // user関連のページで用いるmixinここまで
+}
+// user関連のページで用いるmixinここまで
