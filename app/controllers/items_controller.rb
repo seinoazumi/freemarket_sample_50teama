@@ -30,6 +30,7 @@ class ItemsController < ApplicationController
   end
 
   def pay #カード支払い Itemにbuyer_idを追加
+    begin
       Payjp.api_key = Rails.application.credentials.payjp[:secret_access_key]
       customer = Payjp::Customer.retrieve(current_user.payjp_id)
       default_card = customer.default_card
@@ -61,4 +62,4 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
- end
+end
