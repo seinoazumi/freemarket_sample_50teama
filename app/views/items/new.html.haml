@@ -4,7 +4,10 @@
     .item-wrapper
       %h2.title 商品の情報を入力
       - @item = Item.new unless @item
-      - form_for @item, class: "item-new", html: {:multipart => true} do |f|
+      = form_for @item, html: {class: "item-new", multipart: true, method: "POST"} do |f|
+        - if @item.errors.any?
+          - @item.errors.full_messages.each do |message|
+            = message
         %section.form-section.media-min
           .input-part
             %h3.input-part__title 出品画像
@@ -18,11 +21,11 @@
                 %pre.media-min__hidden またはクリックしてファイルをアップロード
         %section.form-section
           .input-part
-            =f.label :name, "商品名", class: "input-part__title"
+            =f.label "商品名", class: "input-part__title"
             %span.input-part__require 必須
             = f.text_field :name, class: "input-part__input", placeholder: "商品名（必須 40文字まで)", value: ""
           .input-part.space
-            = f.label :detail, "商品の説明", class: "input-part__title"
+            = f.label "商品の説明", class: "input-part__title"
             %span.input-part__require 必須
             = f.text_area :detail, class: "input-part__textarea textarea-default", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"
         %section.form-section
@@ -31,44 +34,41 @@
               %h3.sell-sub-head 商品の詳細
             .flex-container__right
               .input-part
-                -# TODO:
-                = f.label :name, "カテゴリー", class: "input-part__title"
+                = f.label "カテゴリー", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
                   -# TODO: カテゴリーを格納するデータをどうする？ansectory
-                  = f.select :name, [["レディース", "1"], ["メンズ", "2"], ["ベビー・キッズ", "3"], ["インテリア・住まい・小物", "4"], ["本・音楽・ゲーム", "5"], ["おもちゃ・ホビー・グッズ", "1328"], ["コスメ・香水・美容", "6"], ["家電・スマホ・カメラ", "7"], ["スポーツ・レジャー", "8"], ["ハンドメイド", "9"], ["チケット", "1027"], ["自動車・オートバイ", "1318"], ["その他", "10"]], include_blank: true, id: "input-part__select"
-              -# TODO: 特定カテゴリの場合 .hiddenをつける、外す JS
+                  = f.select :name, [["レディース", "1"], ["メンズ", "2"], ["ベビー・キッズ", "3"], ["インテリア・住まい・小物", "4"], ["本・音楽・ゲーム", "5"], ["おもちゃ・ホビー・グッズ", "1328"], ["コスメ・香水・美容", "6"], ["家電・スマホ・カメラ", "7"], ["スポーツ・レジャー", "8"], ["ハンドメイド", "9"], ["チケット", "1027"], ["自動車・オートバイ", "1318"], ["その他", "10"]], {include_blank: true}, class: "input-part__select"
+              -# TODO: 特定カ11テゴリの場合 .hiddenをつける、外す JS
               .relative.hidden
                 .icon-select
                   -# TODO: カテゴリーを格納するデータをどうする？ansectory
-                  = f.select :name, [["レディース", "1"], ["メンズ", "2"]], include_blank: true, class: "input-part__select"
+                  = f.select :name, [["レディース", "1"], ["メンズ", "2"]], {include_blank: true}, class: "input-part__select"
               .relative.hidden
                 .icon-select
                   -# TODO: カテゴリーを格納するデータをどうする？ansectory
-                  = f.select :name, [["レディース", "1"], ["メンズ", "2"]], include_blank: true, class: "input-part__select"
+                  = f.select :name, [["レディース", "1"], ["メンズ", "2"]], {include_blank: true}, class: "input-part__select"
               .space.hidden
               .input-part
-                -# TODO:
-                = f.label :name, "サイズ", class: "input-part__title"
+                = f.label "サイズ", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
                   -# TODO: カテゴリーを格納するデータをどうする？ansectory
-                  = f.select :name, [["XXS以下", "153"], ["XS(SS)", "154"], ["S", "2"], ["M", "3"], ["L", "4"], ["XL(LL)", "5"], ["2XL(3L)", "155"], ["4XL(5L)以上", "157"], ["FREE SIZE", "7"]], include_blank: true, class: "input-part__select"
+                  = f.select :name, [["XXS以下", "153"], ["XS(SS)", "154"], ["S", "2"], ["M", "3"], ["L", "4"], ["XL(LL)", "5"], ["2XL(3L)", "155"], ["4XL(5L)以上", "157"], ["FREE SIZE", "7"]], {include_blank: true}, class: "input-part__select"
               .space.hidden
               .input-part
-                -# TODO:
-                = f.label :name, "ブランド", class: "input-part__title"
+                = f.label "ブランド", class: "input-part__title"
                 %span.input-part__option 任意
                 -# TODO: ブランド名インプット
                 = f.text_field :name, class: "input-part__input", placeholder: "例）シャネル", value: ""
               .input-part.space
-                = f.label :condition, "商品の状態", class: "input-part__title"
+                = f.label "商品の状態", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = f.select :condition, Item.conditions_i18n.keys.map {|k| [Item.conditions_i18n[k], k]}, include_blank: true, class: "input-part__select"
+                  = f.select :condition, Item.conditions_i18n.keys.map {|k| [Item.conditions_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
         %section.form-section
           .flex-container.media-min--clear
             .flex-container__left
@@ -76,31 +76,31 @@
               =link_to "?", "#", class:"form-question"
             .flex-container__right
               .input-part
-                = f.label :delivery_fee, "配送料の負担", class: "input-part__title"
+                = f.label "配送料の負担", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = f.select :delivery_fee, Item.delivery_fees_i18n.keys.map {|k| [Item.delivery_fees_i18n[k], k]}, include_blank: true, class: "input-part__select"
+                  = f.select :delivery_fee, Item.delivery_fees_i18n.keys.map {|k| [Item.delivery_fees_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
               .space.hidden
               .input-part
-                = f.label :ship_by, "発送の方法", class: "input-part__title"
+                = f.label "発送の方法", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = f.select :Ship_by, Item.Ship_bys_i18n.keys.map {|k| [Item.Ship_bys_i18n[k], k]}, include_blank: true, class: "input-part__select"
+                  = f.select :ship_by, Item.ship_bies_i18n.keys.map {|k| [Item.ship_bies_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
               .input-part.space
-                = f.label :ship_from, "発送元の地域", class: "input-part__title"
+                = f.label "発送元の地域", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = f.select :ship_from, Item.ship_froms_i18n.keys.map {|k| [Item.ship_froms_i18n[k], k]}, include_blank: true, class: "input-part__select"
+                  = f.select :ship_from, Item.ship_froms_i18n.keys.map {|k| [Item.ship_froms_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
               .input-part.space
-                = f.label :delivery_days, "発送までの日数", class: "input-part__title"
+                = f.label "発送までの日数", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
                   -# TODO: 複数形のカラム名前がなんか悪さしそうな気がする
-                  = f.select :delivery_days, Item.delivery_dayss_i18n.keys.map {|k| [Item.delivery_dayss_i18n[k], k]}, include_blank: true, class: "input-part__select"
+                  = f.select :delivery_days, Item.delivery_days_i18n.keys.map {|k| [Item.delivery_days_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
         %section.form-section
           .flex-container
             .flex-container__left
@@ -111,7 +111,7 @@
                 %ul.input-part__price
                   %li.input-part__price--bace.flex-container
                     .input-part__price--bace--left
-                      = f.label :price, "価格", class: "input-part__title"
+                      = f.label "価格", class: "input-part__title"
                       %span.input-part__require 必須
                     .input-part__price--bace--right
                       %p.yen ¥
@@ -124,7 +124,8 @@
                     .input-part__price--total--left 販売利益
                     .input-part__price--fee--right.input-part__price--total--output -
                     -# TODO: 計算結果
-          .modal{role: "dialog", tabindex: "-1"}
+          -# TODO: モーダル表示 出品前確認？
+          -# .modal{role: "dialog", tabindex: "-1"}
             .modal-inner
         %section.form-section
           %p.notes
@@ -137,11 +138,10 @@
             は犯罪であり処罰される可能性があります。
           %p.notes
             また、出品をもちまして
-            =link_to "加盟店規約","#", class:"notes__link"
+            =link_to "加盟店規約", "#", class:"notes__link"
             に同意したことになります。
           -# TODO: submitボタン、要調整
           = f.submit "出品する", class: "submit-btn--red"
-            出品する
           = link_to "もどる", "#", class: "submit-btn--gray"
         .overlay
   = render partial: "/shared/single-footer"
