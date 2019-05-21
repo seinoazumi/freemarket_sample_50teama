@@ -4,7 +4,7 @@ FactoryBot.define do
     condition     {"new_one"}
     delivery_fee  {"exhibitr_barden"}
     delivery_days {"a_day"}
-    price {       "1000"}
+    price         {"1000"}
     buyer_id      {"1"}
     detail        {"靴です"}
     ship_from     {"hokkaido"}
