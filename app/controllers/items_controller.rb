@@ -28,16 +28,20 @@ class ItemsController < ApplicationController
     customer = Payjp::Customer.retrieve(current_user.payjp_id)
     default_card = customer.default_card
     card = customer.cards.retrieve(default_card)
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:id]) 
     charge = Payjp::Charge.create(
       amount: @item.price,
       customer: customer,
       currency: 'jpy',
     )
-    item= Item.find(params[:id]) 
-    item.update(buyer_id: current_user.id)
-    flash[:notice] = "商品を購入しました"
-    redirect_to root_path
+    if 
+      @item.update(buyer_id: current_user.id)
+      flash[:notice] = "商品を購入しました"
+      redirect_to root_path
+    else #決済できなかったら
+      
+    end
+
   end
 
 

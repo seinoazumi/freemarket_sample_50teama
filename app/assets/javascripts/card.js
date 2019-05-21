@@ -18,16 +18,6 @@ $(document).on('turbolinks:load', function(){
       }
       else {
         var token = response.id;
-        console.log(response);
-                    // card: {address_city: null, address_line1: null, address_line2: null, address_state: null, address_zip: null, …}
-                    // created: 1558144391
-                    // id: "tok_5877589675094ecfb894e2739da1"
-                    // livemode: false
-                    // object: "token"
-                    // used: false
-
-        console.log(token);
-                    // tok_5877589675094ecfb894e2739da1
         $("#charge-form").append($('<input type="hidden" name="payjp_token" class="payjp-token"/>').val(token));
         $("#charge-form").get(0).submit();
       }
