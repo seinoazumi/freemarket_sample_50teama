@@ -14,6 +14,10 @@ class ItemsController < ApplicationController
   def edit
   end
 
+  def search
+    @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
+  end
+
   def destroy
     if @item.destroy
       redirect_to root_path
