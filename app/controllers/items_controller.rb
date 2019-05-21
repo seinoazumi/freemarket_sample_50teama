@@ -15,7 +15,8 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
+    @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%").limit(40)
+    # 余裕があればkaminariを入れて、limit(40)を外す
   end
 
   def destroy

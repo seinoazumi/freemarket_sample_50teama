@@ -1,0 +1,23 @@
+%wrapper.search-page
+  =render 'shared/header'
+  = render 'shared/breadcrumb'
+
+  .search-container
+    -# 左側の検索バーのあるカラム
+    .search-content-l
+      -# こちらはカテゴリー検索を実装される方が適宜変更ください
+      =form_with url:'#' do |f|
+        = f.select :sort_order, [["並び替え",""],["価格の安い順","01"],["価格の高い順","02"],["出品の古い順","03"],["出品の新しい順","04"],["いいね！の多い順","05"]]
+        .search-option
+          %h3.search-options__header 詳細検索
+          .options
+            %h4.options__header.icon-plus キーワードを追加する
+
+
+    -# 右側のアイテムボックス一覧
+    .search-content-r
+
+
+  =render 'shared/aside'
+  =render 'shared/footer'
+  =render 'shared/footer-sell-btn'
