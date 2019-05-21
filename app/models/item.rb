@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
-  has_many :likes
-  has_many :user_items
+  has_many :likes, dependent: :destroy
+  has_many :user_items, dependent: :destroy
   has_many :users, through: :user_items
-  has_many :images
+  has_many :images, dependent: :destroy
   has_many :categories
 
   enum ship_from: {
