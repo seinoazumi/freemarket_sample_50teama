@@ -15,7 +15,8 @@
             %span.item-info__price__sipping
             = @item.delivery_fee
         .sales-message
-          ="売上金#{current_user.money}円をお持ちです"
+          - if user_signed_in?
+            ="売上金#{current_user.money}円をお持ちです"
         .buy-btn 購入画面に進む
       %table.detail-info
         %tbody
@@ -74,8 +75,9 @@
             %span.item-info__price__sipping
               = @item.delivery_fee
 
-        .sales-message
-          ="売上金#{current_user.money}円をお持ちです"
+        - if user_signed_in?
+          .sales-message
+            ="売上金#{current_user.money}円をお持ちです"
         .buy-btn
           = link_to "購入画面に進む","/items/#{@item.id}/confirm"
 
@@ -90,7 +92,7 @@
           %p.icon-report 不適切な商品の報告
         %p.icon-lock.trial-to-safe=link_to 'あんしん・あんぜんへの取り組み', '#'
 
-  - if current_user.id == @item.users[0].id
+  - if user_signed_in? && current_user.id == @item.users[0].id
     .myItem-container
       .myItem-container__inner
         %button.edit-item__btn=link_to "商品の編集", edit_item_path
