@@ -18,6 +18,8 @@ class User < ApplicationRecord
     validates :city
     validates :address
     validates :birthday
+    validates :seller_id
+    validates :buyer_id
   end
 
   validates :name,            length: { maximum: 20 }
