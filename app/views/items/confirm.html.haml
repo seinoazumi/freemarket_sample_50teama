@@ -27,7 +27,7 @@
                     = "¥#{@item.price}"
               %p
                 =link_to "購入する", "/items/#{@item.id}/deside",class: "buy-confirm-btn"
-        %hr{color: "#efefef"}
+        %hr.line
         %section.buy-content
           .user-info
             %h3.user-info__header 配送先
@@ -47,7 +47,7 @@
                 =link_to "変更する","/users/mypage/identification"
                 
           -# 支払い情報がnillだとグレーのボタンとなり購入できないが、とりあえず無視する
-          %hr{color: "#efefef"}
+          %hr.line
           .card-info
             %h3.card-info__header 支払い方法
             %p.card-info__num
