@@ -13,6 +13,7 @@
             %p.icon-search
             %p.nav__content__message 詳細検索
 
+
       .visible-in-full-width
         -# フォームの中身はカテゴリー検索を実装される方が適宜変更ください
         =form_with url:'#' do |f|
@@ -74,18 +75,9 @@
     -# 右側のアイテムボックス一覧
     .search-content-r
       .result
-        -if @items.length == 40
-          %h2.result__header="検索結果 0件"
-          %p.result__message 該当する商品が見つかりません。商品は毎日増えていますので、これからの出品に期待してください。
-
-          %h3.new-items 新着商品
-          = render 'shared/items-box'
-
-        - else
-
-          %h2.result__header="検索結果１〜#{@items.count}件"
-          .item-box__container
-            = render 'shared/items-box'
+        %h2.result__header="検索結果１〜#{@items.count}件"
+        .item-box__container
+          = render partial: 'shared/items-box', locals:{item: @items}
 
 
   =render 'shared/aside'

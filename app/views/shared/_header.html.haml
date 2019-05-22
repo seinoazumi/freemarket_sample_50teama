@@ -18,9 +18,10 @@
               = image_tag 'avatar.jpg', alt: 'プロフィール写真', width: 32
 
       .header__search-bar
-        = form_with url: search_items_path(:keyword), method: :get do |f|
+        = form_with url: search_items_path(:keyword), method: :get, local: true do |f|
           = f.text_field :keyword, { placeholder: "何をお探しですか？", class: "header__search-bar__search"}
-          %i.icon-search
+          = f.submit class: "search-btn", value: ""
+        %p.icon-search
 
       %ul.header__nav
         %li.header__nav__list.icon-list
@@ -43,9 +44,10 @@
           = image_tag "logo.svg", alt: 'mercari', width: 134, height: 36
 
       .header__search-bar
-        = form_with url: search_items_path(:keyword), method: :get do |f|
+        = form_with url: search_items_path(:keyword), method: :get, local: true do |f|
           = f.text_field :keyword, { placeholder: "何をお探しですか？", class: "header__search-bar__search"}
-          = f.submit class: "icon-search", value: ""
+          = f.submit class: "search-btn", value: ""
+        %p.icon-search
 
     .pc-header__nav__box
       .pc-header__nav__list-l
