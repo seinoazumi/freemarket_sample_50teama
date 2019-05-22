@@ -6,4 +6,29 @@
       height: auto;
     }
   }
+  @media screen and (max-width: 768px) {
+    .item-box__container{
+      .item-box{
+        width: calc(33% - 5px);
+        margin:5px 5px 0 0;
+        background-color: transparent;
+
+        img{
+          width: 100%;
+          height: auto;
+        }
+        .visible-small-and-sp-only{
+          display: block;
+          color: $white;
+          padding: 5px 10px;
+          width: 100%;
+          background-color: rgba(255,255,255, 0.7);
+        }
+
+        .item-box__info{
+          display: none;
+        }
+      }
+    }
+  }//幅768px以下のページに適応されるscss
 }

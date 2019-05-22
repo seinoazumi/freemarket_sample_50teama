@@ -105,6 +105,10 @@
   content: '\f078';
 }
 
+.icon-sort::before{
+  @include font-awesome-base;
+  content: '\f162';
+}
 .icon-star::before {
   @include font-awesome-base;
   content: '\f005';

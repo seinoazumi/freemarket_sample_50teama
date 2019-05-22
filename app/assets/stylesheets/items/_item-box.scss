@@ -8,13 +8,13 @@
     display: none;
   } // 1068pxまではpc版のコンテンツが見えない
  }
- 
+
 
 .item-box__container{
   @include clearfix;
   display: flex;
   flex-wrap: wrap;
-  padding-bottom: 30px; 
+  padding-bottom: 30px;
   .item-box{
     width: 213px;
     background-color: $white;
@@ -23,6 +23,9 @@
     img{
       width: 213px;
       height: 213px;
+    }
+    .visible-small-and-sp-only{
+      display: none;
     }
     &__info{
       height: 100px;
@@ -56,7 +59,7 @@
         width: 100%;
         font-size:0.5em;
       }
-      
+
     }
   }
 }

@@ -5,6 +5,8 @@
         = image_tag ("https://placehold.jp/b3b3b3/ffffff/200x200.png?text=item1")
         -# データベースのデータが整ったらコメントアウトを外す
         -# = image_tag item.images[0].image
+      .visible-small-and-sp-only
+        %p= "¥ #{item.price}"
       .item-box__info
         %h3.item-box__info__name
           = item.name
