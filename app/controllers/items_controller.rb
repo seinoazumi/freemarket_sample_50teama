@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
         redirect_to new_user_session_path
       end
     else
-      @items = Item.all.order(id: 'DESC').limit(4)
+      @items = Item.order(id: 'DESC').limit(4)
     end
   end
 
