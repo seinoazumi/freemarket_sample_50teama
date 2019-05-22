@@ -8,25 +8,40 @@
 
     .search-content-l{
       width: 280px;
+
       h4[class*="icon-"]::before{
-        color: $gray-lv2;
+        color: $gray-lv3;
         margin-right: 5px;
       }
+
       .select-box{
-        @include select-default;
-        background-color: $white;
-        width: 100%;
-        margin-top: 5px;
+        position: relative;
+        &__inner{
+          @include select-default;
+          background-color: $white;
+          width: 100%;
+          margin:0 0 5px 0;
+        }
+
+        .icon-chevron-down::after{
+          position: absolute;
+          color: $gray-lv3;
+          top: 35px;
+          right:20px;
+        }
       }
+
       .text-field{
         @include input-default;
-        margin-top: 5px;
+        margin-bottom: 5px;
       }
+
 
       .search-option{
         background-color: $white;
         margin-top: 30px;
         padding: 10px;
+
         &__header{
           font-size: 1em;
           font-weight:700;
@@ -35,11 +50,44 @@
           &__header{
             font-size: 1em;
             font-weight:700;
-            margin-top:20px;
+            margin:20px 0 5px;
           }
-
+          &__price{
+            display: flex;
+            &__range{
+              display: block;
+              width: 30px;
+              height: 48px;
+              line-height: 48px;
+              text-align: center;
+            }
+          }
+          .check-box{
+            display: flex;
+            flex-wrap:wrap;
+            label {
+              width: 50%;
+              padding: 5px 0;
+              line-height: 1.1em;
+            }
+          }
+          .btn-box{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            &__clear, &__search{
+              @include btn-reset;
+              @include btn-default;
+              width: 45%;
+            }
+            &__clear{
+              @include btn-gray;
+            }
+            &__search{
+              @include btn-red;
+            }
+          }
         } //end options
-
       }
     }// end .search-content-l
     .search-content-r{
