@@ -64,9 +64,19 @@
     -# 右側のアイテムボックス一覧
     .search-content-r
       .result
-        %h2.result__header 検索結果１〜〇〇件
-        .item-box__container
+        -if @items.length == 40
+          %h2.result__header="検索結果 0件"
+          %p.result__message 該当する商品が見つかりません。商品は毎日増えていますので、これからの出品に期待してください。
+
+          %h3.new-items 新着商品
           = render 'shared/items-box'
+
+        - else
+
+          %h2.result__header="検索結果１〜#{@items.count}件"
+          .item-box__container
+            = render 'shared/items-box'
+
 
   =render 'shared/aside'
   =render 'shared/footer'

@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.all.order(id: "DESC").limit(4)
+    @items = Item.all.order(id: "DESC").limit(2)
     require 'payjp'
     Payjp.api_key = Rails.application.credentials.payjp[:secret_access_key]
     customer = Payjp::Customer.retrieve(current_user.payjp_id)

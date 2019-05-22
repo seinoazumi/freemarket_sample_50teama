@@ -18,8 +18,8 @@
               = image_tag 'avatar.jpg', alt: 'プロフィール写真', width: 32
 
       .header__search-bar
-        = form_tag '#', method: :get do
-          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "header__search-bar__search"}
+        = form_with url: search_items_path, method: :get do |f|
+          = f.text_field :keyword, { placeholder: "何をお探しですか？", class: "header__search-bar__search"}
           %i.icon-search
 
       %ul.header__nav
@@ -43,9 +43,9 @@
           = image_tag "logo.svg", alt: 'mercari', width: 134, height: 36
 
       .header__search-bar
-        = form_tag '#', method: :get do
-          = text_field :keyword, params[:keyword], { placeholder: "何をお探しですか？", class: "header__search-bar__search"}
-          %i.icon-search
+        = form_with url: search_items_path, method: :get do |f|
+          = f.text_field :keyword, { placeholder: "何をお探しですか？", class: "header__search-bar__search"}
+          = f.submit class: "icon-search", value: ""
 
     .pc-header__nav__box
       .pc-header__nav__list-l

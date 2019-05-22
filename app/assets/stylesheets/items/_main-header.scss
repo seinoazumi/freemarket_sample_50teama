@@ -22,6 +22,7 @@
     position: absolute;
   }
   .icon-search{
+    @include btn-reset;
     position: absolute;
     left: 95%;
     top:8px;
