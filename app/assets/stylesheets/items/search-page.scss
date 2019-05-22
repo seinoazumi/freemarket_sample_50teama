@@ -110,6 +110,7 @@
     } // end .search-content-r
   } // end .search-container
 
+//-----------------------------------------------メディアクエリ
   @media screen and (max-width: 1068px) {
     //幅1068px以下のページに適応されるscss
     .search-container{
@@ -139,7 +140,7 @@
               width: 50%;
               border:$table-border;
               padding: 20px;
-              .icon-sort, .icon-search{
+              .icon-sort, .icon-search-plus{
                 color: $gray-lv2plus;
                 font-size: 1.2em;
                 padding-bottom: 5px;
@@ -160,6 +161,60 @@
 
       }
     }
-
   }
+
+// -----------------------------------------------ここからJSのcss
+  #tablet-size{
+    .options{
+      background: $white;
+      padding: 20px;
+      &__header{
+        font-size: 1em;
+        font-weight:700;
+        margin:20px 0 5px;
+      }
+      &__price{
+        display: flex;
+        &__range{
+          display: block;
+          width: 30px;
+          height: 48px;
+          line-height: 48px;
+          text-align: center;
+        }
+      }
+      .check-box{
+        display: flex;
+        flex-wrap:wrap;
+        label {
+          width: 50%;
+          padding: 5px 0;
+          line-height: 1.1em;
+        }
+      }
+      .btn-box{
+        display: flex;
+        width: 100%;
+        background: $white;
+        justify-content: space-between;
+        padding: 20px;
+        border-top:$table-border;
+        position: fixed;
+        bottom: 0px;
+        z-index: 1000;
+        margin: 0;
+        &__clear, &__search{
+          @include btn-reset;
+          @include btn-default;
+          width: 45%;
+        }
+        &__clear{
+          @include btn-gray;
+        }
+        &__search{
+          @include btn-red;
+        }
+      }
+    } //end options
+  } //end #tablet-size
 } // end .search-page

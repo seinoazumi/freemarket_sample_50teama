@@ -36,11 +36,10 @@
 .icon-search{
   z-index:100;
   color: $white;
-  width: 100%;
-  text-align: right;
   position: relative;
+  float: right;
   top: 6px;
-  right: 10px;
+  right: -95%;
 }
 .header__nav{
   position: relative;

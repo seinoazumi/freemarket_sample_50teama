@@ -100,6 +100,10 @@
   content: '\f002';
 }
 
+.icon-search-plus::after {
+  @include font-awesome-base;
+  content: '\f00e';
+}
 .icon-select::before {
   @include font-awesome-base;
   content: '\f078';
