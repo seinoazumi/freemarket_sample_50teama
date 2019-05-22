@@ -3,7 +3,6 @@
   .single-container
     .item-wrapper
       %h2.title 商品の情報を入力
-      - @item = Item.new unless @item
       = form_for @item, html: {class: "item-new", multipart: true, method: "POST"} do |f|
         - if @item.errors.any?
           - @item.errors.full_messages.each do |message|
@@ -13,8 +12,10 @@
             %h3.input-part__title 出品画像
             %span.input-part__require 必須
             %p.input-part__details 最大10枚までアップロードできます
-            -# TODO: ファイルアップロードcarrierwave複数
-            = f.file_field :images, multiple: true
+            -# TODO: ファイルアップロードcarrierwave複数、ドラッグ&ドロップ、フォームの見た目動作
+            -# いま=> アップロードformLv1、普通のフォーム
+            = f.fields_for :images do |i|
+              = i.file_field :image
             .input-part__dropbox
               .media-min__append--icon
                 %pre.media-min__hidden ドラッグアンドドロップ
@@ -39,16 +40,16 @@
               .relative
                 .icon-select
                   -# TODO: カテゴリーを格納するデータをどうする？ansectory
-                  = f.select :name, [["レディース", "1"], ["メンズ", "2"], ["ベビー・キッズ", "3"], ["インテリア・住まい・小物", "4"], ["本・音楽・ゲーム", "5"], ["おもちゃ・ホビー・グッズ", "1328"], ["コスメ・香水・美容", "6"], ["家電・スマホ・カメラ", "7"], ["スポーツ・レジャー", "8"], ["ハンドメイド", "9"], ["チケット", "1027"], ["自動車・オートバイ", "1318"], ["その他", "10"]], {include_blank: true}, class: "input-part__select"
+                  = f.select :category_ids, [["レディース", "1"], ["メンズ", "2"], ["ベビー・キッズ", "3"], ["インテリア・住まい・小物", "4"], ["本・音楽・ゲーム", "5"], ["おもちゃ・ホビー・グッズ", "1328"], ["コスメ・香水・美容", "6"], ["家電・スマホ・カメラ", "7"], ["スポーツ・レジャー", "8"], ["ハンドメイド", "9"], ["チケット", "1027"], ["自動車・オートバイ", "1318"], ["その他", "10"]], {include_blank: true}, class: "input-part__select"
               -# TODO: 特定カ11テゴリの場合 .hiddenをつける、外す JS
               .relative.hidden
                 .icon-select
                   -# TODO: カテゴリーを格納するデータをどうする？ansectory
-                  = f.select :name, [["レディース", "1"], ["メンズ", "2"]], {include_blank: true}, class: "input-part__select"
+                  = f.select :category_ids, [["レディース", "1"], ["メンズ", "2"]], {include_blank: true}, class: "input-part__select"
               .relative.hidden
                 .icon-select
                   -# TODO: カテゴリーを格納するデータをどうする？ansectory
-                  = f.select :name, [["レディース", "1"], ["メンズ", "2"]], {include_blank: true}, class: "input-part__select"
+                  = f.select :category_ids, [["レディース", "1"], ["メンズ", "2"]], {include_blank: true}, class: "input-part__select"
               .space.hidden
               .input-part
                 = f.label "サイズ", class: "input-part__title"
@@ -56,13 +57,13 @@
               .relative
                 .icon-select
                   -# TODO: カテゴリーを格納するデータをどうする？ansectory
-                  = f.select :name, [["XXS以下", "153"], ["XS(SS)", "154"], ["S", "2"], ["M", "3"], ["L", "4"], ["XL(LL)", "5"], ["2XL(3L)", "155"], ["4XL(5L)以上", "157"], ["FREE SIZE", "7"]], {include_blank: true}, class: "input-part__select"
+                  = f.select :category_ids, [["XXS以下", "153"], ["XS(SS)", "154"], ["S", "2"], ["M", "3"], ["L", "4"], ["XL(LL)", "5"], ["2XL(3L)", "155"], ["4XL(5L)以上", "157"], ["FREE SIZE", "7"]], {include_blank: true}, class: "input-part__select"
               .space.hidden
               .input-part
                 = f.label "ブランド", class: "input-part__title"
                 %span.input-part__option 任意
                 -# TODO: ブランド名インプット
-                = f.text_field :name, class: "input-part__input", placeholder: "例）シャネル", value: ""
+                = f.text_field :category_ids, class: "input-part__input", placeholder: "例）シャネル", value: ""
               .input-part.space
                 = f.label "商品の状態", class: "input-part__title"
                 %span.input-part__require 必須
@@ -124,7 +125,7 @@
                     .input-part__price--total--left 販売利益
                     .input-part__price--fee--right.input-part__price--total--output -
                     -# TODO: 計算結果
-          -# TODO: モーダル表示 出品前確認？
+          -# TODO: モーダル表示 多分出品後のやつ 今のとこアウトしてないと勝手に表に出てきてしまう。
           -# .modal{role: "dialog", tabindex: "-1"}
             .modal-inner
         %section.form-section

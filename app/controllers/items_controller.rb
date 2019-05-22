@@ -6,15 +6,17 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+    10.times {@item.images.build}
   end
 
   def create
-    @item = Item.new(params_permit)
+    @item = Item.new(params_new)
     render action: :new
     if @item.save
-      redirect_to group_messages_path(@group)
-      # モーダル表示させる
+      # new ページ内でモーダル表示させる
     else
+      flash.now[:alert] = "出品に失敗"
       render :new
       # 入力不備部分に赤字表示させる
     end
@@ -43,17 +45,13 @@ class ItemsController < ApplicationController
 
   private
 
-  def params_permit
-    params.require(:items).permit(:name, :dondition, :delivery_fee, :delivery_days, :price, :seller_id).merge(images: [])
-    # params.require(:items).permit(:name, :dondition, :delivery_fee, :delivery_days, :price, :seller_id).merge(images: [])
+  def params_new
+    # params.require(:item).permit(:name, :condition, :detail, :ship_by, :ship_from, :delivery_fee, :delivery_days, :price, :seller_id, :image)
+    params.require(:item).permit(:name, :condition, :detail, :ship_by, :ship_from, :delivery_fee, :delivery_days, :price, :seller_id, images_attributes: [:image])
   end
 
   def set_item
     @item = Item.find(params[:id])
   end
-
-  # def set_current_user
-  #   @user = User.find(params[current_user.id])
-  # end
 
 end
