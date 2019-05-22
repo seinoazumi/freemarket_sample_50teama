@@ -79,7 +79,7 @@
           .sales-message
             ="売上金#{current_user.money}円をお持ちです"
         .buy-btn
-          = link_to "購入画面に進む","/items/#{@item.id}/confirm"
+          = link_to "購入画面に進む", item_confirm_path(params[:id])
 
       .item-info__description
         %p
