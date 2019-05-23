@@ -16,7 +16,7 @@ class Item < ApplicationRecord
     validates :delivery_method
     validates :delivery_prefecture
     validates :delivery_day
-    validates :price, length: {maximum: 7}, numericality: {greater_than_or_equal_to: 300}
+    validates :price, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
   end
 
   enum delivery_prefecture: {
