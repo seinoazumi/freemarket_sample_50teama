@@ -63,8 +63,8 @@
 |price|integer|null: false|価格|
 |buyer_id|integer||enptyなら売れていない、presentであれば売れたとする|
 |detail|text||商品説明文|
-|prefecture|integer|null: false|発送元地域|
-|ship_method|integer|null: false|発送方法|
+|delivery_prefecture|integer|null: false|発送元地域|
+|delivery_method|integer|null: false|発送方法|
 ### Association
 - has_many :likes
 - has_many :user_items
