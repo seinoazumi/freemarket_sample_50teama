@@ -35,7 +35,7 @@
 @import 'items/show-detail.scss'; //商品詳細情報ページ
 @import 'items/new.scss';
 @import 'items/modal-window.scss'; //商品削除のモーダルウィンドウ
-
+@import 'items/search-page.scss';
 
 //----------------------------shared 色々なページで使いまわせるもの
 
@@ -45,6 +45,7 @@
 @import 'shared/mypage-tab-container.scss';
 @import 'shared/mypage-nav.scss';
 @import 'shared/drop-down-list.scss';
+@import 'shared/item-box-small.scss';
 
 //-------------------------------users
 

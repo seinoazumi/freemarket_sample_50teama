@@ -20,6 +20,12 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :new, :create, :edit, :destroy] do
     get :confirm
     get :pay
+    
+    collection do
+      get ':id/:url', action:'show'
+      get 'search', action:'search'
+    end
+
     resources :categories, only: [:search]
   end
   resources :cards, only: [:new, :show]

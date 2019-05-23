@@ -11,23 +11,36 @@
   height: 40px;
   width: 100%;
   position: relative;
+  display: flex;
 
   &__search{
     display: block;
-    width:100%;
+    width:calc(100% - 40px);
     height: 100%;
     padding-left: 10px;
     background-color:$gray-lv1;
     border: none;
     position: absolute;
   }
-  .icon-search{
+  .search-btn{
+    @include btn-reset;
     position: absolute;
-    left: 95%;
-    top:8px;
+    display: block;
+    width: 40px;
+    height: 100%;
+    background:$gray-lv3;
+    top:0;
+    right:0;
   }
 }
-
+.icon-search{
+  z-index:100;
+  color: $white;
+  position: relative;
+  float: right;
+  top: 6px;
+  right: -95%;
+}
 .header__nav{
   position: relative;
   width: 100%;
@@ -160,12 +173,13 @@
       .header__search-bar {
         margin-left: 45px;
         flex: 1;
+        display: flex;
 
         &__search{
           @include input-default;
           background: $gray-lv1;
-          height: 40px;
-          position: relative;
+          height: 100%;
+          position: absolute;
           width: 100%;
         }
       }
