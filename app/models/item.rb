@@ -19,7 +19,7 @@ class Item < ApplicationRecord
     validates :price
   end
 
-  enum ship_from: {
+  enum delivery_prefecture: {
     hokkaido: 1, aomori: 2, iwate: 3, miyagi: 4, akita: 5, yamagata: 6, fukushima: 7,
     ibaraki: 8, tochigi: 9, gunma: 10, saitama: 11, chiba: 12, tokyo: 13, kanagawa: 14,
     nigata: 15, toyama: 16, ishikawa: 17, fukui: 18, yamanashi: 19, nagano: 20,
@@ -35,15 +35,15 @@ class Item < ApplicationRecord
     new_one: 1, almost_new: 2, no_scratchies: 3, little_worn: 4, worn: 5, bad: 6
   }
 
-  enum delivery_fee: {
+  enum delivery_cost: {
     exhibitr_barden: 1, buyer_barden: 2
   }
 
-  enum ship_by: {
+  enum delivery_method: {
     undicided: 1, mercari: 2, u_mail: 3, letter_pack: 4, usealy: 5, yamato: 6, u_pack: 7, click_post: 8, u_packet: 9
   }, _prefix: true
 
-  enum delivery_days: {
+  enum delivery_day: {
     a_day: 1, a_couple_of_days: 2, a_week: 3
   }
 end

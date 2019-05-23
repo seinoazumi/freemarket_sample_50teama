@@ -81,27 +81,26 @@
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = f.select :delivery_fee, Item.delivery_fees_i18n.keys.map {|k| [Item.delivery_fees_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
+                  = f.select :delivery_cost, Item.delivery_costs_i18n.keys.map {|k| [Item.delivery_costs_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
               .space.hidden
               .input-part
                 = f.label "発送の方法", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = f.select :ship_by, Item.ship_bies_i18n.keys.map {|k| [Item.ship_bies_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
+                  = f.select :delivery_method, Item.delivery_methods_i18n.keys.map {|k| [Item.delivery_methods_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
               .input-part.space
                 = f.label "発送元の地域", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = f.select :ship_from, Item.ship_froms_i18n.keys.map {|k| [Item.ship_froms_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
+                  = f.select :delivery_prefecture, Item.delivery_prefectures_i18n.keys.map {|k| [Item.delivery_prefectures_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
               .input-part.space
                 = f.label "発送までの日数", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  -# TODO: 複数形のカラム名前がなんか悪さしそうな気がする, Item.delivery_days_i18n記述は単数形を複数形に変更して動作するメソッド
-                  = f.select :delivery_days, Item.delivery_days_i18n.keys.map {|k| [Item.delivery_days_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
+                  = f.select :delivery_day, Item.delivery_days_i18n.keys.map {|k| [Item.delivery_days_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
         %section.form-section
           .flex-container
             .flex-container__left
