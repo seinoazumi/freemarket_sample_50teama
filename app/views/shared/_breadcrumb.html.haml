@@ -1,7 +1,3 @@
 %nav.breadcrumb-container
-  %ul.breadcrumb{itemscope: 'itemscope', itemtype: "http://data-vocabulary.org/Breadcrumb"}
-    %li.breadcrumb__list.icon-arrow-r= link_to 'メルカリ', href:"#", itemprop: "url", itemprop: "title"
-    %li.breadcrumb__list.icon-arrow-r= link_to 'カテゴリー１', href:"#", itemprop: "url", itemprop: "title"
-    %li.breadcrumb__list.current-page= link_to '子カテゴリー', href:"#", itemprop: "url", itemprop: "title"
-    -# gemの内容によっては.breadcrumb__list--currentのクラスは不要
-    -# 一番子孫の要素には.icon-arrow-rを入れない
+  .breadcrumb
+    = breadcrumbs separator: "#{content_tag(:span, '', :class=>'icon-arrow-r')}", class:"breadcrumb__list"
