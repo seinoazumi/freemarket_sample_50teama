@@ -5,8 +5,6 @@ class Item < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :categories
 
-  mount_uploader :image, ImageUploader
-
   enum ship_from: {
     hokkaido: 1, aomori: 2, iwate: 3, miyagi: 4, akita: 5, yamagata: 6, fukushima: 7,
     ibaraki: 8, tochigi: 9, gunma: 10, saitama: 11, chiba: 12, tokyo: 13, kanagawa: 14,
