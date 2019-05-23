@@ -1,35 +1,25 @@
 .breadcrumb-container{
-  position: relative;
-  border-top: 1px solid $gray-lv2;
+  border-top: 1px solid $gray-lv1plus;
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
   background: $white;
+  height: 50px;
   width:100%;
-
   .breadcrumb{
-    display: flex;
-    padding-left: 10px;
     &__list{
-      display: inline-block;
-      padding: 10px;
       font-size: 14px;
-      line-height: 1.5;
-      text-align: center;
-      &::after{
-        margin-left: 5px;
-        color: $gray-lv2;
-      }
-      &:last-child{
-        font-weight: 900;
-      }
-      &:hover{
+      line-height: 50px;
+      padding-left: 16px;
+      a:hover {
         text-decoration: underline;
         opacity: .7;
-        &::after{
-          text-decoration: none; //chromeの仕様だとこれが効かないらしいが、他のブラウザでは聞く様なので、そのままにしています
-        }
       }
-      &::selection{
-        @include selection
+      .icon-arrow-r {
+        margin: 0 8px;
+        font-size: 9px;
+        color: $gray-lv3;
+      }
+      .current {
+        font-weight: 900;
       }
     }
   }
