@@ -24,4 +24,8 @@ $(document).on('turbolinks:load', function(){
     focusOnSelect: true
   });
 
+  $(".thumb__list").on('click', function(){
+    $(".thumb__list").css("opacity","0.7");
+    $(this).css("opacity","1");
+  });
 });

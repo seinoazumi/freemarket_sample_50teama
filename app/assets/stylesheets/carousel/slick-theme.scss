@@ -198,14 +198,20 @@ $slick-opacity-not-active: 0.8 !default;
   .slider{
     width: 300px;
     height: 300px;
+
+    font-size: 50px;
     background-color: rgba(255,0,0, 0.7);
     color: #fff;
+    &:focus{
+      outline:none;
+    }
   }
   .draggable{
     padding:0px !important;
   .thumb__list{
     width: 60px !important;
     height: 60px;
+    opacity: 0.7;
     background-color: rgba(0, 0,255, 0.7);
     margin: 0px;
     outline:none;
