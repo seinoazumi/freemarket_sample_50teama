@@ -12,8 +12,8 @@
             %h3.input-part__title 出品画像
             %span.input-part__require 必須
             %p.input-part__details 最大10枚までアップロードできます
-            -# TODO: ファイルアップロードcarrierwave複数、ドラッグ&ドロップ、フォームの見た目動作
-            -# いま=> アップロードformLv1、普通のフォーム
+            -# TODO: ドラッグ&ドロップ、フォームの見た目動作
+            -# いま=> アップロードformLv2、普通のフォーム10個展開、同時アップロード
             = f.fields_for :images do |i|
               = i.file_field :image
             .input-part__dropbox
@@ -56,13 +56,13 @@
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  -# TODO: カテゴリーを格納するデータをどうする？ansectory
+                  -# TODO: 特定カテゴリ展開時のみ表示させる、連動した条件バリデーション。
                   = f.select :category_ids, [["XXS以下", "153"], ["XS(SS)", "154"], ["S", "2"], ["M", "3"], ["L", "4"], ["XL(LL)", "5"], ["2XL(3L)", "155"], ["4XL(5L)以上", "157"], ["FREE SIZE", "7"]], {include_blank: true}, class: "input-part__select"
               .space.hidden
               .input-part
                 = f.label "ブランド", class: "input-part__title"
                 %span.input-part__option 任意
-                -# TODO: ブランド名インプット
+                -# TODO: 特定カテゴリ展開時のみ表示させる。
                 = f.text_field :category_ids, class: "input-part__input", placeholder: "例）シャネル", value: ""
               .input-part.space
                 = f.label "商品の状態", class: "input-part__title"

@@ -14,11 +14,12 @@ class ItemsController < ApplicationController
     @item = Item.new(params_new)
     render action: :new
     if @item.save
-      # new ページ内でモーダル表示させる
+      # TODO: 仮置きredirect, 最終形=>newページ内でモーダル表示させる
+      redirect_to root_path
     else
+      # TODO: 最終形=>入力不備label部分に赤字でガイド表示させる
       flash.now[:alert] = "出品に失敗"
       render :new
-      # 入力不備部分に赤字表示させる
     end
   end
 
