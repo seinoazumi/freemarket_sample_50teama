@@ -8,12 +8,22 @@
         = @item.name
       .item-info
         .item-info__photo
+          %section.slider
+            - @item.images[1..5].each do |image|
+              %figure.slider__list=image
+
+          %section.thumb
+            - @item.images[1..5].each do |image|
+              %figure.thumb__list=image
+
       .visible-sp-only
         .item-info__price
           %p
             = "￥#{@item.price}"
             %span.item-info__price__tax (税込)
-            %span.item-info__price__sipping
+
+            %span.item-info__price__shipping
+
             = @item.delivery_cost
         .sales-message
           - if user_signed_in?

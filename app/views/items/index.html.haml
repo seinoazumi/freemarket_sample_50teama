@@ -1,13 +1,10 @@
-.wrapper
+.wrapper.index-page
   = render 'shared/header'
 
   %main
     %section.slick
-      %figure.slick-list=image_tag "slider_01.png", alt: "スライダーの画像", class: "slick-list__image"
-      %figure.slick-list=image_tag "slider_02.png", alt: "スライダーの画像", class: "slick-list__image"
-      %figure.slick-list=image_tag "slider_03.png", alt: "スライダーの画像", class: "slick-list__image"
-      %figure.slick-list=image_tag "slider_04.png", alt: "スライダーの画像", class: "slick-list__image"
-
+      %figure.slick-list=image_tag "https://www.mercari.com/jp/assets/img/common/jp/top/banner-camp.jpg", alt: "スライダーの画像", class: "slick-list__image"
+      %figure.slick-list=image_tag "https://www.mercari.com/jp/assets/img/common/jp/top/banner-natsukashi.jpg", alt: "スライダーの画像", class: "slick-list__image"
 
   %section.pick-up-container
     %h2.pick-up-container__header ピックアップカテゴリー
