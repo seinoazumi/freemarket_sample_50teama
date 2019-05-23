@@ -41,3 +41,16 @@ li{
 .text-center{
   text-align: center;
 }  //文章を中央に寄せる items/headerで使用
+
+// 出品ステータスに伴う表示に使用予定
+.mypage-item-status.awaiting {
+  background: #0099e8;  // 出品中
+}
+
+.mypage-item-status.action-required {
+  background: #ea352d;  // 公開停止中
+}
+
+.mypage-item-status.action-required {
+  background: #888; // 売却済
+}
