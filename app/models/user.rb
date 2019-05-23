@@ -18,6 +18,8 @@ class User < ApplicationRecord
     validates :city
     validates :address
     validates :birthday
+    validates :seller_id
+    validates :buyer_id
   end
 
   validates :name,            length: { maximum: 20 }
@@ -34,6 +36,14 @@ class User < ApplicationRecord
     tokushima: 36, kagawa: 37, ehime: 38, kochi: 39,
     fukuoka: 40, saga: 41, nagasaki: 42, kumamoto: 43, oita: 44, miyazaki: 45, kagoshima: 46, okinawa: 47
   }, _prefix: true
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name
+    end
+  end
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

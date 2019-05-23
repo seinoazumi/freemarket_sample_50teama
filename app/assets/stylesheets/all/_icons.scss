@@ -13,6 +13,7 @@
   content: '\f054';
 }
 
+
 .icon-bad::before {
   @include font-awesome-base;
   content: '\f119';
@@ -33,19 +34,29 @@
   content: '\f09d';
 }
 
+.icon-cart::before {
+  @include font-awesome-base;
+  content: '\f07a';
+}
+
 .icon-check::before {
   @include font-awesome-base;
   content: '\f00c';
 }
 
-.icon-good::before {
+.icon-chevron-down::after {
   @include font-awesome-base;
-  content: '\f118';
+  content: '\f078';
 }
 
 .icon-clock::before {
   @include font-awesome-base;
   content: '\f017';
+}
+
+.icon-coins::before {
+  @include font-awesome-base;
+  content: '\f51e';
 }
 
 .icon-good::before {
@@ -69,25 +80,19 @@
   content: '\f023';
 }
 
-.icon-tag::before {
-  @include font-awesome-base;
-  content: '\f02b';
-}
-
-.icon-tag::before {
-  @include font-awesome-base;
-  content: '\f02b';
-
-}
-
 .icon-normal::before {
   @include font-awesome-base;
   content: '\f11a';
 }
 
-.icon-lock::before {
+.icon-plus::before {
   @include font-awesome-base;
-  content: '\f023';
+  content: '\f067';
+}
+
+.icon-ruler::before {
+  @include font-awesome-base;
+  content: '\f547';
 }
 
 .icon-search::after {
@@ -95,14 +100,32 @@
   content: '\f002';
 }
 
+.icon-search-plus::after {
+  @include font-awesome-base;
+  content: '\f00e';
+}
 .icon-select::before {
   @include font-awesome-base;
   content: '\f078';
 }
 
+.icon-sort::before{
+  @include font-awesome-base;
+  content: '\f162';
+}
+.icon-star::before {
+  @include font-awesome-base;
+  content: '\f005';
+}
+
 .icon-tag::before {
   @include font-awesome-base;
   content: '\f078';
+}
+
+.icon-truck::before {
+  @include font-awesome-base;
+  content: '\f0d1';
 }
 
 .icon-facebook::before {

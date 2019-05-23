@@ -12,6 +12,9 @@
       }
     .panel__inner{
       padding: 64px;
+      .line{
+        border: 1px solid $gray-lv1!important;
+      }
       .item-info{
         &__image{
           width: auto;
