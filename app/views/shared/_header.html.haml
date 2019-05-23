@@ -1,7 +1,7 @@
 %header.sp-header.visible-sp
   .sp-header__content
     %h1.sp-header__content__logo
-      = link_to 'メルカリトップページへのリンク', src: '#' do
+      = link_to root_path do
         = image_tag "logo.svg", alt: 'mercari', size:"134x36"
 
     - if user_signed_in?
@@ -14,7 +14,7 @@
             = link_to '', src: '#', class: 'sp-header__user-icon'
 
           %li.sp-header__user-nav__list
-            = link_to 'マイページへのリンク', src: '#', class: 'sp-header-user-icon user-profile__avatar' do
+            = link_to user_path(id: 'mypage'), class: 'sp-header-user-icon user-profile__avatar' do
               = image_tag 'avatar.jpg', alt: 'プロフィール写真', width: 32
 
       .header__search-bar
@@ -33,14 +33,14 @@
       %ul.header__user-btn
         %li.header__user-btn__sign-in
           =link_to 'ログイン', new_user_session_path
-        %li.header__user-btn__resistrate
+        %li.header__user-btn__registration
           =link_to '新規会員登録', new_user_path
 
 %header.pc-header.visible-pc
   .pc-header__inner
     .pc-header__top-content
       %h1.pc-header__top-content__logo
-        = link_to 'メルカリトップページへのリンク', src: '#' do
+        = link_to root_path do
           = image_tag "logo.svg", alt: 'mercari', width: 134, height: 36
 
       .header__search-bar
@@ -105,7 +105,7 @@
               %p.todo-list__message 現在、やることリストはありません
 
             %li.pc-header__user-nav__list#mypage-box__root
-              = link_to 'マイページへのリンク', src: '#', class: 'user-profile__avatar' do
+              = link_to user_path(id: 'mypage'), class: 'user-profile__avatar' do
                 = image_tag 'avatar.jpg', alt: 'プロフィール写真', width: 32
                 %span{style: "display:inline-block; height: 40px;"} マイページ
             #mypage-box
@@ -158,5 +158,5 @@
           %ul.header__user-btn
             %li.header__user-btn__sign-in
               =link_to 'ログイン', new_user_session_path
-            %li.header__user-btn__resistrate
+            %li.header__user-btn__registration
               =link_to '新規会員登録', new_user_path
