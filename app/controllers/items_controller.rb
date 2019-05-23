@@ -12,15 +12,26 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params_new)
-    render action: :new
-    if @item.save
-      # TODO: 仮置きredirect, 最終形=>newページ内でモーダル表示させる
-      redirect_to root_path
-    else
-      # TODO: 最終形=>入力不備label部分に赤字でガイド表示させる
-      flash.now[:alert] = "出品に失敗"
-      render :new
+
+    respond_to do |format|
+      if @item.save
+        # @itemページのpayjpカラムが問題で、出品ページに飛ばすのは現状ではエラー
+        # format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        # TODO: 仮置きredirect, 最終形=>newページ内でモーダル表示させる
+        format.html { redirect_to root_path, notice: 'Item was successfully created.' }
+        format.json { render :show, status: :created, location: @item }
+      else
+        # TODO: 最終形=>入力不備label部分に赤字でガイド表示させる
+        format.html { render :new }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
     end
+    # if @item.save
+    #   redirect_to root_path
+    # else
+    #   flash.now[:alert] = "出品に失敗"
+    #   render :new
+    # end
   end
 
   def edit
