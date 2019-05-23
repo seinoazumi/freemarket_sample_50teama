@@ -56,6 +56,7 @@
               = "#{@card.exp_month} / #{@card.exp_year}"
 
             %p.link-to-change.icon-arrow-r
-              =link_to "変更する", user_card_path(user_id:'mypage',id:'show')
+              -# =link_to "変更する", user_card_path(user_id:'mypage',id:'show')
+              =link_to "変更する", card_path(id:current_user.id)
 
   = render 'shared/single-footer'
