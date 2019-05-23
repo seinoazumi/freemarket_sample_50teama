@@ -16,6 +16,9 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%").limit(40)
+    if @items.present? == false
+      @items = Item.all.order(id: "DESC").limit(40)
+    end
     # 余裕があればkaminariを入れて、limit(40)を外す
   end
 

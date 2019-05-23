@@ -145,6 +145,16 @@
                 font-size: 1.2em;
                 padding-bottom: 5px;
               }
+              .select-box__tablet{
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                background-color: $white;
+                border-width: 0px;
+                text-align: center;
+                outline: 0;
+                padding-left:60px;
+              }
             }
           }
         }
@@ -200,7 +210,8 @@
         padding: 20px;
         border-top:$table-border;
         position: fixed;
-        bottom: 0px;
+        bottom: 0;
+        left: 0;
         z-index: 1000;
         margin: 0;
         &__clear, &__search{

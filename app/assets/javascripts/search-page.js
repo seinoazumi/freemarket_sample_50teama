@@ -1,22 +1,6 @@
 $(document).on('turebolinks:load', $(function(){
-    $("#sort").on('click', function(){
-
-      var buidSelectBox = `<form action="#" accept-charset="UTF-8" data-remote="true" method="post">
-        <input name="utf8" type="hidden" value="✓">
-        <input type="hidden" name="authenticity_token" value="rfvWWPtfx99eDhfwJbq8cMN6Ch4Ppm0dBXe7YJaQoSIaQWEjfke+gDZxhQh+B21Qq+rAhxO293MC29r9Do7i1Q=="><select class="select-box__inner" name="sort_order" id="sort_order">
-        <option value="">並び替え</option>
-        <option value="01">価格の安い順</option>
-        <option value="02">価格の高い順</option>
-        <option value="03">出品の古い順</option>
-        <option value="04">出品の新しい順</option>
-        <option value="05">いいね！の多い順</option></select>
-      </form>`
-
-      $(this).append(buidSelectBox);
-    }); // end sort ボタンを押した時のアクション
 
     $("#search").on('click', function(){
-
       var buildSearchOptions = `
       <div id="tablet-size">
         <div class="options">
@@ -112,6 +96,10 @@ $(document).on('turebolinks:load', $(function(){
       </div>`
 
       $(".search-content-l").append(buildSearchOptions);
+      $(".search-content-l").on('click', function(){
+        console.log('click');
+        $("#tablet-size").toggle();
+      });
     }); // end search ボタンを押した時のアクション
   })
 );

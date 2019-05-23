@@ -8,7 +8,8 @@
         .nav
           .nav__content#sort
             %p.icon-sort
-            %p.nav__content__message 並び替え
+            =form_with url:'#' do |f|
+              = f.select :sort_order, [["並び替え",""],["価格の安い順","01"],["価格の高い順","02"],["出品の古い順","03"],["出品の新しい順","04"],["いいね！の多い順","05"]], {}, class: "select-box__tablet"
           .nav__content
             %p.icon-search-plus#search
             %p.nav__content__message 詳細検索
@@ -75,9 +76,18 @@
     -# 右側のアイテムボックス一覧
     .search-content-r
       .result
-        %h2.result__header="検索結果１〜#{@items.count}件"
-        .item-box__container
-          = render partial: 'shared/items-box', locals:{item: @items}
+        -if @items.length == 0
+          %h2.result__header="検索結果 0件"
+          %p.result__message 該当する商品が見つかりません。商品は毎日増えていますので、これからの出品に期待してください。
+
+          %h3.new-items 新着商品
+          = render 'shared/items-box'
+
+        - else
+
+          %h2.result__header="検索結果１〜#{@items.count}件"
+          .item-box__container
+            = render partial: 'shared/items-box', locals:{item: @items}
 
 
   =render 'shared/aside'
