@@ -1,3 +1,4 @@
+- breadcrumb :item
 = render 'shared/header'
 = render 'shared/breadcrumb'
 .item-detail-page
@@ -21,7 +22,7 @@
             = "￥#{@item.price}"
             %span.item-info__price__tax (税込)
             %span.item-info__price__shipping
-            = @item.delivery_fee
+            = @item.delivery_cost
         .sales-message
           - if user_signed_in?
             ="売上金#{current_user.money}円をお持ちです"
@@ -61,27 +62,27 @@
           %tr
             %th 配送料の負担
             %td
-              = @item.delivery_fee
+              = @item.delivery_cost
           %tr
             %th 配送の方法
             %td
-              = @item.ship_by
+              = @item.delivery_method
           %tr
             %th 配送元地域
             %td
               %p.detail_link
-                =link_to "#{@item.ship_from}", '#'
+                =link_to "#{@item.delivery_prefecture}", '#'
           %tr
             %th 発送日の目安
             %td
-              =@item.delivery_days
+              =@item.delivery_day
       .item-info
         .item-info__price
           %p
             = "￥#{@item.price}"
             %span.item-info__price__tax (税込)
             %span.item-info__price__sipping
-              = @item.delivery_fee
+              = @item.delivery_cost
 
         - if user_signed_in?
           .sales-message
