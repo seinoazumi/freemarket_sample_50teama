@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   mount_uploader :image, ImageUploader
   accepts_nested_attributes_for :images
 
-  # TODO: カテゴリ実装時、特定カテゴリが入力された場合のみ:sazeが必須となる条件
+  # TODO: カテゴリ実装時、特定カテゴリが入力された場合のみ:sizeが必須となる条件
   with_options presence: true do
     validates :name
     validates :detail
