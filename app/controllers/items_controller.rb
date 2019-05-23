@@ -17,8 +17,9 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        # @itemページのpayjpカラムが問題で、出品ページに飛ばすのは現状ではエラー
+        # @itemページのpayjpカラムが問題で、出品ページに飛ばすのは現状ではエラー、記述使用の可能性あり
         # format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        # rails scaffold item で自動作成されたコントローラ記述をそのまま移植。
         # TODO: 仮置きredirect, 最終形=>newページ内でモーダル表示させる
         format.html { redirect_to root_path, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
@@ -28,12 +29,6 @@ class ItemsController < ApplicationController
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
-    # if @item.save
-    #   redirect_to root_path
-    # else
-    #   flash.now[:alert] = "出品に失敗"
-    #   render :new
-    # end
   end
 
   def show
