@@ -7,6 +7,18 @@
         = @item.name
       .item-info
         .item-info__photo
+          %section.slider
+            %figure.slider__list=@item.images[0]
+            %figure.slider__list=@item.images[1]
+            %figure.slider__list=@item.images[2]
+            %figure.slider__list=@item.images[3]
+            %figure.slider__list=@item.images[4]
+          %section.thumb
+            %figure.thumb__list=@item.images[0]
+            %figure.thumb__list=@item.images[1]
+            %figure.thumb__list=@item.images[2]
+            %figure.thumb__list=@item.images[3]
+            %figure.thumb__list=@item.images[4]
       .visible-sp-only
         .item-info__price
           %p

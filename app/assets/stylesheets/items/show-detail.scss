@@ -14,10 +14,10 @@
         clear:both;
         &__photo{
           display: block;
-          width: 270px;
+          width: 300px;
           height: 360px;
           margin: 0 auto;
-          background:url("https://placehold.jp/cccccc/ffffff/150x150.png?text=item-photo");
+          background-color:$gray-lv1;
         }
         &__price{
           margin-top: 24px;
