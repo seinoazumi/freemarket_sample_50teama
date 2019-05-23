@@ -5,6 +5,20 @@ class Item < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :categories
 
+  mount_uploader :image, ImageUploader
+  accepts_nested_attributes_for :images
+
+  # TODO: カテゴリ実装時、特定カテゴリが入力された場合のみ:sizeが必須となる条件
+  with_options presence: true do
+    validates :name, length: {maximum: 40}
+    validates :detail, length: {maximum: 1000}
+    validates :condition
+    validates :delivery_method
+    validates :delivery_prefecture
+    validates :delivery_day
+    validates :price, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+  end
+
   enum delivery_prefecture: {
     hokkaido: 1, aomori: 2, iwate: 3, miyagi: 4, akita: 5, yamagata: 6, fukushima: 7,
     ibaraki: 8, tochigi: 9, gunma: 10, saitama: 11, chiba: 12, tokyo: 13, kanagawa: 14,
