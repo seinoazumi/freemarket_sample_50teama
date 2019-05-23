@@ -44,7 +44,7 @@
                 =current_user.name
 
               %p.link-to-change.icon-arrow-r
-                =link_to "変更する","/users/mypage/identification"
+                =link_to "変更する",{controller:"users",action: "edit", url:"identification"}
                 
           -# 支払い情報がnillだとグレーのボタンとなり購入できないが、とりあえず無視する
           %hr.line
