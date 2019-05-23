@@ -74,7 +74,7 @@ ja:
         kagoshima: 鹿児島県
         okinawa: 沖縄県
     item:
-      ship_from:
+      delivery_prefecture:
         hokkaido: 北海道
         aomori: 青森県
         iwate: 岩手県
@@ -130,10 +130,10 @@ ja:
         little_worn: やや傷や汚れあり
         worn: 傷や汚れあり
         bad: 全体的に状態が悪い
-      delivery_fee:
+      delivery_cost:
         exhibitr_barden: 送料込み(出品者負担)
         buyer_barden: 着払い(購入者負担)
-      ship_by:
+      delivery_method:
         undicided: 未定
         mercari: らくらくメルカリ便
         u_mail: ゆうメール
@@ -143,7 +143,7 @@ ja:
         u_pack: ゆうパック
         click_post: クリックポスト
         u_packet: ゆうパケット
-      delivery_days:
+      delivery_day:
         a_day: 1~2日で発送
         a_couple_of_days: 2~3日で発送
         a_week: 4~7日で発送

@@ -13,9 +13,9 @@ class Item < ApplicationRecord
     validates :name
     validates :detail
     validates :condition
-    validates :ship_by
-    validates :ship_from
-    validates :delivery_days
+    validates :delivery_method
+    validates :delivery_prefecture
+    validates :delivery_day
     validates :price
   end
 
