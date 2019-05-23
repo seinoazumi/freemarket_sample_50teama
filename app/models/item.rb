@@ -5,8 +5,7 @@ class Item < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :categories
 
-  mount_uploaders :image_path, ImageUploader
-
+  mount_uploader :image, ImageUploader
   accepts_nested_attributes_for :images
 
   enum ship_from: {

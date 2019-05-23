@@ -100,7 +100,7 @@
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  -# TODO: 複数形のカラム名前がなんか悪さしそうな気がする
+                  -# TODO: 複数形のカラム名前がなんか悪さしそうな気がする, Item.delivery_days_i18n記述は単数形を複数形に変更して動作するメソッド
                   = f.select :delivery_days, Item.delivery_days_i18n.keys.map {|k| [Item.delivery_days_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
         %section.form-section
           .flex-container
@@ -125,9 +125,9 @@
                     .input-part__price--total--left 販売利益
                     .input-part__price--fee--right.input-part__price--total--output -
                     -# TODO: 計算結果
-          -# TODO: モーダル表示 多分出品後のやつ 今のとこアウトしてないと勝手に表に出てきてしまう。
+          -# TODO: モーダル表示 多分出品後のやつ cssが原因だろうが、今のとこアウトしてないと勝手に表に出てきてしまう。
           -# .modal{role: "dialog", tabindex: "-1"}
-            .modal-inner
+          -#   .modal-inner
         %section.form-section
           %p.notes
             =link_to "禁止されている出品", "#", class:"notes__link"
@@ -141,7 +141,7 @@
             また、出品をもちまして
             =link_to "加盟店規約", "#", class:"notes__link"
             に同意したことになります。
-          -# TODO: submitボタン、要調整
+          -# TODO: submitボタン、要調整、モーダル呼び出しに繋げる
           = f.submit "出品する", class: "submit-btn--red"
           = link_to "もどる", "#", class: "submit-btn--gray"
         .overlay
