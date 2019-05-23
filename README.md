@@ -58,13 +58,13 @@
 |------|----|-------|----|
 |name|string|null: false, limit: 40, index: true|商品名|
 |condition|integer|null: false|売出し中or売り切れ|
-|delivery_fee|integer|null: false|送料込みor抜き(番号選択)|
-|delivery_days|integer|null: false|配送日数(番号選択)|
+|delivery_cost|integer|null: false|送料込みor抜き(番号選択)|
+|delivery_day|integer|null: false|配送日数(番号選択)|
 |price|integer|null: false|価格|
 |buyer_id|integer||enptyなら売れていない、presentであれば売れたとする|
 |detail|text||商品説明文|
-|ship_from|integer|null: false|発送元地域|
-|ship_by|integer|null: false|発送方法|
+|delivery_prefecture|integer|null: false|発送元地域|
+|delivery_method|integer|null: false|発送方法|
 ### Association
 - has_many :likes
 - has_many :user_items

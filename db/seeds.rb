@@ -68,7 +68,7 @@ end
     delivery_day: rand(1..3),
     price: num * 1000,
     detail: "この文章は商品説明用です！この商品のIDは#{num}です！yay!",
-    delivery_prefecture: rand(1..47),
+    delivery_prefecture: rand(1..48),
     delivery_method: rand(1..9)
     )
 end
