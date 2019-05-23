@@ -56,7 +56,7 @@
 ## itemsテーブル
 |Column|Type|Options|補足|
 |------|----|-------|----|
-|name|string|null: false, limit: 40|商品名|
+|name|string|null: false, limit: 40, index: true|商品名|
 |condition|integer|null: false|売出し中or売り切れ|
 |delivery_fee|integer|null: false|送料込みor抜き(番号選択)|
 |delivery_days|integer|null: false|配送日数(番号選択)|
