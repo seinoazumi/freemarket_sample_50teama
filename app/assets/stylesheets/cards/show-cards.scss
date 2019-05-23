@@ -40,7 +40,18 @@
             &__add-btn{
               @include btn-default;
               @include btn-red;
-              min-width: 300px;
+              width: 300px;
+              padding: 0;
+              a {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                .icon-card::before{
+                  font-weight:400;
+                  padding-right: 5px;
+                }
+              }
             }
           }
         }
@@ -53,11 +64,6 @@
         color: $link-blue;
         &__link:hover{
           @include blue-link;
-        }
-
-        .icon-card::before{
-          font-weight:400;
-          padding-right: 5px;
         }
       }
     }
