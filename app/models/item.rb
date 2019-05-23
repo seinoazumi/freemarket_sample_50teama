@@ -10,8 +10,8 @@ class Item < ApplicationRecord
 
   # TODO: カテゴリ実装時、特定カテゴリが入力された場合のみ:sizeが必須となる条件
   with_options presence: true do
-    validates :name
-    validates :detail
+    validates :name, length: {maximum: 40}
+    validates :detail, length: {maximum: 1000}
     validates :condition
     validates :delivery_method
     validates :delivery_prefecture
