@@ -1,3 +1,4 @@
+- breadcrumb :card
 %wrapper.card-page
   =render 'shared/header'
   = render 'shared/breadcrumb'
@@ -19,7 +20,10 @@
               -# サーバーサイドが整ったらコメントアウトを外す
           - else
             .card-info
-              %button.card-info__add-btn.icon-card=link_to 'クレジットカードを追加する', '#'
+              %button.card-info__add-btn
+                =link_to new_card_path do
+                  .icon-card
+                  %p クレジットカードを追加する
 
         .bottom-info
           %p.bottom-info__link.icon-arrow-r=link_to "支払い方法について" , '#'
