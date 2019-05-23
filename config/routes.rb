@@ -18,10 +18,8 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:index, :show, :new, :create, :edit, :destroy] do
-    collection do
-      get ':id/:url', action:'show'
-    end
-
+    get :confirm
+    get :pay
     resources :categories, only: [:search]
   end
   resources :cards, only: [:new, :show]
