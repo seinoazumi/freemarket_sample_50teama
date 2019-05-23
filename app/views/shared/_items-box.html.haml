@@ -1,6 +1,7 @@
 .item-box__container
   - @items.each do |item|
     %section.item-box
+
       = link_to item_path(:id) do
         = image_tag ("https://placehold.jp/b3b3b3/ffffff/200x200.png?text=item1")
         -# データベースのデータが整ったらコメントアウトを外す
@@ -16,3 +17,4 @@
             = item.price
           %p.item-box__bottom__like.icon-like 1
           %p.item-box__bottom__tax (税込)
+
