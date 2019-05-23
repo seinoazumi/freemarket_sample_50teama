@@ -76,19 +76,19 @@
     -# 右側のアイテムボックス一覧
     .search-content-r
       .result
-        -if @items.length == 0
+
+        -if @items.count == 0 || params[:keyword].present? == false
           %h2.result__header="検索結果 0件"
           %p.result__message 該当する商品が見つかりません。商品は毎日増えていますので、これからの出品に期待してください。
 
           %h3.new-items 新着商品
-          = render 'shared/items-box'
+          = render partial: 'shared/items-box', locals:{item: @items}
 
         - else
 
           %h2.result__header="検索結果１〜#{@items.count}件"
           .item-box__container
             = render partial: 'shared/items-box', locals:{item: @items}
-
 
   =render 'shared/aside'
   =render 'shared/footer'

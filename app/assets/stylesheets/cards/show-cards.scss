@@ -1,13 +1,16 @@
 .card-page{
-  .single-wrapper{
+  .two-column-container__r{
     padding:20px 0 0 0;
     min-height: 0vh;
-    margin: 0 auto;
 
     .panel{
       padding-bottom: 30px;
       &__head{
-        padding:16px;
+        font-size: 24px;
+        font-weight:bold;
+        padding: 8px 24px;
+        text-align: center;
+        border-bottom:$table-border;
       }
       &__inner{
         width: 400px;
@@ -58,5 +61,11 @@
         }
       }
     }
-  } // .single-wrapper end
+  } // .two-clumn-container-r end
+
+  @media screen and (min-width: 1068px){
+    .two-column-container__r{
+      max-height:330px;
+    }
+  }
 } // .card-page end
