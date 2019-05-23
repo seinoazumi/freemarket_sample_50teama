@@ -64,12 +64,12 @@ end
   Item.create(
     name: "お買い得セット#{num}",
     condition: rand(1..6),
-    delivery_fee: rand(1..2),
-    delivery_days: rand(1..3),
+    delivery_cost: rand(1..2),
+    delivery_day: rand(1..3),
     price: num * 1000,
     detail: "この文章は商品説明用です！この商品のIDは#{num}です！yay!",
-    ship_from: rand(1..47),
-    ship_by: rand(1..9)
+    prefecture: rand(1..47),
+    ship_method: rand(1..9)
     )
 end
 
