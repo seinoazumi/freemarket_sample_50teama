@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       get 'mypage/:url',action: 'edit'
     end
   end
-#payをカードコントローラに移動。caardcontrollerはモデルを持たない。
+#payをカードコントローラに移動。cards_controllerはモデルを持たない。
 
   resources :items, only: [:index, :show, :new, :create, :edit,:destroy] do
     member do

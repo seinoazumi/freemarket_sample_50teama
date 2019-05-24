@@ -12,20 +12,10 @@
           - if @card.present?
             .card-info
               - case
-                -when @card.brand == "Visa" #Visa以外正式な表記確認取れてません
+                -when @card.brand == "Visa" 
                   =image_tag 'visa_logo.png', width:"49", height:"20", alt:"visa"
-                -when @card.brand == "Mastercard"
+                -when @card.brand == "MasterCard"
                   =image_tag 'mastercard_logo.png', width:"49", height:"20", alt:"visa"
-                -when @card.brand == "Jcb"
-                  =image_tag 'jcb_logo.png', width:"49", height:"20", alt:"visa"
-                -when @card.brand == "Americanexpress"
-                  =image_tag 'americanexpress_logo.png', width:"49", height:"20", alt:"visa"
-                -when @card.brand == "Dinersclub"
-                  =image_tag 'dinersclub_logo.png', width:"49", height:"20", alt:"visa"
-                -when @card.brand == "Discover"
-                  =image_tag 'discover_logo.png', width:"49", height:"20", alt:"visa"
-                -when @card.brand == "Payid"
-                  =image_tag 'payid_logo.png', width:"49", height:"20", alt:"visa"
               %p.card-info__num 
                 = "**** **** **** #{@card.last4}"
               %p.card-info__date

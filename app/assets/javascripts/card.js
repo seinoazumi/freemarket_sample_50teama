@@ -1,9 +1,7 @@
 $(document).on('turbolinks:load', function(){
   var form = $(".charge-form"); //フォーム全体をセレクタに。
   Payjp.setPublicKey('pk_test_bd6af6f7d2f00fbfda8c3ae1'); //公開鍵
-  console.log("よみこみok");
   $(".charge-form").submit(function(e) {
-    console.log("発火");
     e.preventDefault();
     var card = {
       number: parseInt($("#payment-card-number").val()),
