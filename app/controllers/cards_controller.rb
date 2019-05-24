@@ -1,4 +1,7 @@
 class CardsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_item, only:[:pay]
+  require 'payjp'
   before_action :set_category
   before_action :authenticate_user!
   before_action :set_item, only:[:pay]
