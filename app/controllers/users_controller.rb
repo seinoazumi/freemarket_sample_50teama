@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :return_logged_in_user, only: :new
   before_action :authenticate_user!, only: :edit
+  before_action :set_category, only: [:show,:edit]
   require "payjp"
 
   def show  # ユーザー個人ページ、自分の出品した商品を出品ステータス別に得る

@@ -2,6 +2,8 @@ class CardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only:[:pay]
   require 'payjp'
+  before_action :set_category
+
 
   def index #クレジットカード情報表示 
     Payjp.api_key = Rails.application.credentials.payjp[:secret_access_key]

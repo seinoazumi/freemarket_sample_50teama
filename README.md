@@ -70,7 +70,7 @@
 - has_many :user_items
 - has_many :users, through: :user_items
 - has_many :images
-- has_many :categories
+- belongs_to :category
 
 ## imagesテーブル
 |Column|Type|Options|補足|

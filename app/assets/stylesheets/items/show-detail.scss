@@ -14,21 +14,21 @@
         clear:both;
         &__photo{
           display: block;
-          width: 270px;
+          width: 300px;
           height: 360px;
           margin: 0 auto;
-          background:url("https://placehold.jp/cccccc/ffffff/150x150.png?text=item-photo");
+          background-color:$gray-lv1;
         }
         &__price{
           margin-top: 24px;
           font-size: 50px;
-          font-weight:900;
+          font-weight:700;
           text-align: center;
           &__tax{
             font-size:0.2em;
             font-weight:normal;
           }
-          &__sipping{
+          &__shipping{
             font-size:0.3em;
             font-weight:normal;
           }
