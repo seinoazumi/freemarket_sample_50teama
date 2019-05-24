@@ -27,12 +27,12 @@ crumb :item do
 end
 
 crumb :card do
-  link "支払い方法", card_path(id: 'show')
+  link "支払い方法", user_cards_path(id: 'index')
   parent :user
 end
 
 crumb :new_card do
-  link "クレジットカード情報入力", new_card_path
+  link "クレジットカード情報入力", new_user_card_path
   parent :card
 end
 

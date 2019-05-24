@@ -7,26 +7,30 @@ Rails.application.routes.draw do
 
   root 'items#index'
   get 'edit' => 'users#edit'
-  # ルーティングは追って検討する
-
 
   resources :users, only: [:show, :new, :edit, :update] do
+    resources :cards, only: [:index, :new] do
+      member do
+        get 'pay' #カード決済メソッド
+        get 'card_delete'
+        get 'card_new'
+      end
+    end
     collection do
       get 'signup/:url',action: 'new'
       get 'mypage/:url',action: 'edit'
     end
   end
+#payをカードコントローラに移動。caardcontrollerはモデルを持たない。
 
-  resources :items, only: [:index, :show, :new, :create, :edit, :destroy] do
-    get :confirm
-    get :pay
-    
+  resources :items, only: [:index, :show, :new, :create, :edit,:destroy] do
+    member do
+      get 'confirm' #購入確認画面
+    end
     collection do
       get ':id/:url', action:'show'
       get 'search', action:'search'
     end
-
     resources :categories, only: [:search]
   end
-  resources :cards, only: [:new, :show]
 end
