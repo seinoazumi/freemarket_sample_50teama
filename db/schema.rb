@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_23_065048) do
+ActiveRecord::Schema.define(version: 2019_05_24_043027) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_05_23_065048) do
     t.text "detail"
     t.integer "delivery_prefecture", null: false
     t.integer "delivery_method", null: false
+    t.integer "status", default: 1, null: false
     t.index ["name"], name: "index_items_on_name"
   end
 
