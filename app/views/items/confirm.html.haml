@@ -26,7 +26,7 @@
                   %span{data: {price: @item.price}}
                     = "¥#{@item.price}"
               %p
-                =link_to "購入する", item_pay_path, class: "buy-confirm-btn"
+                =link_to "購入する", pay_item_card_path(current_user.id), class: "buy-confirm-btn"
         %hr.line
         %section.buy-content
           .user-info
