@@ -277,7 +277,9 @@
           justify-content: space-between;
           padding: 0 11px;
           cursor: pointer;
-
+          #notification-list__root{
+            height: 50px;
+          }
           &__list{
             margin: 0 0.4em;
             line-height: 30px;
