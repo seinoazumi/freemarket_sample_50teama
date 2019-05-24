@@ -9,12 +9,18 @@
       .item-info
         .item-info__photo
           %section.slider
-            - @item.images[1..5].each do |image|
-              %figure.slider__list=image
-
+            %figure.slider__list= image_tag ("https://placehold.jp/63b9eb/ffffff/150x150.png?text=%EF%BC%91")
+            %figure.slider__list= image_tag ("https://placehold.jp/63eb75/ffffff/400x400.png?text=2")
           %section.thumb
-            - @item.images[1..5].each do |image|
-              %figure.thumb__list=image
+            %figure.thumb__list= image_tag ("https://placehold.jp/63b9eb/ffffff/150x150.png?text=%EF%BC%91")
+            %figure.thumb__list= image_tag ("https://placehold.jp/63eb75/ffffff/400x400.png?text=2")
+          -# %section.slider
+          -#   - @item.images[0..4].each do |image|
+          -#     %figure.slider__list= image_tag(url_for(:action => 'show', :id => image.item_id))
+
+          -# %section.thumb
+          -#   - @item.images[0..4].each do |image|
+          -#     %figure.slider__list= image_tag(url_for(:action => 'show', :id => image.item_id))
 
       .visible-sp-only
         .item-info__price
