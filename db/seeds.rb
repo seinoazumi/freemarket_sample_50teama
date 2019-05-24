@@ -70,6 +70,7 @@ end
     detail: "この文章は商品説明用です！この商品のIDは#{num}です！yay!",
     delivery_prefecture: rand(1..48),
     delivery_method: rand(1..9)
+    status: rand(0..2)
     )
 end
 
