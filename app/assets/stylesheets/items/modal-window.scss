@@ -9,16 +9,16 @@
   z-index:30;
 }
 
+$mordal-width:700px; //計算用なのでここに書かせてください
 
 .modal{
-  width: 700px;
+  width: $mordal-width;
   height: 400px;
   background-color:$white;
   position: fixed;
-  top: 50%;
-  left: 25vw;
-  transform: translateX(-50%);
-  transform: translateY(-50%);
+  top: 100px;
+  left: 50%;
+  margin-left:-($mordal-width / 2);
   z-index: 100;
   font-size: 1.2em;
 
