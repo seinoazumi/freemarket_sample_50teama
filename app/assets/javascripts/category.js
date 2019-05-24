@@ -33,5 +33,7 @@ $(document).on('turbolinks:load', function() {
     $('.category-list__child').css('display','none');
     $('.category-list__grandchild').css('display','none');
     $('.category-show').css({'opacity':'1','color':gray_lv4});
+    $('.category-list__parent a').css({'background-color':white,'color':gray_lv4});
+    $('.category-list__child a').css('background-color',white);
   });
 });
