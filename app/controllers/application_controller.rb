@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     REALM = 'SecretZone'.freeze
     USERS = { username => Digest::MD5.hexdigest([username, REALM, password].join(':'))}.freeze
 
+    def set_category
+      @categories = Category.all
+    end
+
     private
 
     def authenticate
