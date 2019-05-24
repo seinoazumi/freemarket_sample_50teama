@@ -36,7 +36,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-      @items = Item.order(id: 'DESC').limit(4)
+    @items = Item.order(id: 'DESC').limit(4)
+    @same_category_items = Item.where(category_id: @item.category_id).where.not(id: @item.id).order(id: 'DESC').limit(6)
   end
 
   def confirm
