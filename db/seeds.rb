@@ -26,7 +26,8 @@
     point: 3000 + num * 100,
     seller_id: num,
     buyer_id: num,
-    profile: "user#{num}です、よろしく！"
+    profile: "user#{num}です、よろしく！",
+    payjp_id: "cus_8f1bf365e98a8c5a6ce7f313e3c3"
     )
   # TODO: エラーは出ないが作成できない 現状テーブルに外部キー設定なし影響？？ パンケーキ手焼きは可能
   # 同一ユーザーによるダブりデータができない方法をとる（ダブるとどうなるか不明）
@@ -69,7 +70,7 @@ end
     price: num * 1000,
     detail: "この文章は商品説明用です！この商品のIDは#{num}です！yay!",
     delivery_prefecture: rand(1..48),
-    delivery_method: rand(1..9)
+    delivery_method: rand(1..9),
     status: rand(0..2)
     )
 end
