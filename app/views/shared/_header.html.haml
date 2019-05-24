@@ -52,20 +52,27 @@
     .pc-header__nav__box
       .pc-header__nav__list-l
         %ul.header__nav
-          = link_to 'カテゴリー一覧へのリンク' do
-            %li.header__nav__list.categoly__list.icon-list カテゴリーから探す
-            -# gem の実装方法が決まったらコメントアウトを外す
-              -# %ul.categoly__list__root
-                -# %li.categoly__list__cell カテゴリー1
-                -# %li.categoly__list__cell カテゴリー2
-                -# %li.categoly__list__cell カテゴリー3
-          = link_to 'ブランドから探すへのリンク' do
-            %li.header__nav__list.categoly__list.icon-tag ブランドから探す
-            -# gem の実装方法が決まったらコメントアウトを外す
-              -# %ul.bland__list__root
-                -# %li.bland__list__cell ブランド１
-                -# %li.bland__list__cell ブランド２
-                -# %li.bland__list__cell ブランド３
+          %li.header__nav__list.category-show.icon-list カテゴリーから探す
+          .category-list
+            - parents = @categories[0..12]
+            %ul.category-list__parent
+              - parents.each do |parent|
+                %li= link_to parent.name, root_path, class:"#{parent.id}"
+            - parents.each do |parent|
+              %ul.category-list__child{id: "#{parent.id}-children"}
+                - parent.children.each do |child|
+                  %li= link_to child.name, root_path, class:"#{child.id}"
+            - parents.each do |parent|
+              - parent.children.each do |child|
+                %ul.category-list__grandchild{id: "#{child.id}-grandchildren"}
+                  - child.children.each do |grandchild|
+                    %li= link_to grandchild.name, root_path
+          %li.header__nav__list.bland-list.icon-tag ブランドから探す
+          -# gem の実装方法が決まったらコメントアウトを外す
+            -# %ul.bland__list__root
+              -# %li.bland__list__cell ブランド１
+              -# %li.bland__list__cell ブランド２
+              -# %li.bland__list__cell ブランド３
       .pc-header__nav__list-r
         - if user_signed_in?
           %ul.pc-header__user-nav

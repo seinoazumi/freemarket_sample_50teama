@@ -83,13 +83,13 @@
           %p.result__message 該当する商品が見つかりません。商品は毎日増えていますので、これからの出品に期待してください。
 
           %h3.new-items 新着商品
-          = render partial: 'shared/items-box', locals:{item: @items}
+          = render 'shared/items-box', items: @items
 
         - else
 
           %h2.result__header="検索結果１〜#{@items.count}件"
           .item-box__container
-            = render partial: 'shared/items-box', locals:{item: @items}
+            = render 'shared/items-box', items: @items
 
   =render 'shared/aside'
   =render 'shared/footer'

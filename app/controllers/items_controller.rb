@@ -2,9 +2,13 @@ class ItemsController < ApplicationController
   require 'payjp'
   before_action :set_item, only: [:show, :destroy]
   before_action :set_params_item_id, only: [:confirm, :pay]
+  before_action :set_category, only: [:index, :show, :search]
 
   def index # トップページ、アイテムをカテゴリー別に最新投稿順番に
-    @items = Item.all.order(id: "DESC").limit(4)
+    @ladies_items = set_category_items('レディース')
+    @mens_items = set_category_items('メンズ')
+    @kids_items = set_category_items('ベビー・キッズ')
+    @cosme_items = set_category_items('コスメ・香水・美容')
   end
 
   def new
@@ -32,7 +36,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-      @items = Item.order(id: 'DESC').limit(4)
+    @items = Item.order(id: 'DESC').limit(4)
+    @same_category_items = Item.where(category_id: @item.category_id).where.not(id: @item.id).order(id: 'DESC').limit(6)
   end
 
   def confirm
@@ -95,5 +100,9 @@ class ItemsController < ApplicationController
 
   def set_params_item_id
     @item = Item.find(params[:item_id])
+  end
+
+  def set_category_items(name)
+    Item.where(category_id: Category.find_by(name: name).id).order(id: "DESC").limit(4)
   end
 end

@@ -1,5 +1,5 @@
 .item-box__container
-  - @items.each do |item|
+  - items.each do |item|
     %section.item-box
       = link_to item_path(id: item.id) do
         = image_tag ("https://placehold.jp/b3b3b3/ffffff/200x200.png?text=item1"), class: '.item-box__photo'
