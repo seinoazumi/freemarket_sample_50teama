@@ -30,8 +30,8 @@
             %span.item-info__price__tax (税込)
 
             %span.item-info__price__shipping
+              = @item.delivery_cost
 
-            = @item.delivery_cost
         .sales-message
           - if user_signed_in?
             ="売上金#{current_user.money}円をお持ちです"
@@ -52,13 +52,21 @@
           %tr
             %th カテゴリー
             %td.detail-info__category
-              %p.detail_link
-                =link_to 'カテゴリー１', '#'
-              %p.icon-arrow-right.detail_link
-                =link_to 'カテゴリー２', '#'
-              %p.icon-arrow-right.detail_link
-                =link_to 'カテゴリー３', '#'
-
+              - if @item.category.has_parent? && @item.category.parent.has_parent?
+                %p.detail_link
+                  =link_to @item.category.parent.parent.name, '#'
+                %p.icon-arrow-right.detail_link
+                  =link_to @item.category.parent.name, '#'
+                %p.icon-arrow-right.detail_link
+                  =link_to @item.category.name, '#'
+              - elsif @item.category.has_parent?
+                %p.detail_link
+                  =link_to @item.category.parent.name, '#'
+                %p.icon-arrow-right.detail_link
+                  =link_to @item.category.name, '#'
+              - else
+                %p.detail_link
+                  =link_to @item.category.name, '#'
           %tr
             %th ブランド
             %td.detail-info__brand
@@ -90,8 +98,7 @@
           %p
             = "￥#{@item.price}"
             %span.item-info__price__tax (税込)
-            %span.item-info__price__sipping
-              = @item.delivery_cost
+            %span.item-info__price__shipping= @item.delivery_cost
 
         - if user_signed_in?
           .sales-message
@@ -147,10 +154,12 @@
   %section.pick-up-container
     %h2.pick-up-container__header
       ="#{@item.users[0].name}さんのその他の出品"
-    = render 'shared/items-box'
+    = render 'shared/items-box', items: @items
 
   %section.pick-up-container
-    %h2.pick-up-container__header シャネル のその他の商品
+    %h2.pick-up-container__header
+      = @item.category.name
+      のその他の商品
 
-    = render 'shared/items-box'
+    = render 'shared/items-box', items: @same_category_items
 = render 'shared/footer'
