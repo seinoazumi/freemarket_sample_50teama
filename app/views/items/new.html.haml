@@ -40,16 +40,16 @@
               .relative
                 .icon-select
                   -# TODO: カテゴリーを格納するデータをどうする？ansectory
-                  = f.select :category_ids, [["レディース", "1"], ["メンズ", "2"], ["ベビー・キッズ", "3"], ["インテリア・住まい・小物", "4"], ["本・音楽・ゲーム", "5"], ["おもちゃ・ホビー・グッズ", "1328"], ["コスメ・香水・美容", "6"], ["家電・スマホ・カメラ", "7"], ["スポーツ・レジャー", "8"], ["ハンドメイド", "9"], ["チケット", "1027"], ["自動車・オートバイ", "1318"], ["その他", "10"]], {include_blank: true}, class: "input-part__select"
+                  = f.select :category_id, [["レディース", "1"], ["メンズ", "2"], ["ベビー・キッズ", "3"], ["インテリア・住まい・小物", "4"], ["本・音楽・ゲーム", "5"], ["おもちゃ・ホビー・グッズ", "1328"], ["コスメ・香水・美容", "6"], ["家電・スマホ・カメラ", "7"], ["スポーツ・レジャー", "8"], ["ハンドメイド", "9"], ["チケット", "1027"], ["自動車・オートバイ", "1318"], ["その他", "10"]], {include_blank: true}, class: "input-part__select"
               -# TODO: 特定カ11テゴリの場合 .hiddenをつける、外す JS
               .relative.hidden
                 .icon-select
                   -# TODO: カテゴリーを格納するデータをどうする？ansectory
-                  = f.select :category_ids, [["レディース", "1"], ["メンズ", "2"]], {include_blank: true}, class: "input-part__select"
+                  = f.select :category_id, [["レディース", "1"], ["メンズ", "2"]], {include_blank: true}, class: "input-part__select"
               .relative.hidden
                 .icon-select
                   -# TODO: カテゴリーを格納するデータをどうする？ansectory
-                  = f.select :category_ids, [["レディース", "1"], ["メンズ", "2"]], {include_blank: true}, class: "input-part__select"
+                  = f.select :category_id, [["レディース", "1"], ["メンズ", "2"]], {include_blank: true}, class: "input-part__select"
               .space.hidden
               .input-part
                 = f.label "サイズ", class: "input-part__title"
@@ -57,13 +57,13 @@
               .relative
                 .icon-select
                   -# TODO: 特定カテゴリ展開時のみ表示させる、連動した条件バリデーション。
-                  = f.select :category_ids, [["XXS以下", "153"], ["XS(SS)", "154"], ["S", "2"], ["M", "3"], ["L", "4"], ["XL(LL)", "5"], ["2XL(3L)", "155"], ["4XL(5L)以上", "157"], ["FREE SIZE", "7"]], {include_blank: true}, class: "input-part__select"
+                  = f.select :category_id, [["XXS以下", "153"], ["XS(SS)", "154"], ["S", "2"], ["M", "3"], ["L", "4"], ["XL(LL)", "5"], ["2XL(3L)", "155"], ["4XL(5L)以上", "157"], ["FREE SIZE", "7"]], {include_blank: true}, class: "input-part__select"
               .space.hidden
               .input-part
                 = f.label "ブランド", class: "input-part__title"
                 %span.input-part__option 任意
                 -# TODO: 特定カテゴリ展開時のみ表示させる。
-                = f.text_field :category_ids, class: "input-part__input", placeholder: "例）シャネル", value: ""
+                = f.text_field :category_id, class: "input-part__input", placeholder: "例）シャネル", value: ""
               .input-part.space
                 = f.label "商品の状態", class: "input-part__title"
                 %span.input-part__require 必須
