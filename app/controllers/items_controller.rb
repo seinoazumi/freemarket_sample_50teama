@@ -19,7 +19,13 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params_new)
-
+    if params[:item][:grandchild_category_id].present?
+      @item[:category_id] = params[:item][:grandchild_category_id]
+    elsif params[:item][:child_category_id].present?
+      @item[:category_id] = params[:item][:child_category_id]
+    else
+      @item[:category_id] = params[:item][:parent_category_id]
+    end
     respond_to do |format|
       if @item.save
         # @itemページのpayjpカラムが問題で、出品ページに飛ばすのは現状ではエラー、記述使用の可能性あり
@@ -75,7 +81,7 @@ class ItemsController < ApplicationController
   private
 
   def params_new
-    params.require(:item).permit(:name, :condition, :detail, :delivery_method, :delivery_prefecture, :delivery_cost, :delivery_day, :price, :seller_id, :category_id, images_attributes: [:image])
+    params.require(:item).permit(:name, :condition, :detail, :delivery_method, :delivery_prefecture, :delivery_cost, :delivery_day, :price, :seller_id, images_attributes: [:image])
   end
 
   def set_item
