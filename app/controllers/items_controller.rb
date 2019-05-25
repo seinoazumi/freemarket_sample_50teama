@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
 
   require 'payjp'
-  before_action :set_item, only: [:show, :destroy]
-  before_action :set_params_item_id, only: [:confirm, :pay]
+  before_action :set_item, only: [:show, :destroy, :confirm, :pay]
   before_action :set_category, only: [:index, :show, :search]
 
 
@@ -81,10 +80,6 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-  end
-
-  def set_params_item_id
-    @item = Item.find(params[:item_id])
   end
 
   def set_category_items(name)

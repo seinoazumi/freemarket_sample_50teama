@@ -13,7 +13,7 @@
             %p.item-info__price
               ="¥#{@item.price}"
               %span.item-info__price__shipping
-                = @item.delivery_cost
+                = @item.delivery_cost_i18n
                 -# ポイントがある場合とない場合で表示が切り替わります。余裕があれば追加
                 -# %ul.buy-accordion.not-have
                 -#   %li.buy-accordion__inner
@@ -35,7 +35,7 @@
               %p
                 = "〒#{current_user.postal_code.to_s.insert(3, '-')}"
                 %br
-                = "#{current_user.prefecture} #{current_user.city}"
+                = "#{current_user.prefecture_i18n} #{current_user.city}"
                 %br
                 = current_user.address
                 %br
@@ -45,7 +45,7 @@
 
               %p.link-to-change.icon-arrow-r
                 =link_to "変更する", edit_path(url:"identification")
-                
+
           -# 支払い情報がnillだとグレーのボタンとなり購入できないが、とりあえず無視する
           %hr.line
           .card-info
