@@ -1,8 +1,0 @@
-- @item.images[0..4].each do |image|
-  .upload-item
-    = image_tag(url_for(:action => 'show', :id => image.item_id), :class => "upload-item__photo")
-    .upload-item__nav
-      .upload-item__nav__edit
-        %p 編集
-      .upload-item__nav__delete
-        %p 削除
