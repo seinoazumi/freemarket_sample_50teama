@@ -137,18 +137,22 @@
       .image-upload-part{
         display: flex;
         .input-part__dropbox{
-        background: $gray-lv1;
-        border: 1px dashed $gray-lv2;
-        min-height: 177px;
-        line-height: 1.5;
-        text-align: center;
-        flex-grow: 1;
-        display: table;
-        .media-min__append--icon{
-          display: table-cell;
-          vertical-align: middle;
-        }
-      } // end input-part__dropbox
+          background: $gray-lv1;
+          border: 1px dashed $gray-lv2;
+          min-height: 177px;
+          line-height: 1.5;
+          text-align: center;
+          flex-grow: 1;
+          display: table;
+          .hidden{
+            visibility:hidden;
+            display: none;
+          }
+          .media-min__append--icon{
+            display: table-cell;
+            vertical-align: middle;
+          }
+        } // end input-part__dropbox
       .upload-item{
         position: relative;
         display: inline-block;
@@ -157,8 +161,8 @@
         border: $table-border;
         background-color: $gray-lv1;
         &__photo{
-          width: 100%;
-          height: auto;
+          width: 111.5px;
+          height: 111.5px;
           // 画像アップロードできたらコメントアウトを外す
           background: rgb(143, 143, 245);
         }
