@@ -25,7 +25,7 @@
       .panel
         .panel__head 支払い方法
         .panel__inner
-          = form_for(:session, url: {controller: "users", action: "new", url: "complete"}, html: {method: 'GET' ,id: "charge-form"})  do |f|
+          = form_for(:session, url: {controller: "users", action: "new", url: "complete"}, html: {method: 'GET' ,class: "charge-form"})  do |f|
             .content
               .form-group
                 = f.label "カード番号", class:"form-group__label"
@@ -53,6 +53,6 @@
                 .form-group__card-info
                   .icon-question-circle
                   =link_to "カード裏面の番号とは？", src:"#", class:"icon-chevron-right"
-              = f.submit "次へ進む", class:"registration-next-btn", id:"card-registration-btn"
+              = f.submit "次へ進む", class:"registration-next-btn card-registration-btn"
               %input.payjp-token{ type: "hidden", name: "payjpToken", value: "" }
   = render partial: "/shared/single-footer"
