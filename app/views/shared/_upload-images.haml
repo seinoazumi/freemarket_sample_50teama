@@ -1,5 +1,7 @@
 .upload-item
   = image_tag "logo-gray-icon.svg", class: "upload-item__photo"
+  -# アップローダーのエラーが解消したら、２行目を消し４行目に交換
+  -# = image_tag @item.image.url, class: "upload-item__photo"
   .upload-item__nav
     .upload-item__nav__edit
       %p 編集
