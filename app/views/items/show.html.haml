@@ -8,12 +8,16 @@
         = @item.name
       .item-info
         .item-info__photo
+          -if @item.status == 2
+            .soldout-color
+            .soldout
           %section.slider
             %figure.slider__list= image_tag ("https://placehold.jp/63b9eb/ffffff/150x150.png?text=%EF%BC%91")
             %figure.slider__list= image_tag ("https://placehold.jp/63eb75/ffffff/400x400.png?text=2")
           %section.thumb
             %figure.thumb__list= image_tag ("https://placehold.jp/63b9eb/ffffff/150x150.png?text=%EF%BC%91")
             %figure.thumb__list= image_tag ("https://placehold.jp/63eb75/ffffff/400x400.png?text=2")
+
           -# DBの画像表示の異常が解決したらコメントアウトを外す
           -# %section.slider
           -#   - @item.images[0..4].each do |image|
@@ -30,8 +34,8 @@
             %span.item-info__price__tax (税込)
 
             %span.item-info__price__shipping
+              = @item.delivery_cost
 
-            = @item.delivery_cost
         .sales-message
           - if user_signed_in?
             ="売上金#{current_user.money}円をお持ちです"
@@ -52,13 +56,21 @@
           %tr
             %th カテゴリー
             %td.detail-info__category
-              %p.detail_link
-                =link_to 'カテゴリー１', '#'
-              %p.icon-arrow-right.detail_link
-                =link_to 'カテゴリー２', '#'
-              %p.icon-arrow-right.detail_link
-                =link_to 'カテゴリー３', '#'
-
+              - if @item.category.has_parent? && @item.category.parent.has_parent?
+                %p.detail_link
+                  =link_to @item.category.parent.parent.name, '#'
+                %p.icon-arrow-right.detail_link
+                  =link_to @item.category.parent.name, '#'
+                %p.icon-arrow-right.detail_link
+                  =link_to @item.category.name, '#'
+              - elsif @item.category.has_parent?
+                %p.detail_link
+                  =link_to @item.category.parent.name, '#'
+                %p.icon-arrow-right.detail_link
+                  =link_to @item.category.name, '#'
+              - else
+                %p.detail_link
+                  =link_to @item.category.name, '#'
           %tr
             %th ブランド
             %td.detail-info__brand
@@ -90,14 +102,13 @@
           %p
             = "￥#{@item.price}"
             %span.item-info__price__tax (税込)
-            %span.item-info__price__sipping
-              = @item.delivery_cost
+            %span.item-info__price__shipping= @item.delivery_cost
 
         - if user_signed_in?
           .sales-message
             ="売上金#{current_user.money}円をお持ちです"
         .buy-btn
-          = link_to "購入画面に進む", item_confirm_path(params[:id])
+          = link_to "購入画面に進む", confirm_item_path(params[:id])
 
       .item-info__description
         %p
@@ -147,10 +158,12 @@
   %section.pick-up-container
     %h2.pick-up-container__header
       ="#{@item.users[0].name}さんのその他の出品"
-    = render 'shared/items-box'
+    = render 'shared/items-box', items: @items
 
   %section.pick-up-container
-    %h2.pick-up-container__header シャネル のその他の商品
+    %h2.pick-up-container__header
+      = @item.category.name
+      のその他の商品
 
-    = render 'shared/items-box'
+    = render 'shared/items-box', items: @same_category_items
 = render 'shared/footer'

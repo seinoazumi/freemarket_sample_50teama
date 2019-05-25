@@ -71,7 +71,7 @@
     }
 
     &:hover{
-      @include blue-link
+      @include blue-link;
     }
   }
 }
@@ -200,9 +200,73 @@
     &__nav{
       width:700px;
       display: flex;
-
       &__list-l{
         float:left;
+        position: relative;
+        z-index: 1;
+        .category-show {
+          display: inline-block;
+          margin: 0 0.83em;
+          font-weight: bold;
+          font-size: 0.9em;
+          line-height: 30px;
+          text-align: center;
+          min-width: 150px;
+          &::before{
+            color: $base-red;
+            font-size: 12px;
+            margin-right: 4px;
+          }
+        }
+        .category-list {
+          position: absolute;
+          top: 0px;
+          padding-top: 30px;
+          left: 0.83em;
+          display: flex;
+          &__parent {
+            display: none;
+            background-color: $white;
+            width: 200px;
+            &:hover {
+              display: block;
+            }
+            a {
+              padding: 0 16px;
+              display: block;
+              line-height: 44px;
+              font-size: 14px;
+              width: 100%;
+            }
+          }
+          &__child {
+            display: none;
+            background-color: $white;
+            width: 250px;
+            a {
+              padding: 0 12px;
+              display: block;
+              line-height: 30px;
+              font-size: 14px;
+              width: 100%;
+            }
+          }
+          &__grandchild {
+            display: none;
+            background-color: $white;
+            width: 280px;
+            a {
+              padding: 0 12px;
+              display: block;
+              line-height: 30px;
+              font-size: 14px;
+              width: 100%;
+              &:hover {
+                background-color: $gray-lv1;
+              }
+            }
+          }
+        }
       } // .pc-header__nav-box__list-l end
 
       &__list-r{
@@ -213,7 +277,9 @@
           justify-content: space-between;
           padding: 0 11px;
           cursor: pointer;
-
+          #notification-list__root{
+            height: 50px;
+          }
           &__list{
             margin: 0 0.4em;
             line-height: 30px;
