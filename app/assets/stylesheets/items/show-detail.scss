@@ -18,6 +18,29 @@
           height: 360px;
           margin: 0 auto;
           background-color:$gray-lv1;
+          position: relative;
+          .soldout::before{
+            content: "";
+            top: 0;
+            left: 0;  
+            border-bottom: 120px solid transparent;
+            border-left: 120px solid $base-red;
+            position: absolute;
+            z-index: 10;
+          }
+          .soldout::after{
+            content: "SOLD";
+            font-size: 23px;
+            font-weight: bold;
+            display: block;
+            top: 30px;
+            transform: rotate(-45deg); 
+            color: #fff;
+            left: 10px;
+            position: absolute;
+            z-index: 20;
+            letter-spacing: 2px;
+          }
         }
         &__price{
           margin-top: 24px;
