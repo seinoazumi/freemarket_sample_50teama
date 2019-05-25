@@ -1,10 +1,15 @@
 class ItemsController < ApplicationController
+
   require 'payjp'
   before_action :set_item, only: [:show, :destroy, :edit]
   before_action :set_params_item_id, only: [:confirm, :pay]
+  before_action :set_categories, only: [:index, :show, :search, :new, :create]
 
   def index # トップページ、アイテムをカテゴリー別に最新投稿順番に
-    @items = Item.all.order(id: "DESC").limit(4)
+    @ladies_items = set_category_items('レディース')
+    @mens_items = set_category_items('メンズ')
+    @kids_items = set_category_items('ベビー・キッズ')
+    @cosme_items = set_category_items('コスメ・香水・美容')
   end
 
   def new
@@ -14,13 +19,20 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params_new)
-
+    if params[:item][:grandchild_category_id].present?
+      @item[:category_id] = params[:item][:grandchild_category_id]
+    elsif params[:item][:child_category_id].present?
+      @item[:category_id] = params[:item][:child_category_id]
+    else
+      @item[:category_id] = params[:item][:parent_category_id]
+    end
     respond_to do |format|
       if @item.save
         # @itemページのpayjpカラムが問題で、出品ページに飛ばすのは現状ではエラー、記述使用の可能性あり
         # format.html { redirect_to @item, notice: 'Item was successfully created.' }
         # rails scaffold item で自動作成されたコントローラ記述をそのまま移植。
         # TODO: 仮置きredirect, 最終形=>newページ内でモーダル表示させる
+        UserItem.create(user_id: current_user.id, item_id: @item.id)
         format.html { redirect_to root_path, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
@@ -32,7 +44,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-      @items = Item.order(id: 'DESC').limit(4)
+    @items = Item.order(id: 'DESC').limit(4)
+    @same_category_items = Item.where(category_id: @item.category_id).where.not(id: @item.id).order(id: 'DESC').limit(6)
   end
 
   def confirm
@@ -44,24 +57,6 @@ class ItemsController < ApplicationController
     else
       redirect_to new_user_session_path
     end
-  end
-
-  def pay #カード支払い Itemにbuyer_idを追加
-    begin
-      Payjp.api_key = Rails.application.credentials.payjp[:secret_access_key]
-      customer = Payjp::Customer.retrieve(current_user.payjp_id)
-      default_card = customer.default_card
-      card = customer.cards.retrieve(default_card)
-      charge = Payjp::Charge.create(
-        amount: @item.price,
-        customer: customer,
-        currency: 'jpy',
-      )
-    rescue => e #エラーハンドリング
-      redirect_to root_path
-    end
-      @item.update(buyer_id: current_user.id)
-      redirect_to root_path
   end
 
   def edit
@@ -95,5 +90,9 @@ class ItemsController < ApplicationController
 
   def set_params_item_id
     @item = Item.find(params[:item_id])
+  end
+
+  def set_category_items(name)
+    Item.where(category_id: Category.find_by(name: name).id).order(id: "DESC").limit(4)
   end
 end

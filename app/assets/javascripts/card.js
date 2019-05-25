@@ -1,8 +1,7 @@
 $(document).on('turbolinks:load', function(){
-  var form = $("#charge-form"); //フォーム全体をセレクタに。
+  var form = $(".charge-form"); //フォーム全体をセレクタに。
   Payjp.setPublicKey('pk_test_bd6af6f7d2f00fbfda8c3ae1'); //公開鍵
-
-  $("#charge-form").submit(function(e) {
+  $(".charge-form").submit(function(e) {
     e.preventDefault();
     var card = {
       number: parseInt($("#payment-card-number").val()),
@@ -17,9 +16,9 @@ $(document).on('turbolinks:load', function(){
       }
       else {
         var token = response.id;
-        $("#charge-form").append($('<input type="hidden" name="payjp_token" class="payjp-token"/>').val(token));
-        $("#charge-form").get(0).submit();
+        $(".charge-form").append($('<input type="hidden" name="payjp_token" class="payjp-token"/>').val(token));
       }
+      $(".charge-form").get(0).submit();
     });
   });
 });
