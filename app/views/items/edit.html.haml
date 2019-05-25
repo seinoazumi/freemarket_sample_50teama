@@ -8,7 +8,8 @@
           - @item.errors.full_messages.each do |message|
             = message
         %section.form-section.media-min
-          .input-part
+          #div1 この文字はドラッグできます
+          .input-part#drop-area
             %h3.input-part__title 出品画像
             %span.input-part__require 必須
             %p.input-part__details 最大10枚までアップロードできます
@@ -24,14 +25,14 @@
                       %p 編集
                     .upload-item__nav__delete
                       %p 削除
-              =f.label :image, class: "input-part__dropbox" do
+              = f.label :image, class: "input-part__dropbox", id: "drop_zone" do
                 .media-min__append--icon
                   = f.file_field :image, class: 'hidden'
                   %pre.media-min__hidden ドラッグアンドドロップ
                   %pre.media-min__hidden またはクリックしてファイルをアップロード
         %section.form-section
           .input-part
-            =f.label "商品名", class: "input-part__title"
+            = f.label "商品名", class: "input-part__title"
             %span.input-part__require 必須
             = f.text_field :name, class: "input-part__input", placeholder: "商品名（必須 40文字まで)", value: ""
           .input-part.space
@@ -83,7 +84,7 @@
           .flex-container.media-min--clear
             .flex-container__left
               %h3.sell-sub-head 配送について
-              =link_to "?", "#", class:"form-question"
+              = link_to "?", "#", class:"form-question"
             .flex-container__right
               .input-part
                 = f.label "配送料の負担", class: "input-part__title"
@@ -114,7 +115,7 @@
           .flex-container
             .flex-container__left
               %h3.sell-sub-head 販売価格(300〜9,999,999)
-              =link_to "?", "#", class:"form-question"
+              = link_to "?", "#", class:"form-question"
             .flex-container__right
               .input-part
                 %ul.input-part__price
@@ -138,16 +139,16 @@
           -#   .modal-inner
         %section.form-section
           %p.notes
-            =link_to "禁止されている出品", "#", class:"notes__link"
-            =link_to "行為", "#"
+            = link_to "禁止されている出品", "#", class:"notes__link"
+            = link_to "行為", "#"
             を必ずご確認ください。
           %p.notes
             またブランド品でシリアルナンバー等がある場合はご記載ください。
-            =link_to "偽ブランドの販売", "#", class:"notes__link"
+            = link_to "偽ブランドの販売", "#", class:"notes__link"
             は犯罪であり処罰される可能性があります。
           %p.notes
             また、出品をもちまして
-            =link_to "加盟店規約", "#", class:"notes__link"
+            = link_to "加盟店規約", "#", class:"notes__link"
             に同意したことになります。
           -# TODO: submitボタン、要調整、モーダル呼び出しに繋げる
           = f.submit "変更する", class: "submit-btn--red"
