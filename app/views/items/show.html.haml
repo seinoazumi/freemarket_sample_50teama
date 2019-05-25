@@ -13,10 +13,10 @@
             .soldout
           %section.slider
             - @item.images.each do |image|
-              %figure.slider__list= image_tag image.image.to_s if image.image.to_s
+              %figure.slider__list= image_tag image.image.to_s
           %section.thumb
             - @item.images.each do |image|
-              %figure.thumb__list= image_tag image.image.to_s if image.image.to_s
+              %figure.thumb__list= image_tag image.image.to_s
 
       .visible-sp-only
         .item-info__price
