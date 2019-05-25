@@ -10,14 +10,16 @@
     font-size: 18px;
     color: $gray-lv2plus;
   }
-}
-.hidden{
-  .icon-select::before {
-    position: absolute;
-    top:23px;
-    right:22px;
-    font-size: 18px;
-    color: $gray-lv2plus;
+  &--hidden{
+    @extend .relative;
+    display:none;
+    .icon-select::before {
+      position: absolute;
+      top:23px;
+      right:22px;
+      font-size: 18px;
+      color: $gray-lv2plus;
+    }
   }
 }
 .item-wrapper {

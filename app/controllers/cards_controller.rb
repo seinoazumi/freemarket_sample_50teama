@@ -2,14 +2,14 @@ class CardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only:[:pay]
   require 'payjp'
-  before_action :set_category
+  before_action :set_categories
   before_action :authenticate_user!
   before_action :set_item, only:[:pay]
   require 'payjp'
 
-  def index #クレジットカード情報表示 
+  def index #クレジットカード情報表示
     Payjp.api_key = Rails.application.credentials.payjp[:secret_access_key]
-    customer = Payjp::Customer.retrieve(current_user.payjp_id) 
+    customer = Payjp::Customer.retrieve(current_user.payjp_id)
     if customer.default_card
       default_card = customer.default_card
       @card = customer.cards.retrieve(default_card)
