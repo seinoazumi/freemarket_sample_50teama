@@ -6,6 +6,26 @@ $(document).on('turbolinks:load', function() {
   gray_lv4 = '#333'
   gray_lv1 = '#f5f5f5'
 
+  $('.parent-category').change(function(){
+    $('.relative--hidden').css('display','none');
+    child_id = $(this).val() + '-children-item';
+    $('#' + child_id).css('display','block');
+    $('#' + child_id).children().prop('disabled', false);
+  });
+
+  $('.child-category').change(function(){
+    $('.relative--hidden').css('display','none');
+    grandchild_id = $(this).val() + '-grandchildren-item';
+    $('#' + child_id).css('display','block');
+    $('#' + grandchild_id).css('display','block');
+    $('#' + grandchild_id).children().prop('disabled', false);
+  });
+
+  $('.grandchild-category').change(function(){
+    $(this).prop('disabled', false);
+  });
+
+
   $('.category-show').on("mouseover", function(){
     $('.category-list__parent').css('display','block');
     $(this).css({'opacity':'0,8','color':link_blue})
