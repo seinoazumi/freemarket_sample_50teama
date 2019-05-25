@@ -72,7 +72,7 @@ end
     delivery_prefecture: rand(1..48),
     delivery_method: rand(1..9),
     status: rand(0..2),
-    category_id: rand(0..10)
+    category_id: rand(1..10)
     )
 end
 
