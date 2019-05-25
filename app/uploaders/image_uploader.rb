@@ -3,7 +3,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
-  process resize_to_fit: [300, 300]
+  process resize_to_fit: [1080, 1080]
   # Choose what kind of storage to use for this uploader:
 
   # --ここで環境別にストレージ方法を分岐させる
