@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   require 'payjp'
   before_action :set_item, only: [:show, :destroy]
   before_action :set_params_item_id, only: [:confirm, :pay]
-  before_action :set_categories, only: [:index, :show, :search, :new]
+  before_action :set_categories, only: [:index, :show, :search, :new, :create]
 
   def index # トップページ、アイテムをカテゴリー別に最新投稿順番に
     @ladies_items = set_category_items('レディース')
