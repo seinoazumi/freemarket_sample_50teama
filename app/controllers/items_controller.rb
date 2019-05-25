@@ -27,6 +27,7 @@ class ItemsController < ApplicationController
         # format.html { redirect_to @item, notice: 'Item was successfully created.' }
         # rails scaffold item で自動作成されたコントローラ記述をそのまま移植。
         # TODO: 仮置きredirect, 最終形=>newページ内でモーダル表示させる
+        UserItem.create(user_id: current_user.id, item_id: @item.id)
         format.html { redirect_to root_path, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
