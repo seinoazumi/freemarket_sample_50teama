@@ -74,26 +74,47 @@
           %tr
             %th 配送料の負担
             %td
+<<<<<<< Updated upstream
               = @item.delivery_cost_i18n
           %tr
             %th 配送の方法
             %td
               = @item.delivery_method_i18n
+=======
+              = @item.delivery_cost
+          %tr
+            %th 配送の方法
+            %td
+              = @item.delivery_method
+>>>>>>> Stashed changes
           %tr
             %th 配送元地域
             %td
               %p.detail_link
+<<<<<<< Updated upstream
                 =link_to "#{@item.delivery_prefecture_i18n}", '#'
           %tr
             %th 発送日の目安
             %td
               =@item.delivery_day_i18n
+=======
+                =link_to "#{@item.delivery_prefecture}", '#'
+          %tr
+            %th 発送日の目安
+            %td
+              =@item.delivery_day
+>>>>>>> Stashed changes
       .item-info
         .item-info__price
           %p
             = "￥#{@item.price}"
             %span.item-info__price__tax (税込)
+<<<<<<< Updated upstream
             %span.item-info__price__shipping= @item.delivery_cost_i18n
+=======
+            %span.item-info__price__sipping
+              = @item.delivery_cost
+>>>>>>> Stashed changes
 
         - if user_signed_in?
           .sales-message
