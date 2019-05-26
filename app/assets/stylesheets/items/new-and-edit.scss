@@ -141,6 +141,7 @@
       }
       .image-upload-part{
         display: flex;
+        flex-wrap: wrap;
         .input-part__dropbox{
           background: $gray-lv1;
           border: 1px dashed $gray-lv2;

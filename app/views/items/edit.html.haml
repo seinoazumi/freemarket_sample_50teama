@@ -17,27 +17,15 @@
 
             -# 記述をまとめられないか検討する
             .image-upload-part#img_prev
-              - @item.images[0..4].each do |image|
+              - @item.images.each do |image|
                 = render partial: 'shared/upload-images', locals:{image: image, f: f}
-              = f.label :image, class: "input-part__dropbox", id: "drop_zone1" do
+              = f.label :image, class: "input-part__dropbox", id: "drop_zone" do
                 .media-min__append--icon
                   = f.file_field :image, class: 'hidden'
                   .media-min__hidden
                     ドラッグアンドドロップ
                     %br
                     またはクリックしてファイルをアップロード
-
-            -if @item.images.length >= 6
-              .image-upload-part#img_prev
-                - @item.images[5..9].each do |image|
-                  = render partial: 'shared/upload-images', locals:{image: image, f: f}
-                = f.label :image, class: "input-part__dropbox", id: "drop_zone2" do
-                  .media-min__append--icon
-                    = f.file_field :image, class: 'hidden'
-                    .media-min__hidden
-                      ドラッグアンドドロップ
-                      %br
-                      またはクリックしてファイルをアップロード
 
         %section.form-section
           .input-part
