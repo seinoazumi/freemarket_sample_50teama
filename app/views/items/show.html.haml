@@ -12,20 +12,11 @@
             .soldout-color
             .soldout
           %section.slider
-            %figure.slider__list= image_tag ("https://placehold.jp/63b9eb/ffffff/150x150.png?text=%EF%BC%91")
-            %figure.slider__list= image_tag ("https://placehold.jp/63eb75/ffffff/400x400.png?text=2")
+            - @item.images.each do |image|
+              %figure.slider__list= image_tag image.image.to_s
           %section.thumb
-            %figure.thumb__list= image_tag ("https://placehold.jp/63b9eb/ffffff/150x150.png?text=%EF%BC%91")
-            %figure.thumb__list= image_tag ("https://placehold.jp/63eb75/ffffff/400x400.png?text=2")
-
-          -# DBの画像表示の異常が解決したらコメントアウトを外す
-          -# %section.slider
-          -#   - @item.images[0..4].each do |image|
-          -#     %figure.slider__list= image_tag(url_for(:action => 'show', :id => image.item_id))
-
-          -# %section.thumb
-          -#   - @item.images[0..4].each do |image|
-          -#     %figure.slider__list= image_tag(url_for(:action => 'show', :id => image.item_id))
+            - @item.images.each do |image|
+              %figure.thumb__list= image_tag image.image.to_s
 
       .visible-sp-only
         .item-info__price
