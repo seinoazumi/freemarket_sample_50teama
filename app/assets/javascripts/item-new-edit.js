@@ -7,6 +7,10 @@ $(document).on('turbolinks:load', function() {
   if (size == 10){
     $("#drop_zone2").remove();
   }
-
+  $(".delete-check-box").on("click", function(){
+    if($(this).prop('checked') == true){
+      console.log("checked");
+    };
+  });
 
 });
