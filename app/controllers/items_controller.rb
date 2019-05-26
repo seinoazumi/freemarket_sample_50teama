@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
 
   require 'payjp'
   before_action :set_item, only: [:show, :destroy, :edit, :confirm, :pay]
-  before_action :set_params_item_id, only: [:confirm, :pay]
   before_action :set_categories, only: [:index, :show, :search, :new, :create]
 
   def index # トップページ、アイテムをカテゴリー別に最新投稿順番に
