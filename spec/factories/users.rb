@@ -23,7 +23,7 @@ FactoryBot.define do
     profile               {"阿部です"}
     provider              {"facebook"}
     uid                   {"1111"}
-    payjp_id              {"2222"}
+    payjp_id              {"cus_8f1bf365e98a8c5a6ce7f313e3c3"}
   end
 
 end
