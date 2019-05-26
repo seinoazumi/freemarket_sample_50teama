@@ -59,6 +59,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    # if @item.images.load()
+    #   respond_to do |format|
+    #     format.html
+    #     format.json { render json: @item}
+    #   end
+    # end
   end
 
   def search

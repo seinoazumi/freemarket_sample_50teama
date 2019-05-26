@@ -15,14 +15,16 @@
             -# TODO: ドラッグ&ドロップ、フォームの見た目動作
             -# いま=> アップロードformLv2、普通のフォーム10個展開、同時アップロード
 
-            .image-upload-part
+            .image-upload-part#img_prev
               - @item.images[0..4].each do |image|
-                = render partial: 'shared/upload-images', local:{image: image}
+                = render partial: 'shared/upload-images', locals:{image: image}
               = f.label :image, class: "input-part__dropbox", id: "drop_zone" do
                 .media-min__append--icon
                   = f.file_field :image, class: 'hidden'
-                  %pre.media-min__hidden ドラッグアンドドロップ
-                  %pre.media-min__hidden またはクリックしてファイルをアップロード
+                  .media-min__hidden
+                    ドラッグアンドドロップ
+                    %br
+                    またはクリックしてファイルをアップロード
         %section.form-section
           .input-part
             = f.label "商品名", class: "input-part__title"
