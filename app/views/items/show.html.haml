@@ -75,6 +75,7 @@
             %th 配送料の負担
             %td
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
               = @item.delivery_cost_i18n
           %tr
             %th 配送の方法
@@ -87,10 +88,18 @@
             %td
               = @item.delivery_method
 >>>>>>> Stashed changes
+=======
+              = @item.delivery_cost
+          %tr
+            %th 配送の方法
+            %td
+              = @item.delivery_method
+>>>>>>> Stashed changes
           %tr
             %th 配送元地域
             %td
               %p.detail_link
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
                 =link_to "#{@item.delivery_prefecture_i18n}", '#'
           %tr
@@ -98,11 +107,16 @@
             %td
               =@item.delivery_day_i18n
 =======
+=======
+>>>>>>> Stashed changes
                 =link_to "#{@item.delivery_prefecture}", '#'
           %tr
             %th 発送日の目安
             %td
               =@item.delivery_day
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
       .item-info
         .item-info__price
@@ -114,6 +128,9 @@
 =======
             %span.item-info__price__sipping
               = @item.delivery_cost
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
         - if user_signed_in?
