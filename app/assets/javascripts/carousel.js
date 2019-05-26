@@ -27,6 +27,10 @@ $(document).on('turbolinks:load', function(){
   var size = $(".slider__list").length;
   if (size >= 6){
     $(".slider, .slider__list__image").css("height","240px");
+    $(".slider__list__image").css({
+      "width":"240px",
+      "margin":"0 auto",
+    });
   }
   $(".thumb__list").on('click', function(){
     $(".thumb__list").css("opacity","0.7");
