@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :edit, :update] do
     resources :cards, only: [:index, :new] do
       member do
-        get 'pay' #カード決済メソッド
+        get 'pay' #カード決済アクション
         get 'card_delete'
-        get 'card_new'
+        get 'card_new' #カード登録アクション(newとは違いviewを持たない)
       end
     end
     collection do
@@ -21,7 +21,6 @@ Rails.application.routes.draw do
       get 'mypage/:url',action: 'edit'
     end
   end
-#payをカードコントローラに移動。cards_controllerはモデルを持たない。
 
   resources :items, only: [:index, :show, :new, :create, :edit,:destroy] do
     member do
