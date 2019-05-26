@@ -3,7 +3,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
-  process resize_to_fit: [1080, 1080]
+  # 画像縦横比維持せず、中央中心にサイズに満たない場合切り抜き
+  process resize_to_fill: [1080, 1080, "Center"]
   # Choose what kind of storage to use for this uploader:
 
   # --ここで環境別にストレージ方法を分岐させる
