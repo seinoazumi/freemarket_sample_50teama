@@ -102,6 +102,7 @@
             %span.item-info__price__shipping= @item.delivery_cost_i18n
             %span.item-info__price__sipping
               = @item.delivery_cost
+            %span.item-info__price__shipping= @item.delivery_cost_i18n
 
         - if user_signed_in?
           .sales-message
