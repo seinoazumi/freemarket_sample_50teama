@@ -13,10 +13,17 @@
             .soldout
           %section.slider
             - @item.images.each do |image|
-              %figure.slider__list= image_tag image.image.to_s
+              %figure.slider__list= image_tag image.image.url, class: "slider__list__image"
+
           %section.thumb
-            - @item.images.each do |image|
-              %figure.thumb__list= image_tag image.image.to_s
+            - @item.images[0..4].each do |image|
+              %figure.thumb__list= image_tag image.image.url, class: "thumb__list__image"
+
+          -if @item.images.length >= 6
+            %section.thumb
+              - @item.images[5..9].each do |image|
+                %figure.thumb__list= image_tag image.image.url, class: "thumb__list__image"
+
 
       .visible-sp-only
         .item-info__price
