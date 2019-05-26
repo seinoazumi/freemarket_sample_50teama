@@ -24,6 +24,7 @@
               - @item.images[5..9].each do |image|
                 %figure.thumb__list= image_tag image.image.url, class: "thumb__list__image"
 
+
       .visible-sp-only
         .item-info__price
           %p
@@ -76,30 +77,30 @@
           %tr
             %th 商品の状態
             %td
-              = @item.condition
+              = @item.condition_i18n
           %tr
             %th 配送料の負担
             %td
-              = @item.delivery_cost
+              = @item.delivery_cost_i18n
           %tr
             %th 配送の方法
             %td
-              = @item.delivery_method
+              = @item.delivery_method_i18n
           %tr
             %th 配送元地域
             %td
               %p.detail_link
-                =link_to "#{@item.delivery_prefecture}", '#'
+                =link_to "#{@item.delivery_prefecture_i18n}", '#'
           %tr
             %th 発送日の目安
             %td
-              =@item.delivery_day
+              =@item.delivery_day_i18n
       .item-info
         .item-info__price
           %p
             = "￥#{@item.price}"
             %span.item-info__price__tax (税込)
-            %span.item-info__price__shipping= @item.delivery_cost
+            %span.item-info__price__shipping= @item.delivery_cost_i18n
 
         - if user_signed_in?
           .sales-message
