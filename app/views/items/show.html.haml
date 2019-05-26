@@ -88,6 +88,11 @@
             %th 発送日の目安
             %td
               =@item.delivery_day_i18n
+                =link_to "#{@item.delivery_prefecture}", '#'
+          %tr
+            %th 発送日の目安
+            %td
+              =@item.delivery_day
       .item-info
         .item-info__price
           %p
