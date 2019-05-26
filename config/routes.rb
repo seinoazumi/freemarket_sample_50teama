@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     end
     collection do
       get ':id/:url', action:'show'
+      get ':id/:url', action:'edit'
       get 'search', action:'search'
     end
     resources :categories, only: [:search]
