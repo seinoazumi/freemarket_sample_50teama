@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
   before_action :set_category, only: [:index, :show, :search]
 
 
-
   def index # トップページ、アイテムをカテゴリー別に最新投稿順番に
     @ladies_items = set_category_items('レディース')
     @mens_items = set_category_items('メンズ')
