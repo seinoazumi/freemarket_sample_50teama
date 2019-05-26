@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   before_action :authenticate_user!
   before_action :set_item, only:[:pay]
   before_action :set_category
@@ -28,6 +29,11 @@ class CardsController < ApplicationController
   require 'payjp'
   before_action :set_item, only:[:card_delete, :pay]
 
+=======
+  require 'payjp'
+  before_action :set_item, only:[:card_delete, :pay]
+
+>>>>>>> Stashed changes
   def card_new
     begin
       Payjp.api_key = Rails.application.credentials.payjp[:secret_access_key]
@@ -41,12 +47,16 @@ class CardsController < ApplicationController
 
   def card_delete #カード情報削除
     begin
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     Payjp.api_key = Rails.application.credentials.payjp[:secret_access_key]
     customer = Payjp::Customer.retrieve(current_user.payjp_id)
     default_card = customer.default_card
     card = customer.cards.retrieve(default_card)
     card.delete
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     redirect_to user_cards_path(user_id: 'mypage')
   rescue => e #エラーハンドリング
@@ -76,6 +86,8 @@ class CardsController < ApplicationController
     @item = Item.find(params[:id])
   end
 =======
+=======
+>>>>>>> Stashed changes
     rescue => e #エラーハンドリング
       redirect_to root_path
     end
@@ -104,5 +116,8 @@ end
 
 def set_item
   @item = Item.find(params[:id])
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 end

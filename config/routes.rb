@@ -31,6 +31,12 @@ Rails.application.routes.draw do
     member do
       get 'confirm' #購入確認画面
     end
+<<<<<<< Updated upstream
+=======
+
+
+#payをカードコントローラに移動。caardcontrollerはモデルを持たない。
+>>>>>>> Stashed changes
     collection do
       get ':id/:url', action:'show'
       get ':id/:url', action:'edit'
