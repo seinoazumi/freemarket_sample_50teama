@@ -24,6 +24,10 @@ $(document).on('turbolinks:load', function(){
     focusOnSelect: true
   });
 
+  var size = $(".slider__list").length;
+  if (size >= 6){
+    $(".slider, .slider__list__image").css("height","240px");
+  }
   $(".thumb__list").on('click', function(){
     $(".thumb__list").css("opacity","0.7");
     $(this).css("opacity","1");

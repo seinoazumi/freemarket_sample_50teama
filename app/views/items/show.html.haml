@@ -11,21 +11,19 @@
           -if @item.status == 2
             .soldout-color
             .soldout
+          -# = image_tag @item.images[0].image.url
           %section.slider
-            %figure.slider__list= image_tag ("https://placehold.jp/63b9eb/ffffff/150x150.png?text=%EF%BC%91")
-            %figure.slider__list= image_tag ("https://placehold.jp/63eb75/ffffff/400x400.png?text=2")
+            - @item.images.each do |image|
+              %figure.slider__list= image_tag image.image.url, class: "slider__list__image"
+
           %section.thumb
-            %figure.thumb__list= image_tag ("https://placehold.jp/63b9eb/ffffff/150x150.png?text=%EF%BC%91")
-            %figure.thumb__list= image_tag ("https://placehold.jp/63eb75/ffffff/400x400.png?text=2")
+            - @item.images[0..4].each do |image|
+              %figure.thumb__list= image_tag image.image.url, class: "thumb__list__image"
 
-          -# DBの画像表示の異常が解決したらコメントアウトを外す
-          -# %section.slider
-          -#   - @item.images[0..4].each do |image|
-          -#     %figure.slider__list= image_tag(url_for(:action => 'show', :id => image.item_id))
-
-          -# %section.thumb
-          -#   - @item.images[0..4].each do |image|
-          -#     %figure.slider__list= image_tag(url_for(:action => 'show', :id => image.item_id))
+          -if @item.images.length >= 6
+            %section.thumb
+              - @item.images[5..9].each do |image|
+                %figure.thumb__list= image_tag image.image.url, class: "thumb__list__image"
 
       .visible-sp-only
         .item-info__price
