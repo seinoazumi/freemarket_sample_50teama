@@ -20,6 +20,11 @@ Rails.application.routes.draw do
       get 'signup/:url',action: 'new'
       get 'mypage/:url',action: 'edit'
     end
+    resources :cards, only: [:index, :new]do
+    member do
+      get 'pay' #カード決済メソッド
+    end
+  end
   end
 
   resources :items, only: [:index, :show, :new, :create, :edit,:destroy] do
