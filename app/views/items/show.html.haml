@@ -23,10 +23,8 @@
           %p
             = "￥#{@item.price}"
             %span.item-info__price__tax (税込)
-
-            %span.item-info__price__shipping
-              = @item.delivery_cost
-
+            %span.item-info__price__sipping
+            = @item.delivery_cost
         .sales-message
           - if user_signed_in?
             ="売上金#{current_user.money}円をお持ちです"
@@ -96,8 +94,6 @@
             = "￥#{@item.price}"
             %span.item-info__price__tax (税込)
             %span.item-info__price__shipping= @item.delivery_cost_i18n
-            %span.item-info__price__sipping
-              = @item.delivery_cost
             %span.item-info__price__sipping
               = @item.delivery_cost
 

@@ -2,10 +2,14 @@ class ItemsController < ApplicationController
 
   require 'payjp'
   before_action :set_item, only: [:show, :destroy, :confirm, :pay]
+<<<<<<< Updated upstream
   before_action :set_category, only: [:index, :show, :search]
 
 
+=======
+>>>>>>> Stashed changes
 
+  
   def index # トップページ、アイテムをカテゴリー別に最新投稿順番に
     @ladies_items = set_category_items('レディース')
     @mens_items = set_category_items('メンズ')

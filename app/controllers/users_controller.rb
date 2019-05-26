@@ -63,6 +63,8 @@ class UsersController < ApplicationController
         @user[:seller_id] = @user.id
         @user[:buyer_id] = @user.id
         @user.save
+
+        
         reset_session
         sign_in @user
         render "users/signup/#{params[:url]}"
