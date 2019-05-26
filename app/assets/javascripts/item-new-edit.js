@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function() {
   }
   $(".delete-check-box").on("click", function(){
     if($(this).prop('checked') == true){
-      console.log("checked");
+      $(this).parents(".upload-item").remove();
     };
   });
 
