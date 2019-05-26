@@ -3,5 +3,6 @@
   .upload-item__nav
     .upload-item__nav__edit
       %p 編集
-    .upload-item__nav__delete
+    = f.label :remove_image, class: "upload-item__nav__delete" do
+      = f.check_box :remove_image, class: 'hidden'
       %p 削除
