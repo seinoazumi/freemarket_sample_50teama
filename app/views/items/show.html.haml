@@ -11,7 +11,6 @@
           -if @item.status == 2
             .soldout-color
             .soldout
-          -# = image_tag @item.images[0].image.url
           %section.slider
             - @item.images.each do |image|
               %figure.slider__list= image_tag image.image.url, class: "slider__list__image"
