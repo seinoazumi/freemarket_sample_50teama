@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
 
   require 'payjp'
-  before_action :set_item, only: [:show, :destroy, :edit]
-  before_action :set_params_item_id, only: [:confirm, :pay]
+  before_action :set_item, only: [:show, :destroy, :edit, :confirm, :pay]
   before_action :set_categories, only: [:index, :show, :search, :new, :create]
 
   def index # トップページ、アイテムをカテゴリー別に最新投稿順番に
@@ -88,11 +87,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def set_params_item_id
-    @item = Item.find(params[:item_id])
-  end
-
   def set_category_items(name)
-    Item.where(category_id: Category.find_by(name: name).id).order(id: "DESC").limit(4)
+    Item.where(category_id: Category.find_by(name: name).id, status: 1).order(id: "DESC").limit(4)
   end
 end

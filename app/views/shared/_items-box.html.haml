@@ -2,7 +2,7 @@
   - items.each do |item|
     %section.item-box
       = link_to item_path(id: item.id) do
-        = image_tag ("https://placehold.jp/b3b3b3/ffffff/200x200.png?text=item1"), class: '.item-box__photo'
+        = image_tag item.images[0].image.to_s, class: 'item-box__photo'
         -# = image_tag ("#"), alt: #{'出品タイトル'}, class: #{'ブランド名'} バックエンドができればこちらに差し替え
         -if item.status == 2
           .soldout-color

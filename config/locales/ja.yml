@@ -1,4 +1,17 @@
 ja:
+  activerecord:
+    models:
+      user: ユーザ情報
+      item: 商品情報
+    attributes:
+      user:
+        prefecture: 都道府県
+      item:
+        delivery_prefecture: 発送元の地域
+        condition: 商品の状態
+        delivery_cost: 配送料の負担
+        delivery_method: 発送の方法
+        delivery_day: 発送までの日数
   date:
     formats:
       default: "%Y/%m/%d"
