@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   require 'payjp'
-  before_action :set_item, only: [:show, :destroy, :edit, :confirm, :pay]
+  before_action :set_item, only: [:show, :destroy, :edit, :confirm, :pay, :update]
   before_action :set_categories, only: [:index, :show, :search, :new, :create, :edit]
 
   def index # トップページ、アイテムをカテゴリー別に最新投稿順番に
@@ -59,11 +59,14 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # if @item.images.load()
-    #   respond_to do |format|
-    #     format.json
-    #   end
-    # end
+  end
+
+  def update
+    if @item.update(params_new)
+      redirect_to item_path(@item)
+    else
+      redirect_to edit_item_path
+    end
   end
 
   def search
@@ -85,7 +88,7 @@ class ItemsController < ApplicationController
   private
 
   def params_new
-    params.require(:item).permit(:name, :condition, :detail, :delivery_method, :delivery_prefecture, :delivery_cost, :delivery_day, :price, :seller_id, images_attributes: [:image, :image_cache, :remove_image])
+    params.require(:item).permit(:name, :condition, :detail, :delivery_method, :delivery_prefecture, :delivery_cost, :delivery_day, :price, images_attributes: [:image, :image_cache, :remove_image])
   end
 
   def set_item

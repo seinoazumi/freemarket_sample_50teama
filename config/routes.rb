@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 #payをカードコントローラに移動。cards_controllerはモデルを持たない。
 
-  resources :items, only: [:index, :show, :new, :create, :edit,:destroy] do
+  resources :items, only: [:index, :show, :new, :create, :edit, :destroy, :update] do
     member do
       get 'confirm' #購入確認画面
     end
