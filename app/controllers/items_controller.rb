@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   require 'payjp'
   before_action :set_item, only: [:show, :destroy, :edit, :confirm, :pay]
   before_action :set_categories, only: [:index, :show, :search, :new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :confirm, :edit, :destroy]
 
   def index # トップページ、アイテムをカテゴリー別に最新投稿順番に
     @ladies_items = set_category_items('レディース')
@@ -48,14 +49,10 @@ class ItemsController < ApplicationController
   end
 
   def confirm
-    if user_signed_in?
-      Payjp.api_key = Rails.application.credentials.payjp[:secret_access_key]
-      customer = Payjp::Customer.retrieve(current_user.payjp_id)
-      default_card = customer.default_card
-      @card = customer.cards.retrieve(default_card)
-    else
-      redirect_to new_user_session_path
-    end
+    Payjp.api_key = Rails.application.credentials.payjp[:secret_access_key]
+    customer = Payjp::Customer.retrieve(current_user.payjp_id)
+    default_card = customer.default_card
+    @card = customer.cards.retrieve(default_card)
   end
 
   def edit
