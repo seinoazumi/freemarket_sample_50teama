@@ -1,12 +1,12 @@
 - if @category.has_parent?
   - if @category.parent.has_parent?
-    -breadcrumb :grandchild_category
+    - breadcrumb :grandchild_category
   - else
-    -breadcrumb :child_category
--else
+    - breadcrumb :child_category
+- else
   - breadcrumb :parent_category
 %wrapper.search-page
-  =render 'shared/header'
+  = render 'shared/header'
   = render 'shared/breadcrumb'
   .search-container
     .search-content-r
@@ -16,6 +16,6 @@
           の商品一覧
         .item-box__container
           = render 'shared/items-box', items: @items
-  =render 'shared/aside'
-  =render 'shared/footer'
-  =render 'shared/footer-sell-btn'
+  = render 'shared/aside'
+  = render 'shared/footer'
+  = render 'shared/footer-sell-btn'
