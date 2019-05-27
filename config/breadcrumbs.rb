@@ -42,14 +42,12 @@ end
 
 crumb :parent_category do
   category = Category.find(params[:id])
-  if category.has_parent?
-    if category.parent.has_parent?
-      link category.parent.parent.name, category_path(id: category.parent.parent.id)
-    else
-      link category.parent.name, category_path(id: category.parent.id)
-    end
-  else
-    link category.name, category_path(id: category.id)
+  link category.name, category_path(id: category.id) unless category.has_parent?
+
+  if category.parent && category.parent.has_parent?
+    link category.parent.parent.name, category_path(id: category.parent.parent.id)
+  elsif category.parent
+    link category.parent.name, category_path(id: category.parent.id)
   end
 end
 

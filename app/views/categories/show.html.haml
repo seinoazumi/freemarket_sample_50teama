@@ -1,10 +1,9 @@
-- if @category.has_parent?
-  - if @category.parent.has_parent?
-    - breadcrumb :grandchild_category
-  - else
-    - breadcrumb :child_category
-- else
-  - breadcrumb :parent_category
+- breadcrumb :parent_category unless @category.has_parent?
+
+- if @category.parent && @category.parent.has_parent?
+  - breadcrumb :grandchild_category
+- elsif @category.parent
+  - breadcrumb :child_category
 %wrapper.search-page
   = render 'shared/header'
   = render 'shared/breadcrumb'
