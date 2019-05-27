@@ -11,7 +11,6 @@ $(document).on('turbolinks:load', function() {
   // データベースには、「送信」ボタンを押した時に反映される
   // 参考URL: https://note.mu/hajime38/n/ne2650fdf4559
   $(".delete-check-box").on("click", function(){
-    console.log(this);
     if($(this).prop('checked') == true){
       $(this).parents(".upload-item").css({
         "visibility": "hidden",
