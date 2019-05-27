@@ -28,9 +28,7 @@ Rails.application.routes.draw do
       get 'confirm' #購入確認画面
     end
     collection do
-      get ':id/:url', action:'show'
-      get ':id/:url', action:'edit'
-      get 'search', action:'search'
+      get 'search'
     end
     resources :categories, only: [:search]
   end
