@@ -17,8 +17,9 @@
 
             -# 記述をまとめられないか検討する
             .image-upload-part#img_prev
-              - @item.images.each do |image|
-                = render partial: 'shared/upload-images', locals:{image: image, f: f}
+              - @item.images.each_with_index do |image, i|
+                = render partial: 'shared/upload-images', locals:{image: image, f: f, i: i}
+
               = f.label :image, class: "input-part__dropbox", id: "drop_zone" do
                 .media-min__append--icon
                   = f.file_field :image, class: 'hidden'
