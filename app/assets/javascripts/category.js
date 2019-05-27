@@ -36,7 +36,7 @@ $(document).on('turbolinks:load', function() {
     $('.category-list__grandchild').css('display','none');
     $('.category-list__parent a').css({'background-color':white,'color':gray_lv4});
     $(this).css({'background-color':base_red,'color':white});
-    parent_id = $(this).attr('class') + '-children';
+    parent_id = $(this).data('parent') + '-children';
     $('#' + parent_id).css('display','block');
   });
 
@@ -44,7 +44,7 @@ $(document).on('turbolinks:load', function() {
     $('.category-list__grandchild').css('display','none');
     $('.category-list__child a').css('background-color',white);
     $(this).css('background-color',gray_lv1);
-    child_id = $(this).attr('class') + '-grandchildren';
+    child_id = $(this).data('child') + '-grandchildren';
     $('#' + child_id).css('display','block');
   });
 
