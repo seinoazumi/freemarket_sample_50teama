@@ -7,31 +7,18 @@ $(document).on('turbolinks:load', function() {
   if (size == 10){
     $("#drop_zone").remove();
   }
-  // 「削除」ボタンがクリックされ、見えないチェックボックスにチェックが入った時に、アイテムを見えなくする
+  // 「削除」ボタンがクリックされると、見えないチェックボックスにチェックが入り、アイテムを見えなくする
   // データベースには、「送信」ボタンを押した時に反映される
-    $(".delete-check-box").on("click", function(){
-
-      if($(this).prop('checked') == true){
-        // 自分の親要素が選択されるようにする
-        $(this).closest(".upload-item").css({
-          "visibility": "hidden",
-          "width": "0",
-          "height": "0"
-        });
-      };
-    });
-
-  // function readURL(input) {
-  //   if (input.files && input.files[0]) {
-  //     var reader = new FileReader();
-  //     reader.onload = function (e) {
-  //       $('#img_prev').attr('src', e.target.result);
-  //     }
-  //     reader.readAsDataURL(input.files[0]);
-  //   }
-  // }
-  // $("#book_img").change(function(){
-  //   readURL(this);
-  // });
-
+  // 参考URL: https://note.mu/hajime38/n/ne2650fdf4559
+  $(".delete-check-box").on("click", function(){
+    console.log(this);
+    if($(this).prop('checked') == true){
+      $(this).parents(".upload-item").css({
+        "visibility": "hidden",
+        "width": "0",
+        "height": "0",
+        "margin": "0",
+      });
+    };
+  });
 });
