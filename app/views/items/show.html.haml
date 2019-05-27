@@ -56,19 +56,19 @@
             %td.detail-info__category
               - if @item.category.has_parent? && @item.category.parent.has_parent?
                 %p.detail_link
-                  =link_to @item.category.parent.parent.name, '#'
+                  =link_to @item.category.parent.parent.name, category_path(id: @item.category.parent.parent.id)
                 %p.icon-arrow-right.detail_link
-                  =link_to @item.category.parent.name, '#'
+                  =link_to @item.category.parent.name, category_path(id: @item.category.parent.id)
                 %p.icon-arrow-right.detail_link
-                  =link_to @item.category.name, '#'
+                  =link_to @item.category.name, category_path(id: @item.category.id)
               - elsif @item.category.has_parent?
                 %p.detail_link
-                  =link_to @item.category.parent.name, '#'
+                  =link_to @item.category.parent.name, category_path(id: @item.category.parent.id)
                 %p.icon-arrow-right.detail_link
-                  =link_to @item.category.name, '#'
+                  =link_to @item.category.name, category_path(id: @item.category.id)
               - else
                 %p.detail_link
-                  =link_to @item.category.name, '#'
+                  =link_to @item.category.name, category_path(id: @item.category.id)
           %tr
             %th ブランド
             %td.detail-info__brand
