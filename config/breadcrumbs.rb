@@ -39,3 +39,32 @@ end
 crumb :search do
   link params[:keyword], search_items_path
 end
+
+crumb :parent_category do
+  category = Category.find(params[:id])
+  if category.has_parent?
+    if category.parent.has_parent?
+      link category.parent.parent.name, category_path(id: category.parent.parent.id)
+    else
+      link category.parent.name, category_path(id: category.parent.id)
+    end
+  else
+    link category.name, category_path(id: category.id)
+  end
+end
+
+crumb :child_category do
+  category = Category.find(params[:id])
+  if category.has_parent? && category.has_children?
+    link category.name, category_path(id: category.id)
+  else
+    link category.parent.name, category_path(id: category.parent.id)
+  end
+  parent :parent_category
+end
+
+crumb :grandchild_category do
+  category = Category.find(params[:id])
+  link category.name, category_path(id: category.id)
+  parent :child_category
+end
