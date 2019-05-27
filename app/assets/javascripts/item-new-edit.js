@@ -7,14 +7,31 @@ $(document).on('turbolinks:load', function() {
   if (size == 10){
     $("#drop_zone").remove();
   }
-  // 「削除」ボタンがクリックされ、見えないチェックボックスにチェックが入った時に、アイテムを削除する（見た目上）
+  // 「削除」ボタンがクリックされ、見えないチェックボックスにチェックが入った時に、アイテムを見えなくする
   // データベースには、「送信」ボタンを押した時に反映される
-  $(".delete-check-box").on("click", function(){
-    console.log("click");
-    if($(this).prop('checked') == true){
-      $(this).closest(".upload-item").remove();
+    $(".delete-check-box").on("click", function(){
 
-    };
-  });
+      if($(this).prop('checked') == true){
+        // 自分の親要素が選択されるようにする
+        $(this).closest(".upload-item").css({
+          "visibility": "hidden",
+          "width": "0",
+          "height": "0"
+        });
+      };
+    });
+
+  // function readURL(input) {
+  //   if (input.files && input.files[0]) {
+  //     var reader = new FileReader();
+  //     reader.onload = function (e) {
+  //       $('#img_prev').attr('src', e.target.result);
+  //     }
+  //     reader.readAsDataURL(input.files[0]);
+  //   }
+  // }
+  // $("#book_img").change(function(){
+  //   readURL(this);
+  // });
 
 });
