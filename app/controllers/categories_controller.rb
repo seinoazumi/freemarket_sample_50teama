@@ -1,6 +1,14 @@
 class CategoriesController < ApplicationController
+  before_action :set_categories, only: :show
+  before_action :set_category, only: :show
 
-  def search  # カテゴリサーチ、ツリー表示のカテゴリークリックで返す検索結果
+  def show
+    @items = Item.where(category_id: @category.id)
+  end
 
+  private
+
+  def set_category
+    @category = Category.find(params[:id])
   end
 end
