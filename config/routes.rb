@@ -32,4 +32,6 @@ Rails.application.routes.draw do
     end
     resources :categories, only: [:search]
   end
+
+  resources :categories, only: :show
 end
