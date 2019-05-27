@@ -94,9 +94,14 @@
     }// end .search-content-l
     .search-content-r{
       width: 700px;
+      margin: 0 auto;
         .result{
         &__header{
           font-size: 1.3em;
+          &--bold {
+            font-size: 1.3em;
+            font-weight: bold;
+          }
         }
         &__message{
           margin-top: 20px;
