@@ -1,0 +1,14 @@
+%wrapper.search-page
+  =render 'shared/header'
+  = render 'shared/breadcrumb'
+  .search-container
+    .search-content-r
+      .result
+        %h2.result__header--bold
+          = @category.name
+          の商品一覧
+        .item-box__container
+          = render 'shared/items-box', items: @items
+  =render 'shared/aside'
+  =render 'shared/footer'
+  =render 'shared/footer-sell-btn'
