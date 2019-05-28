@@ -19,13 +19,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params_new)
-    if params[:item][:grandchild_category_id].present?
-      @item[:category_id] = params[:item][:grandchild_category_id]
-    elsif params[:item][:child_category_id].present?
-      @item[:category_id] = params[:item][:child_category_id]
-    else
-      @item[:category_id] = params[:item][:parent_category_id]
-    end
+    @item[:category_id] = set_items_category_id
     respond_to do |format|
       if @item.save
         # @itemページのpayjpカラムが問題で、出品ページに飛ばすのは現状ではエラー、記述使用の可能性あり
@@ -59,6 +53,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @item[:category_id] = set_items_category_id
     if @item.update(params_new)
       redirect_to item_path(@item)
     else
@@ -94,5 +89,15 @@ class ItemsController < ApplicationController
 
   def set_category_items(name)
     Item.where(category_id: Category.find_by(name: name).id, status: 1).order(id: "DESC").limit(4)
+  end
+
+  def set_items_category_id
+    if params[:item][:grandchild_category_id].present?
+      return params[:item][:grandchild_category_id]
+    elsif params[:item][:child_category_id].present?
+      return params[:item][:child_category_id]
+    else
+      return params[:item][:parent_category_id]
+    end
   end
 end
