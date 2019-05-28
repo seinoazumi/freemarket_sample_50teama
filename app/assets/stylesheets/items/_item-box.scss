@@ -86,3 +86,26 @@
     }
   }
 }
+@media screen and (max-width: 1068px) {
+  .index-page{
+    .item-box:nth-child(4){
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .index-page{
+    .item-box{
+      margin: 0 0 20px 20px;
+      width: calc(50% - 30px);
+      &:nth-child(4){
+        display: block;
+      }
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
