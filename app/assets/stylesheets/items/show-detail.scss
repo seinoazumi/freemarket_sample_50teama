@@ -3,7 +3,7 @@
     @include single-container-base;
     margin: 40px auto;
     padding: 24px 16px;
-
+    width: 100%;
     .panel{
       &__head{
         @include single-container-header;
@@ -22,7 +22,7 @@
           .soldout::before{
             content: "";
             top: 0;
-            left: 0;  
+            left: 0;
             border-bottom: 120px solid transparent;
             border-left: 120px solid $base-red;
             position: absolute;
@@ -34,7 +34,7 @@
             font-weight: bold;
             display: block;
             top: 30px;
-            transform: rotate(-45deg); 
+            transform: rotate(-45deg);
             color: #fff;
             left: 10px;
             position: absolute;
@@ -100,12 +100,23 @@
       margin-top: 30px;
 
     }
+    .sold-out-btn {
+      @include btn-default;
+      @include btn-gray;
+      font-size: 24px;
+      font-weight: normal;
+      margin:10px 0 20px;
+      cursor: not-allowed;
+    }
     .buy-btn{
       @include btn-default;
       @include btn-red;
       font-size: 24px;
       font-weight: normal;
       margin-bottom:20px;
+      a {
+        display: block;
+      }
     }
     .sales-message{
       @include green-balloon;
@@ -135,7 +146,7 @@
       display: block;
       text-align: right;
       color: $link-blue;
-      line-height: 2.5em;
+      padding-top: 2px;
       flex: 2;
       &:hover{
         @include blue-link;
@@ -160,7 +171,7 @@
     background-color: $white;
     margin: 40px auto;
     padding: 24px 40px;
-    width: 700px;
+    width: 100%;
     display: flex;
     justify-content:center;
     align-items: center;
@@ -180,6 +191,7 @@
     padding: 15px;
     text-align: center;
     font-size:1.2em;
+    width: 100%;
 
     .edit-item__btn, .suspend-item__btn, .delete-item__btn{
       @include btn-reset;
@@ -200,27 +212,35 @@
 }//item-detail-page end
 
 @media screen and (min-width: 768px) {
-.item-detail-page{
-  .single-container{
-    .visible-sp-only{
-      display: none;
-    }
-    .item-info{
-      &__photo{
-        float: left;
+  .item-detail-page{
+    .single-container{
+      width: 700px;
+      .visible-sp-only{
+        display: none;
       }
-      &__price{
-        padding-top: 30px;
-        clear: both;
+      .item-info{
+        &__photo{
+          float: left;
+        }
+        &__price{
+          padding-top: 30px;
+          clear: both;
+        }
+      }
+      .detail-info{
+        float: right;
+        width: 320px;
       }
     }
-    .detail-info{
-      float: right;
-      width: 320px;
-    }
-  }
-  .other-item{
+    .other-item{
     width: 700px !important;
     }
+    .sns-wrapper {
+      width: 700px;
+    }
+    .myItem-container {
+      width: 700px;
+    }
   }
+
 }//幅768px以上のページに適応されるscss
