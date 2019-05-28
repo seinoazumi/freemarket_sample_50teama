@@ -1,9 +1,8 @@
 .upload-item
-  = image_tag "logo-gray-icon.svg", class: "upload-item__photo"
-  -# アップローダーのエラーが解消したら、２行目を消し４行目に交換
-  -# = image_tag @item.image.url, class: "upload-item__photo"
+  = image_tag image.image.url, class: "upload-item__photo"
   .upload-item__nav
     .upload-item__nav__edit
       %p 編集
-    .upload-item__nav__delete
+    = f.label :remove_image[i], class: "upload-item__nav__delete" do
+      = f.check_box :remove_image[i], class: "hidden delete-check-box check-box"
       %p 削除

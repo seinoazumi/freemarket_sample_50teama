@@ -3,7 +3,7 @@
   .single-container
     .item-wrapper
       %h2.title 商品の情報を入力
-      = form_for @item, html: {class: "item-new", multipart: true, method: "POST"} do |f|
+      = form_with model: @item, html: {class: "item-new", multipart: true, method: "PATCH"}, local: true do |f|
         - if @item.errors.any?
           - @item.errors.full_messages.each do |message|
             = message
@@ -15,14 +15,18 @@
             -# TODO: ドラッグ&ドロップ、フォームの見た目動作
             -# いま=> アップロードformLv2、普通のフォーム10個展開、同時アップロード
 
-            .image-upload-part
-              - @item.images[0..4].each do |image|
-                = render partial: 'shared/upload-images', local:{image: image}
+            .image-upload-part#img_prev
+              - @item.images.each_with_index do |image, i|
+                = render partial: 'shared/upload-images', locals:{image: image, f: f, i: i}
+
               = f.label :image, class: "input-part__dropbox", id: "drop_zone" do
                 .media-min__append--icon
-                  = f.file_field :image, class: 'hidden'
-                  %pre.media-min__hidden ドラッグアンドドロップ
-                  %pre.media-min__hidden またはクリックしてファイルをアップロード
+                  = f.file_field :image, class: 'hidden image-uploader'
+                  .media-min__hidden
+                    ドラッグアンドドロップ
+                    %br
+                    またはクリックしてファイルをアップロード
+
         %section.form-section
           .input-part
             = f.label "商品名", class: "input-part__title"
@@ -40,33 +44,33 @@
               .input-part
                 = f.label "カテゴリー", class: "input-part__title"
                 %span.input-part__require 必須
+                - parents = @categories[0..12]
               .relative
                 .icon-select
-                  -# TODO: カテゴリーを格納するデータをどうする？ansectory
-                  = f.select :category_id, [["レディース", "1"], ["メンズ", "2"], ["ベビー・キッズ", "3"], ["インテリア・住まい・小物", "4"], ["本・音楽・ゲーム", "5"], ["おもちゃ・ホビー・グッズ", "1328"], ["コスメ・香水・美容", "6"], ["家電・スマホ・カメラ", "7"], ["スポーツ・レジャー", "8"], ["ハンドメイド", "9"], ["チケット", "1027"], ["自動車・オートバイ", "1318"], ["その他", "10"]], {include_blank: true}, class: "input-part__select"
-              -# TODO: 特定カ11テゴリの場合 .hiddenをつける、外す JS
-              .relative.hidden
-                .icon-select
-                  -# TODO: カテゴリーを格納するデータをどうする？ansectory
-                  = f.select :category_id, [["レディース", "1"], ["メンズ", "2"]], {include_blank: true}, class: "input-part__select"
-              .relative.hidden
-                .icon-select
-                  -# TODO: カテゴリーを格納するデータをどうする？ansectory
-                  = f.select :category_id, [["レディース", "1"], ["メンズ", "2"]], {include_blank: true}, class: "input-part__select"
-              .space.hidden
-              .input-part
-                = f.label "サイズ", class: "input-part__title"
-                %span.input-part__require 必須
-              .relative
-                .icon-select
-                  -# TODO: 特定カテゴリ展開時のみ表示させる、連動した条件バリデーション。
-                  = f.select :category_id, [["XXS以下", "153"], ["XS(SS)", "154"], ["S", "2"], ["M", "3"], ["L", "4"], ["XL(LL)", "5"], ["2XL(3L)", "155"], ["4XL(5L)以上", "157"], ["FREE SIZE", "7"]], {include_blank: true}, class: "input-part__select"
-              .space.hidden
-              .input-part
-                = f.label "ブランド", class: "input-part__title"
-                %span.input-part__option 任意
-                -# TODO: 特定カテゴリ展開時のみ表示させる。
-                = f.text_field :category_id, class: "input-part__input", placeholder: "例）シャネル", value: ""
+                = f.collection_select :parent_category_id, parents, :id, :name, {include_blank: true}, class: "input-part__select parent-category"
+              - parents.each do |parent|
+                .relative--hidden{id: "#{parent.id}-children-item"}
+                  .icon-select
+                  = f.collection_select :child_category_id, parent.children, :id, :name, {include_blank: true}, disabled:"disabled", class: "input-part__select child-category"
+              - parents.each do |parent|
+                - parent.children.each do |child|
+                  .relative--hidden{id: "#{child.id}-grandchildren-item"}
+                    .icon-select
+                    = f.collection_select :grandchild_category_id, child.children, :id, :name, {include_blank: true}, disabled:"disabled", class: "input-part__select grandchild-category"
+              -# .space.hidden
+              -# .input-part
+              -#   = f.label "サイズ", class: "input-part__title"
+              -#   %span.input-part__require 必須
+              -# .relative
+              -#   .icon-select
+              -#     -# TODO: 特定カテゴリ展開時のみ表示させる、連動した条件バリデーション。
+              -#     -# = f.select :category_id, [["XXS以下", "153"], ["XS(SS)", "154"], ["S", "2"], ["M", "3"], ["L", "4"], ["XL(LL)", "5"], ["2XL(3L)", "155"], ["4XL(5L)以上", "157"], ["FREE SIZE", "7"]], {include_blank: true}, class: "input-part__select"
+              -# .space.hidden
+              -# .input-part
+              -#   = f.label "ブランド", class: "input-part__title"
+              -#   %span.input-part__option 任意
+              -#   -# TODO: 特定カテゴリ展開時のみ表示させる。
+              -#   -# = f.text_field :category_id, class: "input-part__input", placeholder: "例）シャネル", value: ""
               .input-part.space
                 = f.label "商品の状態", class: "input-part__title"
                 %span.input-part__require 必須
@@ -77,7 +81,7 @@
           .flex-container.media-min--clear
             .flex-container__left
               %h3.sell-sub-head 配送について
-              = link_to "?", "#", class:"form-question"
+              =link_to "?", "#", class:"form-question"
             .flex-container__right
               .input-part
                 = f.label "配送料の負担", class: "input-part__title"
@@ -118,18 +122,15 @@
                       %span.input-part__require 必須
                     .input-part__price--bace--right
                       %p.yen ¥
-                      = f.text_field :price, class: "input-part__input", placeholder: "例）300", value: "", maxlength: "7"
+                      = f.text_field :price, class: "input-part__input", placeholder: "例）300", maxlength: "7"
                   %li.input-part__price--fee.border-top.flex-container
                     .input-part__price--fee--left 販売手数料 (10%)
-                    .input-part__price--fee--right.input-part__price--fee--output -
-                    -# TODO: 計算結果
+                    .input-part__price--fee--right.input-part__price--fee--output= @item.price / 10
+
                   %li.input-part__price--total.border-top.flex-container
                     .input-part__price--total--left 販売利益
-                    .input-part__price--fee--right.input-part__price--total--output -
-                    -# TODO: 計算結果
-          -# TODO: モーダル表示 多分出品後のやつ cssが原因だろうが、今のとこアウトしてないと勝手に表に出てきてしまう。
-          -# .modal{role: "dialog", tabindex: "-1"}
-          -#   .modal-inner
+                    .input-part__price--fee--right.input-part__price--total--output= @item.price - (@item.price / 10)
+
         %section.form-section
           %p.notes
             = link_to "禁止されている出品", "#", class:"notes__link"
@@ -145,6 +146,6 @@
             に同意したことになります。
           -# TODO: submitボタン、要調整、モーダル呼び出しに繋げる
           = f.submit "変更する", class: "submit-btn--red"
-          = link_to "キャンセル", "#", class: "submit-btn--gray"
+          = link_to "キャンセル", item_path(params[:id]), class: "submit-btn--gray"
         .overlay
   = render partial: "/shared/single-footer"
