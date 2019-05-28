@@ -20,4 +20,41 @@ $(document).on('turbolinks:load', function() {
       });
     };
   });
+
+  $('.image-uploader').change(function(e){
+    var files = e.target.files;
+    var i = 0;
+    function readAndPreview(file) {
+      var reader = new FileReader();
+      reader.addEventListener("load", function () {
+        var image = new Image();
+        var html = `<div class="upload-item">
+                      <img class="upload-item__photo">
+                      <div class="upload-item__nav">
+                        <div class="upload-item__nav__edit">
+                          <p>編集</p>
+                        </div>
+                        <label class="upload-item__nav__delete" for="item_${i}">
+                          <input name="item_${i}" type="hidden" value="0">
+                          <input class="hidden delete-check-box check-box" type="checkbox" value="1" name="item_${i}" id="item_${i}">
+                          <p>削除</p>
+                        </label>
+                      </div>
+                    </div>`
+        $('#img_prev').html($('#img_prev').html() + html);
+        image.height = 111.5;
+        image.width = 111.5;
+        image.title = file.name;
+        image.src = this.result;
+        $('.upload-item:last-child img').remove();
+        $('.upload-item:last-child').prepend( image );
+        i = i+1;
+      }, false);
+      reader.readAsDataURL(file);
+    }
+    if (files) {
+      [].forEach.call(files, readAndPreview);
+    }
+  });
+
 });
