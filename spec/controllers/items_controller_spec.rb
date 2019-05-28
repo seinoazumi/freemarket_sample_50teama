@@ -1,6 +1,5 @@
 require 'rails_helper'
 describe ItemsController do
-  let(:category) {create(:category)}
   let(:item) { create(:item) }
 
   describe 'GET #index' do
