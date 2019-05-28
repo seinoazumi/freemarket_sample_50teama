@@ -2,7 +2,7 @@
   .single-container{
     .panel {
       background: $white;
-      width: 700px;
+      width: 100%;
       margin: 0 auto 41px;
       &__head{
         padding: 37px 16px 38px;
@@ -100,4 +100,14 @@
       }
     }//end panel
   } // end single container
+
+  @media screen and (min-width: 768px) {
+    .single-container{
+      .panel {
+        background: $white;
+        width: 700px;
+        margin: 0 auto 41px;
+      }
+    }
+  }
 }
