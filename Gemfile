@@ -50,6 +50,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'faker'
 end
 
 group :development do
@@ -93,3 +94,4 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'payjp'
 gem "gretel"
+gem 'rails-i18n', '~> 5.1'
