@@ -28,8 +28,10 @@ $(document).on('turbolinks:load', function(){
   if (size >= 6){
     $(".slider__list__image").css({
       "width":"240px",
+      "height": "240px",
       "margin":"0 auto",
     });
+    $(".slider").css("height","240px");
   }
   $(".thumb__list").on('click', function(){
     $(".thumb__list").css("opacity","0.7");

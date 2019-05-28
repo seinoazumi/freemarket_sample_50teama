@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
-  // もし、画像の数が５個以上か10個なら、ドラッグ&ドロップエリアを消す
+  // もし、画像の数が５個か9個なら、ドラッグ&ドロップエリアを小さくする
   var size = $(".upload-item").length;
-  if (size == 5){
+  if (size == 5 || size == 9){
     $("#drop_zone").css("width","18%");
   }
   if (size == 10){
