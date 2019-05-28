@@ -100,6 +100,14 @@
       margin-top: 30px;
 
     }
+    .sold-out-btn {
+      @include btn-default;
+      @include btn-gray;
+      font-size: 24px;
+      font-weight: normal;
+      margin:10px 0 20px;
+      cursor: not-allowed;
+    }
     .buy-btn{
       @include btn-default;
       @include btn-red;
