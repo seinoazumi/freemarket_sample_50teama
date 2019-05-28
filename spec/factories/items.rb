@@ -9,5 +9,7 @@ FactoryBot.define do
     detail        {"靴です"}
     delivery_prefecture     {"hokkaido"}
     delivery_method       {"undicided"}
+    status {"sale"}
+    category_id {12}
   end
 end
