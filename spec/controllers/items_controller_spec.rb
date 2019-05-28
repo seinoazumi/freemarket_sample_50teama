@@ -3,6 +3,7 @@ describe ItemsController do
   let(:item) { create(:item) }
   let(:user) { create(:user) }
 
+
   describe 'GET #index' do
     it "renders the :index template" do
       get :index
