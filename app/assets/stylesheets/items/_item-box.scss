@@ -102,10 +102,17 @@
       &:nth-child(4){
         display: block;
       }
-      img {
-        width: 100%;
-        height: auto;
-      }
+      // &__photo__outer{
+      //     overflow: hidden;
+      //     height: calc(100% - 100px);
+        img{
+          width: 100%;
+          height: auto;
+        }
+      // }
+      // &__info{
+      //   padding: 0 16px;
+      // }
     }
   }
 }
