@@ -8,7 +8,7 @@
         = @item.name
       .item-info
         .item-info__photo
-          -if @item.status == 2
+          -if @item.status == "soldout"
             .soldout-color
             .soldout
           %section.slider
@@ -33,10 +33,10 @@
               %span.item-info__price__tax (税込)
               %span.item-info__price__shipping= @item.delivery_cost_i18n
 
-          - if user_signed_in? && @item.status != 2
+          - if user_signed_in? && @item.status != "soldout"
             .sales-message
               ="売上金#{current_user.money}円をお持ちです"
-          - if @item.status == 2
+          - if @item.status == "soldout"
             .sold-out-btn 売り切れました
           - else
             .buy-btn
@@ -105,10 +105,10 @@
             %span.item-info__price__tax (税込)
             %span.item-info__price__shipping= @item.delivery_cost_i18n
 
-        - if user_signed_in? && @item.status != 2
+        - if user_signed_in? && @item.status != "soldout"
           .sales-message
             ="売上金#{current_user.money}円をお持ちです"
-        - if @item.status == 2
+        - if @item.status == "soldout"
           .sold-out-btn 売り切れました
         - else
           .buy-btn
@@ -125,7 +125,7 @@
           %p.icon-report 不適切な商品の報告
         %p.icon-lock.trial-to-safe=link_to 'あんしん・あんぜんへの取り組み', '#'
 
-  - if user_signed_in? && current_user.id == @item.users[0].id
+  - if user_signed_in? && current_user.id == @item.users[0].id && @item.status != "soldout"
     .myItem-container
       .myItem-container__inner
         %button.edit-item__btn=link_to "商品の編集", edit_item_path
