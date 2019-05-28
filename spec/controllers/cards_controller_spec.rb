@@ -95,9 +95,6 @@ describe CardsController, type: :controller do
       it 'redirects to root_path' do # root_pathにredirectされているかどうか
         expect(response).to redirect_to(root_path)
       end
-      it 'itemにbuyer_idが入るかどうか'do   # --------------------------------------------
-
-      end
     end
     context'not log in'do
       it "Request will be 200 OK" do
