@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe CardsController, type: :controller do
   let(:user) { create(:user) }
+  let(:item) { create(:item) }
 
   describe '#index' do
     context 'log in' do
@@ -86,7 +87,6 @@ describe CardsController, type: :controller do
     context'log in' do
       before do
         login user
-        item = create(:item, name: "シューズ", condition: "new_one", delivery_cost: "exhibitr_barden", delivery_day: "a_day", price: "1000", buyer_id: 1, detail: "靴です", delivery_prefecture: "hokkaido", delivery_method: "undicided", status: "sale", category_id: 12)
         get :pay, params:{user_id: user.id, id: item.id}
       end
       it "Request will be 302 OK" do
@@ -101,7 +101,6 @@ describe CardsController, type: :controller do
         expect(response.status).to eq 200
       end
       it 'redirect to user_session_path' do
-        item = create(:item, name: "シューズ", condition: "new_one", delivery_cost: "exhibitr_barden", delivery_day: "a_day", price: "1000", buyer_id: 1, detail: "靴です", delivery_prefecture: "hokkaido", delivery_method: "undicided", status: "sale", category_id: 12)
         get :pay, params:{user_id: user.id, id: item.id}
         expect(response).to redirect_to(user_session_path)
       end
