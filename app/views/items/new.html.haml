@@ -84,7 +84,7 @@
                 .icon-select
                   = f.select :delivery_cost, Item.delivery_costs_i18n.keys.map {|k| [Item.delivery_costs_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
               .space.hidden
-              .input-part
+              .input-part.space
                 = f.label "発送の方法", class: "input-part__title"
                 %span.input-part__require 必須
               .relative

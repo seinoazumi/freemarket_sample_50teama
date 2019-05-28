@@ -7,7 +7,7 @@
         %section.buy-content
           .item-info
             %h3.item-info__image
-              -# =image_tag  (@item.images[0].image), alt: '商品画像'
+              =image_tag  (@item.images[0].image.url), alt: '商品画像', class: "confirm-image"
             %p.item-info__name
               = @item.name
             %p.item-info__price

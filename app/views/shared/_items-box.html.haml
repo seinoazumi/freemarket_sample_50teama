@@ -3,7 +3,7 @@
     %section.item-box
       = link_to item_path(id: item.id) do
         = image_tag item.images[0].image.to_s, class: 'item-box__photo'
-        -if item.status == 2
+        -if item.status == "soldout"
           .soldout-color
           .soldout
         .visible-small-and-sp-only
