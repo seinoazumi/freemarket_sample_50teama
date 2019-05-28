@@ -19,7 +19,7 @@ class CardsController < ApplicationController
     customer.cards.create(card: params[:payjp_token])
     redirect_to user_cards_path(user_id:"mypage")
   rescue => e
-      redirect_to new_user_card_path(user_id:"mypage")
+    redirect_to new_user_card_path(user_id:"mypage")
   end
 
   def card_delete #カード情報削除
@@ -44,11 +44,11 @@ class CardsController < ApplicationController
         customer: customer,
         currency: 'jpy',
       )
+      @item.update(buyer_id: current_user.id, status:2)
+      redirect_to root_path
     rescue => e #エラーハンドリング
       redirect_to root_path
     end
-      @item.update(buyer_id: current_user.id, status:2)
-      redirect_to root_path
   end
 
 
