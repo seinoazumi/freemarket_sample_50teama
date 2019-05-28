@@ -183,6 +183,7 @@
     padding: 15px;
     text-align: center;
     font-size:1.2em;
+    width: 100%;
 
     .edit-item__btn, .suspend-item__btn, .delete-item__btn{
       @include btn-reset;
@@ -229,5 +230,9 @@
     .sns-wrapper {
       width: 700px;
     }
+    .myItem-container {
+      width: 700px;
+    }
   }
+
 }//幅768px以上のページに適応されるscss
