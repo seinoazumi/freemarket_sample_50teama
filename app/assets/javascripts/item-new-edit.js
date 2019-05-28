@@ -10,7 +10,7 @@ $(document).on('turbolinks:load', function() {
   // 「削除」ボタンがクリックされると、見えないチェックボックスにチェックが入り、アイテムを見えなくする
   // データベースには、「送信」ボタンを押した時に反映される
   // 参考URL: https://note.mu/hajime38/n/ne2650fdf4559
-  $(".delete-check-box").on("click", function(){
+  $(document).on('click', '.delete-check-box', function(){
     if($(this).prop('checked') == true){
       $(this).parents(".upload-item").css({
         "visibility": "hidden",
