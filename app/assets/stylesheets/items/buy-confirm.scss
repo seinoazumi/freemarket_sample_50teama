@@ -11,14 +11,16 @@
         border-bottom: 1px solid $gray-lv1;
       }
     .panel__inner{
-      padding: 64px;
+      padding: 24px 87px;
       .line{
         border: 1px solid $gray-lv1!important;
       }
       .item-info{
         &__image{
-          width: auto;
-          max-height: 148px;
+          .confirm-image{
+            width:150px;
+            height:150px;
+          }
         }
         &__name{
           margin-top: 8px;
