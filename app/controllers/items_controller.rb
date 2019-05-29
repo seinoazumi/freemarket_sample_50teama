@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    # 10.times {@item.images.build}
   end
 
   def create
@@ -31,8 +30,10 @@ class ItemsController < ApplicationController
         # rails scaffold item で自動作成されたコントローラ記述をそのまま移植。
         # TODO: 仮置きredirect, 最終形=>newページ内でモーダル表示させる
         UserItem.create(user_id: current_user.id, item_id: @item.id)
-        for i in 0..10
-          Image.create(image: params[:file]["#{i}"], item_id: @item.id) if params[:file]["#{i}"] != nil
+        if params[:file]
+          for i in 0..10
+            Image.create(image: params[:file]["#{i}"], item_id: @item.id) if params[:file]["#{i}"] != nil
+          end
         end
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }

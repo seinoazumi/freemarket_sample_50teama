@@ -9,11 +9,6 @@
             %h3.input-part__title 出品画像
             %span.input-part__require 必須
             %p.input-part__details 最大10枚までアップロードできます
-            -# TODO: ドラッグ&ドロップ、フォームの見た目動作
-            -# いま=> アップロードformLv2、普通のフォーム10個展開、同時アップロード
-            -# = f.fields_for :images do |i|
-            -#   = i.file_field :image
-          -# .image-upload-part.dz-message.needsclick.dz-preview.dz-image-preview
           .image-upload-part
             = form_with model: @item, html: {class: "dropzone input-part__dropbox", id: "item-dropzone"}, local: true do |f|
               - if @item.errors.any?
@@ -31,7 +26,7 @@
               = f.hidden_field :name, id: "hidden-item-name"
               -# = f.hidden_field :detail, id: "hidden-item-detail"
               = f.text_area :detail, id: "hidden-item-detail"
-              = f.hidden_field :category, id: "hidden-item-category", value: "1"
+              = f.hidden_field :parent_category_id, id: "hidden-item-category", value: "1"
               = f.hidden_field :condition, id: "hidden-item-condition"
               = f.hidden_field :delivery_cost, id: "hidden-item-delivery_cost"
               = f.hidden_field :delivery_method, id: "hidden-item-delivery_method"
@@ -139,11 +134,9 @@
                   %li.input-part__price--fee.border-top.flex-container
                     .input-part__price--fee--left 販売手数料 (10%)
                     .input-part__price--fee--right.input-part__price--fee--output -
-                    -# TODO: 計算結果
                   %li.input-part__price--total.border-top.flex-container
                     .input-part__price--total--left 販売利益
                     .input-part__price--fee--right.input-part__price--total--output -
-                    -# TODO: 計算結果
           -# TODO: モーダル表示 多分出品後のやつ cssが原因だろうが、今のとこアウトしてないと勝手に表に出てきてしまう。
           -# .modal{role: "dialog", tabindex: "-1"}
           -#   .modal-inner
@@ -160,8 +153,6 @@
             また、出品をもちまして
             = link_to "加盟店規約", "#", class:"notes__link"
             に同意したことになります。
-          -# TODO: submitボタン、要調整、モーダル呼び出しに繋げる
-          -# = i.submit "出品する", class: "submit-btn--red", id: "submit-button"
           %p.submit-btn--red#submit-button 出品する
           = link_to "もどる", root_path, class: "submit-btn--gray"
         .overlay
