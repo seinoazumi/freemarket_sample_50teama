@@ -67,7 +67,6 @@ class ItemsController < ApplicationController
     if @items.count == Item.all.count || params[:keyword].present? == false
       @all_items = Item.order(id: "DESC").limit(40)
     end
-    # 余裕があればkaminariを入れて、limit(40)を外す
   end
 
   def destroy
