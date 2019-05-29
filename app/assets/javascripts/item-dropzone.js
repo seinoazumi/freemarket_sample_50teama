@@ -7,10 +7,10 @@ Dropzone.options.itemDropzone = {
   // autoQueue: false,  このボタン送信だと発火しなくなる
   addRemoveLinks: true,
   uploadMultiple: true,
-  chunking: false,
   maxFiles: 10,
   parallelUploads: 10,
   acceptedFiles: 'image/*',
+  // dictDefaultMessage: "ドラッグアンドドロップ\n\rまたはクリックしてファイルをアップロード"
   // forceFallback: true,  ドラッグ&ドロップができなくなる？ボタン発火もしなくなる
   // capture: モバイルのカメラ利用設定？？きになるけど謎
   // 10個同時にアップロードできるが、並んだ順に処理するわけでない、従ってレコードの並びは概ね並び順にできるが後のファイルほど順番が変わることがある。
@@ -21,6 +21,7 @@ Dropzone.options.itemDropzone = {
 
     submitButton.addEventListener("click", function() {
       itemDropzone.processQueue(); // Tell Dropzone to process all queued files.
+      // itemDropzone.processFile(file);
     });
 
     // You might want to show the submit button only when
@@ -28,18 +29,9 @@ Dropzone.options.itemDropzone = {
     this.on("addedfile", function() {
       // Show submit button here and/or inform user to click it.
     });
+
   }
 };
-
-// Dropzone.autoDiscover = false;
-
-// new Dropzone(".input-part__dropbox", {
-//   autoProcessQueue: false,
-// });
-
-// $('#imgsubbutt').click(function(){
-//   myDropzone.processQueue();
-// });
 
 $(function(){
   $("#form-item-name").change(function() {

@@ -1,7 +1,7 @@
 .space{
   margin-top:40px;
 }
-.hidden, #hidden-item-detail{
+.hidden{
   display: none;
 }
 .relative{
@@ -155,7 +155,6 @@
             display: none;
           }
           .media-min__append--icon{
-            white-space: pre-wrap;
             display: table-cell;
             vertical-align: middle;
           }
