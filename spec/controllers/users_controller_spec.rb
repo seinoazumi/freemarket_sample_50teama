@@ -1,14 +1,5 @@
 require 'rails_helper'
 describe UsersController do
-
-  let(:registration_params){
-     {user: {name: "タナカー", email: "test@gmail.com", password: "11111111",password_confirmation: "11111111", last_name: "田中",first_name: "太郎", last_name_kana: "タナカ", first_name_kana: "タロウ", "birthday(1i)": "1997","birthday(2i)": "01", "birthday(3i)": "23"}}
-  }
-
-  let(:registration_params){
-     {name: "testuser1", email: "test@example.com", password: "test123", password_confirmation: "test123"}
-  }
-
   describe '#new' do
     it "renders the :new template" do
       get :new
