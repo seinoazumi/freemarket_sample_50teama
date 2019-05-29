@@ -38,8 +38,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.order(id: 'DESC').limit(4)
-    @same_category_items = Item.where(category_id: @item.category_id).where.not(id: @item.id).order(id: 'DESC').limit(6)
+    @same_user_items = Item.joins(:users).where('users.id = ? AND status = ?', @item.users[0].id, 1).where.not(id: @item.id).order(id: 'DESC').limit(6)
+    category_ids = Category.find(@item.category_id).descendant_ids.push(@item.category_id)
+    @same_category_items = Item.where(category_id: category_ids, status: 1).where.not(id: @item.id).order(id: 'DESC').limit(6)
   end
 
   def confirm
