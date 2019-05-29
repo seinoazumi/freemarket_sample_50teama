@@ -6,7 +6,9 @@ class Item < ApplicationRecord
   belongs_to :category
 
   mount_uploader :image, ImageUploader
-  accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :images, allow_destroy: true
+
+
 
   # TODO: カテゴリ実装時、特定カテゴリが入力された場合のみ:sizeが必須となる条件
   with_options presence: true do
