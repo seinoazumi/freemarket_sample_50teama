@@ -162,7 +162,7 @@
   %section.pick-up-container
     %h2.pick-up-container__header
       ="#{@item.users[0].name}さんのその他の出品"
-    = render 'shared/items-box', items: @items
+    = render 'shared/items-box', items: @same_user_items
 
   %section.pick-up-container
     %h2.pick-up-container__header
