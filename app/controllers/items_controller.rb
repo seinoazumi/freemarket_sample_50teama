@@ -88,7 +88,8 @@ class ItemsController < ApplicationController
   end
 
   def set_category_items(name)
-    Item.where(category_id: Category.find_by(name: name).id, status: 1).order(id: "DESC").limit(4)
+    category_ids = Category.find_by(name: name).descendant_ids.push(Category.find_by(name: name).id)
+    return Item.where(category_id: category_ids, status: 1).order(id: "DESC").limit(4)
   end
 
   def set_items_category_id
