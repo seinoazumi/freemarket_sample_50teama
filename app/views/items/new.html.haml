@@ -3,8 +3,7 @@
   .single-container
     .item-wrapper
       %h2.title 商品の情報を入力
-      -# = form_for @item, html: {class:'dropzone', id: "item-dropzone"} do |f|
-      = form_with model: @item, html: {class: "item-new dropzone", id: "item-dropzone"}, local: true do |f|
+      = form_with model: @item, html: {class: "item-new", multipart: true, method: "POST"}, local: true do |f|
         - if @item.errors.any?
           - @item.errors.full_messages.each do |message|
             = message
@@ -13,27 +12,15 @@
             %h3.input-part__title 出品画像
             %span.input-part__require 必須
             %p.input-part__details 最大10枚までアップロードできます
-            -# = f.fields_for :images do |i|
-            -#   = i.file_field :image, multiple: true
+            -# TODO: ドラッグ&ドロップ、フォームの見た目動作
+            -# いま=> アップロードformLv2、普通のフォーム10個展開、同時アップロード
+            = f.fields_for :images do |i|
+              = i.file_field :image
           .image-upload-part
             .input-part__dropbox
-              -# = form_for @item, html: {class:'dropzone', id: "item-dropzone"} do |f|
-              -#   .field
-              -#     = f.label :name
-              -#     = f.text_field :name
-              -#   .dz-message.needsclick
-              -#     %h3 Drop file here
-              -#     or
-              -#     %strong Click
-              -#     to upload
-              -#   .fallback
-              -#     = f.file_field :images, multiple: true
-              -# #imgsubbutton submit
-              .media-min__append--icon.dz-message.needsclick
+              .media-min__append--icon
                 %pre.media-min__hidden ドラッグアンドドロップ
                 %pre.media-min__hidden またはクリックしてファイルをアップロード
-              .fallback
-                = f.file_field :images, multiple: true
         %section.form-section
           .input-part
             = f.label "商品名", class: "input-part__title"
@@ -155,7 +142,7 @@
             = link_to "加盟店規約", "#", class:"notes__link"
             に同意したことになります。
           -# TODO: submitボタン、要調整、モーダル呼び出しに繋げる
-          = f.submit "出品する", class: "submit-btn--red", id: "submit-btn"
+          = f.submit "出品する", class: "submit-btn--red"
           = link_to "もどる", root_path, class: "submit-btn--gray"
         .overlay
   = render partial: "/shared/single-footer"

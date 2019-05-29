@@ -33,11 +33,6 @@ class ItemsController < ApplicationController
         # rails scaffold item で自動作成されたコントローラ記述をそのまま移植。
         # TODO: 仮置きredirect, 最終形=>newページ内でモーダル表示させる
         UserItem.create(user_id: current_user.id, item_id: @item.id)
-
-        for i in 0..10
-          Image.create(image: params[:file]["#{i}"], item_id: @item.id) if params[:file]["#{i}"] != nil
-        end
-
         format.html { redirect_to root_path, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
@@ -90,7 +85,7 @@ class ItemsController < ApplicationController
   private
 
   def params_new
-    params.require(:item).permit(:name, :condition, :detail, :delivery_method, :delivery_prefecture, :delivery_cost, :delivery_day, :price, images_attributes: [image: params[:file]])
+    params.require(:item).permit(:name, :condition, :detail, :delivery_method, :delivery_prefecture, :delivery_cost, :delivery_day, :price, images_attributes: [:image, :image_cache, :remove_image])
   end
 
   def set_item
