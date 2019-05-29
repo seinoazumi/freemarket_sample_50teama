@@ -8,6 +8,10 @@ $(document).on('turbolinks:load', function() {
 
   $('.parent-category').change(function(){
     $('.relative--hidden').css('display','none');
+    $('.child-category').prop('disabled', true);
+    $('.child-category').val("");
+    $('.grandchild-category').prop('disabled', true);
+    $('.grandchild-category').val("");
     child_id = $(this).val() + '-children-item';
     $('#' + child_id).css('display','block');
     $('#' + child_id).children().prop('disabled', false);
@@ -15,16 +19,13 @@ $(document).on('turbolinks:load', function() {
 
   $('.child-category').change(function(){
     $('.relative--hidden').css('display','none');
+    $('.grandchild-category').prop('disabled', true);
+    $('.grandchild-category').val("");
     grandchild_id = $(this).val() + '-grandchildren-item';
     $('#' + child_id).css('display','block');
     $('#' + grandchild_id).css('display','block');
     $('#' + grandchild_id).children().prop('disabled', false);
   });
-
-  $('.grandchild-category').change(function(){
-    $(this).prop('disabled', false);
-  });
-
 
   $('.category-show').on("mouseover", function(){
     $('.category-list__parent').css('display','block');
