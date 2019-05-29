@@ -95,3 +95,4 @@ gem 'omniauth-google-oauth2'
 gem 'payjp'
 gem "gretel"
 gem 'rails-i18n', '~> 5.1'
+gem 'dropzonejs-rails'
