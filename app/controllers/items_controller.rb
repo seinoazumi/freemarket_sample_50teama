@@ -64,9 +64,6 @@ class ItemsController < ApplicationController
   def search
     @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%").limit(40)
     @all_items = Item.order(id: "DESC").limit(40)
-    if @items.count == Item.all.count || params[:keyword].present? == false
-      @all_items = Item.order(id: "DESC").limit(40)
-    end
   end
 
   def destroy
