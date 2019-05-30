@@ -37,7 +37,6 @@ describe ItemsController do
   end
 
   context "as an authenticated user" do
-    # 現在、destroyアクションに不具合が生じているので、その終了まで待つ
     describe 'DELETE #destroy' do
       before do
         login user
@@ -55,6 +54,7 @@ describe ItemsController do
         expect(response).to redirect_to root_path
       end
     end
+  end
 
   describe '#search' do
     before do
