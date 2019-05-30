@@ -41,10 +41,11 @@
     }
     &__info{
       height: 100px;
-      padding: 16px;
+      padding: 16px 0;
       &__name{
       overflow: hidden;
       position: relative;
+      margin: 0 16px;
       font-size: 16px;
       height:2em;
       line-height: 1.5em;
@@ -52,11 +53,14 @@
       white-space: normal;
       }
     }
+    &__gradient{
+      background-color: red;
+    }
     &__bottom{
       display: flex;
       flex-wrap:wrap;
       font-size: 1.2em;
-
+      margin: 0 16px;
       &__price{
         flex-grow: 2;
       }
