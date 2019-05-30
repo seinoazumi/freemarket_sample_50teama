@@ -46,10 +46,14 @@ class ItemsController < ApplicationController
   end
 
   def confirm
+    begin
     Payjp.api_key = Rails.application.credentials.payjp[:secret_access_key]
     customer = Payjp::Customer.retrieve(current_user.payjp_id)
     default_card = customer.default_card
     @card = customer.cards.retrieve(default_card)
+    rescue => e
+      redirect_to item_path
+    end
   end
 
   def edit
