@@ -1,4 +1,4 @@
-$(document).on('turebolinks:load', function(){
+$(document).on('turbolinks:load', function(){
 
   $("#search").on('click', function(){
     var buildSearchOptions = `
