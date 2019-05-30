@@ -25,47 +25,63 @@ $(function(){
   $("#form-item-name").change(function() {
     const itemName = $(this).val();
     $('input:hidden[id="hidden-item-name"]').val(itemName);
+    console.log(itemName)
   });
   $("#form-item-detail").change(function() {
     const itemDetail = $(this).val();
     $('textarea[id="hidden-item-detail"]').val(itemDetail);
+    console.log(itemDetail)
   });
 
   $("#form-item-parent_category_id").change(function() {
     const itemParentCategoryId = $(this).val();
     $('input:hidden[id="hidden-item-parent_category_id"]').val(itemParentCategoryId);
-  });
-  $("#categories_container").on("change", $("#form-item-child_category_id"), function () {
-    const itemChildCategoryId = $("#form-item-child_category_id").val();
-    $('input:hidden[id="hidden-item-child_category_id"]').val(itemChildCategoryId);
-  });
-  $("#categories_container").on("change", $("#form-item-grandchild_category_id"), function () {
-    const itemGrandchildCategoryId = $("#form-item-grandchild_category_id").val();
-    $('input:hidden[id="hidden-item-grandchild_category_id"]').val(itemGrandchildCategoryId);
+    $('input:hidden[id="hidden-item-child_category_id"]').val();
+    $('input:hidden[id="hidden-item-grandchild_category_id"]').val();
+
+    console.log(itemParentCategoryId)
+    $("#categories_container").on("change", $("#form-item-child_category_id"), function () {
+      const itemChildCategoryId = $("#" + itemParentCategoryId + "-children-item select").val();
+      $('input:hidden[id="hidden-item-child_category_id"]').val(itemChildCategoryId);
+      $('input:hidden[id="hidden-item-grandchild_category_id"]').val();
+
+      console.log(itemChildCategoryId)
+      $("#categories_container").on("change", $("#form-item-grandchild_category_id"), function () {
+        const itemGrandchildCategoryId = $("#" + itemChildCategoryId + "-grandchildren-item select").val();
+        $('input:hidden[id="hidden-item-grandchild_category_id"]').val(itemGrandchildCategoryId);
+        console.log(itemGrandchildCategoryId)
+      });
+    });
   });
 
   $("#form-item-condition").change(function() {
     const itemCondition = $(this).val();
     $('input:hidden[id="hidden-item-condition"]').val(itemCondition);
+    console.log(itemCondition)
   });
   $("#form-item-delivery_cost").change(function() {
     const itemDeliveryCost = $(this).val();
     $('input:hidden[id="hidden-item-delivery_cost"]').val(itemDeliveryCost);
+    console.log(itemDeliveryCost)
   });
   $("#form-item-delivery_method").change(function() {
     const itemDeliveryMethod = $(this).val();
     $('input:hidden[id="hidden-item-delivery_method"]').val(itemDeliveryMethod);
+    console.log(itemDeliveryMethod)
   });
   $("#form-item-delivery_prefecture").change(function() {
     const itemDeliveryPrefecture = $(this).val();
     $('input:hidden[id="hidden-item-delivery_prefecture"]').val(itemDeliveryPrefecture);
+    console.log(itemDeliveryPrefecture)
   });
   $("#form-item-delivery_day").change(function() {
     const itemDeliveryDay = $(this).val();
     $('input:hidden[id="hidden-item-delivery_day"]').val(itemDeliveryDay);
+    console.log(itemDeliveryDay)
   });
   $("#form-item-price").change(function() {
     const itemPrice = $(this).val();
     $('input:hidden[id="hidden-item-price"]').val(itemPrice);
+    console.log(itemPrice)
   });
 })
