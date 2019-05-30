@@ -19,13 +19,13 @@
               - @item.images.each_with_index do |image, i|
                 = render partial: 'shared/upload-images', locals:{image: image, f: f, i: i}
 
-              = f.label :image, class: "input-part__dropbox", id: "drop_zone" do
-                .media-min__append--icon
-                  = f.file_field :image, class: 'hidden image-uploader'
-                  .media-min__hidden
-                    ドラッグアンドドロップ
-                    %br
-                    またはクリックしてファイルをアップロード
+            = f.label :image, class: "input-part__dropbox", id: "drop_zone" do
+              .media-min__append--icon
+                = f.file_field :image, class: 'hidden image-uploader', multiple: true
+                .media-min__hidden
+                  ドラッグアンドドロップ
+                  %br
+                  またはクリックしてファイルをアップロード
 
         %section.form-section
           .input-part
@@ -90,7 +90,7 @@
                 .icon-select
                   = f.select :delivery_cost, Item.delivery_costs_i18n.keys.map {|k| [Item.delivery_costs_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
               .space.hidden
-              .input-part
+              .input-part.space
                 = f.label "発送の方法", class: "input-part__title"
                 %span.input-part__require 必須
               .relative

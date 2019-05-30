@@ -18,13 +18,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params_new)
-    if params[:item][:grandchild_category_id].present?
-      @item[:category_id] = params[:item][:grandchild_category_id]
-    elsif params[:item][:child_category_id].present?
-      @item[:category_id] = params[:item][:child_category_id]
-    else
-      @item[:category_id] = params[:item][:parent_category_id]
-    end
+    @item[:category_id] = set_items_category_id
     respond_to do |format|
       if @item.save
         # rails scaffold item で自動作成されたコントローラ記述をそのまま移植。
@@ -46,8 +40,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.order(id: 'DESC').limit(4)
-    @same_category_items = Item.where(category_id: @item.category_id).where.not(id: @item.id).order(id: 'DESC').limit(6)
+    @same_user_items = Item.joins(:users).where('users.id = ? AND status = ?', @item.users[0].id, 1).where.not(id: @item.id).order(id: 'DESC').limit(6)
+    category_ids = Category.find(@item.category_id).descendant_ids.push(@item.category_id)
+    @same_category_items = Item.where(category_id: category_ids, status: 1).where.not(id: @item.id).order(id: 'DESC').limit(6)
   end
 
   def confirm
@@ -61,6 +56,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @item[:category_id] = set_items_category_id
     if @item.update(params_new)
       redirect_to item_path(@item)
     else
@@ -70,10 +66,7 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%").limit(40)
-    if @items.count == Item.all.count || params[:keyword].present? == false
-      @items = Item.order(id: "DESC").limit(40)
-    end
-    # 余裕があればkaminariを入れて、limit(40)を外す
+    @all_items = Item.order(id: "DESC").limit(40)
   end
 
   def destroy
@@ -95,6 +88,17 @@ class ItemsController < ApplicationController
   end
 
   def set_category_items(name)
-    Item.where(category_id: Category.find_by(name: name).id, status: 1).order(id: "DESC").limit(4)
+    category_ids = Category.find_by(name: name).descendant_ids.push(Category.find_by(name: name).id)
+    return Item.where(category_id: category_ids, status: 1).order(id: "DESC").limit(4)
+  end
+
+  def set_items_category_id
+    if params[:item][:grandchild_category_id].present?
+      return params[:item][:grandchild_category_id]
+    elsif params[:item][:child_category_id].present?
+      return params[:item][:child_category_id]
+    else
+      return params[:item][:parent_category_id]
+    end
   end
 end

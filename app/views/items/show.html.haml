@@ -8,7 +8,7 @@
         = @item.name
       .item-info
         .item-info__photo
-          -if @item.status == 2
+          -if @item.status == "soldout"
             .soldout-color
             .soldout
           %section.slider
@@ -33,10 +33,10 @@
               %span.item-info__price__tax (税込)
               %span.item-info__price__shipping= @item.delivery_cost_i18n
 
-          - if user_signed_in? && @item.status != 2
+          - if user_signed_in? && @item.status != "soldout"
             .sales-message
               ="売上金#{current_user.money}円をお持ちです"
-          - if @item.status == 2
+          - if @item.status == "soldout"
             .sold-out-btn 売り切れました
           - else
             .buy-btn
@@ -105,10 +105,10 @@
             %span.item-info__price__tax (税込)
             %span.item-info__price__shipping= @item.delivery_cost_i18n
 
-        - if user_signed_in? && @item.status != 2
+        - if user_signed_in? && @item.status != "soldout"
           .sales-message
             ="売上金#{current_user.money}円をお持ちです"
-        - if @item.status == 2
+        - if @item.status == "soldout"
           .sold-out-btn 売り切れました
         - else
           .buy-btn
@@ -125,13 +125,13 @@
           %p.icon-report 不適切な商品の報告
         %p.icon-lock.trial-to-safe=link_to 'あんしん・あんぜんへの取り組み', '#'
 
-  - if user_signed_in? && current_user.id == @item.users[0].id
+  - if user_signed_in? && current_user.id == @item.users[0].id && @item.status != "soldout"
     .myItem-container
       .myItem-container__inner
         %button.edit-item__btn=link_to "商品の編集", edit_item_path
         %p or
         %button.suspend-item__btn=link_to "出品を一時停止する", '#'
-        %button.delete-item__btn#modal-open=link_to "この商品を削除する", '#'
+        %button.delete-item__btn#modal-open この商品を削除する
 
     .modal-overlay
       #modal-window.modal
@@ -162,7 +162,7 @@
   %section.pick-up-container
     %h2.pick-up-container__header
       ="#{@item.users[0].name}さんのその他の出品"
-    = render 'shared/items-box', items: @items
+    = render 'shared/items-box', items: @same_user_items
 
   %section.pick-up-container
     %h2.pick-up-container__header
