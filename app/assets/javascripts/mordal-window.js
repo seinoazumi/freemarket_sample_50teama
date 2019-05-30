@@ -1,4 +1,4 @@
-$(document).on('turebolinks:load', $(function(){
+$(document).on('turbolinks:load', $(function(){
   window.onload = function() {
     $("#modal-open").on('click', function(){
 
