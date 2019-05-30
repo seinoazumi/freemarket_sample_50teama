@@ -56,5 +56,15 @@ describe ItemsController do
       end
     end
 
+  describe '#search' do
+    before do
+      get :search, params:{ keyword: ""}
+    end
+    it "renders the :search template" do
+      expect(response).to render_template :search
+    end
+    it "assigns the requested items to @all_items" do
+      expect(assigns(:all_items)).to eq(Item.order(id: "DESC").limit(40))
+    end
   end
 end

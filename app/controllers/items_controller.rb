@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    10.times {@item.images.build}
   end
 
   def create
@@ -22,12 +21,15 @@ class ItemsController < ApplicationController
     @item[:category_id] = set_items_category_id
     respond_to do |format|
       if @item.save
-        # @itemページのpayjpカラムが問題で、出品ページに飛ばすのは現状ではエラー、記述使用の可能性あり
-        # format.html { redirect_to @item, notice: 'Item was successfully created.' }
         # rails scaffold item で自動作成されたコントローラ記述をそのまま移植。
         # TODO: 仮置きredirect, 最終形=>newページ内でモーダル表示させる
         UserItem.create(user_id: current_user.id, item_id: @item.id)
-        format.html { redirect_to root_path, notice: 'Item was successfully created.' }
+        if params[:file]
+          for i in 0..10
+            Image.create(image: params[:file]["#{i}"], item_id: @item.id) if params[:file]["#{i}"] != nil
+          end
+        end
+        format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         # TODO: 最終形=>入力不備label部分に赤字でガイド表示させる
@@ -38,8 +40,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.order(id: 'DESC').limit(4)
-    @same_category_items = Item.where(category_id: @item.category_id).where.not(id: @item.id).order(id: 'DESC').limit(6)
+    @same_user_items = Item.joins(:users).where('users.id = ? AND status = ?', @item.users[0].id, 1).where.not(id: @item.id).order(id: 'DESC').limit(6)
+    category_ids = Category.find(@item.category_id).descendant_ids.push(@item.category_id)
+    @same_category_items = Item.where(category_id: category_ids, status: 1).where.not(id: @item.id).order(id: 'DESC').limit(6)
   end
 
   def confirm
@@ -63,10 +66,7 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%").limit(40)
-    if @items.count == Item.all.count || params[:keyword].present? == false
-      @items = Item.order(id: "DESC").limit(40)
-    end
-    # 余裕があればkaminariを入れて、limit(40)を外す
+    @all_items = Item.order(id: "DESC").limit(40)
   end
 
   def destroy
@@ -81,7 +81,7 @@ class ItemsController < ApplicationController
   private
 
   def params_new
-    params.require(:item).permit(:name, :condition, :detail, :delivery_method, :delivery_prefecture, :delivery_cost, :delivery_day, :price, images_attributes: [:image, :image_cache, :remove_image])
+    params.require(:item).permit(:name, :condition, :detail, :delivery_method, :delivery_prefecture, :delivery_cost, :delivery_day, :price, images_attributes: [:image])
   end
 
   def set_item
@@ -89,7 +89,8 @@ class ItemsController < ApplicationController
   end
 
   def set_category_items(name)
-    Item.where(category_id: Category.find_by(name: name).id, status: 1).order(id: "DESC").limit(4)
+    category_ids = Category.find_by(name: name).descendant_ids.push(Category.find_by(name: name).id)
+    return Item.where(category_id: category_ids, status: 1).order(id: "DESC").limit(4)
   end
 
   def set_items_category_id
