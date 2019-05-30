@@ -1,4 +1,5 @@
 //-----------------------------------ホバーすると見えるリスト
+
 //--------------------お知らせ
 #notification-list{
   display: none;
@@ -98,7 +99,7 @@
     height: 80px;
     background-repeat: no-repeat;
     background-size: 320px 80px;
-    background: url("user_bg.jpg");
+    background: url("../../assets/user_bg.jpg");
     img{
       border-radius:50%;
     }
