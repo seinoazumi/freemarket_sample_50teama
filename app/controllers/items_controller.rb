@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    10.times {@item.images.build}
   end
 
   def create
@@ -22,12 +21,15 @@ class ItemsController < ApplicationController
     @item[:category_id] = set_items_category_id
     respond_to do |format|
       if @item.save
-        # @itemページのpayjpカラムが問題で、出品ページに飛ばすのは現状ではエラー、記述使用の可能性あり
-        # format.html { redirect_to @item, notice: 'Item was successfully created.' }
         # rails scaffold item で自動作成されたコントローラ記述をそのまま移植。
         # TODO: 仮置きredirect, 最終形=>newページ内でモーダル表示させる
         UserItem.create(user_id: current_user.id, item_id: @item.id)
-        format.html { redirect_to root_path, notice: 'Item was successfully created.' }
+        if params[:file]
+          for i in 0..10
+            Image.create(image: params[:file]["#{i}"], item_id: @item.id) if params[:file]["#{i}"] != nil
+          end
+        end
+        format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         # TODO: 最終形=>入力不備label部分に赤字でガイド表示させる
@@ -78,7 +80,7 @@ class ItemsController < ApplicationController
   private
 
   def params_new
-    params.require(:item).permit(:name, :condition, :detail, :delivery_method, :delivery_prefecture, :delivery_cost, :delivery_day, :price, images_attributes: [:image, :image_cache, :remove_image])
+    params.require(:item).permit(:name, :condition, :detail, :delivery_method, :delivery_prefecture, :delivery_cost, :delivery_day, :price, images_attributes: [:image])
   end
 
   def set_item

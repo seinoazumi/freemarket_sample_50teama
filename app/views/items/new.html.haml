@@ -3,74 +3,92 @@
   .single-container
     .item-wrapper
       %h2.title 商品の情報を入力
-      = form_with model: @item, html: {class: "item-new", multipart: true, method: "POST"}, local: true do |f|
-        - if @item.errors.any?
-          - @item.errors.full_messages.each do |message|
-            = message
+      .item-new
         %section.form-section.media-min
           .input-part
             %h3.input-part__title 出品画像
             %span.input-part__require 必須
             %p.input-part__details 最大10枚までアップロードできます
-            -# TODO: ドラッグ&ドロップ、フォームの見た目動作
-            -# いま=> アップロードformLv2、普通のフォーム10個展開、同時アップロード
-            = f.fields_for :images do |i|
-              = i.file_field :image
           .image-upload-part
-            .input-part__dropbox
-              .media-min__append--icon
-                %pre.media-min__hidden ドラッグアンドドロップ
-                %pre.media-min__hidden またはクリックしてファイルをアップロード
+            = form_with model: @item, html: {class: "dropzone input-part__dropbox", id: "item-dropzone"}, local: true do |f|
+              - if @item.errors.any?
+                - @item.errors.full_messages.each do |message|
+                  = message
+              -# .input-part__dropbox.dz-default.dz-message#file_drop_area
+              .fallback
+                = f.file_field :images, multiple: true
+              .dz-message.needsclick
+                %p ドラッグアンドドロップ
+                %p またはクリックしてファイルをアップロード
+              -# .media-min__append--icon.dz-message.needsclick
+              -#   %pre.media-min__hidden ドラッグアンドドロップ
+              -#   %pre.media-min__hidden またはクリックしてファイルをアップロード
+              -# 一つのフォームにまとめるとdropzone化したフォーム内のレイアウトを自由にできないため送信用のデータを隠して配置する
+              -# item-dropzone.js内のjQueryで２つ目のフォームから入力した値を移植している。
+              -# submitボタンを使ってしまうのもうまくいかないのでIDをつけた要素をトリガーにdropzone送信発火させる
+              -# TODO: カテゴリの値を移植する
+              = f.hidden_field :name, id: "hidden-item-name"
+              = f.text_area :detail, id: "hidden-item-detail"
+              = f.hidden_field :parent_category_id, id: "hidden-item-parent_category_id", value: "1"
+              = f.hidden_field :child_category_id, id: "hidden-item-child_category_id"
+              = f.hidden_field :grandchild_category_id, id: "hidden-item-grandchild_category_id"
+              = f.hidden_field :condition, id: "hidden-item-condition"
+              = f.hidden_field :delivery_cost, id: "hidden-item-delivery_cost"
+              = f.hidden_field :delivery_method, id: "hidden-item-delivery_method"
+              = f.hidden_field :delivery_prefecture, id: "hidden-item-delivery_prefecture"
+              = f.hidden_field :delivery_day, id: "hidden-item-delivery_day"
+              = f.hidden_field :price, id: "hidden-item-price"
+      = form_with model: @item, html: {class: "item-new"}, local: true do |i|
         %section.form-section
           .input-part
-            = f.label "商品名", class: "input-part__title"
+            = i.label "商品名", class: "input-part__title"
             %span.input-part__require 必須
-            = f.text_field :name, class: "input-part__input", placeholder: "商品名（必須 40文字まで)", value: ""
+            = i.text_field :name, class: "input-part__input", id: "form-item-name", placeholder: "商品名（必須 40文字まで)", value: ""
           .input-part.space
-            = f.label "商品の説明", class: "input-part__title"
+            = i.label "商品の説明", class: "input-part__title"
             %span.input-part__require 必須
-            = f.text_area :detail, class: "input-part__textarea textarea-default", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"
+            = i.text_area :detail, class: "input-part__textarea textarea-default", id: "form-item-detail", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"
         %section.form-section
           .flex-container
             .flex-container__left
               %h3.sell-sub-head 商品の詳細
-            .flex-container__right
+            .flex-container__right#categories_container
               .input-part
-                = f.label "カテゴリー", class: "input-part__title"
+                = i.label "カテゴリー", class: "input-part__title"
                 %span.input-part__require 必須
                 - parents = @categories[0..12]
               .relative
                 .icon-select
-                = f.collection_select :parent_category_id, parents, :id, :name, {include_blank: true}, class: "input-part__select parent-category"
+                = i.collection_select :parent_category_id, parents, :id, :name, {include_blank: true}, class: "input-part__select parent-category", id: "form-item-parent_category_id"
               - parents.each do |parent|
                 .relative--hidden{id: "#{parent.id}-children-item"}
                   .icon-select
-                  = f.collection_select :child_category_id, parent.children, :id, :name, {include_blank: true}, disabled:"disabled", class: "input-part__select child-category"
+                  = i.collection_select :child_category_id, parent.children, :id, :name, {include_blank: true}, disabled:"disabled", class: "input-part__select child-category", id: "form-item-child_category_id"
               - parents.each do |parent|
                 - parent.children.each do |child|
                   .relative--hidden{id: "#{child.id}-grandchildren-item"}
                     .icon-select
-                    = f.collection_select :grandchild_category_id, child.children, :id, :name, {include_blank: true}, disabled:"disabled", class: "input-part__select grandchild-category"
+                    = i.collection_select :grandchild_category_id, child.children, :id, :name, {include_blank: true}, disabled:"disabled", class: "input-part__select grandchild-category", id: "form-item-grandchild_category_id"
               -# .space.hidden
               -# .input-part
-              -#   = f.label "サイズ", class: "input-part__title"
+              -#   = i.label "サイズ", class: "input-part__title"
               -#   %span.input-part__require 必須
               -# .relative
               -#   .icon-select
               -#     -# TODO: 特定カテゴリ展開時のみ表示させる、連動した条件バリデーション。
-              -#     -# = f.select :category_id, [["XXS以下", "153"], ["XS(SS)", "154"], ["S", "2"], ["M", "3"], ["L", "4"], ["XL(LL)", "5"], ["2XL(3L)", "155"], ["4XL(5L)以上", "157"], ["FREE SIZE", "7"]], {include_blank: true}, class: "input-part__select"
+              -#     -# = i.select :category_id, [["XXS以下", "153"], ["XS(SS)", "154"], ["S", "2"], ["M", "3"], ["L", "4"], ["XL(LL)", "5"], ["2XL(3L)", "155"], ["4XL(5L)以上", "157"], ["FREE SIZE", "7"]], {include_blank: true}, class: "input-part__select"
               -# .space.hidden
               -# .input-part
-              -#   = f.label "ブランド", class: "input-part__title"
+              -#   = i.label "ブランド", class: "input-part__title"
               -#   %span.input-part__option 任意
               -#   -# TODO: 特定カテゴリ展開時のみ表示させる。
-              -#   -# = f.text_field :category_id, class: "input-part__input", placeholder: "例）シャネル", value: ""
+              -#   -# = i.text_field :category_id, class: "input-part__input", placeholder: "例）シャネル", value: ""
               .input-part.space
-                = f.label "商品の状態", class: "input-part__title"
+                = i.label "商品の状態", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = f.select :condition, Item.conditions_i18n.keys.map {|k| [Item.conditions_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
+                  = i.select :condition, Item.conditions_i18n.keys.map {|k| [Item.conditions_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-condition"
         %section.form-section
           .flex-container.media-min--clear
             .flex-container__left
@@ -78,30 +96,29 @@
               =link_to "?", "#", class:"form-question"
             .flex-container__right
               .input-part
-                = f.label "配送料の負担", class: "input-part__title"
+                = i.label "配送料の負担", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = f.select :delivery_cost, Item.delivery_costs_i18n.keys.map {|k| [Item.delivery_costs_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
-              .space.hidden
+                  = i.select :delivery_cost, Item.delivery_costs_i18n.keys.map {|k| [Item.delivery_costs_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-delivery_cost"
               .input-part.space
-                = f.label "発送の方法", class: "input-part__title"
+                = i.label "発送の方法", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = f.select :delivery_method, Item.delivery_methods_i18n.keys.map {|k| [Item.delivery_methods_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
+                  = i.select :delivery_method, Item.delivery_methods_i18n.keys.map {|k| [Item.delivery_methods_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-delivery_method"
               .input-part.space
-                = f.label "発送元の地域", class: "input-part__title"
+                = i.label "発送元の地域", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = f.select :delivery_prefecture, Item.delivery_prefectures_i18n.keys.map {|k| [Item.delivery_prefectures_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
+                  = i.select :delivery_prefecture, Item.delivery_prefectures_i18n.keys.map {|k| [Item.delivery_prefectures_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-delivery_prefecture"
               .input-part.space
-                = f.label "発送までの日数", class: "input-part__title"
+                = i.label "発送までの日数", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = f.select :delivery_day, Item.delivery_days_i18n.keys.map {|k| [Item.delivery_days_i18n[k], k]}, {include_blank: true}, class: "input-part__select"
+                  = i.select :delivery_day, Item.delivery_days_i18n.keys.map {|k| [Item.delivery_days_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-delivery_day"
         %section.form-section
           .flex-container
             .flex-container__left
@@ -112,19 +129,17 @@
                 %ul.input-part__price
                   %li.input-part__price--bace.flex-container
                     .input-part__price--bace--left
-                      = f.label "価格", class: "input-part__title"
+                      = i.label "価格", class: "input-part__title"
                       %span.input-part__require 必須
                     .input-part__price--bace--right
                       %p.yen ¥
-                      = f.text_field :price, class: "input-part__input", placeholder: "例）300", value: "", maxlength: "7"
+                      = i.text_field :price, class: "input-part__input", id: "form-item-price", placeholder: "例）300", value: "", maxlength: "7"
                   %li.input-part__price--fee.border-top.flex-container
                     .input-part__price--fee--left 販売手数料 (10%)
                     .input-part__price--fee--right.input-part__price--fee--output -
-                    -# TODO: 計算結果
                   %li.input-part__price--total.border-top.flex-container
                     .input-part__price--total--left 販売利益
                     .input-part__price--fee--right.input-part__price--total--output -
-                    -# TODO: 計算結果
           -# TODO: モーダル表示 多分出品後のやつ cssが原因だろうが、今のとこアウトしてないと勝手に表に出てきてしまう。
           -# .modal{role: "dialog", tabindex: "-1"}
           -#   .modal-inner
@@ -141,8 +156,7 @@
             また、出品をもちまして
             = link_to "加盟店規約", "#", class:"notes__link"
             に同意したことになります。
-          -# TODO: submitボタン、要調整、モーダル呼び出しに繋げる
-          = f.submit "出品する", class: "submit-btn--red"
+          %p.submit-btn--red#submit-button 出品する
           = link_to "もどる", root_path, class: "submit-btn--gray"
         .overlay
   = render partial: "/shared/single-footer"
