@@ -140,9 +140,17 @@
                   %li.input-part__price--total.border-top.flex-container
                     .input-part__price--total--left 販売利益
                     .input-part__price--fee--right.input-part__price--total--output -
-          -# TODO: モーダル表示 多分出品後のやつ cssが原因だろうが、今のとこアウトしてないと勝手に表に出てきてしまう。
-          -# .modal{role: "dialog", tabindex: "-1"}
-          -#   .modal-inner
+
+          .modal-overlay
+            #modal-window.modal__inner.modal.is-show.is-animate.sell-draft
+              %div
+                %h3.modal-head 出品が完了しました
+                .sell-modal-body
+                  あなたが出品した商品は「出品した商品一覧」からいつでも見ることができます。
+                  = link_to "続けて出品する", "/items/new", class: "submit-btn--red"
+                  %p.text-center
+                    = link_to "商品ページへ行ってシェアする", " /items/#{@item.id}", class: ".text-center"
+
         %section.form-section
           %p.notes
             = link_to "禁止されている出品", "#", class:"notes__link"
@@ -156,7 +164,7 @@
             また、出品をもちまして
             = link_to "加盟店規約", "#", class:"notes__link"
             に同意したことになります。
-          %p.submit-btn--red#submit-button 出品する
+          %p.submit-btn--red#submit-button#modal-open 出品する
           = link_to "もどる", root_path, class: "submit-btn--gray"
         .overlay
   = render partial: "/shared/single-footer"
