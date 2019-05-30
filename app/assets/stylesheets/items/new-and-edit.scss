@@ -149,7 +149,9 @@
           line-height: 1.5;
           text-align: center;
           flex-grow: 1;
-          display: table;
+          // display: table;
+          display: flex;
+          flex-direction: row;
           .hidden{
             visibility:hidden;
             display: none;
@@ -160,24 +162,36 @@
             vertical-align: middle;
           }
         } // end input-part__dropbox
-      .upload-item{
+      .upload-item, .dz-preview.dz-image-preview{
         position: relative;
         display: inline-block;
         width: 18%;
         margin: 0 2% 2% 0;
         border: $table-border;
         background-color: $gray-lv1;
-        &__photo{
+        &__photo, .dz-image{
           width: 111.5px;
           height: 111.5px;
           // 画像アップロードできたらコメントアウトを外す
           background: rgb(143, 143, 245);
         }
+        .dz-message.needsclick{
+          overflow: hidden;
+        }
+        .dz-details, .dz-progress, .dz-error-message{
+          display: none;
+        }
+        .dz-success-mark {
+          display: none;
+        }
+        .dz-error-mark {
+          display: none;
+        }
         &__nav{
           font-size: 14px;
           color: $link-blue;
           display: flex;
-          &__edit, &__delete{
+          &__edit, &__delete, .dz-remove{
             width: 50%;
             text-align: center;
             padding: 20px 0;

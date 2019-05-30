@@ -15,18 +15,23 @@
                 - @item.errors.full_messages.each do |message|
                   = message
               -# .input-part__dropbox.dz-default.dz-message#file_drop_area
+              .fallback
+                = f.file_field :images, multiple: true
               .dz-message.needsclick
                 %p ドラッグアンドドロップ
                 %p またはクリックしてファイルをアップロード
-              .fallback
-                = f.file_field :images, multiple: true
               -# .media-min__append--icon.dz-message.needsclick
               -#   %pre.media-min__hidden ドラッグアンドドロップ
               -#   %pre.media-min__hidden またはクリックしてファイルをアップロード
+              -# 一つのフォームにまとめるとdropzone化したフォーム内のレイアウトを自由にできないため送信用のデータを隠して配置する
+              -# item-dropzone.js内のjQueryで２つ目のフォームから入力した値を移植している。
+              -# submitボタンを使ってしまうのもうまくいかないのでIDをつけた要素をトリガーにdropzone送信発火させる
+              -# TODO: カテゴリの値を移植する
               = f.hidden_field :name, id: "hidden-item-name"
-              -# = f.hidden_field :detail, id: "hidden-item-detail"
               = f.text_area :detail, id: "hidden-item-detail"
-              = f.hidden_field :parent_category_id, id: "hidden-item-category", value: "1"
+              = f.hidden_field :parent_category_id, id: "hidden-item-parent_category_id", value: "1"
+              = f.hidden_field :child_category_id, id: "hidden-item-child_category_id"
+              = f.hidden_field :grandchild_category_id, id: "hidden-item-grandchild_category_id"
               = f.hidden_field :condition, id: "hidden-item-condition"
               = f.hidden_field :delivery_cost, id: "hidden-item-delivery_cost"
               = f.hidden_field :delivery_method, id: "hidden-item-delivery_method"
@@ -47,25 +52,23 @@
           .flex-container
             .flex-container__left
               %h3.sell-sub-head 商品の詳細
-            .flex-container__right
-              -# カテゴリオフテスト用パラメータ入力
-              -# =i.hidden_field :parent_category_id, value: 1
+            .flex-container__right#categories_container
               .input-part
                 = i.label "カテゴリー", class: "input-part__title"
                 %span.input-part__require 必須
                 - parents = @categories[0..12]
               .relative
                 .icon-select
-                = i.collection_select :parent_category_id, parents, :id, :name, {include_blank: true}, class: "input-part__select parent-category"
+                = i.collection_select :parent_category_id, parents, :id, :name, {include_blank: true}, class: "input-part__select parent-category", id: "form-item-parent_category_id"
               - parents.each do |parent|
                 .relative--hidden{id: "#{parent.id}-children-item"}
                   .icon-select
-                  = i.collection_select :child_category_id, parent.children, :id, :name, {include_blank: true}, disabled:"disabled", class: "input-part__select child-category"
+                  = i.collection_select :child_category_id, parent.children, :id, :name, {include_blank: true}, disabled:"disabled", class: "input-part__select child-category", id: "form-item-child_category_id"
               - parents.each do |parent|
                 - parent.children.each do |child|
                   .relative--hidden{id: "#{child.id}-grandchildren-item"}
                     .icon-select
-                    = i.collection_select :grandchild_category_id, child.children, :id, :name, {include_blank: true}, disabled:"disabled", class: "input-part__select grandchild-category"
+                    = i.collection_select :grandchild_category_id, child.children, :id, :name, {include_blank: true}, disabled:"disabled", class: "input-part__select grandchild-category", id: "form-item-grandchild_category_id"
               -# .space.hidden
               -# .input-part
               -#   = i.label "サイズ", class: "input-part__title"
