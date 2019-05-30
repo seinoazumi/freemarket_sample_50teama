@@ -1,5 +1,4 @@
-$(document).on('turebolinks:load', $(function(){
-  window.onload = function() {
+$(document).on('turebolinks:load', function(){
     $("#modal-open").on('click', function(){
 
       $(".modal-overlay").fadeIn("slow");
@@ -9,6 +8,4 @@ $(document).on('turebolinks:load', $(function(){
         }); //end モーダルウィンドウが開いている時の操作
       return false;
     });
-  }
-  })
-);
+});
