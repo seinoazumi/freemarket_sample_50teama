@@ -15,7 +15,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require dropzone
-//= require parsley
-//= require parsley.i18n.ja
 //= require turbolinks
 //= require_tree .
