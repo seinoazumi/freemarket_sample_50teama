@@ -26,7 +26,6 @@
             border-bottom: 120px solid transparent;
             border-left: 120px solid $base-red;
             position: absolute;
-            z-index: 10;
           }
           .soldout::after{
             content: "SOLD";
@@ -38,7 +37,6 @@
             color: #fff;
             left: 10px;
             position: absolute;
-            z-index: 20;
             letter-spacing: 2px;
           }
         }
