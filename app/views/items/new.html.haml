@@ -38,16 +38,16 @@
               = f.hidden_field :delivery_prefecture, id: "hidden-item-delivery_prefecture"
               = f.hidden_field :delivery_day, id: "hidden-item-delivery_day"
               = f.hidden_field :price, id: "hidden-item-price"
-      = form_with model: @item, html: {class: "item-new"}, local: true do |i|
+      = form_with model: @item, html: {class: "item-new", 'data-parsley-validate' => '', 'parsley-use-html5-constraints' => false}, local: true do |i|
         %section.form-section
           .input-part
             = i.label "商品名", class: "input-part__title"
             %span.input-part__require 必須
-            = i.text_field :name, class: "input-part__input", id: "form-item-name", placeholder: "商品名（必須 40文字まで)", value: ""
+            = i.text_field :name, class: "input-part__input", id: "form-item-name", placeholder: "商品名（必須 40文字まで)", value: "", 'data-parsley-trigger' => "change", 'required' => '', autofocus: true
           .input-part.space
             = i.label "商品の説明", class: "input-part__title"
             %span.input-part__require 必須
-            = i.text_area :detail, class: "input-part__textarea textarea-default", id: "form-item-detail", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"
+            = i.text_area :detail, class: "input-part__textarea textarea-default", id: "form-item-detail", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5", 'data-parsley-trigger' => "change", 'required' => '', autofocus: true
         %section.form-section
           .flex-container
             .flex-container__left
@@ -59,7 +59,7 @@
                 - parents = @categories[0..12]
               .relative
                 .icon-select
-                = i.collection_select :parent_category_id, parents, :id, :name, {include_blank: true}, class: "input-part__select parent-category", id: "form-item-parent_category_id"
+                = i.collection_select :parent_category_id, parents, :id, :name, {include_blank: true}, class: "input-part__select parent-category", id: "form-item-parent_category_id", 'data-parsley-trigger' => "change", 'required' => '', autofocus: true
               - parents.each do |parent|
                 .relative--hidden{id: "#{parent.id}-children-item"}
                   .icon-select
@@ -88,7 +88,7 @@
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = i.select :condition, Item.conditions_i18n.keys.map {|k| [Item.conditions_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-condition"
+                  = i.select :condition, Item.conditions_i18n.keys.map {|k| [Item.conditions_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-condition", 'data-parsley-trigger' => "change", 'required' => '', autofocus: true
         %section.form-section
           .flex-container.media-min--clear
             .flex-container__left
@@ -100,25 +100,25 @@
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = i.select :delivery_cost, Item.delivery_costs_i18n.keys.map {|k| [Item.delivery_costs_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-delivery_cost"
+                  = i.select :delivery_cost, Item.delivery_costs_i18n.keys.map {|k| [Item.delivery_costs_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-delivery_cost", 'data-parsley-trigger' => "change", 'required' => '', autofocus: true
               .input-part.space
                 = i.label "発送の方法", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = i.select :delivery_method, Item.delivery_methods_i18n.keys.map {|k| [Item.delivery_methods_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-delivery_method"
+                  = i.select :delivery_method, Item.delivery_methods_i18n.keys.map {|k| [Item.delivery_methods_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-delivery_method", 'data-parsley-trigger' => "change", 'required' => '', autofocus: true
               .input-part.space
                 = i.label "発送元の地域", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = i.select :delivery_prefecture, Item.delivery_prefectures_i18n.keys.map {|k| [Item.delivery_prefectures_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-delivery_prefecture"
+                  = i.select :delivery_prefecture, Item.delivery_prefectures_i18n.keys.map {|k| [Item.delivery_prefectures_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-delivery_prefecture", 'data-parsley-trigger' => "change", 'required' => '', autofocus: true
               .input-part.space
                 = i.label "発送までの日数", class: "input-part__title"
                 %span.input-part__require 必須
               .relative
                 .icon-select
-                  = i.select :delivery_day, Item.delivery_days_i18n.keys.map {|k| [Item.delivery_days_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-delivery_day"
+                  = i.select :delivery_day, Item.delivery_days_i18n.keys.map {|k| [Item.delivery_days_i18n[k], k]}, {include_blank: true}, class: "input-part__select", id: "form-item-delivery_day", 'data-parsley-trigger' => "change", 'required' => '', autofocus: true
         %section.form-section
           .flex-container
             .flex-container__left
@@ -133,7 +133,7 @@
                       %span.input-part__require 必須
                     .input-part__price--bace--right
                       %p.yen ¥
-                      = i.text_field :price, class: "input-part__input", id: "form-item-price", placeholder: "例）300", value: "", maxlength: "7"
+                      = i.text_field :price, class: "input-part__input", id: "form-item-price", placeholder: "例）300", value: "", maxlength: "7", 'data-parsley-trigger' => "change", 'required' => '', autofocus: true
                   %li.input-part__price--fee.border-top.flex-container
                     .input-part__price--fee--left 販売手数料 (10%)
                     .input-part__price--fee--right.input-part__price--fee--output -
@@ -165,6 +165,8 @@
             = link_to "加盟店規約", "#", class:"notes__link"
             に同意したことになります。
           %p.submit-btn--red#submit-button#modal-open 出品する
+          -# = f.submit "出品する", class: "submit-btn--red", id: "submit-button modal-open"
+          -# = button_tag "出品する", class: "submit-btn--red", id: "submit-button modal-open"
           = link_to "もどる", root_path, class: "submit-btn--gray"
         .overlay
   = render partial: "/shared/single-footer"
