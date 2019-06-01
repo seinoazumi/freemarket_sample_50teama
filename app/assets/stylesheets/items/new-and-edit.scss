@@ -256,76 +256,8 @@
     }
   }
 }
-
-.modal__inner {
-  max-width: none;
-  margin: 20px auto;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 3000;
-  overflow-x: hidden;
-  overflow-y: auto;
-  transition: all ease-out .3s;
-  transform: translate(0, -10px);
-  .is-show {
-    display: block;
-  }
-  .is-animate {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-  h3 {
-    display: block;
-    font-size: 1.17em;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-  }
-  .modal-head {
-    font-size: 16px;
-    text-align: center;
-    line-height: 80px;
-  }
-  .sell-modal-body {
-    border-top: 1px solid $gray-lv1plus;
-    padding: 40px;
-    font-size: 14px;
-    p {
-      margin: 8px 0 0;
-    }
-  }
-  .submit-btn--red {
-    margin: 40px auto 0;
-    background: $base-red;
-    border: 1px solid $base-red;
-    color: $white;
-  }
-  a {
-    cursor: pointer;
-    color: $link-blue;
-    text-decoration: none;
-  }
-  .text-center {
-    text-align: center;
-  }
-}
-
 //メディアクエリ
 @media screen and (max-width: 768px) {
-  .modal__inner {
-    position: relative;
-    overflow: hidden;
-    width: 95%;
-    max-width: 375px;
-    margin: 8px auto;
-    background: $white;
-  }
-
   .item-wrapper{
     width:100%;
     .title {
